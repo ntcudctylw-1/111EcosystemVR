@@ -12,7 +12,7 @@ public class Cat_Ani : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(ch6_1st.Moving);
+        //Debug.Log(ch6_1st.Moving);
         if(ch6_1st.Moving == 1)
         {
             if (animator.GetInteger("state") == 0)
