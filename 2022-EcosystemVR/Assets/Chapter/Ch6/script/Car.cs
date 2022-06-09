@@ -21,7 +21,7 @@ public class Car : MonoBehaviour
         foreach (var item in Cars)
         {
             if (item == null) continue;
-            Debug.Log("!!");
+            //Debug.Log("!!");
            item.transform.position =   Vector3.Lerp(item.transform.position, item.transform.position + new Vector3(200, 0, 0), Car_Speed);
         }
     }

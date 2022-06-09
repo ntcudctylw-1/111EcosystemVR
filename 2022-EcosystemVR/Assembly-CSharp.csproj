@@ -77,6 +77,7 @@
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\CatMoving.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\CatAnimation.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Car.cs" />
+    <Compile Include="Assets\Chapter\Ch6\script\Chicken.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Bark_Array_301.shader" />
