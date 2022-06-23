@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ch6_1st : MonoBehaviour
 {
-    public GameObject AxisObj,Camera,Cat;
+    public GameObject AxisObj,Camera,Cat,SpawnPoint;
     private Vector3 MoveDirection;
     public CharacterController CharacterController;
     public float  a, v_max,gravity = 0.98f;
@@ -42,7 +42,15 @@ public class ch6_1st : MonoBehaviour
 
         
         Cat.transform.LookAt(newtransform);
+
+    }
+
+    public void ReSpawn()
+    {
+        CharacterController.enabled = false;
         
+        this.transform.position = SpawnPoint.transform.position;
+        CharacterController.enabled = true;
     }
 
 

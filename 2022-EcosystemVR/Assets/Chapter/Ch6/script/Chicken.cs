@@ -14,6 +14,7 @@ public class Chicken : MonoBehaviour
     bool walk = false;
     private void Update()
     {
+        /*
         Vector3 v = GetComponent<NavMeshAgent>().velocity;
         float temp = Mathf.Pow((v.x * v.x + v.z * v.z), 1f / 2f);
         if(temp > 0.5 && !walk)
@@ -27,7 +28,7 @@ public class Chicken : MonoBehaviour
         }
 
         //  Debug.Log(Mathf.Pow((v.x * v.x + v.z * v.z), 1f / 2f));
-        Animator.SetFloat("v",temp );
+        Animator.SetFloat("v",temp );*/
     }
 
 }
