@@ -61,8 +61,10 @@
     <Compile Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\CTI_CustomWind.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\CarHit.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Cat_Ani.cs" />
+    <Compile Include="Assets\Ahmad Gamal\Smart FPS Counter\Scripts\test.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\MovingPose.cs" />
     <Compile Include="Assets\Scripts\XRI Default Input Actions.cs" />
+    <Compile Include="Assets\Chapter\Ch5\Fur\Scripts\FurMover.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\Cat_animation.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\ObjMoveByAxis1.cs" />
@@ -79,6 +81,8 @@
     <Compile Include="Assets\Chapter\Ch6\Script_test\ObjMoveByAxis.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\ch6_1st.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\ButtonASAxisValue.cs" />
+    <Compile Include="Assets\Ahmad Gamal\Smart FPS Counter\Scripts\FPSCounter.cs" />
+    <Compile Include="Assets\Chapter\Ch5\Fur\Scripts\MoveAndRotateObject.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\Controller_Post_Detector.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathSceneTool.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathFollower.cs" />
@@ -87,10 +91,7 @@
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\CatAnimation.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Car.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\RoadMeshCreator.cs" />
-    <Compile Include="Assets\Chapter\Ch5\Fur\Scripts\MoveAndRotateObject.cs" />
-    <Compile Include="Assets\Chapter\Ch5\Fur\Scripts\FurMover.cs" />
-    <Compile Include="Assets\Ahmad Gamal\Smart FPS Counter\Scripts\FPSCounter.cs" />
-    <Compile Include="Assets\Ahmad Gamal\Smart FPS Counter\Scripts\test.cs" />
+    <Compile Include="Assets\Chapter\Ch6\script\Chicken1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Bark_Array_301.shader" />

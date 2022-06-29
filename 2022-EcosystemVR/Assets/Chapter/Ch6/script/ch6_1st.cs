@@ -53,5 +53,18 @@ public class ch6_1st : MonoBehaviour
         CharacterController.enabled = true;
     }
 
+    void Get_a_lemon()
+    {
+
+    }
+
+
+    private void OnControllerColliderHit(ControllerColliderHit collision)
+    {
+
+        if (collision.transform.tag == "Lemon") Get_a_lemon();
+
+    }
+
 
 }
