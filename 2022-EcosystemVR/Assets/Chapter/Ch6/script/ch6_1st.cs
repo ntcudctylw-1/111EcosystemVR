@@ -57,12 +57,25 @@ public class ch6_1st : MonoBehaviour
     {
 
     }
+    void Get_Chicken()
+    {
+
+    }
 
 
     private void OnControllerColliderHit(ControllerColliderHit collision)
     {
 
-        if (collision.transform.tag == "Lemon") Get_a_lemon();
+        if (collision.transform.tag == "Lemon") 
+        {
+            Get_a_lemon();
+            collision.gameObject.SetActive(false);
+        }
+        if (collision.transform.tag == "Chicken")
+        {
+            Get_Chicken();
+            collision.gameObject.SetActive(false);
+        }
 
     }
 
