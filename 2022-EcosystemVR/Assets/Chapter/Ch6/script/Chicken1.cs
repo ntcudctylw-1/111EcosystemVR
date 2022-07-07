@@ -31,7 +31,7 @@ public class Chicken1 : MonoBehaviour
     {
 
         int a = Random.Range(5, 15);
-        Debug.Log(a);
+        //Debug.Log(a);
         animator.SetFloat("Speed", a / 10f);
         a = Random.Range(0, 10);
         if (a > 6)
