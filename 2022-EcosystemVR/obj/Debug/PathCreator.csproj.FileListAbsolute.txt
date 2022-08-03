@@ -1,2 +1,0 @@
-C:\Users\ljt10\111EcosystemVR\2022-EcosystemVR\obj\Debug\PathCreator.csproj.AssemblyReference.cache
-C:\Users\ljt10\111EcosystemVR\2022-EcosystemVR\obj\Debug\PathCreator.csproj.CoreCompileInputs.cache
