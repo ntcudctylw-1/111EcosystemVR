@@ -10,6 +10,7 @@ public class Player_Score : MonoBehaviour
     public void Eat_Lemon()
     {
         Food += 1;
+        GetComponent<Levels>().Level_1();       
     }
     
     public void Car_Accident()
@@ -21,6 +22,7 @@ public class Player_Score : MonoBehaviour
     public void Eat_Chicken()
     {
         Food += 2;
+        GetComponent<Levels>().Level_2();
         GetComponent<Animate_New>().Play();
         
     }

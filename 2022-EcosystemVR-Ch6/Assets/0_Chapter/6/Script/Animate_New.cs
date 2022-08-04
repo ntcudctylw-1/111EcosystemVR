@@ -16,6 +16,7 @@ public class Animate_New : MonoBehaviour
         StartCoroutine(Go());
         IEnumerator Go()
         {
+            StartCoroutine(GetComponent<Spwan_Player>().Respawn(1));
             Cat.SetActive(false);
             if (GlobalSet.playMode == GlobalSet.PlayMode.PC)
             {
@@ -42,7 +43,7 @@ public class Animate_New : MonoBehaviour
             }
             Cat.SetActive(true);
             Debug.Log("Spawn");
-            StartCoroutine( GetComponent<Spwan_Player>().Respawn(1));
+            
         }
 
     }

@@ -12,6 +12,7 @@ public class GlobalSet : MonoBehaviour
 
     public enum PlayMode
     {
+        Auto,
         VR,
         PC
     }
@@ -92,6 +93,14 @@ public class GlobalSet : MonoBehaviour
 
     private void Awake()
     {
+        if (playMode == PlayMode.Auto && Application.platform == RuntimePlatform.Android)
+        {
+            SetMode = PlayMode.VR;
+        }
+        else
+        {
+            SetMode = PlayMode.PC;
+        }
         playMode = SetMode;
         inputActions = new XRIDefaultInputActions();
         inputActions.Enable();
