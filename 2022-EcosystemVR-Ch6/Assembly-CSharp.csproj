@@ -69,11 +69,13 @@
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\MovingPose.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Chicken_Collision.cs" />
     <Compile Include="Assets\Scripts\XRI Default Input Actions.cs" />
+    <Compile Include="Assets\0_Chapter\6\Script\Levels.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs" />
     <Compile Include="Assets\Chapter\Ch5\Fur\Scripts\FurMover.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Cat_Animate.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Player_Score.cs" />
+    <Compile Include="Assets\0_Chapter\6\Script\Text_Update.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Steel.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\Cat_animation.cs" />
@@ -121,8 +123,6 @@
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\CatAnimation.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Car.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\RoadMeshCreator.cs" />
-    <Compile Include="Assets\0_Chapter\6\Script\Text_Update.cs" />
-    <Compile Include="Assets\0_Chapter\6\Script\Levels.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Bark_Array_301.shader" />

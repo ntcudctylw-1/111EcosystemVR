@@ -97,7 +97,7 @@ public class GlobalSet : MonoBehaviour
         {
             SetMode = PlayMode.VR;
         }
-        else
+        else if (playMode == PlayMode.Auto && Application.platform == RuntimePlatform.WindowsPlayer)
         {
             SetMode = PlayMode.PC;
         }
