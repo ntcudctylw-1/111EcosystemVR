@@ -16,18 +16,23 @@ public class Spwan_Player : MonoBehaviour
         SpawnOffset = Vector3.zero;
         PC.transform.position = spawnpoints[0].transform.position;
         VR.transform.position = spawnpoints[0].transform.position;
-        CharacterController_Collision component = GetComponent<CharacterController_Collision>();
-        if (GlobalSet.playMode == GlobalSet.PlayMode.PC)
+
+        if(TryGetComponent(out CharacterController_Collision component))
         {
-            Model.transform.SetParent(ModelParent_PC.transform);
-            CopyValues<CharacterController_Collision>(component, CharactorController_PC.AddComponent<CharacterController_Collision>());
-            
+            if (GlobalSet.playMode == GlobalSet.PlayMode.PC)
+            {
+                Model.transform.SetParent(ModelParent_PC.transform);
+                CopyValues<CharacterController_Collision>(component, CharactorController_PC.AddComponent<CharacterController_Collision>());
+
+            }
+            if (GlobalSet.playMode == GlobalSet.PlayMode.VR)
+            {
+                Model.transform.SetParent(ModelParent_VR.transform);
+                CopyValues<CharacterController_Collision>(component, CharactorController_VR.AddComponent<CharacterController_Collision>());
+            }
         }
-        if (GlobalSet.playMode == GlobalSet.PlayMode.VR)
-        {
-            Model.transform.SetParent(ModelParent_VR.transform);
-            CopyValues<CharacterController_Collision>(component, CharactorController_VR.AddComponent<CharacterController_Collision>());
-        }
+        
+        
     }
     void CopyValues<T>(T from, T to)
     {

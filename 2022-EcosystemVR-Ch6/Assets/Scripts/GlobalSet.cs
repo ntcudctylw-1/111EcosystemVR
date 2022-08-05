@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Mode_Switch))]
 public class GlobalSet : MonoBehaviour
 {
+    
+
     public string SID;//學號
     public long EntryTime, ExitTime; // 進入和離開學習單元的時間
     public string ServerIP = ""; //SQL ServerIP
