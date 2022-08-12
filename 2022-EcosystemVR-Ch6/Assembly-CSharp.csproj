@@ -110,6 +110,7 @@
     <Compile Include="Assets\Chapter\Ch6\Script_test\ButtonASAxisValue.cs" />
     <Compile Include="Assets\Ahmad Gamal\Smart FPS Counter\Scripts\FPSCounter.cs" />
     <Compile Include="Assets\Chapter\Ch5\Fur\Scripts\MoveAndRotateObject.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\VR_StartFlying.cs" />
     <Compile Include="Assets\StarterAssets\ThirdPersonController\Scripts\ThirdPersonController.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\Controller_Post_Detector.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathSceneTool.cs" />
@@ -123,7 +124,15 @@
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\CatAnimation.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Car.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\RoadMeshCreator.cs" />
-    <Compile Include="Assets\0_Chapter\5\Script\VR_StartFlying.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\Charactor_Physics.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\Player_blance.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\CheckPoints.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\Respawn.cs" />
+    <Compile Include="Assets\0_Chapter\Test\NewBehaviourScript.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\Flap.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\FlyLevel.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\CollisionHappened.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\ComponyBirds.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Bark_Array_301.shader" />
@@ -783,6 +792,9 @@
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Wave.OpenXR">
+      <HintPath>Library\ScriptAssemblies\Wave.OpenXR.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
@@ -791,6 +803,9 @@
     </Reference>
     <Reference Include="Unity.Searcher.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Wave.OpenXR.Editor">
+      <HintPath>Library\ScriptAssemblies\Wave.OpenXR.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
@@ -831,6 +846,9 @@
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Wave.XRSDK">
+      <HintPath>Library\ScriptAssemblies\Wave.XRSDK.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
@@ -851,6 +869,9 @@
     </Reference>
     <Reference Include="Unity.XR.Interaction.Toolkit">
       <HintPath>Library\ScriptAssemblies\Unity.XR.Interaction.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Wave.XRSDK.Editor">
+      <HintPath>Library\ScriptAssemblies\Wave.XRSDK.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
@@ -893,6 +914,9 @@
     </Reference>
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
       <HintPath>Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Wave.OpenXR.Toolkit">
+      <HintPath>Library\ScriptAssemblies\Wave.OpenXR.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.OpenXR">
       <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.dll</HintPath>

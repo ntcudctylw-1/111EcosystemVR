@@ -8,13 +8,18 @@ public class VR_StartFlying : MonoBehaviour
     bool past,now;
     public int pass;
     public float keeptime = 0.2f;
-    
+
+
+    private void Start()
+    {
+
+    }
+
     private void Update()
     {
         now = GetComponent<VR_Gesture>().Is_Flapping;
         if (now) StartCoroutine(keep(keeptime));
-        //else StopCoroutine(keep());
-        //if(pass)
+
         past = now;
         if(pass == 1)
         {
@@ -30,6 +35,10 @@ public class VR_StartFlying : MonoBehaviour
         yield return new WaitForSeconds(second);
 
         pass += 1;
+        
+        GetComponent<Charactor_Physics>().Player_Jump();
         StopAllCoroutines();
     }
+
+
 }

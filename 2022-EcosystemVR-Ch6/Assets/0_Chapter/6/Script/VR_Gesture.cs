@@ -9,6 +9,7 @@ public class VR_Gesture : MonoBehaviour
     public Vector3 Arrow_L,Arrow_R;
     public bool Is_Walking;
     public bool Is_Flapping;
+    public float Slope;
     private void Start()
     {
         
@@ -25,8 +26,20 @@ public class VR_Gesture : MonoBehaviour
         Flap(temp_L, temp_R);
         Arrow_L = temp_L;
         Arrow_R = temp_R;
+        Slope = CountClope();
     
-}
+    }
+
+    float CountClope()
+    {
+
+        Vector3 temp = GetComponent<VR_Controller_Velocity>().Right.x - GetComponent<VR_Controller_Velocity>().Left.x;
+        Vector3 temp2 = temp;
+        temp2.y = 0;
+        int key = 1;
+        if (GetComponent<VR_Controller_Velocity>().Right.x.y > GetComponent<VR_Controller_Velocity>().Left.x.y) key = -1;
+        return Vector3.Angle(temp,temp2) * key;
+    }
 
     void Walk(Vector3 temp)
     {
@@ -53,8 +66,9 @@ public class VR_Gesture : MonoBehaviour
 
     void Flap(Vector3 vector_L, Vector3 vector_R)
     {
-        if (vector_L.y > Offset && vector_R.y > Offset) Is_Flapping = true;
-        else if (vector_L.y < -Offset && vector_R.y < -Offset) Is_Flapping = true;
+        //if (vector_L.y > Offset && vector_R.y > Offset) Is_Flapping = true;
+        if (vector_L.y < -Offset && vector_R.y < -Offset) Is_Flapping = true;
+        //else if (vector_L.z < -Offset && vector_R.z < -Offset) Is_Flapping = true;
         else Is_Flapping = false;
 
     }
