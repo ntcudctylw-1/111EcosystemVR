@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\0_Chapter\5\Script\Respawn.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\MoveTarget.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathSpawner.cs" />
     <Compile Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\CTI_CustomWind.cs" />
@@ -66,12 +67,14 @@
     <Compile Include="Assets\StarterAssets\InputSystem\StarterAssetsInputs.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Chicken1.cs" />
     <Compile Include="Assets\Ahmad Gamal\Smart FPS Counter\Scripts\test.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\Charactor_Physics.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\MovingPose.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Chicken_Collision.cs" />
     <Compile Include="Assets\Scripts\XRI Default Input Actions.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Levels.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs" />
     <Compile Include="Assets\Chapter\Ch5\Fur\Scripts\FurMover.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\CollisionHappened.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Cat_Animate.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Player_Score.cs" />
@@ -83,13 +86,16 @@
     <Compile Include="Assets\0_Chapter\6\Script\Spwan_Player.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\ObjMoveByAxis1.cs" />
     <Compile Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\CTI_Utils.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\ComponyBirds.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\HandAccelator.cs" />
     <Compile Include="Assets\Chapter\Menu\DontDestory.cs" />
     <Compile Include="Assets\PC_IsMoving.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Cat_Transform.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Loading.cs" />
+    <Compile Include="Assets\0_Chapter\Test\NewBehaviourScript.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Mode_Switch.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\GetPoint.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\FlyLevel.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\GeneratePathExample.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\FocusPoint.cs" />
@@ -97,12 +103,14 @@
     <Compile Include="Assets\0_Chapter\6\Script\Animate_New.cs" />
     <Compile Include="Assets\Scripts\GlobalSet.cs" />
     <Compile Include="Assets\0_Chapter\Test\Test.cs" />
+    <Compile Include="Assets\0_Chapter\Test\RayCastHit.cs" />
     <Compile Include="Assets\StarterAssets\ThirdPersonController\Scripts\BasicRigidBodyPush.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathPlacer.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Chicken.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\VR_Controller_Velocity.cs" />
     <Compile Include="Assets\Chapter\Menu\Goto.cs" />
+    <Compile Include="Assets\0_Chapter\Test\Test2.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Car_Collision.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Ai.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\ObjMoveByAxis.cs" />
@@ -114,8 +122,11 @@
     <Compile Include="Assets\StarterAssets\ThirdPersonController\Scripts\ThirdPersonController.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\Controller_Post_Detector.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathSceneTool.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\Flap.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Chicken_Move.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\CheckPoints.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathFollower.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\Player_blance.cs" />
     <Compile Include="Assets\CTI URP\CTI Runtime Components URP\Scripts\CTI_SRP_CustomWind.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\CatMoving.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Car_Spawner.cs" />
@@ -124,15 +135,12 @@
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\CatAnimation.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Car.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\RoadMeshCreator.cs" />
-    <Compile Include="Assets\0_Chapter\5\Script\Charactor_Physics.cs" />
-    <Compile Include="Assets\0_Chapter\5\Script\Player_blance.cs" />
-    <Compile Include="Assets\0_Chapter\5\Script\CheckPoints.cs" />
-    <Compile Include="Assets\0_Chapter\5\Script\Respawn.cs" />
-    <Compile Include="Assets\0_Chapter\Test\NewBehaviourScript.cs" />
-    <Compile Include="Assets\0_Chapter\5\Script\Flap.cs" />
-    <Compile Include="Assets\0_Chapter\5\Script\FlyLevel.cs" />
-    <Compile Include="Assets\0_Chapter\5\Script\CollisionHappened.cs" />
-    <Compile Include="Assets\0_Chapter\5\Script\ComponyBirds.cs" />
+    <Compile Include="Assets\Scripts\WebPhp.cs" />
+    <Compile Include="Assets\0_Chapter\Lobby\PlayMode.cs" />
+    <Compile Include="Assets\0_Chapter\Lobby\DoorEntry.cs" />
+    <Compile Include="Assets\0_Chapter\6\Script\Backtohome.cs" />
+    <Compile Include="Assets\Scripts\ScreenRecord.cs" />
+    <Compile Include="Assets\0_Chapter\Lobby\Teleport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Bark_Array_301.shader" />

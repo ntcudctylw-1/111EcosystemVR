@@ -47,7 +47,7 @@ public class Spwan_Player : MonoBehaviour
         {
             CharactorController_PC.GetComponent<CharacterController>().enabled = false;
             CharactorController_PC.transform.localPosition = spawnpoints[SpawnpointNumber].transform.localPosition + SpawnOffset;
-            yield return new WaitForSeconds(1);
+            yield return null;
             CharactorController_PC.GetComponent<CharacterController>().enabled = true;
         }
         if (GlobalSet.playMode == GlobalSet.PlayMode.VR)
@@ -55,7 +55,7 @@ public class Spwan_Player : MonoBehaviour
             CharactorController_VR.GetComponent<CharacterController>().enabled = false;
             CharactorController_VR.transform.position = spawnpoints[SpawnpointNumber].transform.position;
             XROrigin.transform.position = spawnpoints[SpawnpointNumber].transform.position + new Vector3(0, -2.25f,0);
-            yield return new WaitForSeconds(1);
+            yield return null;
             CharactorController_VR.GetComponent<CharacterController>().enabled = true;
         }
     }

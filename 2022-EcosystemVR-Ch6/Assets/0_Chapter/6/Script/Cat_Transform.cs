@@ -31,8 +31,8 @@ public class Cat_Transform : MonoBehaviour
     private void Update()
     {
         //Debug.Log(XRCamera.transform.rotation.y);
-
-       // Axis.transform.localPosition = new Vector3(XRCamera.transform.forward.x, 0, XRCamera.transform.forward.z);
+        lookatpoint.transform.localPosition = new Vector3(0, 0, 4);
+        Debug.Log(lookatpoint.transform.localPosition);
 
 
 

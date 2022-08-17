@@ -230,7 +230,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
             ""id"": ""7a5e7537-cc30-4eb1-a544-6946baa8f3eb"",
             ""actions"": [
                 {
-                    ""name"": ""Select"",
+                    ""name"": ""Activate"",
                     ""type"": ""Button"",
                     ""id"": ""33754c03-48ec-46ef-9bc6-22ed6bfdd8e8"",
                     ""expectedControlType"": ""Button"",
@@ -239,7 +239,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Select Value"",
+                    ""name"": ""Activate Value"",
                     ""type"": ""Value"",
                     ""id"": ""e6005f29-e4c1-4f3b-8bf7-3a28bab5ca9c"",
                     ""expectedControlType"": ""Axis"",
@@ -248,7 +248,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Activate"",
+                    ""name"": ""Select"",
                     ""type"": ""Button"",
                     ""id"": ""0c0991c5-d329-4afc-8892-1076b440477c"",
                     ""expectedControlType"": ""Button"",
@@ -257,7 +257,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Activate Value"",
+                    ""name"": ""Select Value"",
                     ""type"": ""Value"",
                     ""id"": ""0c3d0ec9-85a1-45b3-839b-1ca43f859ecd"",
                     ""expectedControlType"": ""Axis"",
@@ -328,7 +328,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Generic XR Controller"",
-                    ""action"": ""Select"",
+                    ""action"": ""Activate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -339,7 +339,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Generic XR Controller"",
-                    ""action"": ""Select Value"",
+                    ""action"": ""Activate Value"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -350,18 +350,7 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Generic XR Controller"",
-                    ""action"": ""Activate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3b8b1b59-2fdc-4998-8259-50341075d9a2"",
-                    ""path"": ""<XRController>{LeftHand}/trigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Generic XR Controller"",
-                    ""action"": ""Activate Value"",
+                    ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -516,6 +505,17 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ButtonB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b8b1b59-2fdc-4998-8259-50341075d9a2"",
+                    ""path"": ""<XRController>{LeftHand}/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Generic XR Controller"",
+                    ""action"": ""Select Value"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1250,10 +1250,10 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         m_XRILeftHand_HapticDevice = m_XRILeftHand.FindAction("Haptic Device", throwIfNotFound: true);
         // XRI LeftHand Interaction
         m_XRILeftHandInteraction = asset.FindActionMap("XRI LeftHand Interaction", throwIfNotFound: true);
-        m_XRILeftHandInteraction_Select = m_XRILeftHandInteraction.FindAction("Select", throwIfNotFound: true);
-        m_XRILeftHandInteraction_SelectValue = m_XRILeftHandInteraction.FindAction("Select Value", throwIfNotFound: true);
         m_XRILeftHandInteraction_Activate = m_XRILeftHandInteraction.FindAction("Activate", throwIfNotFound: true);
         m_XRILeftHandInteraction_ActivateValue = m_XRILeftHandInteraction.FindAction("Activate Value", throwIfNotFound: true);
+        m_XRILeftHandInteraction_Select = m_XRILeftHandInteraction.FindAction("Select", throwIfNotFound: true);
+        m_XRILeftHandInteraction_SelectValue = m_XRILeftHandInteraction.FindAction("Select Value", throwIfNotFound: true);
         m_XRILeftHandInteraction_UIPress = m_XRILeftHandInteraction.FindAction("UI Press", throwIfNotFound: true);
         m_XRILeftHandInteraction_UIPressValue = m_XRILeftHandInteraction.FindAction("UI Press Value", throwIfNotFound: true);
         m_XRILeftHandInteraction_RotateAnchor = m_XRILeftHandInteraction.FindAction("Rotate Anchor", throwIfNotFound: true);
@@ -1449,10 +1449,10 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     // XRI LeftHand Interaction
     private readonly InputActionMap m_XRILeftHandInteraction;
     private IXRILeftHandInteractionActions m_XRILeftHandInteractionActionsCallbackInterface;
-    private readonly InputAction m_XRILeftHandInteraction_Select;
-    private readonly InputAction m_XRILeftHandInteraction_SelectValue;
     private readonly InputAction m_XRILeftHandInteraction_Activate;
     private readonly InputAction m_XRILeftHandInteraction_ActivateValue;
+    private readonly InputAction m_XRILeftHandInteraction_Select;
+    private readonly InputAction m_XRILeftHandInteraction_SelectValue;
     private readonly InputAction m_XRILeftHandInteraction_UIPress;
     private readonly InputAction m_XRILeftHandInteraction_UIPressValue;
     private readonly InputAction m_XRILeftHandInteraction_RotateAnchor;
@@ -1463,10 +1463,10 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     {
         private @XRIDefaultInputActions m_Wrapper;
         public XRILeftHandInteractionActions(@XRIDefaultInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Select => m_Wrapper.m_XRILeftHandInteraction_Select;
-        public InputAction @SelectValue => m_Wrapper.m_XRILeftHandInteraction_SelectValue;
         public InputAction @Activate => m_Wrapper.m_XRILeftHandInteraction_Activate;
         public InputAction @ActivateValue => m_Wrapper.m_XRILeftHandInteraction_ActivateValue;
+        public InputAction @Select => m_Wrapper.m_XRILeftHandInteraction_Select;
+        public InputAction @SelectValue => m_Wrapper.m_XRILeftHandInteraction_SelectValue;
         public InputAction @UIPress => m_Wrapper.m_XRILeftHandInteraction_UIPress;
         public InputAction @UIPressValue => m_Wrapper.m_XRILeftHandInteraction_UIPressValue;
         public InputAction @RotateAnchor => m_Wrapper.m_XRILeftHandInteraction_RotateAnchor;
@@ -1482,18 +1482,18 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         {
             if (m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface != null)
             {
-                @Select.started -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnSelect;
-                @Select.performed -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnSelect;
-                @Select.canceled -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnSelect;
-                @SelectValue.started -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnSelectValue;
-                @SelectValue.performed -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnSelectValue;
-                @SelectValue.canceled -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnSelectValue;
                 @Activate.started -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnActivate;
                 @Activate.performed -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnActivate;
                 @Activate.canceled -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnActivate;
                 @ActivateValue.started -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnActivateValue;
                 @ActivateValue.performed -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnActivateValue;
                 @ActivateValue.canceled -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnActivateValue;
+                @Select.started -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnSelect;
+                @SelectValue.started -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnSelectValue;
+                @SelectValue.performed -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnSelectValue;
+                @SelectValue.canceled -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnSelectValue;
                 @UIPress.started -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnUIPress;
                 @UIPress.performed -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnUIPress;
                 @UIPress.canceled -= m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface.OnUIPress;
@@ -1516,18 +1516,18 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
             m_Wrapper.m_XRILeftHandInteractionActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Select.started += instance.OnSelect;
-                @Select.performed += instance.OnSelect;
-                @Select.canceled += instance.OnSelect;
-                @SelectValue.started += instance.OnSelectValue;
-                @SelectValue.performed += instance.OnSelectValue;
-                @SelectValue.canceled += instance.OnSelectValue;
                 @Activate.started += instance.OnActivate;
                 @Activate.performed += instance.OnActivate;
                 @Activate.canceled += instance.OnActivate;
                 @ActivateValue.started += instance.OnActivateValue;
                 @ActivateValue.performed += instance.OnActivateValue;
                 @ActivateValue.canceled += instance.OnActivateValue;
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
+                @SelectValue.started += instance.OnSelectValue;
+                @SelectValue.performed += instance.OnSelectValue;
+                @SelectValue.canceled += instance.OnSelectValue;
                 @UIPress.started += instance.OnUIPress;
                 @UIPress.performed += instance.OnUIPress;
                 @UIPress.canceled += instance.OnUIPress;
@@ -1883,10 +1883,10 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     }
     public interface IXRILeftHandInteractionActions
     {
-        void OnSelect(InputAction.CallbackContext context);
-        void OnSelectValue(InputAction.CallbackContext context);
         void OnActivate(InputAction.CallbackContext context);
         void OnActivateValue(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
+        void OnSelectValue(InputAction.CallbackContext context);
         void OnUIPress(InputAction.CallbackContext context);
         void OnUIPressValue(InputAction.CallbackContext context);
         void OnRotateAnchor(InputAction.CallbackContext context);

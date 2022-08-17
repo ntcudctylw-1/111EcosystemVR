@@ -45,11 +45,11 @@ public class FlyLevel : MonoBehaviour
         if(Level == 2)
         {
             //Debug.Log(levels.L2.Brids.transform.localRotation);
-            Vector3 Camera_pos = GetComponent<Mode_Switch>().OnlyVR[2].transform.localPosition;
+            //Vector3 Camera_pos = GetComponent<Mode_Switch>().OnlyVR[2].transform.localPosition;
             Quaternion Camera_qua = new Quaternion(0, 0, 0, 0);//GetComponent<Mode_Switch>().OnlyVR[2].transform.localRotation;
-            //levels.L2.Brids.transform.localRotation = Quaternion.Euler(0,Camera_qua.y, - gesture.Slope);
-           // GameobjectLocalRotate(levels.L2.BridsObject, Quaternion.Euler(0, Camera_qua.y, -gesture.Slope / 2));
-            levels.L2.Brids.transform.localPosition = new Vector3(Camera_pos.x, 0, Camera_pos.z);
+            levels.L2.Brids.transform.localRotation = Quaternion.Euler(0,0, - gesture.Slope);
+            GameobjectLocalRotate(levels.L2.BridsObject, Quaternion.Euler(0, 0, gesture.Slope / 2));
+            //levels.L2.Brids.transform.localPosition = new Vector3(Camera_pos.x, 0, Camera_pos.z);
             if (levels.L2.End && character.isGrounded) PassLevel(2);
         }
     }
@@ -246,6 +246,7 @@ public class FlyLevel : MonoBehaviour
         {
             character.enabled = false;
             character.gameObject.transform.position = levels.L2.EndPosition.transform.position;
+            physics._horizionVelocity = new Vector3(0,5,0);
             character.enabled = true;
             levels.L2.End = true;
         }
@@ -263,7 +264,7 @@ public class FlyLevel : MonoBehaviour
     {
         foreach(GameObject obj in objs)
         {
-            obj.transform.rotation = quaternion;
+            obj.transform.localRotation = quaternion;
         }
     }
     void GameobjectAllAnimatorSetFloat(GameObject[] objs,float value)
