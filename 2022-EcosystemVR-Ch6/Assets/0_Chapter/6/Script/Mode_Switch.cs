@@ -19,4 +19,10 @@ public class Mode_Switch : MonoBehaviour
             foreach (GameObject gameObject in OnlyVR) gameObject.SetActive(true);
         }
     }
+
+    public CharacterController GetCharacterController()
+    {
+        if(GlobalSet.playMode == GlobalSet.PlayMode.PC) return OnlyPC[1].GetComponent<CharacterController>();
+        else return OnlyVR[1].GetComponent<CharacterController>();
+    }
 }

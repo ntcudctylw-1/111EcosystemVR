@@ -11,6 +11,8 @@ TagManager:
   - LemonTree
   - Wall
   - Floor
+  - CheckPoint
+  - Birds
   layers:
   - Default
   - TransparentFX

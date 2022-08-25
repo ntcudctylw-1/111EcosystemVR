@@ -15,7 +15,7 @@ using UnityEngine;
     public class VR_Controller_Velocity : MonoBehaviour
 {
 
-    public ControllerVector Left;
+    public ControllerVector Left, Right;
     public float RecordEveryXSeconds = 0.1f;
     public int RecordTimes = 30;
     public float MinalOffset = 0.0001f;
@@ -25,6 +25,8 @@ using UnityEngine;
     {
         Left.positions = new Vector3[RecordTimes];
         Left.velocities = new Vector3[RecordTimes];
+        Right.positions = new Vector3[RecordTimes];
+        Right.velocities = new Vector3[RecordTimes];
 
         InvokeRepeating("Record", 0, RecordEveryXSeconds);
     }
@@ -32,6 +34,7 @@ using UnityEngine;
     void Record()
     {
         Left = SetVector(Left,GlobalSet.LeftHand.Position);
+        Right = SetVector(Right, GlobalSet.RightHand.Position);
     }
    
 
@@ -42,6 +45,7 @@ using UnityEngine;
 
         Vector3[] Stack(Vector3[] Target,Vector3 New)
         {
+            //Debug.Log(Target.Length);
             for (int i = Target.Length - 1; i > 0; i--)
             {
                 //Debug.Log(i - 1 + " -> " + i);

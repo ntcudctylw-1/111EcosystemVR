@@ -12,10 +12,13 @@ public class Car_Collision : MonoBehaviour
         
         if (collision.transform.tag == "Player")
         {
-            Debug.Log(collision.transform.name);
+            
+            //Debug.Log(collision.transform.name);
             StartCoroutine( GlobalSet.GetComponent<Spwan_Player>().Respawn(0));
             GlobalSet.GetComponent<Player_Score>().Car_Accident();
         }
     }
+
+
 
 }

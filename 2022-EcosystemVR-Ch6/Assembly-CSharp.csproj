@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\0_Chapter\5\Script\Respawn.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\MoveTarget.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathSpawner.cs" />
     <Compile Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\CTI_CustomWind.cs" />
@@ -66,12 +67,14 @@
     <Compile Include="Assets\StarterAssets\InputSystem\StarterAssetsInputs.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Chicken1.cs" />
     <Compile Include="Assets\Ahmad Gamal\Smart FPS Counter\Scripts\test.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\Charactor_Physics.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\MovingPose.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Chicken_Collision.cs" />
     <Compile Include="Assets\Scripts\XRI Default Input Actions.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Levels.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs" />
     <Compile Include="Assets\Chapter\Ch5\Fur\Scripts\FurMover.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\CollisionHappened.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Cat_Animate.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Player_Score.cs" />
@@ -83,13 +86,16 @@
     <Compile Include="Assets\0_Chapter\6\Script\Spwan_Player.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\ObjMoveByAxis1.cs" />
     <Compile Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\CTI_Utils.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\ComponyBirds.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\HandAccelator.cs" />
     <Compile Include="Assets\Chapter\Menu\DontDestory.cs" />
     <Compile Include="Assets\PC_IsMoving.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Cat_Transform.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Loading.cs" />
+    <Compile Include="Assets\0_Chapter\Test\NewBehaviourScript.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Mode_Switch.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\GetPoint.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\FlyLevel.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\GeneratePathExample.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\FocusPoint.cs" />
@@ -97,12 +103,14 @@
     <Compile Include="Assets\0_Chapter\6\Script\Animate_New.cs" />
     <Compile Include="Assets\Scripts\GlobalSet.cs" />
     <Compile Include="Assets\0_Chapter\Test\Test.cs" />
+    <Compile Include="Assets\0_Chapter\Test\RayCastHit.cs" />
     <Compile Include="Assets\StarterAssets\ThirdPersonController\Scripts\BasicRigidBodyPush.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathPlacer.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Chicken.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\VR_Controller_Velocity.cs" />
     <Compile Include="Assets\Chapter\Menu\Goto.cs" />
+    <Compile Include="Assets\0_Chapter\Test\Test2.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Car_Collision.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Ai.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\ObjMoveByAxis.cs" />
@@ -110,11 +118,15 @@
     <Compile Include="Assets\Chapter\Ch6\Script_test\ButtonASAxisValue.cs" />
     <Compile Include="Assets\Ahmad Gamal\Smart FPS Counter\Scripts\FPSCounter.cs" />
     <Compile Include="Assets\Chapter\Ch5\Fur\Scripts\MoveAndRotateObject.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\VR_StartFlying.cs" />
     <Compile Include="Assets\StarterAssets\ThirdPersonController\Scripts\ThirdPersonController.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\Controller_Post_Detector.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathSceneTool.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\Flap.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Chicken_Move.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\CheckPoints.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\PathFollower.cs" />
+    <Compile Include="Assets\0_Chapter\5\Script\Player_blance.cs" />
     <Compile Include="Assets\CTI URP\CTI Runtime Components URP\Scripts\CTI_SRP_CustomWind.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\CatMoving.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Car_Spawner.cs" />
@@ -123,6 +135,12 @@
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\CatAnimation.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Car.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\RoadMeshCreator.cs" />
+    <Compile Include="Assets\Scripts\WebPhp.cs" />
+    <Compile Include="Assets\0_Chapter\Lobby\PlayMode.cs" />
+    <Compile Include="Assets\0_Chapter\Lobby\DoorEntry.cs" />
+    <Compile Include="Assets\0_Chapter\6\Script\Backtohome.cs" />
+    <Compile Include="Assets\Scripts\ScreenRecord.cs" />
+    <Compile Include="Assets\0_Chapter\Lobby\Teleport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Bark_Array_301.shader" />
@@ -782,6 +800,9 @@
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Wave.OpenXR">
+      <HintPath>Library\ScriptAssemblies\Wave.OpenXR.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
@@ -790,6 +811,9 @@
     </Reference>
     <Reference Include="Unity.Searcher.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Wave.OpenXR.Editor">
+      <HintPath>Library\ScriptAssemblies\Wave.OpenXR.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
@@ -809,11 +833,11 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.XR.CoreUtils.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.CoreUtils.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.CoreUtils.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.CoreUtils.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Cinemachine">
       <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
@@ -829,6 +853,9 @@
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Wave.XRSDK">
+      <HintPath>Library\ScriptAssemblies\Wave.XRSDK.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
@@ -850,6 +877,9 @@
     </Reference>
     <Reference Include="Unity.XR.Interaction.Toolkit">
       <HintPath>Library\ScriptAssemblies\Unity.XR.Interaction.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Wave.XRSDK.Editor">
+      <HintPath>Library\ScriptAssemblies\Wave.XRSDK.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
@@ -893,6 +923,9 @@
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
       <HintPath>Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
+    <Reference Include="Wave.OpenXR.Toolkit">
+      <HintPath>Library\ScriptAssemblies\Wave.OpenXR.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.XR.OpenXR">
       <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.dll</HintPath>
     </Reference>
@@ -913,21 +946,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="PathCreatorEditor.csproj">
-      <Project>{E174D756-E27D-B7DF-BD9A-FCB154BD5992}</Project>
-      <Name>PathCreatorEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PathCreator.csproj">
-      <Project>{56646EBE-BE60-8EE1-F26B-DE2062499D79}</Project>
-      <Name>PathCreator</Name>
-    </ProjectReference>
     <ProjectReference Include="Boxophobic.SkyboxCubemapExtended.Editor.csproj">
       <Project>{5837220D-D5A1-6BE0-8D2D-B72F21A9DC9F}</Project>
       <Name>Boxophobic.SkyboxCubemapExtended.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="PathCreatorEditor.csproj">
+      <Project>{E174D756-E27D-B7DF-BD9A-FCB154BD5992}</Project>
+      <Name>PathCreatorEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="Boxophobic.Utils.Editor.csproj">
       <Project>{20618243-AE17-B05F-27FE-AC0ED0748E7C}</Project>
       <Name>Boxophobic.Utils.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="PathCreator.csproj">
+      <Project>{56646EBE-BE60-8EE1-F26B-DE2062499D79}</Project>
+      <Name>PathCreator</Name>
     </ProjectReference>
     <ProjectReference Include="Boxophobic.Utils.Scripts.csproj">
       <Project>{E1556491-F345-849E-80CE-FF597A0A4AD7}</Project>
