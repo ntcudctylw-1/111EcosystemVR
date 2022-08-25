@@ -6,15 +6,20 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
     RecentlyUsedScenePath-0:
+<<<<<<< Updated upstream
       value: 224247031146460b322d042300375a0259425709047d68252320092a
+=======
+      value: 224247031146460b322d042300375a0259465718051e0302621b1425e7f27a2decee22f0
+>>>>>>> Stashed changes
       flags: 0
     RecentlyUsedScenePath-1:
       value: 224247031146460b322d042300375a0259415709247e68252320092a
       flags: 0
     RecentlyUsedScenePath-2:
-      value: 224247031146460b322d042300375a025941571a20293f353f1d1820f6ae2136ebf32f
+      value: 2242470311464678050f1c36153110331e465309247a693d222d183fdde13a31efe63aa6c8343c332b0af6320736142cb2070818f91e4a0d1e1cf00102fe1e06028a28c014cf0a15c5562fcfc00ddde6e6d5d1e4dda5f2d6d7cbb9
       flags: 0
     RecentlyUsedScenePath-3:
+<<<<<<< Updated upstream
       value: 2242470311464678050f1c36153110331e425704293f66032e2c1336acf53a31f6fe
       flags: 0
     RecentlyUsedScenePath-4:
@@ -34,6 +39,27 @@ EditorUserSettings:
       flags: 0
     RecentlyUsedScenePath-9:
       value: 224247031146460b322d042300375a025934107c623d28393930
+=======
+      value: 2242470311464678050f1c36153110331e42570c393a69032e2c1336f1af1231eca923e7ee2e26
+      flags: 0
+    RecentlyUsedScenePath-4:
+      value: 2242470311464678050f1c36153110331e42570c393a69032e2c1336f1af1737eff737fbe2742a323016f6
+      flags: 0
+    RecentlyUsedScenePath-5:
+      value: 2242470311464678050f1c36153110331e42570c393a69032e2c1336f1af133dedea33fdf5237129370bfb25
+      flags: 0
+    RecentlyUsedScenePath-6:
+      value: 2242470311464678050f1c36153110331e42570c393a69032e2c1336f1af0730e7eb3aa7f234362820
+      flags: 0
+    RecentlyUsedScenePath-7:
+      value: 2242470311464678050f1c36153110331e42570c393a69032e2c1336f1af1937f4e224a7f234362820
+      flags: 0
+    RecentlyUsedScenePath-8:
+      value: 2242470311464678050f1c36153110331e42570c253b2e39232e5326ece92021
+      flags: 0
+    RecentlyUsedScenePath-9:
+      value: 224247031146460b322d042300375a025946570d3e29352321281337ade72639f1f43ae8e93e7129370bfb25
+>>>>>>> Stashed changes
       flags: 0
     UnityEditor.ShaderGraph.Blackboard:
       value: 18135939215a0a5004000b0e15254b524c030a3f2964643d120d1230e9e93a3fd6e826abbd2e2d293c4ead313b08042de6030a0afa240c0d020be94c4ba75e435d8715fa32c70d15d11612dacc11fee5d3c5d1fe9ab1bf968e93e2ffcbc3e7e2f0b3ffe0e8b0be9af8ffaeffff8e85dd8390e3949c8899daa7

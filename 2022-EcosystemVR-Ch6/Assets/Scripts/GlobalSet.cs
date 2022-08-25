@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayMode))]
 public class GlobalSet : MonoBehaviour
 {
+<<<<<<< Updated upstream
     
 
     public string SID;//¾Ç¸¹
@@ -12,6 +13,13 @@ public class GlobalSet : MonoBehaviour
     public string ServerIP = "www.ylw.idv.tw:81"; //SQL ServerIP
     public bool NetworkMode; //true: °O¿ý¦b»·ºÝ  false: °O¿ý¦b¥»¦a
     public int[] Score;//¦UÃö¥d¤À¼Æ
+=======
+    public string SID;//ï¿½Ç¸ï¿½
+    public long EntryTime, ExitTime; // ï¿½iï¿½Jï¿½Mï¿½ï¿½ï¿½}ï¿½Ç²ß³æ¤¸ï¿½ï¿½ï¿½É¶ï¿½
+    public string ServerIP = ""; //SQL ServerIP
+    public bool NetworkMode; //true: ï¿½Oï¿½ï¿½ï¿½bï¿½ï¿½ï¿½ï¿½  false: ï¿½Oï¿½ï¿½ï¿½bï¿½ï¿½ï¿½a
+    public int[] Score;//ï¿½Uï¿½ï¿½ï¿½dï¿½ï¿½ï¿½ï¿½
+>>>>>>> Stashed changes
 
     public enum PlayMode
     {
@@ -20,16 +28,16 @@ public class GlobalSet : MonoBehaviour
         PC
     }
 
-    void Portfolio(string TargetName/*¥Ø¼Ð¹ï¶H*/)
+    void Portfolio(string TargetName/*ï¿½Ø¼Ð¹ï¿½H*/)
     {
-        //³æ¤¸ 
-        //«ö¶sª¬ºA
-        //®É¶¡~
+        //ï¿½æ¤¸ 
+        //ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½A
+        //ï¿½É¶ï¿½~
     }
 
 
 
-    //VR¬ÛÃö//
+    //VRï¿½ï¿½ï¿½ï¿½//
 
     public static XRIDefaultInputActions inputActions;
     
@@ -37,30 +45,30 @@ public class GlobalSet : MonoBehaviour
 
     public struct VRTrigger
     {
-        public float Value; //«ö¶s­È
-        public bool OnPress;//·í«ö¤U«ö¶s
-        public bool OnPressing;//«ö¶s«öµÛ
-        public bool OnLeave;//«ö¶sÂ÷¶}
+        public float Value; //ï¿½ï¿½ï¿½sï¿½ï¿½
+        public bool OnPress;//ï¿½ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½s
+        public bool OnPressing;//ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½
+        public bool OnLeave;//ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½}
     }
 
     public struct Hand
     {
-        public Vector3 Position;//¦ì¸m
-        public Quaternion Rotation;//±ÛÂà¨¤«×
-        public bool ButtonA;//¤U«ö¶s
-        public bool ButtonB;//¤W«ö¶s
-        public VRTrigger Trigger;//­¹«üªO¾÷
-        public VRTrigger Grip;//§ì´¤ªO¾÷
+        public Vector3 Position;//ï¿½ï¿½m
+        public Quaternion Rotation;//ï¿½ï¿½ï¿½à¨¤ï¿½ï¿½
+        public bool ButtonA;//ï¿½Uï¿½ï¿½ï¿½s
+        public bool ButtonB;//ï¿½Wï¿½ï¿½ï¿½s
+        public VRTrigger Trigger;//ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½
+        public VRTrigger Grip;//ï¿½ì´¤ï¿½Oï¿½ï¿½
     }
     public struct Head
     {
-        public Vector3 Position;//¦ì¸m
-        public Quaternion Rotation;//±ÛÂà¨¤«×
+        public Vector3 Position;//ï¿½ï¿½m
+        public Quaternion Rotation;//ï¿½ï¿½ï¿½à¨¤ï¿½ï¿½
 
     }
-    public static Hand LeftHand;//¥ª¤â±±¨î¾¹
-    public static Hand RightHand;//¥k¤â±±¨î¾¹
-    public static Head HeadSet;//ÀY²¯
+    public static Hand LeftHand;//ï¿½ï¿½ï¿½â±±ï¿½î¾¹
+    public static Hand RightHand;//ï¿½kï¿½â±±ï¿½î¾¹
+    public static Head HeadSet;//ï¿½Yï¿½ï¿½
 
     public static PlayMode playMode;
     public PlayMode SetMode = PlayMode.VR;
