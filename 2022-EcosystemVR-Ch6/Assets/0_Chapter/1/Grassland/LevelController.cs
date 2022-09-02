@@ -577,7 +577,7 @@ public class LevelController : MonoBehaviour
 
     public void PenguinGo()
     {
-        PenguinAn.Play("run");
+        PenguinAn.Play("walk");
         PenguinFa.GetComponent<PathFollower>().enabled = true;
         QuestionCount++;
         TargetText.text = "是企鵝出現了！";
@@ -646,11 +646,21 @@ public class LevelController : MonoBehaviour
         Bear.GetComponent<PathFollower>().enabled = false;
         Sealdog.GetComponent<PathFollower>().enabled = false;
         PenguinFa.GetComponent<PathFollower>().enabled = false;
+        LionAn.Play("idle", 0, 0f);
+        ZebraAn.Play("idle", 0, 0f);
+        BearAn.Play("idle", 0, 0f);
+        SealdogAn.Play("idle", 0, 0f);
+        PenguinAn.Play("idle");
+        Penguin.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        PenguinFa.transform.localEulerAngles = new Vector3(0, -124, 0);
+        //PenguinFa.transform.LookAt(new Vector3(239.53f, 2, 98.3f));
+        //Penguin.transform.Rotate(0, 0 , 90);
+        
         Zebra.transform.position = new Vector3(242, -0.2f, 102);
         Lion.transform.position = new Vector3(240, -0.2f, 102);
         Sealdog.transform.position = new Vector3(241, 2f, 95);
         Bear.transform.position = new Vector3(245, -0.2f, 95);
-        PenguinFa.transform.position = new Vector3(242, -0.2f, 100);
+        PenguinFa.transform.position = new Vector3(242, 0, 100);
         Penguin.transform.localPosition = new Vector3(0, 0, 0);
         Lion.GetComponent<XRGrabInteractable>().enabled = true;
         Zebra.GetComponent<XRGrabInteractable>().enabled = true;
@@ -662,11 +672,7 @@ public class LevelController : MonoBehaviour
         Bear.GetComponent<BoxCollider>().enabled = true;
         Sealdog.GetComponent<BoxCollider>().enabled = true;
         Penguin.GetComponent<BoxCollider>().enabled = true;
-        LionAn.Play("idle", 0, 0f);
-        ZebraAn.Play("idle", 0, 0f);
-        BearAn.Play("idle", 0, 0f);
-        SealdogAn.Play("idle", 0, 0f);
-        PenguinAn.Play("idle");
+        
         LookAtCamera();
     }
     
@@ -676,6 +682,7 @@ public class LevelController : MonoBehaviour
         Lion.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
         Sealdog.transform.LookAt(new Vector3(239.53f, 2, 98.3f));
         Bear.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
-        PenguinFa.transform.LookAt(new Vector3(239.53f, -0.5f, 98.3f));
+        //PenguinFa.transform.LookAt(new Vector3(239.53f, 2, 98.3f));//-0.5
+        //Penguin.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
     }
 }

@@ -42,10 +42,10 @@ public class GameController : MonoBehaviour
         if (animal.gameObject.name == "Penguin")
         {
             PenguinFa = animal.transform.parent.gameObject;
-            PenguinFa.GetComponent<BoxCollider>().enabled = false;
+            //PenguinFa.GetComponent<BoxCollider>().enabled = false;
             PenguinFa.transform.position = DeadPosition;
-            animal.gameObject.transform.position = DeadPosition;
-            //animal.gameObject.transform.localPosition = new Vector3(0, 0, 0);
+            //animal.gameObject.transform.position = DeadPosition;
+            animal.gameObject.transform.localPosition = new Vector3(0, 0, 0);
             PenguinFa.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
             animal.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         }
@@ -72,11 +72,12 @@ public class GameController : MonoBehaviour
             }
             else
             {
-                /*if (animal.gameObject.name == "Penguin")
+                if (animal.gameObject.name == "Penguin")
                 {
                     PenguinAnimation = CollAnimal.GetComponent<Animation>();
-                    PenguinAnimation.Play("")
-                }*/
+                    animal.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                    Invoke("PlayPenguinDeadAn", 2);
+                }
                 Invoke("PlayDeadAn", 2);
                 Invoke("AnimalFalse", 2.5f);
             }
@@ -107,6 +108,11 @@ public class GameController : MonoBehaviour
     public void PlayDeadAn()
     {
         CollAnimalAn.Play("dead", 0, 0f);
+    }
+
+    public void PlayPenguinDeadAn()
+    {
+        PenguinAnimation.Play("Dead");
     }
 
     public static void Reset()

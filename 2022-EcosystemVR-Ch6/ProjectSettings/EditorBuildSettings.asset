@@ -5,15 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/0_Chapter/Lobby.unity
     guid: 143571ebc3fe01a4ab1a0e61a69b28f0
-  - enabled: 1
-    path: Assets/0_Chapter/Ch5.unity
-    guid: 45b028c8d50ba884cb934dabee259cd8
-  - enabled: 1
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/0_Chapter/Ch6.unity
     guid: b9511aee87927bd43bb617430f682bcd
+  - enabled: 1
+    path: Assets/0_Chapter/1/Grassland/grassland.unity
+    guid: 5d8699c6bb14f6d49804719693f50f71
   m_configObjects:
     com.htc.upm.wave.xrsdk.xrsettings: {fileID: 11400000, guid: 08158eed641476c46ac31f052f081b88, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 3fece0aefa3fd5047b99eb6d8a8923a1, type: 2}
