@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   global: {fileID: 1184060233}
-  scenename: Ch6
+  scenename: Ch5
 --- !u!65 &67840777
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5489,7 +5489,7 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
-  _mainCamera: {fileID: 967871715}
+  _verticalVelocity: 0
 --- !u!143 &1279548293
 CharacterController:
   m_ObjectHideFlags: 0

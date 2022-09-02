@@ -7,9 +7,9 @@ public class GlobalSet : MonoBehaviour
 {
     
 
-    public string SID;//學號
+    public static string SID = "ADT109107";//學號
     public long EntryTime, ExitTime; // 進入和離開學習單元的時間
-    public string ServerIP = "www.ylw.idv.tw:81"; //SQL ServerIP
+    public static string ServerIP = "www.ylw.idv.tw:81"; //SQL ServerIP
     public bool NetworkMode; //true: 記錄在遠端  false: 記錄在本地
     public int[] Score;//各關卡分數
 
@@ -76,7 +76,7 @@ public class GlobalSet : MonoBehaviour
         LeftHand.ButtonA = inputActions.XRILeftHandInteraction.ButtonA.ReadValue<float>() == 1 ? true : false;
         //Debug.Log(LeftHand.ButtonA);
         LeftHand.ButtonB = inputActions.XRILeftHandInteraction.ButtonB.ReadValue<float>() == 1 ? true : false;
-
+        
 
         RightHand.Position = inputActions.XRIRightHand.Position.ReadValue<Vector3>();
         RightHand.Rotation = inputActions.XRIRightHand.Rotation.ReadValue<Quaternion>();

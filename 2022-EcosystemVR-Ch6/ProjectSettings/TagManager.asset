@@ -13,6 +13,7 @@ TagManager:
   - Floor
   - CheckPoint
   - Birds
+  - mouse
   layers:
   - Default
   - TransparentFX

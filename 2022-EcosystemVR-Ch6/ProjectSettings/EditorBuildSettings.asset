@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/0_Chapter/Lobby.unity
     guid: 143571ebc3fe01a4ab1a0e61a69b28f0
   - enabled: 1
-    path: Assets/0_Chapter/5/Ch5.unity
-    guid: 45b028c8d50ba884cb934dabee259cd8
+    path: Assets/0_Chapter/Ch5.unity
+    guid: dec3cb42d19eb0546a1cdb57d5d8091e
   - enabled: 1
     path: Assets/0_Chapter/Ch6.unity
     guid: b9511aee87927bd43bb617430f682bcd

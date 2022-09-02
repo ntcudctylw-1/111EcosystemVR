@@ -9,14 +9,14 @@ using System.Threading;
 
 public class ScreenRecord : MonoBehaviour
 {
-    public string url="www.ylw.idv.tw";
-    public string sid="dct";
-    public float RefreshPeroid=2.0f; //sec
+    public string url = "www.ylw.idv.tw";
+    public string sid = "dct";
+    public float RefreshPeroid = 2.0f; //sec
     public int MaxSerial = 1; //伺服器最多儲存的畫面數量
     //public Text mes; //除錯用
     int ser = 0;
     float pt;
-    
+
     Texture2D newScreenshot;
     byte[] bytes;
 
@@ -25,10 +25,12 @@ public class ScreenRecord : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sid = sid + Random.Range(1, 10);
-        testt = Time.time;             
-    }
+        //sid = sid + Random.Range(1, 10);
+        sid = GlobalSet.SID;
         
+        testt = Time.time;
+    }
+
     IEnumerator WebUpload(int nser)
     {
         yield return new WaitForEndOfFrame();
@@ -36,15 +38,15 @@ public class ScreenRecord : MonoBehaviour
         screenshot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
         screenshot.Apply();
 
-        Texture2D newScreenshot = ScaleTexture(screenshot, Screen.width / 8, Screen.height / 8);
+        Texture2D newScreenshot = ScaleTexture(screenshot, Screen.width / 2, Screen.height / 2);
 
-        byte[] bytes = newScreenshot.EncodeToPNG();     
+        byte[] bytes = newScreenshot.EncodeToPNG();
         WWWForm form = new WWWForm();
-        form.AddField("SID",sid);
+        form.AddField("SID", sid);
         form.AddField("SNUM", nser);
-        form.AddBinaryData("files", bytes, nser+".png", "image/png");
+        form.AddBinaryData("files", bytes, nser + ".png", "image/png");
 
-        UnityWebRequest req = UnityWebRequest.Post("https://"+url+"/vrmonitor/Uploader.php", form);
+        UnityWebRequest req = UnityWebRequest.Post("https://" + url + "/vrmonitor/Uploader.php", form);
         req.SetRequestHeader("Access-Control-Allow-Origin", "*");
         yield return req.SendWebRequest();
 
@@ -65,11 +67,11 @@ public class ScreenRecord : MonoBehaviour
             //StartCoroutine(Capture());
             StartCoroutine(WebUpload(ser));
             ser++;
-            if (ser >= MaxSerial) 
-            { 
-                ser = 0; 
+            if (ser >= MaxSerial)
+            {
+                ser = 0;
                 //mes.text = sid.ToString()+"  "+(Time.time - testt).ToString();  //除錯用
-                testt = Time.time; 
+                testt = Time.time;
             }
         }
     }

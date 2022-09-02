@@ -11,7 +11,7 @@ public class Levels : MonoBehaviour
     private void Start()
     {
         web = GetComponent<WebPhp>();
-        StartCoroutine( web.php(GetComponent<GlobalSet>().SID.ToString(), "6", "57", WebPhp.php_method.Action));
+        StartCoroutine( web.php(GlobalSet.SID.ToString(), "6", "57", WebPhp.php_method.Action));
     }
 
     private void Update()
@@ -26,7 +26,7 @@ public class Levels : MonoBehaviour
         if(Player.transform.position.z > -45.539f)
         {
             Level = 1;
-            StartCoroutine(web.php(GetComponent<GlobalSet>().SID.ToString(), "6", "58", WebPhp.php_method.Action));
+            StartCoroutine(web.php(GlobalSet.SID.ToString(), "6", "58", WebPhp.php_method.Action));
         }
     }
 
@@ -35,7 +35,7 @@ public class Levels : MonoBehaviour
         if (Level == 1)
         {
             Level = 2;
-            StartCoroutine(web.php(GetComponent<GlobalSet>().SID.ToString(), "6", "59", WebPhp.php_method.Action));
+            StartCoroutine(web.php(GlobalSet.SID.ToString(), "6", "59", WebPhp.php_method.Action));
         }
         
     }
