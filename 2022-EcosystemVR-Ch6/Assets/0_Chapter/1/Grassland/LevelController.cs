@@ -21,11 +21,16 @@ public class LevelController : MonoBehaviour
     public GameObject Ch2_4;
     public GameObject Terrain;
     public GameObject IceTerrain;
+    public GameObject Terrain2_1;
+    public GameObject Terrain2_2;
+    public GameObject Terrain2_3;
+    public GameObject Terrain2_4;
 
     public GameObject TemRain;
     public Text TargetText;
     public Text AnswerText;
     public Text TipText;
+    public Text InfoText;
     public GameObject AnsButton1;
     public GameObject AnsButton2;
     public GameObject AnsButton3;
@@ -61,9 +66,38 @@ public class LevelController : MonoBehaviour
     public Animator SealdogAn;
     public Animation PenguinAn;
 
+    public GameObject Oncorhynchus;
+    public GameObject OncorhynchusLinesGameObject;
+    public Animator OncorhynchusAn;
+
+    bool CatFace = false;
+    bool CatLines = false;
+    public GameObject Cat;
+    public GameObject CatFaceGameObject;
+    public GameObject CatLinesGameObject;
+    public Animator CatAn;
+
+    bool BirdMouth = false;
+    bool BirdFeather = false;
+    public GameObject Bird;
+    public GameObject BirdMouthGameObject;
+    public GameObject BirdFeatherGameObject;
+    public Animator BirdAn;
+    public GameObject Crab;
+    public GameObject CrabTombGameObject;
+    public Animator CrabAn;
+    public GameObject Mudskipper;
+    public GameObject MudskipperSkinGameObject;
+    public Animator MudskipperAn;
+
+    public GameObject Fish;
+    public GameObject FishColorGameObject;
+    public Animator FishAn;
+
     public static int finalgame = 1;
     public bool Ch1_1Complete = false;
     public bool Ch1_2Complete = false;
+    public int Ch2Complete = 0;
     public GameObject EnterButton;
 
     public GameObject Thermometer;
@@ -74,6 +108,13 @@ public class LevelController : MonoBehaviour
     public GameObject LeftHandController;
 
     public bool Wait = false;
+
+    public string[][] TemAndRainArr = {new string [] {"24℃", "300mm"}
+    , new string[] {"-20℃", "150mm"}
+    , new string[] {"", ""}
+    , new string[] {"", ""}
+    , new string[] {"", ""}
+    , new string[] {"", ""}};
 
     public string[][] QuestionArr = {
     new string[] {"現在的環境感覺如何？" //0 草原
@@ -104,7 +145,10 @@ public class LevelController : MonoBehaviour
     public string[][] AnswerArr = {new string[] 
     {"乾燥", "樹很少", "", ""}
     , new string[] {"寒冷","冰雪覆蓋","","",""}
-    , new string[] {"","",""}};
+    , new string[] {"", "", ""}
+    , new string[] {"", "", ""}
+    , new string[] {"", "", "", "", ""}
+    , new string[] {"", "", ""}};
 
     public string[][][] OptionArr = {new string[][] {new string[] {"乾燥", "潮濕", "熱"}
     , new string[] {"樹很多", "樹很少", "地形崎嶇"}
@@ -119,6 +163,14 @@ public class LevelController : MonoBehaviour
 
     void Start()
     {
+        if (ChNum == 0 || ChNum == 1)
+        {
+            SelectMenu.SetActive(true);
+        }
+        else if (ChNum == 2)
+        {
+
+        }
         web = GetComponent<WebPhp>();
         PenguinAn = Penguin.GetComponent<Animation>();
         /*PenguinFa.transform.position = new Vector3(242, -0.5f, 100);
@@ -147,23 +199,38 @@ public class LevelController : MonoBehaviour
             Ch1_1Complete = true;
             if (Ch1_2Complete != true)
             {
+                TargetText.text = "觀察完草原的生態了";
+                TipText.text = "接下來觀察極地的生態吧！";
                 Invoke("SelectIce", 2);
             }
+        }
+        if (CatFace == true && CatLines == true)
+        {
+            CatFace = false;
+            CatLines = false;
+            CatFaceGameObject.SetActive(false);
+            CatLinesGameObject.SetActive(false);
         }
         if (Ch1_1Complete == true && Ch1_2Complete == true)
         {
             Ch1_1Complete = false;
             Ch1_2Complete = false;
+            TargetText.text = "接下來我們來玩個小遊戲吧！";
+            TipText.text = "";
             Invoke("ShowEnterButton", 2);
         }
         if (GameController.Score1 == 2)
         {
+            TargetText.text = "按下確認進入下一階段";
+            TipText.text = "";
             GameController.Score1 = 100;
             Invoke("ShowEnterButton", 2);
         }
         if (GameController.Score2 == 3)
         {
-            AnswerText.text = "恭喜完成第一章節！";
+            TargetText.text = "";
+            TipText.text = "";
+            Invoke("ShowCongraText", 2);
         }
         
         if (GlobalSet.RightHand.ButtonA != ButtonAState && GlobalSet.RightHand.ButtonA == true)
@@ -182,9 +249,14 @@ public class LevelController : MonoBehaviour
         ButtonAState = GlobalSet.RightHand.ButtonA;
     }
 
+    public void ShowCongraText()
+    {
+        AnswerText.text = "恭喜完成第一章節！";
+    }
+
     public void ShowEnterButton()
     {
-        Debug.Log("123");
+        InfoText.text = "";
         EnterButton.SetActive(true);
         EnterButton.GetComponentInChildren<Text>().text = "確認";
     }
@@ -200,14 +272,14 @@ public class LevelController : MonoBehaviour
         if (ChNum == 0)
         {
             StartCoroutine(web.php("ch1test", "1", "3", WebPhp.php_method.Action));
-            ThermometerText.text = "24℃";
-            RainText.text = "300mm";
+            ThermometerText.text = TemAndRainArr[ChNum][0];
+            RainText.text = TemAndRainArr[ChNum][1];
         }
         else if (ChNum == 1)
         {
             StartCoroutine(web.php("ch1test", "1", "9", WebPhp.php_method.Action));
-            ThermometerText.text = "-20℃";
-            RainText.text = "150mm";
+            ThermometerText.text = TemAndRainArr[ChNum][0];
+            RainText.text = TemAndRainArr[ChNum][1];
         }
         TargetText.text = QuestionArr[ChNum][QuestionCount];
         TipText.text = "觀察看看畫面上的溫度計及降雨量！";
@@ -272,6 +344,42 @@ public class LevelController : MonoBehaviour
                     AnsButton3.SetActive(false);
                     AnsButton4.SetActive(false);
                 }
+                else if (QuestionArr[ChNum][QuestionCount] == "仔細看一下櫻花鉤吻鮭的外型有什麼特徵？")
+                {
+                    StartCoroutine(web.php("ch1test", "1", "20", WebPhp.php_method.Action));
+                    CheckAnimal();
+                    AnsButton1.SetActive(false);
+                    AnsButton2.SetActive(false);
+                    AnsButton3.SetActive(false);
+                    AnsButton4.SetActive(false);
+                }
+                else if (QuestionArr[ChNum][QuestionCount] == "你覺得石虎有哪些特徵呢？")
+                {
+                    StartCoroutine(web.php("ch1test", "1", "23", WebPhp.php_method.Action));
+                    CheckAnimal();
+                    AnsButton1.SetActive(false);
+                    AnsButton2.SetActive(false);
+                    AnsButton3.SetActive(false);
+                    AnsButton4.SetActive(false);
+                }
+                else if (QuestionArr[ChNum][QuestionCount] == "你覺得黑面琵鷺有哪些特徵呢？")
+                {
+                    StartCoroutine(web.php("ch1test", "1", "27", WebPhp.php_method.Action));
+                    CheckAnimal();
+                    AnsButton1.SetActive(false);
+                    AnsButton2.SetActive(false);
+                    AnsButton3.SetActive(false);
+                    AnsButton4.SetActive(false);
+                }
+                else if (QuestionArr[ChNum][QuestionCount] == "你覺得熱帶魚有哪些特徵呢？")
+                {
+                    StartCoroutine(web.php("ch1test", "1", "33", WebPhp.php_method.Action));
+                    CheckAnimal();
+                    AnsButton1.SetActive(false);
+                    AnsButton2.SetActive(false);
+                    AnsButton3.SetActive(false);
+                    AnsButton4.SetActive(false);
+                }
                 else
                 {
                     ShowNextQuestion();
@@ -279,18 +387,7 @@ public class LevelController : MonoBehaviour
             }
             else
             {
-                TargetText.text = "";
-                ChNum = 1;
-                QuestionCount = 0;
-                AnsButton1.SetActive(false);
-                AnsButton2.SetActive(false);
-                AnsButton3.SetActive(false);
-                AnsButton4.SetActive(false);
-                Ch1_1Complete = true;
-                if (Ch1_2Complete == false)
-                {
-                    SelectIce();
-                }
+
             }
         }
         else
@@ -319,6 +416,31 @@ public class LevelController : MonoBehaviour
             Sealdog.GetComponent<PathFollower>().enabled = true;
             TargetText.text = "是海豹和北極熊出現了！";
         }
+        else if (ChNum == 2)
+        {
+            if (Ch2Complete == 0)
+            {
+                Oncorhynchus.GetComponent<PathFollower>().enabled = true;
+                TargetText.text = "是櫻花鉤吻鮭出現了！";
+            }
+            else if (Ch2Complete == 1)
+            {
+                CatAn.Play("run");
+                Cat.GetComponent<PathFollower>().enabled = true;
+                TargetText.text = "是石虎出現了！";
+            }
+            else if (Ch2Complete == 2)
+            {
+                BirdAn.Play("fly");
+                Bird.GetComponent<PathFollower>().enabled = true;
+                TargetText.text = "是黑面琵鷺出現了！";
+            }
+            else if (Ch2Complete == 3)
+            {
+                Fish.GetComponent<PathFollower>().enabled = true;
+                TargetText.text = "是熱帶魚出現了！";
+            }
+        }
         TipText.text = "拿出你的放大鏡觀察看看。";
         Invoke("AnStop", 6.5f);
     }
@@ -346,6 +468,36 @@ public class LevelController : MonoBehaviour
             Bear.transform.LookAt(new Vector3(239.6f, 0.26f, 94f));
             PenguinFa.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
         }
+        else if (ChNum == 2)
+        {
+            if (Ch2Complete == 0)
+            {
+                Oncorhynchus.GetComponent<PathFollower>().enabled = false;
+                Oncorhynchus.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+            }
+            else if (Ch2Complete == 1)
+            {
+                CatAn.Play("idle");
+                Cat.GetComponent<PathFollower>().enabled = false;
+                Cat.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+            }
+            else if (Ch2Complete == 2)
+            {
+                BirdAn.Play("idle");
+                Bird.GetComponent<PathFollower>().enabled = false;
+                Bird.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+                CrabAn.Play("idle");
+                Crab.GetComponent<PathFollower>().enabled = false;
+                Crab.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+                MudskipperAn.Play("idle");
+                Mudskipper.GetComponent<PathFollower>().enabled = false;
+                Mudskipper.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+            }
+            else if (Ch2Complete == 3)
+            {
+
+            }
+        }
         TargetText.text = QuestionArr[ChNum][QuestionCount];
         TipText.text = "先按下右手的抓握再按下板機。";
     }
@@ -357,63 +509,80 @@ public class LevelController : MonoBehaviour
 
     public void CheckAnimalFeature(string Feature)
     {
-        if (Feature == "LionHair")
+        if (ChNum == 0 || ChNum == 1)
         {
-            StartCoroutine(web.php("ch1test", "1", "7", WebPhp.php_method.Action));
-            LionHair = true;
-        }
-        if (Feature == "LionTeeth")
-        {
-            StartCoroutine(web.php("ch1test", "1", "8", WebPhp.php_method.Action));
-            LionTeeth = true;
-        }
-        if (Feature == "ZebraLines")
-        {
-            StartCoroutine(web.php("ch1test", "1", "5", WebPhp.php_method.Action));
-            ZebraLines = true;
-        }
-        if (Feature == "ZebraFoot")
-        {
-            StartCoroutine(web.php("ch1test", "1", "6", WebPhp.php_method.Action));
-            ZebraFoot = true;
-        }
-        if (Feature == "BearHair")
-        {
-            StartCoroutine(web.php("ch1test", "1", "11", WebPhp.php_method.Action));
-            BearHairGameObject.SetActive(false);
-            SealdogSkinGameObject.SetActive(true);
-            QuestionCount++;
-            TargetText.text = QuestionArr[ChNum][QuestionCount];
-            TipText.text = "先按下右手的抓握再按下板機。";
-        }
-        if (Feature == "SealdogSkin")
-        {
-            StartCoroutine(web.php("ch1test", "1", "12", WebPhp.php_method.Action));
-            SealdogSkinGameObject.SetActive(false);
-            Bear.SetActive(false);
-            Sealdog.SetActive(false);
-            PenguinGo();
-        }
-        if (Feature == "PenguinFeather")
-        {
-            StartCoroutine(web.php("ch1test", "1", "13", WebPhp.php_method.Action));
-            PenguinFeatherGameObject.SetActive(false);
-            Ch1_2Complete = true;
-            if (Ch1_1Complete == false)
+            if (Feature == "LionHair")
             {
-                Invoke("SelectGrassland", 2);
+                StartCoroutine(web.php("ch1test", "1", "7", WebPhp.php_method.Action));
+                InfoText.text = "通常只有雄性的獅子脖子上會有鬃毛，是為了可以在打鬥中保護自己的頭部和脖子。";
+                LionHair = true;
+            }
+            if (Feature == "LionTeeth")
+            {
+                StartCoroutine(web.php("ch1test", "1", "8", WebPhp.php_method.Action));
+                InfoText.text = "雄性獅子會有銳利的牙齒以及爪子，方便牠們狩獵使用。";
+                LionTeeth = true;
+            }
+            if (Feature == "ZebraLines")
+            {
+                StartCoroutine(web.php("ch1test", "1", "5", WebPhp.php_method.Action));
+                InfoText.text = "斑馬身上的黑白紋路可以混淆斑馬的天敵的視覺，讓他沒辦法鎖定獵物。同時黑白相間的紋路還可以調節身體的溫度呢！";
+                ZebraLines = true;
+            }
+            if (Feature == "ZebraFoot")
+            {
+                StartCoroutine(web.php("ch1test", "1", "6", WebPhp.php_method.Action));
+                InfoText.text = "斑馬的蹄可以讓牠在草原環境裡更快速的移動，避免被牠的天敵獵捕。";
+                ZebraFoot = true;
+            }
+            if (Feature == "BearHair")
+            {
+                StartCoroutine(web.php("ch1test", "1", "11", WebPhp.php_method.Action));
+                InfoText.text = "北極熊的毛可以防止水分滲入，達到禦寒的效果，同時皮膚底下有一層極厚的皮下脂肪加強保暖。";
+                BearHairGameObject.SetActive(false);
+                SealdogSkinGameObject.SetActive(true);
+                QuestionCount++;
+                TargetText.text = QuestionArr[ChNum][QuestionCount];
+                TipText.text = "先按下右手的抓握再按下板機。";
+            }
+            if (Feature == "SealdogSkin")
+            {
+                StartCoroutine(web.php("ch1test", "1", "12", WebPhp.php_method.Action));
+                InfoText.text = "海豹有一層用來保暖的厚厚的皮下脂肪，並提供食物儲備，並產生浮力，讓牠可以漂浮在水面上。";
+                SealdogSkinGameObject.SetActive(false);
+                Bear.SetActive(false);
+                Sealdog.SetActive(false);
+                Invoke("PenguinGo", 2);
+            }
+            if (Feature == "PenguinFeather")
+            {
+                StartCoroutine(web.php("ch1test", "1", "13", WebPhp.php_method.Action));
+                InfoText.text = "企鵝身上的羽毛，具備防水、防風的功能。而且牠也有厚達2到3公分的皮下脂肪，可以讓企鵝保持體溫。";
+                PenguinFeatherGameObject.SetActive(false);
+                Ch1_2Complete = true;
+                if (Ch1_1Complete == false)
+                {
+                    TargetText.text = "觀察完極地的生態了";
+                    TipText.text = "接下來觀察草原的生態吧！";
+                    Invoke("SelectGrassland", 2);
+                }
             }
         }
+        else if (ChNum == 2)
+        {
+            
+        }
+        
     }
 
     public void PenguinGo()
     {
-        
         PenguinAn.Play("run");
         PenguinFa.GetComponent<PathFollower>().enabled = true;
         QuestionCount++;
         TargetText.text = "是企鵝出現了！";
         TipText.text = "拿出你的放大鏡觀察看看。";
+        InfoText.text = "";
         Invoke("AnStop", 6.5f);
     }
 
@@ -421,6 +590,7 @@ public class LevelController : MonoBehaviour
     {
         StartCoroutine(web.php("ch1test", "1", "1", WebPhp.php_method.Action));
         ChNum = 0;
+        InfoText.text = "";
         Ch1_1.SetActive(true);
         Ch1_2.SetActive(false);
         SelectMenu.SetActive(false);
@@ -431,6 +601,7 @@ public class LevelController : MonoBehaviour
     {
         StartCoroutine(web.php("ch1test", "1", "2", WebPhp.php_method.Action));
         ChNum = 1;
+        InfoText.text = "";
         Ch1_1.SetActive(false);
         Ch1_2.SetActive(true);
         SelectMenu.SetActive(false);
@@ -439,6 +610,8 @@ public class LevelController : MonoBehaviour
 
     public void Game()
     {
+        StartCoroutine(web.php("ch1test", "1", "14", WebPhp.php_method.Action));
+        GameController.Reset();
         EnterButton.SetActive(false);
         TargetText.text = "請選出適合在此環境中生存的動物";
         TipText.text = "用右手將動物抓起吧！";
@@ -495,14 +668,13 @@ public class LevelController : MonoBehaviour
         SealdogAn.Play("idle", 0, 0f);
         PenguinAn.Play("idle");
         LookAtCamera();
-        
     }
     
     public void LookAtCamera()
     {
         Zebra.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
         Lion.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
-        Sealdog.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+        Sealdog.transform.LookAt(new Vector3(239.53f, 2, 98.3f));
         Bear.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
         PenguinFa.transform.LookAt(new Vector3(239.53f, -0.5f, 98.3f));
     }

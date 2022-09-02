@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,21 +6,13 @@ using UnityEngine;
 [RequireComponent(typeof(PlayMode))]
 public class GlobalSet : MonoBehaviour
 {
-<<<<<<< Updated upstream
     
 
-    public string SID;//�Ǹ�
-    public long EntryTime, ExitTime; // �i�J�M���}�ǲ߳椸���ɶ�
+    public string SID;//學號
+    public long EntryTime, ExitTime; // 進入和離開學習單元的時間
     public string ServerIP = "www.ylw.idv.tw:81"; //SQL ServerIP
-    public bool NetworkMode; //true: �O���b����  false: �O���b���a
-    public int[] Score;//�U���d����
-=======
-    public string SID;//�Ǹ�
-    public long EntryTime, ExitTime; // �i�J�M���}�ǲ߳椸���ɶ�
-    public string ServerIP = ""; //SQL ServerIP
-    public bool NetworkMode; //true: �O���b����  false: �O���b���a
-    public int[] Score;//�U���d����
->>>>>>> Stashed changes
+    public bool NetworkMode; //true: 記錄在遠端  false: 記錄在本地
+    public int[] Score;//各關卡分數
 
     public enum PlayMode
     {
@@ -28,16 +21,16 @@ public class GlobalSet : MonoBehaviour
         PC
     }
 
-    void Portfolio(string TargetName/*�ؼй�H*/)
+    void Portfolio(string TargetName/*目標對象*/)
     {
-        //�椸 
-        //���s���A
-        //�ɶ�~
+        //單元 
+        //按鈕狀態
+        //時間~
     }
 
 
 
-    //VR����//
+    //VR相關//
 
     public static XRIDefaultInputActions inputActions;
     
@@ -45,30 +38,30 @@ public class GlobalSet : MonoBehaviour
 
     public struct VRTrigger
     {
-        public float Value; //���s��
-        public bool OnPress;//�����U���s
-        public bool OnPressing;//���s����
-        public bool OnLeave;//���s���}
+        public float Value; //按鈕值
+        public bool OnPress;//當按下按鈕
+        public bool OnPressing;//按鈕按著
+        public bool OnLeave;//按鈕離開
     }
 
     public struct Hand
     {
-        public Vector3 Position;//��m
-        public Quaternion Rotation;//���ਤ��
-        public bool ButtonA;//�U���s
-        public bool ButtonB;//�W���s
-        public VRTrigger Trigger;//�����O��
-        public VRTrigger Grip;//�촤�O��
+        public Vector3 Position;//位置
+        public Quaternion Rotation;//旋轉角度
+        public bool ButtonA;//下按鈕
+        public bool ButtonB;//上按鈕
+        public VRTrigger Trigger;//食指板機
+        public VRTrigger Grip;//抓握板機
     }
     public struct Head
     {
-        public Vector3 Position;//��m
-        public Quaternion Rotation;//���ਤ��
+        public Vector3 Position;//位置
+        public Quaternion Rotation;//旋轉角度
 
     }
-    public static Hand LeftHand;//���ⱱ�
-    public static Hand RightHand;//�k�ⱱ�
-    public static Head HeadSet;//�Y��
+    public static Hand LeftHand;//左手控制器
+    public static Hand RightHand;//右手控制器
+    public static Head HeadSet;//頭盔
 
     public static PlayMode playMode;
     public PlayMode SetMode = PlayMode.VR;
