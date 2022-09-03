@@ -68,6 +68,8 @@
     <Compile Include="Assets\StarterAssets\InputSystem\StarterAssetsInputs.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Chicken1.cs" />
     <Compile Include="Assets\0_Chapter\Lobby\PlayMode.cs" />
+    <Compile Include="Assets\0_Chapter\5-1\Fish_eaten.cs" />
+    <Compile Include="Assets\0_Chapter\5-1\DishSpawn.cs" />
     <Compile Include="Assets\0_Chapter\5-1\FlappingCheck.cs" />
     <Compile Include="Assets\Ahmad Gamal\Smart FPS Counter\Scripts\test.cs" />
     <Compile Include="Assets\0_Chapter\5-1\CharacterControllerPhysics.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\MovingPose.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Chicken_Collision.cs" />
     <Compile Include="Assets\Scripts\XRI Default Input Actions.cs" />
+    <Compile Include="Assets\0_Chapter\5-1\ch5_diractor.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Levels.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs" />
     <Compile Include="Assets\Scripts\ScreenRecord.cs" />
@@ -128,6 +131,7 @@
     <Compile Include="Assets\Chapter\Ch6\Script_test\ObjMoveByAxis.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\ch6_1st.cs" />
     <Compile Include="Assets\Scripts\WebPhp.cs" />
+    <Compile Include="Assets\0_Chapter\5-1\birds.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\ButtonASAxisValue.cs" />
     <Compile Include="Assets\Ahmad Gamal\Smart FPS Counter\Scripts\FPSCounter.cs" />
     <Compile Include="Assets\Chapter\Ch5\Fur\Scripts\MoveAndRotateObject.cs" />
@@ -146,17 +150,15 @@
     <Compile Include="Assets\0_Chapter\6\Script\Car_Spawner.cs" />
     <Compile Include="Assets\Chapter\Ch1+Ch2\Scenes_Object\IgniteCoders\Simple Water Shader\Resources\WaterReflection.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\CharacterController_Collision.cs" />
+    <Compile Include="Assets\0_Chapter\5-1\Fish.cs" />
+    <Compile Include="Assets\0_Chapter\5-1\FishSpawn.cs" />
     <Compile Include="Assets\Chapter\Ch5\Script\FlyController.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\CatAnimation.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Car.cs" />
     <Compile Include="Assets\PathCreator\Examples\Scripts\RoadMeshCreator.cs" />
     <Compile Include="Assets\Chapter\Ch5\Script\PlayerFlip.cs" />
-    <Compile Include="Assets\0_Chapter\5-1\Fish.cs" />
-    <Compile Include="Assets\0_Chapter\5-1\Fish_eaten.cs" />
-    <Compile Include="Assets\0_Chapter\5-1\DishSpawn.cs" />
-    <Compile Include="Assets\0_Chapter\5-1\FishSpawn.cs" />
-    <Compile Include="Assets\0_Chapter\5-1\ch5_diractor.cs" />
-    <Compile Include="Assets\0_Chapter\5-1\birds.cs" />
+    <Compile Include="Assets\Scripts\ControllerButtons.cs" />
+    <Compile Include="Assets\Scripts\GoToMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Bark_Array_301.shader" />
