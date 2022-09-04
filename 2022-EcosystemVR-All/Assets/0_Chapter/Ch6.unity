@@ -13024,9 +13024,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1082615019}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04d5380c84d7a6942832240cf752af37, type: 3}
+  m_Script: {fileID: 11500000, guid: 26b989a0baa96374f82b14f36e614060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  url: www.ylw.idv.tw
+  sid: dct
+  RefreshPeroid: 2
+  MaxSerial: 1
 --- !u!1 &1083149738
 GameObject:
   m_ObjectHideFlags: 0

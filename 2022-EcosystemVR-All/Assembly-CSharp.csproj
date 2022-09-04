@@ -102,6 +102,7 @@
     <Compile Include="Assets\0_Chapter\6\Script\LemonTree.cs" />
     <Compile Include="Assets\0_Chapter\5-1\LookAtObject.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Spwan_Player.cs" />
+    <Compile Include="Assets\0_Chapter\Test\simpleTest.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\ObjMoveByAxis1.cs" />
     <Compile Include="Assets\0_Chapter\5-1\ModeDisable.cs" />
     <Compile Include="Assets\Scripts\VRControl.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="Assets\Chapter\Menu\Goto.cs" />
     <Compile Include="Assets\0_Chapter\Test\Test2.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Car_Collision.cs" />
+    <Compile Include="Assets\0_Chapter\Test\back.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Ai.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\ObjMoveByAxis.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\ch6_1st.cs" />
@@ -187,8 +189,7 @@
     <Compile Include="Assets\PathCreator\Examples\Scripts\RoadMeshCreator.cs" />
     <Compile Include="Assets\0_Chapter\1\Grassland\GameController.cs" />
     <Compile Include="Assets\Chapter\Ch5\Script\PlayerFlip.cs" />
-    <Compile Include="Assets\0_Chapter\Test\simpleTest.cs" />
-    <Compile Include="Assets\0_Chapter\Test\back.cs" />
+    <Compile Include="Assets\0_Chapter\Test\RecordTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Bark_Array_301.shader" />

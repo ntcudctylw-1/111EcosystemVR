@@ -14,7 +14,7 @@ public class VRControl : MonoBehaviour
     public Text sid; //顯示學生資訊
     void Start()
     {
-        //if (Application.platform != RuntimePlatform.Android) gameObject.SetActive(false);
+        if (Application.platform != RuntimePlatform.Android) gameObject.SetActive(false);
         mes.text = "";
         sid.text = GlobalSet.SID;
         presstime = Time.realtimeSinceStartup;

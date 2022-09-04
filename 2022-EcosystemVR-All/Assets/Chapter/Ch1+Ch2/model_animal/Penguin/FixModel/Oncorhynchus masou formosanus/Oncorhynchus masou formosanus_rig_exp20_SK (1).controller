@@ -1,13 +1,13 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1102 &-7858431170473129919
+--- !u!1102 &-5200658921371451950
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bone001|Bone001|Unreal Take|Base Layer
+  m_Name: SWIM
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -36,8 +36,8 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: -7858431170473129919}
-    m_Position: {x: 200, y: 0, z: 0}
+    m_State: {fileID: -5200658921371451950}
+    m_Position: {x: 91, y: 226, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -47,7 +47,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -7858431170473129919}
+  m_DefaultState: {fileID: -5200658921371451950}
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0

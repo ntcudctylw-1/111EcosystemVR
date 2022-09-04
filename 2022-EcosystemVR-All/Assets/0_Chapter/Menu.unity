@@ -2215,10 +2215,34 @@ MonoBehaviour:
       m_Calls: []
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 900447347}
+        m_TargetAssemblyTypeName: VRControl, Assembly-CSharp
+        m_MethodName: HoverIn
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: CH4
+          m_BoolArgument: 0
+        m_CallState: 2
   m_HoverExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 900447347}
+        m_TargetAssemblyTypeName: VRControl, Assembly-CSharp
+        m_MethodName: HoverOut
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -2459,7 +2483,7 @@ MonoBehaviour:
   m_OriginBaseGameObject: {fileID: 900447344}
   m_CameraFloorOffsetObject: {fileID: 1330888868}
   m_RequestedTrackingOriginMode: 0
-  m_CameraYOffset: 1.1176
+  m_CameraYOffset: 0
 --- !u!4 &900447346
 Transform:
   m_ObjectHideFlags: 0
@@ -2468,7 +2492,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900447344}
   m_LocalRotation: {x: 0, y: 0.6883546, z: 0, w: 0.72537434}
-  m_LocalPosition: {x: 0, y: 19, z: 0}
+  m_LocalPosition: {x: 0, y: 18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1330888869}
@@ -2617,10 +2641,34 @@ MonoBehaviour:
       m_Calls: []
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 900447347}
+        m_TargetAssemblyTypeName: VRControl, Assembly-CSharp
+        m_MethodName: HoverIn
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: CH3
+          m_BoolArgument: 0
+        m_CallState: 2
   m_HoverExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 900447347}
+        m_TargetAssemblyTypeName: VRControl, Assembly-CSharp
+        m_MethodName: HoverOut
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -3346,10 +3394,34 @@ MonoBehaviour:
       m_Calls: []
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 900447347}
+        m_TargetAssemblyTypeName: VRControl, Assembly-CSharp
+        m_MethodName: HoverIn
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: CH2
+          m_BoolArgument: 0
+        m_CallState: 2
   m_HoverExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 900447347}
+        m_TargetAssemblyTypeName: VRControl, Assembly-CSharp
+        m_MethodName: HoverOut
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -3707,6 +3779,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -176.734
       objectReference: {fileID: 0}
+    - target: {fileID: -3837255680886944796, guid: 0d73e73e7ec7e10439005e503f857890, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3837255680886944796, guid: 0d73e73e7ec7e10439005e503f857890, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3837255680886944796, guid: 0d73e73e7ec7e10439005e503f857890, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0d73e73e7ec7e10439005e503f857890, type: 3}
       propertyPath: m_Name
       value: Oncorhynchus masou formosanus_rig_exp20_SK
@@ -3733,7 +3817,7 @@ Animator:
   m_GameObject: {fileID: 1491166807}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7576b0c0a37b7cf4ebd5160a10e2e5c5, type: 2}
+  m_Controller: {fileID: 9100000, guid: 087514aae8ff1724ea9a4366ac426894, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5129,7 +5213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2439182720244053348, guid: 1e4f59f8275e967478473d0e0dc09368, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2439182720244053349, guid: 1e4f59f8275e967478473d0e0dc09368, type: 3}
       propertyPath: m_RootOrder
@@ -5645,8 +5729,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067010480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 100.000015}
-  m_LocalScale: {x: 0.27362573, y: 0.27362573, z: 0.27362573}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 0.002736257, y: 0.002736257, z: 0.002736257}
   m_Children:
   - {fileID: 1101149766}
   - {fileID: 282749362}

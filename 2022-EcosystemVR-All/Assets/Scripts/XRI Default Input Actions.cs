@@ -531,7 +531,18 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 {
                     ""name"": """",
                     ""id"": ""b8cfedf3-aeac-441e-832f-de58374b72f0"",
-                    ""path"": ""*/{Menu}"",
+                    ""path"": ""<VIVEFocus3Controller>{LeftHand}/menu"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2713cc61-ea41-41e0-8c38-3295ff4e29a8"",
+                    ""path"": ""<XRController>{LeftHand}/menu"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

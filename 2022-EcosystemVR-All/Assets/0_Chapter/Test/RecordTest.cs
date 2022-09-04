@@ -7,16 +7,19 @@ using System.IO;
 using System.Net;
 using System.Threading;
 
-public class ScreenRecord : MonoBehaviour
+public class RecordTest : MonoBehaviour
 {
-    public string url="www.ylw.idv.tw";
-    public string sid="dct";
-    public float RefreshPeroid=2.0f; //sec
+
+    
+
+    public string url = "www.ylw.idv.tw";
+    public string sid = "dct";
+    public float RefreshPeroid = 2.0f; //sec
     public int MaxSerial = 1; //伺服器最多儲存的畫面數量
     //public Text mes; //除錯用
     int ser = 0;
     float pt;
-    
+
     Texture2D newScreenshot;
     byte[] bytes;
 
@@ -26,26 +29,26 @@ public class ScreenRecord : MonoBehaviour
     void Start()
     {
         sid = sid + Random.Range(1, 10);
-        testt = Time.time;             
+        testt = Time.time;
     }
-        
     IEnumerator WebUpload(int nser)
     {
         yield return new WaitForEndOfFrame();
-        Texture2D screenshot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, true);
-        screenshot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        Texture2D screenshot = ScreenCapture.CaptureScreenshotAsTexture();
+        //Texture2D screenshot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, true);
+        //screenshot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
         screenshot.Apply();
 
         Texture2D newScreenshot = ScaleTexture(screenshot, Screen.width / 2, Screen.height / 2);
 
-        // byte[] bytes = newScreenshot.EncodeToJPG();     
-        byte[] bytes = ImageConversion.EncodeArrayToPNG(newScreenshot.GetRawTextureData(), newScreenshot.graphicsFormat, (uint)newScreenshot.width, (uint)newScreenshot.height);     
+        byte[] bytes = newScreenshot.EncodeToPNG(); 
+        //byte[] bytes = ImageConversion.EncodeArrayToPNG(newScreenshot.GetRawTextureData(), newScreenshot.graphicsFormat, (uint)newScreenshot.width, (uint)newScreenshot.height);
         WWWForm form = new WWWForm();
-        form.AddField("SID",sid);
+        form.AddField("SID", sid);
         form.AddField("SNUM", nser);
-        form.AddBinaryData("files", bytes, nser+".png", "image/png");
+        form.AddBinaryData("files", bytes, nser + ".png", "image/png");
 
-        UnityWebRequest req = UnityWebRequest.Post("https://"+url+"/vrmonitor/Uploader.php", form);
+        UnityWebRequest req = UnityWebRequest.Post("https://" + url + "/vrmonitor/Uploader.php", form);
         req.SetRequestHeader("Access-Control-Allow-Origin", "*");
         yield return req.SendWebRequest();
 
@@ -66,11 +69,11 @@ public class ScreenRecord : MonoBehaviour
             //StartCoroutine(Capture());
             StartCoroutine(WebUpload(ser));
             ser++;
-            if (ser >= MaxSerial) 
-            { 
-                ser = 0; 
+            if (ser >= MaxSerial)
+            {
+                ser = 0;
                 //mes.text = sid.ToString()+"  "+(Time.time - testt).ToString();  //除錯用
-                testt = Time.time; 
+                testt = Time.time;
             }
         }
     }
@@ -163,3 +166,4 @@ public class ScreenRecord : MonoBehaviour
    }
 */
 }
+
