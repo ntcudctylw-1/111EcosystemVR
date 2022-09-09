@@ -11,6 +11,7 @@ public class GlobalSet : MonoBehaviour
     public static string SID;//學號
     public long EntryTime, ExitTime; // 進入和離開學習單元的時間
     public string ServerIP = "www.ylw.idv.tw:81"; //SQL ServerIP
+    static string ScrRecIP = "www.ylw.idv.tw";
     public bool NetworkMode; //true: 記錄在遠端  false: 記錄在本地
     public int[] Score;//各關卡分數
     public static bool tutor; //true 導學版, false 自學版
