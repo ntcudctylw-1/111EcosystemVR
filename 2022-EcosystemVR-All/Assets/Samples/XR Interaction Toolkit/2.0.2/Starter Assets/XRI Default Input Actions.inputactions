@@ -578,15 +578,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "572aa4d8-5350-4a70-9edb-39e6ac1d9d02",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -644,15 +635,52 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "XRI LeftHand Gesture",
+            "id": "3c763420-cac2-4c8c-9a2f-126d268802ef",
+            "actions": [
+                {
+                    "name": "Finger 3",
+                    "type": "Value",
+                    "id": "e5b07f34-db69-49d5-8413-0beb3a90d208",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Finger 2",
+                    "type": "Value",
+                    "id": "2e21134d-715a-460e-826b-489fae099856",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6fddbf93-da22-4709-9a61-a129fa98456b",
+                    "path": "<XRController>{LeftHand}/grip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Finger 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "3cea00b8-e0b0-42fe-913b-5e4f4f981819",
-                    "path": "",
+                    "id": "8e9f36f6-70c7-4baa-8b34-9af760f7183e",
+                    "path": "<XRController>{LeftHand}/trigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "New action",
+                    "groups": "Generic XR Controller",
+                    "action": "Finger 2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1220,6 +1248,54 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "XRI RightHand Gesture",
+            "id": "7949e568-1e15-458c-bf29-1adaaf16e132",
+            "actions": [
+                {
+                    "name": "Finger 3",
+                    "type": "Value",
+                    "id": "a3c1f0af-d67f-4d9f-ba09-5b6aa0b0b1d3",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Finger 2",
+                    "type": "Value",
+                    "id": "0d34e315-2c9c-4d03-b9e0-643051fa9fa3",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f0855763-7ab4-49b5-9f29-dccabb09bf35",
+                    "path": "<XRController>{RightHand}/grip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Finger 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8c90f6e6-b127-4ca8-a054-ca2bd9a65782",
+                    "path": "<XRController>{RightHand}/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Finger 2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

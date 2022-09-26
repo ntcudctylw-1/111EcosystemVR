@@ -1,10 +1,11 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FlowerRandomSpawn : MonoBehaviour
 {
     public GameObject[] grids;
+    WebPhp web;
     [System.Serializable]
     public class Flower
     {
@@ -48,7 +49,7 @@ public class FlowerRandomSpawn : MonoBehaviour
             string col = grids[flowers[flowerNum].spawned[gridNum]].gameObject.name;
             string row = grids[flowers[flowerNum].spawned[gridNum]].transform.parent.gameObject.name;
            
-            int[] index = new int[] {1,1,1,1};//�W�U���k
+            int[] index = new int[] {1,1,1,1};//¤W¤U¥ª¥k
             if (col == "1") index[0] = 0;
             if (col == "5") index[1] = 0;
             if (row == "1") index[2] = 0;
@@ -85,6 +86,7 @@ public class FlowerRandomSpawn : MonoBehaviour
 
     private void Awake()
     {
+        web = FindObjectOfType<WebPhp>();
         grids = GameObject.FindGameObjectsWithTag("grid");
 
         StartCoroutine(GameStart());
@@ -124,6 +126,20 @@ public class FlowerRandomSpawn : MonoBehaviour
             GameObject child = obj.transform.GetChild(0).gameObject;
             if (child.tag == "flower")
             {
+                if (child.name.Contains("flowerA"))
+                {
+                    // print("大花咸豐草");
+                    
+                    StartCoroutine(web.php(GlobalSet.SID, "11", "45", WebPhp.php_method.Action));
+                }
+
+                if (child.name.Contains("flowerB"))
+                {
+                    //  print("小花蔓澤蘭");
+                    StartCoroutine(web.php(GlobalSet.SID, "11", "47", WebPhp.php_method.Action));
+                }
+
+
                 Destroy(child);
                 Instantiate(grass, obj.transform);
                 foreach (var item in flowers)

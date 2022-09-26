@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FaceCamera : MonoBehaviour
 {
+
     GameObject cameraObject;
     private void Update()
     {
@@ -13,5 +14,6 @@ public class FaceCamera : MonoBehaviour
         }
 
         this.gameObject.transform.LookAt(cameraObject.transform);
+        gameObject.transform.rotation = Quaternion.Euler(90, 0, 0);
     }
 }

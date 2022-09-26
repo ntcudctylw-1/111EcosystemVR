@@ -600,15 +600,6 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""572aa4d8-5350-4a70-9edb-39e6ac1d9d02"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -666,15 +657,52 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""XRI LeftHand Gesture"",
+            ""id"": ""3c763420-cac2-4c8c-9a2f-126d268802ef"",
+            ""actions"": [
+                {
+                    ""name"": ""Finger 3"",
+                    ""type"": ""Value"",
+                    ""id"": ""e5b07f34-db69-49d5-8413-0beb3a90d208"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Finger 2"",
+                    ""type"": ""Value"",
+                    ""id"": ""2e21134d-715a-460e-826b-489fae099856"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""6fddbf93-da22-4709-9a61-a129fa98456b"",
+                    ""path"": ""<XRController>{LeftHand}/grip"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Generic XR Controller"",
+                    ""action"": ""Finger 3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3cea00b8-e0b0-42fe-913b-5e4f4f981819"",
-                    ""path"": """",
+                    ""id"": ""8e9f36f6-70c7-4baa-8b34-9af760f7183e"",
+                    ""path"": ""<XRController>{LeftHand}/trigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
+                    ""groups"": ""Generic XR Controller"",
+                    ""action"": ""Finger 2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1246,6 +1274,54 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""XRI RightHand Gesture"",
+            ""id"": ""7949e568-1e15-458c-bf29-1adaaf16e132"",
+            ""actions"": [
+                {
+                    ""name"": ""Finger 3"",
+                    ""type"": ""Value"",
+                    ""id"": ""a3c1f0af-d67f-4d9f-ba09-5b6aa0b0b1d3"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Finger 2"",
+                    ""type"": ""Value"",
+                    ""id"": ""0d34e315-2c9c-4d03-b9e0-643051fa9fa3"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f0855763-7ab4-49b5-9f29-dccabb09bf35"",
+                    ""path"": ""<XRController>{RightHand}/grip"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Generic XR Controller"",
+                    ""action"": ""Finger 3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c90f6e6-b127-4ca8-a054-ca2bd9a65782"",
+                    ""path"": ""<XRController>{RightHand}/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Generic XR Controller"",
+                    ""action"": ""Finger 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1339,7 +1415,10 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         m_XRILeftHandLocomotion_TeleportModeCancel = m_XRILeftHandLocomotion.FindAction("Teleport Mode Cancel", throwIfNotFound: true);
         m_XRILeftHandLocomotion_Turn = m_XRILeftHandLocomotion.FindAction("Turn", throwIfNotFound: true);
         m_XRILeftHandLocomotion_Move = m_XRILeftHandLocomotion.FindAction("Move", throwIfNotFound: true);
-        m_XRILeftHandLocomotion_Newaction = m_XRILeftHandLocomotion.FindAction("New action", throwIfNotFound: true);
+        // XRI LeftHand Gesture
+        m_XRILeftHandGesture = asset.FindActionMap("XRI LeftHand Gesture", throwIfNotFound: true);
+        m_XRILeftHandGesture_Finger3 = m_XRILeftHandGesture.FindAction("Finger 3", throwIfNotFound: true);
+        m_XRILeftHandGesture_Finger2 = m_XRILeftHandGesture.FindAction("Finger 2", throwIfNotFound: true);
         // XRI RightHand
         m_XRIRightHand = asset.FindActionMap("XRI RightHand", throwIfNotFound: true);
         m_XRIRightHand_Position = m_XRIRightHand.FindAction("Position", throwIfNotFound: true);
@@ -1366,6 +1445,10 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         m_XRIRightHandLocomotion_TeleportModeCancel = m_XRIRightHandLocomotion.FindAction("Teleport Mode Cancel", throwIfNotFound: true);
         m_XRIRightHandLocomotion_Turn = m_XRIRightHandLocomotion.FindAction("Turn", throwIfNotFound: true);
         m_XRIRightHandLocomotion_Move = m_XRIRightHandLocomotion.FindAction("Move", throwIfNotFound: true);
+        // XRI RightHand Gesture
+        m_XRIRightHandGesture = asset.FindActionMap("XRI RightHand Gesture", throwIfNotFound: true);
+        m_XRIRightHandGesture_Finger3 = m_XRIRightHandGesture.FindAction("Finger 3", throwIfNotFound: true);
+        m_XRIRightHandGesture_Finger2 = m_XRIRightHandGesture.FindAction("Finger 2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1641,7 +1724,6 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     private readonly InputAction m_XRILeftHandLocomotion_TeleportModeCancel;
     private readonly InputAction m_XRILeftHandLocomotion_Turn;
     private readonly InputAction m_XRILeftHandLocomotion_Move;
-    private readonly InputAction m_XRILeftHandLocomotion_Newaction;
     public struct XRILeftHandLocomotionActions
     {
         private @XRIDefaultInputActions m_Wrapper;
@@ -1651,7 +1733,6 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         public InputAction @TeleportModeCancel => m_Wrapper.m_XRILeftHandLocomotion_TeleportModeCancel;
         public InputAction @Turn => m_Wrapper.m_XRILeftHandLocomotion_Turn;
         public InputAction @Move => m_Wrapper.m_XRILeftHandLocomotion_Move;
-        public InputAction @Newaction => m_Wrapper.m_XRILeftHandLocomotion_Newaction;
         public InputActionMap Get() { return m_Wrapper.m_XRILeftHandLocomotion; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1676,9 +1757,6 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @Move.started -= m_Wrapper.m_XRILeftHandLocomotionActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_XRILeftHandLocomotionActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_XRILeftHandLocomotionActionsCallbackInterface.OnMove;
-                @Newaction.started -= m_Wrapper.m_XRILeftHandLocomotionActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_XRILeftHandLocomotionActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_XRILeftHandLocomotionActionsCallbackInterface.OnNewaction;
             }
             m_Wrapper.m_XRILeftHandLocomotionActionsCallbackInterface = instance;
             if (instance != null)
@@ -1698,13 +1776,51 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
             }
         }
     }
     public XRILeftHandLocomotionActions @XRILeftHandLocomotion => new XRILeftHandLocomotionActions(this);
+
+    // XRI LeftHand Gesture
+    private readonly InputActionMap m_XRILeftHandGesture;
+    private IXRILeftHandGestureActions m_XRILeftHandGestureActionsCallbackInterface;
+    private readonly InputAction m_XRILeftHandGesture_Finger3;
+    private readonly InputAction m_XRILeftHandGesture_Finger2;
+    public struct XRILeftHandGestureActions
+    {
+        private @XRIDefaultInputActions m_Wrapper;
+        public XRILeftHandGestureActions(@XRIDefaultInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Finger3 => m_Wrapper.m_XRILeftHandGesture_Finger3;
+        public InputAction @Finger2 => m_Wrapper.m_XRILeftHandGesture_Finger2;
+        public InputActionMap Get() { return m_Wrapper.m_XRILeftHandGesture; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(XRILeftHandGestureActions set) { return set.Get(); }
+        public void SetCallbacks(IXRILeftHandGestureActions instance)
+        {
+            if (m_Wrapper.m_XRILeftHandGestureActionsCallbackInterface != null)
+            {
+                @Finger3.started -= m_Wrapper.m_XRILeftHandGestureActionsCallbackInterface.OnFinger3;
+                @Finger3.performed -= m_Wrapper.m_XRILeftHandGestureActionsCallbackInterface.OnFinger3;
+                @Finger3.canceled -= m_Wrapper.m_XRILeftHandGestureActionsCallbackInterface.OnFinger3;
+                @Finger2.started -= m_Wrapper.m_XRILeftHandGestureActionsCallbackInterface.OnFinger2;
+                @Finger2.performed -= m_Wrapper.m_XRILeftHandGestureActionsCallbackInterface.OnFinger2;
+                @Finger2.canceled -= m_Wrapper.m_XRILeftHandGestureActionsCallbackInterface.OnFinger2;
+            }
+            m_Wrapper.m_XRILeftHandGestureActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Finger3.started += instance.OnFinger3;
+                @Finger3.performed += instance.OnFinger3;
+                @Finger3.canceled += instance.OnFinger3;
+                @Finger2.started += instance.OnFinger2;
+                @Finger2.performed += instance.OnFinger2;
+                @Finger2.canceled += instance.OnFinger2;
+            }
+        }
+    }
+    public XRILeftHandGestureActions @XRILeftHandGesture => new XRILeftHandGestureActions(this);
 
     // XRI RightHand
     private readonly InputActionMap m_XRIRightHand;
@@ -1940,6 +2056,47 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         }
     }
     public XRIRightHandLocomotionActions @XRIRightHandLocomotion => new XRIRightHandLocomotionActions(this);
+
+    // XRI RightHand Gesture
+    private readonly InputActionMap m_XRIRightHandGesture;
+    private IXRIRightHandGestureActions m_XRIRightHandGestureActionsCallbackInterface;
+    private readonly InputAction m_XRIRightHandGesture_Finger3;
+    private readonly InputAction m_XRIRightHandGesture_Finger2;
+    public struct XRIRightHandGestureActions
+    {
+        private @XRIDefaultInputActions m_Wrapper;
+        public XRIRightHandGestureActions(@XRIDefaultInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Finger3 => m_Wrapper.m_XRIRightHandGesture_Finger3;
+        public InputAction @Finger2 => m_Wrapper.m_XRIRightHandGesture_Finger2;
+        public InputActionMap Get() { return m_Wrapper.m_XRIRightHandGesture; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(XRIRightHandGestureActions set) { return set.Get(); }
+        public void SetCallbacks(IXRIRightHandGestureActions instance)
+        {
+            if (m_Wrapper.m_XRIRightHandGestureActionsCallbackInterface != null)
+            {
+                @Finger3.started -= m_Wrapper.m_XRIRightHandGestureActionsCallbackInterface.OnFinger3;
+                @Finger3.performed -= m_Wrapper.m_XRIRightHandGestureActionsCallbackInterface.OnFinger3;
+                @Finger3.canceled -= m_Wrapper.m_XRIRightHandGestureActionsCallbackInterface.OnFinger3;
+                @Finger2.started -= m_Wrapper.m_XRIRightHandGestureActionsCallbackInterface.OnFinger2;
+                @Finger2.performed -= m_Wrapper.m_XRIRightHandGestureActionsCallbackInterface.OnFinger2;
+                @Finger2.canceled -= m_Wrapper.m_XRIRightHandGestureActionsCallbackInterface.OnFinger2;
+            }
+            m_Wrapper.m_XRIRightHandGestureActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Finger3.started += instance.OnFinger3;
+                @Finger3.performed += instance.OnFinger3;
+                @Finger3.canceled += instance.OnFinger3;
+                @Finger2.started += instance.OnFinger2;
+                @Finger2.performed += instance.OnFinger2;
+                @Finger2.canceled += instance.OnFinger2;
+            }
+        }
+    }
+    public XRIRightHandGestureActions @XRIRightHandGesture => new XRIRightHandGestureActions(this);
     private int m_GenericXRControllerSchemeIndex = -1;
     public InputControlScheme GenericXRControllerScheme
     {
@@ -2000,7 +2157,11 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         void OnTeleportModeCancel(InputAction.CallbackContext context);
         void OnTurn(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
-        void OnNewaction(InputAction.CallbackContext context);
+    }
+    public interface IXRILeftHandGestureActions
+    {
+        void OnFinger3(InputAction.CallbackContext context);
+        void OnFinger2(InputAction.CallbackContext context);
     }
     public interface IXRIRightHandActions
     {
@@ -2030,5 +2191,10 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         void OnTeleportModeCancel(InputAction.CallbackContext context);
         void OnTurn(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+    }
+    public interface IXRIRightHandGestureActions
+    {
+        void OnFinger3(InputAction.CallbackContext context);
+        void OnFinger2(InputAction.CallbackContext context);
     }
 }

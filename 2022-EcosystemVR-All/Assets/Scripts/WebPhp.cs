@@ -17,7 +17,10 @@ public class WebPhp : MonoBehaviour
     private void Start()
     {
         //StartCoroutine(php("0", "6", "0", php_method.Action));
+        //StartCoroutine(GetLID());
     }
+
+
 
     public IEnumerator php(string sid, string lid,string mid,php_method method)
     {
@@ -41,5 +44,11 @@ public class WebPhp : MonoBehaviour
 
         string html = request.downloadHandler.text;
         Debug.Log(html);
+    }
+
+    public IEnumerator GetLID()
+    {
+        StartCoroutine(php(GlobalSet.SID, "", "", php_method.LevelInf));
+        yield return null;
     }
 }

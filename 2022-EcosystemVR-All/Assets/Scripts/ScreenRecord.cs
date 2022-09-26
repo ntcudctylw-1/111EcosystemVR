@@ -9,69 +9,85 @@ using System.Threading;
 
 public class ScreenRecord : MonoBehaviour
 {
-    public string url="www.ylw.idv.tw";
-    public string sid="dct";
-    public float RefreshPeroid=2.0f; //sec
+    string url;
+    string sid;
+    public float RefreshPeroid; //sec
     public int MaxSerial = 1; //伺服器最多儲存的畫面數量
-    //public Text mes; //除錯用
+    public int Quality; //截圖品質 4是最好 8是最差 可選擇4 6 8
+    public Text mes; //除錯用
     int ser = 0;
     float pt;
-    
-    Texture2D newScreenshot;
-    byte[] bytes;
 
-    float testt;
+    int tstep = -1;
+    Texture2D screenshot;
+    byte[] bytes;
+    WWWForm form;
+    UnityWebRequest req;
 
     // Start is called before the first frame update
     void Start()
     {
-        sid = sid + Random.Range(1, 10);
-        testt = Time.time;             
+        url = GlobalSet.ScrRecIP;
+        sid = "dct"+ Random.Range(1, 10); //GlobalSet.SID;
+        mes.text = sid;
     }
-        
-    IEnumerator WebUpload(int nser)
+    IEnumerator CaptureScreen()
     {
         yield return new WaitForEndOfFrame();
-        Texture2D screenshot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, true);
-        screenshot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        screenshot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, true);
+        screenshot = ScreenCapture.CaptureScreenshotAsTexture();
+        //screenshot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
         screenshot.Apply();
+    }
 
-        Texture2D newScreenshot = ScaleTexture(screenshot, Screen.width / 2, Screen.height / 2);
+    private async void WebUpload()
+    {
+        req.SendWebRequest();
 
-        // byte[] bytes = newScreenshot.EncodeToJPG();     
-        byte[] bytes = ImageConversion.EncodeArrayToPNG(newScreenshot.GetRawTextureData(), newScreenshot.graphicsFormat, (uint)newScreenshot.width, (uint)newScreenshot.height);     
-        WWWForm form = new WWWForm();
-        form.AddField("SID",sid);
-        form.AddField("SNUM", nser);
-        form.AddBinaryData("files", bytes, nser+".png", "image/png");
-
-        UnityWebRequest req = UnityWebRequest.Post("https://"+url+"/vrmonitor/Uploader.php", form);
-        req.SetRequestHeader("Access-Control-Allow-Origin", "*");
-        yield return req.SendWebRequest();
-
-        Destroy(screenshot);
-        Destroy(newScreenshot);
-
-        if (req.result == UnityWebRequest.Result.ConnectionError)
+        /*if (req.result == UnityWebRequest.Result.ConnectionError)
             Debug.Log(req.error);
         else
-            Debug.Log(req.downloadHandler.text);
+            Debug.Log(req.downloadHandler.text);*/
     }
 
     void Update()
     {
-        if (Time.time - pt > RefreshPeroid)
+        if (Time.time - pt > RefreshPeroid || tstep!=-1)
         {
-            pt = Time.time;
-            //StartCoroutine(Capture());
-            StartCoroutine(WebUpload(ser));
-            ser++;
-            if (ser >= MaxSerial) 
-            { 
-                ser = 0; 
-                //mes.text = sid.ToString()+"  "+(Time.time - testt).ToString();  //除錯用
-                testt = Time.time; 
-            }
+            tstep++;
+            switch(tstep)
+            {
+                case 0:
+                    pt = Time.time;
+                    StartCoroutine(CaptureScreen());
+                    break;
+                case 1:
+                    screenshot = ScaleTexture(screenshot, Screen.width / Quality, Screen.height / Quality);
+                    break;
+                case 2:
+                    bytes = ImageConversion.EncodeArrayToPNG(screenshot.GetRawTextureData(), screenshot.graphicsFormat, (uint)screenshot.width, (uint)screenshot.height);
+                    break;
+                case 3:
+                    form = new WWWForm();
+                    form.AddField("SID", sid);
+                    form.AddField("SNUM", ser);
+                    form.AddBinaryData("files", bytes, ser + ".png", "image/png");
+                    req = UnityWebRequest.Post("http://" + url + "/vrmonitor/Uploader.php", form);
+                    req.SetRequestHeader("Access-Control-Allow-Origin", "*");
+                    break;
+                case 4:
+                    WebUpload();
+                    break;
+                case 5:
+                    Destroy(screenshot);
+                    ser++;
+                    if (ser >= MaxSerial)
+                    {
+                        ser = 0;
+                    }
+                    tstep = -1;
+                    break;
+            }           
         }
     }
 
