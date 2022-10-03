@@ -9,7 +9,7 @@ public class CharacterControllerPhysics : MonoBehaviour
     public bool floating;
     public float gravity;
     public float floatForce;
-    CharacterController controller;
+    public CharacterController controller;
     public float _verticalVelocity;
     public float _horzionVelocity;
     public bool jumping;
@@ -21,6 +21,7 @@ public class CharacterControllerPhysics : MonoBehaviour
     public float moveResistance;
     private void Start()
     {
+        if(controller == null)
         controller = GetComponent<CharacterController>();
     }
 

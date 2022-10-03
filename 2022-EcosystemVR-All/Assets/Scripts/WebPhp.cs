@@ -17,7 +17,7 @@ public class WebPhp : MonoBehaviour
     private void Start()
     {
         //StartCoroutine(php("0", "6", "0", php_method.Action));
-        //StartCoroutine(GetLID());
+        StartCoroutine(GetLID());
     }
 
 
@@ -30,7 +30,7 @@ public class WebPhp : MonoBehaviour
         else if (method == php_method.UserData) doc = "UserData.php";
 
 
-        string strUrl = string.Format("http://www.ylw.idv.tw:81/~vreco/{3}?sid={0}&lid={1}&mid={2}", sid, lid, mid,doc);
+        string strUrl = string.Format("{4}/~vreco/{3}?sid={0}&lid={1}&mid={2}", sid, lid, mid,doc,GlobalSet.ServerIP);
         Debug.Log(strUrl);
         UnityWebRequest request = UnityWebRequest.Get(strUrl);
 
@@ -50,5 +50,10 @@ public class WebPhp : MonoBehaviour
     {
         StartCoroutine(php(GlobalSet.SID, "", "", php_method.LevelInf));
         yield return null;
+        LoadingEvent loadingEvent;
+        if(TryGetComponent<LoadingEvent>(out loadingEvent))
+        {
+            loadingEvent.Load();
+        }
     }
 }
