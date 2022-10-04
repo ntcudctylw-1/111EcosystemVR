@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 956492205777885235}
   - component: {fileID: 5504574147295545111}
   - component: {fileID: 3742232315814843799}
+  - component: {fileID: 2369057192943205608}
+  - component: {fileID: 7797623439815968444}
   m_Layer: 0
   m_Name: Lemon
   m_TagString: Lemon
@@ -62,6 +64,47 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2369057192943205608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581970031068751874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d904c407c341bf74885a5097e99dc827, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  controller: {fileID: 0}
+--- !u!114 &7797623439815968444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581970031068751874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1296ef52963b65249af7393909f8dd99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2369057192943205608}
+        m_TargetAssemblyTypeName: Lemon, Assembly-CSharp
+        m_MethodName: lessSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &7524479279414201326
 PrefabInstance:
   m_ObjectHideFlags: 0
