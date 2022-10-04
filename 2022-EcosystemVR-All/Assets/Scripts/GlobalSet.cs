@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayMode))]
 public class GlobalSet : MonoBehaviour
 {
-    
+
 
     public static string SID;//學號
     public static string LID;//關卡流水號(進入關卡時自動生成)
@@ -36,7 +36,7 @@ public class GlobalSet : MonoBehaviour
     //VR相關//
 
     public static XRIDefaultInputActions inputActions;
-    
+
 
 
     public struct VRTrigger
@@ -69,7 +69,7 @@ public class GlobalSet : MonoBehaviour
     public static PlayMode playMode;
     public PlayMode SetMode = PlayMode.VR;
 
-    private void Update()   
+    private void Update()
     {
         LeftHand.Position = inputActions.XRILeftHand.Position.ReadValue<Vector3>();
         LeftHand.Rotation = inputActions.XRILeftHand.Rotation.ReadValue<Quaternion>();

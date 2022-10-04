@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(VR_Controller_Velocity))]
+
 public class VR_Gesture : MonoBehaviour
 {
     public float Offset = 0.0001f;

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,10 +8,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class VRControl : MonoBehaviour
 {
     // Start is called before the first frame update
-    float presstime, cooldown = 2.0f; //¤£­n³Q³sÂI³s¿ï¡A¶¡¹j2000ms
+    float presstime, cooldown = 2.0f; //Â¤Â£Â­nÂ³QÂ³sÃ‚IÂ³sÂ¿Ã¯Â¡AÂ¶Â¡Â¹j2000ms
     int loadscene = -1;
-    public Text mes; //Åã¥Ü¤å¦r°T®§
-    public Text sid; //Åã¥Ü¾Ç¥Í¸ê°T
+    public Text mes; //Ã…Ã£Â¥ÃœÂ¤Ã¥Â¦rÂ°TÂ®Â§
+    public Text sid; //Ã…Ã£Â¥ÃœÂ¾Ã‡Â¥ÃÂ¸ÃªÂ°T
     void Start()
     {
         if (Application.platform != RuntimePlatform.Android) gameObject.SetActive(false);
@@ -32,12 +32,12 @@ public class VRControl : MonoBehaviour
 
     public void HoverIn(string Feature)
     {
-        if(Feature == "CH1") mes.text = "³æ¤¸1.¥Íª«¦h¼Ë©Ê";
-        else if (Feature == "CH2") mes.text = "³æ¤¸2.¥xÆWªº¦h¼Ë¤ÆÀô¹Ò";
-        else if (Feature == "CH3") mes.text = "³æ¤¸3.¥Íª«¥Í¦s¾AÀ³";
-        else if (Feature == "CH4") mes.text = "³æ¤¸4.¥~¨Ó¤J«IºØ¹ï¥xÆWªº¼vÅT";
-        else if (Feature == "CH5") mes.text = "³æ¤¸5.­Ô³¾¾E±p";
-        else if (Feature == "CH6") mes.text = "³æ¤¸6.²L¤s¥ÍºA»P¥Ûªê";
+        if (Feature == "CH1") mes.text = "å–®å…ƒ1.ç”Ÿç‰©å¤šæ¨£æ€§";
+        else if (Feature == "CH2") mes.text = "å–®å…ƒ2.å°ç£çš„å¤šæ¨£åŒ–ç’°å¢ƒ";
+        else if (Feature == "CH3") mes.text = "å–®å…ƒ3.ç”Ÿç‰©ç”Ÿå­˜é©æ‡‰";
+        else if (Feature == "CH4") mes.text = "å–®å…ƒ4.å¤–ä¾†å…¥ä¾µç¨®å°å°ç£çš„å½±éŸ¿";
+        else if (Feature == "CH5") mes.text = "å–®å…ƒ5.å€™é³¥é·å¾™";
+        else if (Feature == "CH6") mes.text = "å–®å…ƒ6.æ·ºå±±ç”Ÿæ…‹èˆ‡çŸ³è™";
     }
     public void HoverOut(string Feature)
     {

@@ -70,6 +70,7 @@
     <Compile Include="Assets\0_Chapter\6\Script\VR_Gesture.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Cat_Ani.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs" />
+    <Compile Include="Assets\0_Chapter\6-2\Script\CatRespawn.cs" />
     <Compile Include="Assets\StarterAssets\InputSystem\StarterAssetsInputs.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Chicken1.cs" />
     <Compile Include="Assets\0_Chapter\Lobby\PlayMode.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="Assets\0_Chapter\1\RIVER\GetInput.cs" />
     <Compile Include="Assets\Scripts\Keyin.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Loading.cs" />
+    <Compile Include="Assets\0_Chapter\6-2\Script\CatCollision.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\0_Chapter\Test\NewBehaviourScript.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Mode_Switch.cs" />
@@ -190,10 +192,12 @@
     <Compile Include="Assets\Chapter\Ch6\script\ch6_1st.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
     <Compile Include="Assets\0_Chapter\5-1\birds.cs" />
+    <Compile Include="Assets\0_Chapter\6-2\Script\Blink.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\ButtonASAxisValue.cs" />
     <Compile Include="Assets\Scripts\LoadScene.cs" />
     <Compile Include="Assets\Ahmad Gamal\Smart FPS Counter\Scripts\FPSCounter.cs" />
+    <Compile Include="Assets\0_Chapter\6-2\Script\CarCollision.cs" />
     <Compile Include="Assets\0_Chapter\4\Script\FaceCamera.cs" />
     <Compile Include="Assets\VRKeyboard\Scripts\Keys\Number.cs" />
     <Compile Include="Assets\Scripts\ScreenRecord.cs" />
@@ -238,10 +242,8 @@
     <Compile Include="Assets\0_Chapter\1\Grassland\GameController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Chapter\Ch5\Script\PlayerFlip.cs" />
-    <Compile Include="Assets\0_Chapter\6-2\Script\CatCollision.cs" />
-    <Compile Include="Assets\0_Chapter\6-2\Script\CarCollision.cs" />
-    <Compile Include="Assets\0_Chapter\6-2\Script\CatRespawn.cs" />
-    <Compile Include="Assets\0_Chapter\6-2\Script\Blink.cs" />
+    <Compile Include="Assets\0_Chapter\6-2\Script\Lemon.cs" />
+    <Compile Include="Assets\0_Chapter\6-2\Script\CatHealth.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Bark_Array_301.shader" />

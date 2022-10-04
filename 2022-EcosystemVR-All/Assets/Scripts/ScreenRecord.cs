@@ -9,85 +9,69 @@ using System.Threading;
 
 public class ScreenRecord : MonoBehaviour
 {
-    string url;
-    string sid;
-    public float RefreshPeroid; //sec
+    public string url="www.ylw.idv.tw";
+    public string sid="dct";
+    public float RefreshPeroid=2.0f; //sec
     public int MaxSerial = 1; //伺服器最多儲存的畫面數量
-    public int Quality; //截圖品質 4是最好 8是最差 可選擇4 6 8
-    public Text mes; //除錯用
+    //public Text mes; //除錯用
     int ser = 0;
     float pt;
-
-    int tstep = -1;
-    Texture2D screenshot;
+    
+    Texture2D newScreenshot;
     byte[] bytes;
-    WWWForm form;
-    UnityWebRequest req;
+
+    float testt;
 
     // Start is called before the first frame update
     void Start()
     {
-        url = GlobalSet.ScrRecIP;
-        sid = "dct"+ Random.Range(1, 10); //GlobalSet.SID;
-        mes.text = sid;
+        sid = sid + Random.Range(1, 10);
+        testt = Time.time;             
     }
-    IEnumerator CaptureScreen()
+        
+    IEnumerator WebUpload(int nser)
     {
         yield return new WaitForEndOfFrame();
-        screenshot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, true);
-        screenshot = ScreenCapture.CaptureScreenshotAsTexture();
-        //screenshot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        Texture2D screenshot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, true);
+        screenshot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
         screenshot.Apply();
-    }
 
-    private async void WebUpload()
-    {
-        req.SendWebRequest();
+        Texture2D newScreenshot = ScaleTexture(screenshot, Screen.width / 2, Screen.height / 2);
 
-        /*if (req.result == UnityWebRequest.Result.ConnectionError)
+        // byte[] bytes = newScreenshot.EncodeToJPG();     
+        byte[] bytes = ImageConversion.EncodeArrayToPNG(newScreenshot.GetRawTextureData(), newScreenshot.graphicsFormat, (uint)newScreenshot.width, (uint)newScreenshot.height);     
+        WWWForm form = new WWWForm();
+        form.AddField("SID",sid);
+        form.AddField("SNUM", nser);
+        form.AddBinaryData("files", bytes, nser+".png", "image/png");
+
+        UnityWebRequest req = UnityWebRequest.Post("https://"+url+"/vrmonitor/Uploader.php", form);
+        req.SetRequestHeader("Access-Control-Allow-Origin", "*");
+        yield return req.SendWebRequest();
+
+        Destroy(screenshot);
+        Destroy(newScreenshot);
+
+        if (req.result == UnityWebRequest.Result.ConnectionError)
             Debug.Log(req.error);
         else
-            Debug.Log(req.downloadHandler.text);*/
+            Debug.Log(req.downloadHandler.text);
     }
 
     void Update()
     {
-        if (Time.time - pt > RefreshPeroid || tstep!=-1)
+        if (Time.time - pt > RefreshPeroid)
         {
-            tstep++;
-            switch(tstep)
-            {
-                case 0:
-                    pt = Time.time;
-                    StartCoroutine(CaptureScreen());
-                    break;
-                case 1:
-                    screenshot = ScaleTexture(screenshot, Screen.width / Quality, Screen.height / Quality);
-                    break;
-                case 2:
-                    bytes = ImageConversion.EncodeArrayToPNG(screenshot.GetRawTextureData(), screenshot.graphicsFormat, (uint)screenshot.width, (uint)screenshot.height);
-                    break;
-                case 3:
-                    form = new WWWForm();
-                    form.AddField("SID", sid);
-                    form.AddField("SNUM", ser);
-                    form.AddBinaryData("files", bytes, ser + ".png", "image/png");
-                    req = UnityWebRequest.Post("http://" + url + "/vrmonitor/Uploader.php", form);
-                    req.SetRequestHeader("Access-Control-Allow-Origin", "*");
-                    break;
-                case 4:
-                    WebUpload();
-                    break;
-                case 5:
-                    Destroy(screenshot);
-                    ser++;
-                    if (ser >= MaxSerial)
-                    {
-                        ser = 0;
-                    }
-                    tstep = -1;
-                    break;
-            }           
+            pt = Time.time;
+            //StartCoroutine(Capture());
+            StartCoroutine(WebUpload(ser));
+            ser++;
+            if (ser >= MaxSerial) 
+            { 
+                ser = 0; 
+                //mes.text = sid.ToString()+"  "+(Time.time - testt).ToString();  //除錯用
+                testt = Time.time; 
+            }
         }
     }
 

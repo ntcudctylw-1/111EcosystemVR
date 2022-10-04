@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FlowerRandomSpawn : MonoBehaviour
 {
-    public GameObject[] grids;
+    public List<GameObject> grids;
     WebPhp web;
     [System.Serializable]
     public class Flower
     {
         public GameObject flower;
-        public List<int> spawned;
+        public List<GameObject> spawned;
     }
 
     public Flower[] flowers;
@@ -26,29 +26,61 @@ public class FlowerRandomSpawn : MonoBehaviour
 
     public Level level;
     private float nextActionTime = 0.0f;
-    public int Spawn()
+    public void Spawn()
     {
         int flowerNum = Random.Range(0, flowers.Length);
         if (flowers[flowerNum].spawned.Count == 0)
         {
             //print("new");
-            int gridNum = Random.Range(0, grids.Length);
-            
-            Destroy(grids[gridNum].transform.GetChild(0).gameObject);
-            Instantiate(flowers[flowerNum].flower, grids[gridNum].transform);
-            flowers[flowerNum].spawned.Add(gridNum);
+            int gridNum = Random.Range(0, grids.Count);
+            int id = int.Parse(grids[gridNum].name);
+            Destroy(grids[id].transform.GetChild(0).gameObject);
+            Instantiate(flowers[flowerNum].flower, grids[id].transform);
+            flowers[flowerNum].spawned.Add(grids[id]);
             level.flowerCount++;
-            print("First = " + gridNum.ToString());
-            return 0;
+            
+            print("First = " + id.ToString());
+            grids.Remove(grids[id]);
+            //return 0;
         }
         else
         {
             //print("follow");
-            int gridNum = Random.Range(0, flowers[flowerNum].spawned.Count);
+            GameObject gridtarget = flowers[flowerNum].spawned[Random.Range(0, flowers[flowerNum].spawned.Count)];
+            int id = int.Parse(gridtarget.name);
+            int[] index = new int[] { 1, 1, 1, 1 };
+            int col = id % 5;
+            int row = int.Parse(gridtarget.transform.parent.name);
+            if (col == 1) index[0] = 0; //上
+            if (col == 0) index[1] = 0; //下
+            if (row == 1) index[2] = 0; //右
+            if (row == 5) index[3] = 0; //左
+            int side;
+            do
+                side = Random.Range(0, 4);
+            while (index[side] == 0);
+
+            if (side == 0) id -= 1;
+            if (side == 1) id += 1;
+            if (side == 2) id -= 5;
+            if (side == 3) id += 5;
+
+            if (!grids.Contains(GameObject.Find(id.ToString())))
+            {
+                Spawn();
+            }
+
+            Destroy(GameObject.Find(id.ToString()).transform.GetChild(0).gameObject);
+            level.flowerCount++;
+            Instantiate(flowers[flowerNum].flower, GameObject.Find(id.ToString()).transform);
+            flowers[flowerNum].spawned.Add(GameObject.Find(id.ToString()));
+            grids.Remove(GameObject.Find(id.ToString()));
+            /*
             //print(gridNum);
-            string col = grids[flowers[flowerNum].spawned[gridNum]].gameObject.name;
-            string row = grids[flowers[flowerNum].spawned[gridNum]].transform.parent.gameObject.name;
-           
+            int id = int.Parse(grids[gridNum].name);
+            string col = grids[flowers[flowerNum].spawned[id]].gameObject.name;
+            string row = grids[flowers[flowerNum].spawned[id]].transform.parent.gameObject.name;
+
             int[] index = new int[] {1,1,1,1};//¤W¤U¥ª¥k
             if (col == "1") index[0] = 0;
             if (col == "5") index[1] = 0;
@@ -59,35 +91,36 @@ public class FlowerRandomSpawn : MonoBehaviour
                 side = Random.Range(0, 4);
             while (index[side] == 0);
             //print(col + "-" + row +"   side =" + side.ToString());
-            int id = flowers[flowerNum].spawned[gridNum];
-            if (side == 1) id += 1;
-            if (side == 0) id -= 1;
-            if (side == 3) id += 5;
-            if (side == 2) id -= 5;
-
-            foreach (var item in flowers)
-            {
-                if (item.spawned.Contains(id)) return 0;
-            }
+            int id2 = flowers[flowerNum].spawned[id];
+            if (side == 1) id2 += 1;
+            if (side == 0) id2 -= 1;
+            if (side == 3) id2 += 5;
+            if (side == 2) id2 -= 5;
+            //
+            //foreach (var item in flowers)
+            //{
+             //   if (item.spawned.Contains(id2)) //return null;
+            //}
 
             //print(string.Format("{0}-{1}-{2}-{3}-{4}-{5}", flowerNum,col, row, index[side], side, id));
-            
-            Destroy(grids[id].transform.GetChild(0).gameObject);
-            level.flowerCount++;
-            Instantiate(flowers[flowerNum].flower, grids[id].transform);
-            flowers[flowerNum].spawned.Add(id);
 
+            Destroy(grids[id2].transform.GetChild(0).gameObject);
+            level.flowerCount++;
+            Instantiate(flowers[flowerNum].flower, grids[id2].transform);
+            flowers[flowerNum].spawned.Add(id2);
+            grids.Remove(grids[id2]);
+            */
         }
 
 
-        if (level.flowerCount == grids.Length) Gameover();
-        return 0;
+        if (level.flowerCount == 20) Gameover();
+        //return 0;
     }
 
     private void Awake()
     {
         web = FindObjectOfType<WebPhp>();
-        grids = GameObject.FindGameObjectsWithTag("grid");
+        ResetFlower();
 
         StartCoroutine(GameStart());
         nextActionTime = level.timeInvoke;
@@ -98,15 +131,20 @@ public class FlowerRandomSpawn : MonoBehaviour
 
         if (Time.time > nextActionTime)
         {
-            nextActionTime += level.timePerRound;
+            nextActionTime = Time.time + level.timePerRound;
             for (int i = 0; i < level.numberPerSpawnCycle; i++)Spawn();
         }
     }
 
     IEnumerator GameStart()
     {
+
         foreach (var item in grids)
         {
+            if(item.transform.childCount > 0)
+            {
+                Destroy(item.transform.GetChild(0));
+            }
             Instantiate(grass, item.transform);
             yield return new WaitForSeconds(0.06f);
         }
@@ -115,7 +153,7 @@ public class FlowerRandomSpawn : MonoBehaviour
 
     void Gameover()
     {
-
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Ch4");
     }
 
     public void RemoveFlower(GameObject obj)
@@ -144,9 +182,12 @@ public class FlowerRandomSpawn : MonoBehaviour
                 Instantiate(grass, obj.transform);
                 foreach (var item in flowers)
                 {
-                    if (item.spawned.Contains(System.Array.IndexOf(grids, obj)))
+                    if (item.spawned.Contains(obj))
                     {
-                        item.spawned.Remove(System.Array.IndexOf(grids, obj));
+                        level.flowerCount--;
+                        //item.spawned.Remove(System.Array.IndexOf(grids, obj));
+                        item.spawned.Remove(obj);
+                        grids.Add(obj);
                     }
                 }
             }
@@ -154,5 +195,16 @@ public class FlowerRandomSpawn : MonoBehaviour
         
         
         
+    }
+
+    public void ResetFlower()
+    {
+        grids = new List<GameObject>();
+        flowers[0].spawned = new List<GameObject>();
+        flowers[1].spawned = new List<GameObject>();
+        foreach (var item in GameObject.FindGameObjectsWithTag("grid"))
+        {
+            grids.Add(item);
+        }
     }
 }

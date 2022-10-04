@@ -29,7 +29,7 @@ public class GameDirector : MonoBehaviour
 
     private void EndGame()
     {
-        startBut.SetActive(true);
+        //startBut.SetActive(true);
         flowerSpawner.enabled = false;
         persentage.text = "";
         LeftCon.GetComponent<XRRayInteractor>().enabled = true;
@@ -40,6 +40,7 @@ public class GameDirector : MonoBehaviour
 
     public void StartGame()
     {
+        
         startBut.SetActive(false);
         flowerSpawner.enabled = true;
         LeftCon.GetComponent<XRRayInteractor>().enabled = false;
@@ -63,7 +64,10 @@ public class GameDirector : MonoBehaviour
             }
 
             persentage.text = string.Format("{0} %", (count / 25f * 100));
-            if (count == 25) break;
+            if (count == 25)
+            {
+                break;
+            }
 
             timer.fillAmount = timeLeft / timeLimit ;
             timeLeft -= 0.1f;
