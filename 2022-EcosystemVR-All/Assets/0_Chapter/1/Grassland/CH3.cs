@@ -8,6 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using PathCreation.Examples;
 using Random=UnityEngine.Random;
 
+<<<<<<< Updated upstream
 //using System.Collections.IEnumerable;
 
 public class CH3 : MonoBehaviour
@@ -77,10 +78,53 @@ public class CH3 : MonoBehaviour
         {
             Debug.Log(Order[i]);
         }
+=======
+public class CH3 : MonoBehaviour
+{
+    public GameObject Canvas;
+    public GameObject Canvas3;
+
+    public GameObject TemAndRain;
+    public Text Tem3_1;
+    public Text Tem3_2;
+    public Text Rain3_1;
+    public Text Rain3_2;
+
+    public Text TargetText;
+    public GameObject AnsButton1;
+    public GameObject AnsButton2;
+    public GameObject AnsButton3;
+    public GameObject AnsButton4;
+
+    public GameObject Lion;
+    public Animator LionAn;
+    public GameObject Cat;
+    public Animator CatAn;
+    public GameObject Bird;
+    public Animator BirdAn;
+    public GameObject Snake;
+    public Animator SnakeAn;
+    public GameObject Lizard;
+    public Animator LizardAn;
+
+    public int CH3Level = 0;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        Ch3Go();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+>>>>>>> Stashed changes
     }
 
     public void Ch3Go()
     {
+<<<<<<< Updated upstream
         ShowAnimal[Order[CH3Level]].GetComponent<PathFollower>().enabled = true;
         AnArr[Order[CH3Level]].Play("move");
         Invoke("AnStop", 3f);
@@ -173,5 +217,43 @@ public class CH3 : MonoBehaviour
         {
             //SnakeHp.transform.localPosition = new Vector3(-0.72f, 0, 0);
         }
+=======
+        if (CH3Level == 0)
+        {
+            Lion.GetComponent<PathFollower>().enabled = true;
+            LionAn.Play("run");
+        }
+        else if (CH3Level == 1)
+        {
+            Cat.GetComponent<PathFollower>().enabled = true;
+            CatAn.Play("run");
+        }
+        else if (CH3Level == 2)
+        {
+            Bird.GetComponent<PathFollower>().enabled = true;
+            BirdAn.Play("run");
+        }
+        else if (CH3Level == 3)
+        {
+            Snake.GetComponent<PathFollower>().enabled = true;
+            SnakeAn.Play("run");
+        }
+        else if (CH3Level == 4)
+        {
+            Lizard.GetComponent<PathFollower>().enabled = true;
+            LizardAn.Play("run");
+        }
+        Invoke("AnStop", 3f);
+    }
+
+    public void AnStop()
+    {
+        LionAn.Play("idle");
+        /*CatAn.Play("idle");
+        BirdAn.Play("idle");
+        SnakeAn.Play("idle");
+        LizardAn.Play("idle");*/
+        Lion.GetComponent<PathFollower>().enabled = false;
+>>>>>>> Stashed changes
     }
 }

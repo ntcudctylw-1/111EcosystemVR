@@ -171,7 +171,11 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
      <Compile Include="Assets\Chapter\Ch6\Script_test\ObjMoveByAxis1.cs" />
      <Compile Include="Assets\0_Chapter\5-1\ModeDisable.cs" />
+<<<<<<< Updated upstream
      <Compile Include="Assets\0_Chapter\6-2\Script\VRMove.cs" />
+=======
+     <Compile Include="Assets\0_Chapter\1\Grassland\CH3.cs" />
+>>>>>>> Stashed changes
      <Compile Include="Assets\Scripts\VRControl.cs" />
      <Compile Include="Assets\0_Chapter\1\Grassland\aaa.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
