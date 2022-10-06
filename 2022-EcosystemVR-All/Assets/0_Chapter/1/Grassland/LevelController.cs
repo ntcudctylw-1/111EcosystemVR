@@ -7,12 +7,16 @@ using UnityEngine.EventSystems;
 using UnityEngine.XR.Interaction.Toolkit;
 using PathCreation.Examples;
 using Random=UnityEngine.Random;
+using Wave.OpenXR.Toolkit.Raycast;
 
 public class LevelController : MonoBehaviour
 {
     WebPhp web;
     public GameObject SelectMenu1;
     public GameObject SelectMenu2;
+
+    public GameObject Canvas1;
+    public GameObject Plane;
 
     public GameObject Ch1_1;
     public GameObject Ch1_2;
@@ -130,6 +134,8 @@ public class LevelController : MonoBehaviour
 
     public bool Wait = false;
 
+    public GameObject CH3;
+
     public string[][] TemAndRainArr = {new string [] {"24℃", "300mm"}
     , new string[] {"-20℃", "150mm"}
     , new string[] {"℃", "mm"}
@@ -192,23 +198,29 @@ public class LevelController : MonoBehaviour
 
     void Start()
     {
-        ChNum = 2;
-        /*Ch2Complete = 4;
-        Ch2Level();
-        Ch2Game();*/
+        ChNum = 6;
         
         if (ChNum == 0 || ChNum == 1)
         {
             SelectMenu1.SetActive(true);
+            Canvas1.SetActive(true);
+            Plane.SetActive(true);
         }
-        else if (ChNum == 2)
+        else if (ChNum > 1 && ChNum < 6)
         {
             SelectMenu2.SetActive(true);
+            Canvas1.SetActive(true);
+            Plane.SetActive(true);
+        }
+        else if (ChNum == 6)
+        {
+            Canvas1.SetActive(false);
+            Plane.SetActive(false);
+            RightHandController.GetComponent<RaycastPointer>().enabled = true;
+            CH3.SetActive(true);
         }
         web = GetComponent<WebPhp>();
         PenguinAn = Penguin.GetComponent<Animation>();
-        /*PenguinFa.transform.position = new Vector3(242, -0.5f, 100);
-        PenguinFa.transform.LookAt(new Vector3(239.53f, -0.5f, 98.3f));*/
     }
 
     void Update()
@@ -311,6 +323,9 @@ public class LevelController : MonoBehaviour
         }
         else
         {
+            TargetText.text = "";
+            TipText.text = "";
+            InfoText.text = "";
             AnswerText.text = "恭喜完成第二章節！";
         }
     }
@@ -483,7 +498,7 @@ public class LevelController : MonoBehaviour
     {
         if (ChNum == 0)
         {
-            LionAn.Play("run");
+            LionAn.Play("move");
             ZebraAn.Play("run");
             Lion.GetComponent<PathFollower>().enabled = true;
             Zebra.GetComponent<PathFollower>().enabled = true;
@@ -504,13 +519,13 @@ public class LevelController : MonoBehaviour
         }
         else if (ChNum == 3)
         {
-            CatAn1.Play("run");
+            CatAn1.Play("move");
             Cat1.GetComponent<PathFollower>().enabled = true;
             TargetText.text = "是石虎出現了！";
         }
         else if (ChNum == 4)
         {
-            BirdAn.Play("fly");
+            BirdAn.Play("move");
             Bird.GetComponent<PathFollower>().enabled = true;
             TargetText.text = "是黑面琵鷺出現了！";
         }
@@ -919,10 +934,11 @@ public class LevelController : MonoBehaviour
         }
         else
         {
+            ShowCongraText();
             //StartCoroutine(web.php(GlobalSet.SID, "2", "35", WebPhp.php_method.Action));
-            TargetText.text = "請選出適合在此環境中生存的動物";
-            TipText.text = "用右手將動物抓起吧！";
-            ShowEnterButtonCh2();
+            //TargetText.text = "請選出適合在此環境中生存的動物";
+            //TipText.text = "用右手將動物抓起吧！";
+            //ShowEnterButtonCh2();
         }
     }
 

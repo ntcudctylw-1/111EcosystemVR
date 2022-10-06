@@ -53,11 +53,23 @@
      <Compile Include="Assets\0_Chapter\1\RIVER\FPSController.cs" />
      <Compile Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\CTI_CustomWind.cs" />
      <Compile Include="Assets\0_Chapter\Lobby\DoorEntry.cs" />
+<<<<<<< Updated upstream
      <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
      <Compile Include="Assets\Chapter\Ch6\script\CarHit.cs" />
      <Compile Include="Assets\0_Chapter\6\Script\VR_Gesture.cs" />
      <Compile Include="Assets\Chapter\Ch6\script\Cat_Ani.cs" />
      <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs" />
+=======
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
+     <Compile Include="Assets\Chapter\Ch6\script\CarHit.cs" />
+     <Compile Include="Assets\0_Chapter\4\Script\GameDirector.cs" />
+     <Compile Include="Assets\0_Chapter\6\Script\VR_Gesture.cs" />
+     <Compile Include="Assets\Chapter\Ch6\script\Cat_Ani.cs" />
+     <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs" />
+     <Compile Include="Assets\0_Chapter\6-2\Script\CatRespawn.cs" />
+>>>>>>> Stashed changes
      <Compile Include="Assets\StarterAssets\InputSystem\StarterAssetsInputs.cs" />
      <Compile Include="Assets\Chapter\Ch6\script\Chicken1.cs" />
      <Compile Include="Assets\0_Chapter\Lobby\PlayMode.cs" />
@@ -65,24 +77,45 @@
      <Compile Include="Assets\0_Chapter\5-1\DishSpawn.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
      <Compile Include="Assets\Scripts\ControllerButtons.cs" />
+<<<<<<< Updated upstream
      <Compile Include="Assets\0_Chapter\5-1\FlappingCheck.cs" />
+=======
+     <Compile Include="Assets\0_Chapter\4\Script\SickleCollision.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
+     <Compile Include="Assets\0_Chapter\5-1\FlappingCheck.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
+>>>>>>> Stashed changes
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
      <Compile Include="Assets\Ahmad Gamal\Smart FPS Counter\Scripts\test.cs" />
      <Compile Include="Assets\Scripts\PCVR.cs" />
      <Compile Include="Assets\0_Chapter\5-1\CharacterControllerPhysics.cs" />
      <Compile Include="Assets\0_Chapter\5\Script\Charactor_Physics.cs" />
      <Compile Include="Assets\0_Chapter\Lobby\Teleport.cs" />
+<<<<<<< Updated upstream
      <Compile Include="Assets\Chapter\Ch6\Script_test\test2\MovingPose.cs" />
      <Compile Include="Assets\0_Chapter\6\Script\Chicken_Collision.cs" />
      <Compile Include="Assets\0_Chapter\1\Grassland\LevelController.cs" />
      <Compile Include="Assets\Scripts\XRI Default Input Actions.cs" />
      <Compile Include="Assets\0_Chapter\5-1\ch5_diractor.cs" />
      <Compile Include="Assets\0_Chapter\6\Script\Levels.cs" />
+=======
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
+     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\MovingPose.cs" />
+     <Compile Include="Assets\0_Chapter\6\Script\Chicken_Collision.cs" />
+     <Compile Include="Assets\0_Chapter\1\Grassland\LevelController.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
+     <Compile Include="Assets\Scripts\XRI Default Input Actions.cs" />
+     <Compile Include="Assets\0_Chapter\6-2\Script\CatFirstPersonController.cs" />
+     <Compile Include="Assets\0_Chapter\5-1\ch5_diractor.cs" />
+     <Compile Include="Assets\0_Chapter\6\Script\Levels.cs" />
+     <Compile Include="Assets\Oculus Hands Physics\Scripts\HandPresence.cs" />
+>>>>>>> Stashed changes
      <Compile Include="Assets\StarterAssets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs" />
      <Compile Include="Assets\Chapter\Ch5\Fur\Scripts\FurMover.cs" />
      <Compile Include="Assets\0_Chapter\5\Script\CollisionHappened.cs" />
      <Compile Include="Assets\0_Chapter\6\Script\Cat_Animate.cs" />
      <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
+<<<<<<< Updated upstream
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs" />
      <Compile Include="Assets\0_Chapter\5-1\NearCenter.cs" />
      <Compile Include="Assets\0_Chapter\6\Script\Player_Score.cs" />
@@ -90,10 +123,25 @@
      <Compile Include="Assets\Chapter\Ch6\script\Steel.cs" />
      <Compile Include="Assets\StarterAssets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs" />
      <Compile Include="Assets\Chapter\Ch6\Script_test\Cat_animation.cs" />
+=======
+     <Compile Include="Assets\0_Chapter\6-2\Script\GameDirector_Ch6.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs" />
+     <Compile Include="Assets\0_Chapter\5-1\NearCenter.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
+     <Compile Include="Assets\0_Chapter\6\Script\Player_Score.cs" />
+     <Compile Include="Assets\0_Chapter\6\Script\Text_Update.cs" />
+     <Compile Include="Assets\Oculus Hands Physics\CustomHandAnimator.cs" />
+     <Compile Include="Assets\Chapter\Ch6\script\Steel.cs" />
+     <Compile Include="Assets\StarterAssets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs" />
+     <Compile Include="Assets\Chapter\Ch6\Script_test\Cat_animation.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
+>>>>>>> Stashed changes
      <Compile Include="Assets\0_Chapter\6\Script\LemonTree.cs" />
      <Compile Include="Assets\0_Chapter\5-1\LookAtObject.cs" />
      <Compile Include="Assets\0_Chapter\6\Script\Spwan_Player.cs" />
      <Compile Include="Assets\0_Chapter\Test\simpleTest.cs" />
+<<<<<<< Updated upstream
      <Compile Include="Assets\0_Chapter\Test\RecordTest.cs" />
      <Compile Include="Assets\Chapter\Ch6\Script_test\ObjMoveByAxis1.cs" />
      <Compile Include="Assets\0_Chapter\5-1\ModeDisable.cs" />
@@ -117,17 +165,72 @@
      <Compile Include="Assets\0_Chapter\5\Script\FlyLevel.cs" />
      <Compile Include="Assets\PathCreator\Examples\Scripts\GeneratePathExample.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
+=======
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
+     <Compile Include="Assets\0_Chapter\Test\RecordTest.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
+     <Compile Include="Assets\Chapter\Ch6\Script_test\ObjMoveByAxis1.cs" />
+     <Compile Include="Assets\0_Chapter\5-1\ModeDisable.cs" />
+     <Compile Include="Assets\0_Chapter\6-2\Script\VRMove.cs" />
+     <Compile Include="Assets\Scripts\VRControl.cs" />
+     <Compile Include="Assets\0_Chapter\1\Grassland\aaa.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
+     <Compile Include="Assets\VRKeyboard\Scripts\GazeRaycaster.cs" />
+     <Compile Include="Assets\0_Chapter\6-2\Script\Lemon.cs" />
+     <Compile Include="Assets\Chapter\Ch5\Script\ControllerMovement.cs" />
+     <Compile Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Scripts\CTI_Utils.cs" />
+     <Compile Include="Assets\0_Chapter\6-2\Script\HMDController.cs" />
+     <Compile Include="Assets\0_Chapter\5\Script\ComponyBirds.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
+     <Compile Include="Assets\Chapter\Ch6\script\HandAccelator.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
+     <Compile Include="Assets\Chapter\Menu\DontDestory.cs" />
+     <Compile Include="Assets\PC_IsMoving.cs" />
+     <Compile Include="Assets\0_Chapter\6\Script\Cat_Transform.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
+     <Compile Include="Assets\0_Chapter\1\RIVER\GetInput.cs" />
+     <Compile Include="Assets\Scripts\Keyin.cs" />
+     <Compile Include="Assets\Chapter\Ch6\script\Loading.cs" />
+     <Compile Include="Assets\0_Chapter\6-2\Script\CatCollision.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
+     <Compile Include="Assets\0_Chapter\Test\NewBehaviourScript.cs" />
+     <Compile Include="Assets\0_Chapter\6\Script\Mode_Switch.cs" />
+     <Compile Include="Assets\Chapter\Ch6\script\GetPoint.cs" />
+     <Compile Include="Assets\0_Chapter\InputID\RayInput.cs" />
+     <Compile Include="Assets\0_Chapter\5\Script\FlyLevel.cs" />
+     <Compile Include="Assets\PathCreator\Examples\Scripts\GeneratePathExample.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+>>>>>>> Stashed changes
      <Compile Include="Assets\Scripts\GoToMenu.cs" />
      <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs" />
      <Compile Include="Assets\Chapter\Ch6\Script_test\test2\FocusPoint.cs" />
      <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualTouchZone.cs" />
+<<<<<<< Updated upstream
+=======
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
+>>>>>>> Stashed changes
      <Compile Include="Assets\0_Chapter\6\Script\Animate_New.cs" />
      <Compile Include="Assets\Chapter\Ch5\Script\BirdFollowHeadSet.cs" />
      <Compile Include="Assets\VRKeyboard\Scripts\Keys\Key.cs" />
      <Compile Include="Assets\Scripts\GlobalSet.cs" />
+<<<<<<< Updated upstream
      <Compile Include="Assets\0_Chapter\Test\Test.cs" />
      <Compile Include="Assets\VRKeyboard\Scripts\Keys\Symbol.cs" />
      <Compile Include="Assets\0_Chapter\Test\RayCastHit.cs" />
+=======
+     <Compile Include="Assets\0_Chapter\6-2\Script\TreeRandom.cs" />
+     <Compile Include="Assets\0_Chapter\Test\Test.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
+     <Compile Include="Assets\VRKeyboard\Scripts\Keys\Symbol.cs" />
+     <Compile Include="Assets\0_Chapter\4\Script\FlowerRandomSpawn.cs" />
+     <Compile Include="Assets\0_Chapter\Test\RayCastHit.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+>>>>>>> Stashed changes
      <Compile Include="Assets\VRKeyboard\Scripts\Keys\Shift.cs" />
      <Compile Include="Assets\StarterAssets\ThirdPersonController\Scripts\BasicRigidBodyPush.cs" />
      <Compile Include="Assets\PathCreator\Examples\Scripts\PathPlacer.cs" />
@@ -136,15 +239,24 @@
      <Compile Include="Assets\Chapter\Ch6\script\Chicken.cs" />
      <Compile Include="Assets\0_Chapter\5-1\ThirdPersonController2.cs" />
      <Compile Include="Assets\0_Chapter\6\Script\VR_Controller_Velocity.cs" />
+<<<<<<< Updated upstream
      <Compile Include="Assets\Chapter\Menu\Goto.cs" />
      <Compile Include="Assets\0_Chapter\Test\Test2.cs" />
      <Compile Include="Assets\0_Chapter\6\Script\Car_Collision.cs" />
+=======
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
+     <Compile Include="Assets\Chapter\Menu\Goto.cs" />
+     <Compile Include="Assets\0_Chapter\Test\Test2.cs" />
+     <Compile Include="Assets\0_Chapter\6\Script\Car_Collision.cs" />
+     <Compile Include="Assets\0_Chapter\6-2\Script\HMDEvents.cs" />
+>>>>>>> Stashed changes
      <Compile Include="Assets\0_Chapter\Test\back.cs" />
      <Compile Include="Assets\Chapter\Ch6\script\Ai.cs" />
      <Compile Include="Assets\Chapter\Ch6\Script_test\ObjMoveByAxis.cs" />
      <Compile Include="Assets\Chapter\Ch6\script\ch6_1st.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
      <Compile Include="Assets\0_Chapter\5-1\birds.cs" />
+<<<<<<< Updated upstream
      <Compile Include="Assets\Chapter\Ch6\Script_test\ButtonASAxisValue.cs" />
      <Compile Include="Assets\Scripts\LoadScene.cs" />
      <Compile Include="Assets\Ahmad Gamal\Smart FPS Counter\Scripts\FPSCounter.cs" />
@@ -153,10 +265,30 @@
      <Compile Include="Assets\Scripts\WebPhp.cs" />
      <Compile Include="Assets\Chapter\Ch5\Fur\Scripts\MoveAndRotateObject.cs" />
      <Compile Include="Assets\0_Chapter\5\Script\VR_StartFlying.cs" />
+=======
+     <Compile Include="Assets\0_Chapter\6-2\Script\Blink.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
+     <Compile Include="Assets\Chapter\Ch6\Script_test\ButtonASAxisValue.cs" />
+     <Compile Include="Assets\Scripts\LoadScene.cs" />
+     <Compile Include="Assets\Ahmad Gamal\Smart FPS Counter\Scripts\FPSCounter.cs" />
+     <Compile Include="Assets\0_Chapter\6-2\Script\CarCollision.cs" />
+     <Compile Include="Assets\0_Chapter\4\Script\FaceCamera.cs" />
+     <Compile Include="Assets\VRKeyboard\Scripts\Keys\Number.cs" />
+     <Compile Include="Assets\Scripts\ScreenRecord.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
+     <Compile Include="Assets\Scripts\WebPhp.cs" />
+     <Compile Include="Assets\Chapter\Ch5\Fur\Scripts\MoveAndRotateObject.cs" />
+     <Compile Include="Assets\0_Chapter\5\Script\VR_StartFlying.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
+>>>>>>> Stashed changes
      <Compile Include="Assets\VRKeyboard\Scripts\Keys\Alphabet.cs" />
      <Compile Include="Assets\StarterAssets\ThirdPersonController\Scripts\ThirdPersonController.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_Translate.cs" />
      <Compile Include="Assets\Chapter\Ch6\Script_test\Controller_Post_Detector.cs" />
+<<<<<<< Updated upstream
+=======
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
+>>>>>>> Stashed changes
      <Compile Include="Assets\PathCreator\Examples\Scripts\PathSceneTool.cs" />
      <Compile Include="Assets\0_Chapter\5\Script\Flap.cs" />
      <Compile Include="Assets\0_Chapter\6\Script\Chicken_Move.cs" />
@@ -170,6 +302,7 @@
      <Compile Include="Assets\Chapter\Ch1+Ch2\Scenes_Object\IgniteCoders\Simple Water Shader\Resources\WaterReflection.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_New.cs" />
      <Compile Include="Assets\0_Chapter\6\Script\CharacterController_Collision.cs" />
+<<<<<<< Updated upstream
      <Compile Include="Assets\0_Chapter\5-1\Fish.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
      <Compile Include="Assets\0_Chapter\5-1\FishSpawn.cs" />
@@ -180,6 +313,26 @@
      <Compile Include="Assets\0_Chapter\6\Script\Car.cs" />
      <Compile Include="Assets\PathCreator\Examples\Scripts\RoadMeshCreator.cs" />
      <Compile Include="Assets\0_Chapter\1\Grassland\GameController.cs" />
+=======
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
+     <Compile Include="Assets\0_Chapter\6-2\Script\CatHealth.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
+     <Compile Include="Assets\0_Chapter\5-1\Fish.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
+     <Compile Include="Assets\0_Chapter\5-1\FishSpawn.cs" />
+     <Compile Include="Assets\VRKeyboard\Scripts\KeyboardManager.cs" />
+     <Compile Include="Assets\Chapter\Ch5\Script\FlyController.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
+     <Compile Include="Assets\Scripts\MouseControl.cs" />
+     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\CatAnimation.cs" />
+     <Compile Include="Assets\0_Chapter\6-2\Script\LoadingEvent.cs" />
+     <Compile Include="Assets\0_Chapter\6\Script\Car.cs" />
+     <Compile Include="Assets\PathCreator\Examples\Scripts\RoadMeshCreator.cs" />
+     <Compile Include="Assets\0_Chapter\1\Grassland\GameController.cs" />
+     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
+>>>>>>> Stashed changes
      <Compile Include="Assets\Chapter\Ch5\Script\PlayerFlip.cs" />
      <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Bark_Array_301.shader" />
      <None Include="Assets\CTI URP\CTI Runtime Components URP\Shaders\Includes\CTI URP Billboard GBuffer Pass.hlsl" />
@@ -194,8 +347,15 @@
      <None Include="Assets\BOXOPHOBIC\Skybox Cubemap Extended\Core\Shaders\Skybox Cubemap Extended.shader" />
      <None Include="Assets\CTI URP\CTI Runtime Components URP\Shaders\Includes\CTI URP Bark DepthNormal Pass.hlsl" />
      <None Include="Assets\Chapter\Ch5\Fur\Shaders\Fin\Unlit.shader" />
+<<<<<<< Updated upstream
      <None Include="Assets\CTI URP\CTI Runtime Components URP\Shaders\Includes\CTI URP Bark GBuffer Pass.hlsl" />
      <None Include="Assets\Chapter\Ch5\Fur\Shaders\Geometry\Lit.hlsl" />
+=======
+     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
+     <None Include="Assets\CTI URP\CTI Runtime Components URP\Shaders\Includes\CTI URP Bark GBuffer Pass.hlsl" />
+     <None Include="Assets\Chapter\Ch5\Fur\Shaders\Geometry\Lit.hlsl" />
+     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
+>>>>>>> Stashed changes
      <None Include="Assets\Chapter\Ch5\Fur\Shaders\Shell\Lit.hlsl" />
      <None Include="Assets\Ahmad Gamal\Smart FPS Counter\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <None Include="Assets\Conifers [BOTD]\Conifers [BOTD] URP Readme.txt" />
@@ -249,6 +409,10 @@
      <None Include="Assets\Chapter\Ch5\Fur\Shaders\Geometry\UnlitTessellation.hlsl" />
      <None Include="Assets\CTI URP\CTI Runtime Components URP\Shaders\Includes\CTI URP Meta.hlsl" />
      <None Include="Assets\CTI URP\CTI Runtime Components URP\Shaders\CTI URP Bark.shader" />
+<<<<<<< Updated upstream
+=======
+     <None Include="Assets\0_Chapter\6-2\font\常用字.txt" />
+>>>>>>> Stashed changes
      <None Include="Assets\Chapter\Ch5\Fur\Shaders\Shell\DepthNormals.hlsl" />
      <None Include="Assets\Chapter\Ch5\Fur\Shaders\Fin\LitTessellation.hlsl" />
      <None Include="Assets\CTI URP\CTI Runtime Components URP\Shaders\Includes\CTI URP Bark ForwardLit Pass.hlsl" />
@@ -275,6 +439,10 @@
      <None Include="Assets\Ahmad Gamal\Smart FPS Counter\TextMesh Pro\Shaders\TMP_Sprite.shader" />
      <None Include="Assets\Chapter\Ch5\Fur\Shaders\Fin\Param.hlsl" />
      <None Include="Assets\CTI URP\CTI Runtime Components URP\Shaders\Includes\CTI URP Leaves DepthNormal Pass VFACE.hlsl" />
+<<<<<<< Updated upstream
+=======
+     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
+>>>>>>> Stashed changes
      <None Include="Assets\Chapter\Ch5\Fur\Shaders\Shell\Shadow.hlsl" />
  <Reference Include="UnityEngine">
  <HintPath>E:/TOOL/Unity/Hub/Editor/2020.3.34f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
