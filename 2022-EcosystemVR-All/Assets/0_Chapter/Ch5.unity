@@ -483,7 +483,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146077431}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -76.06827, y: -1.849835, z: 578.7773}
+  m_LocalPosition: {x: -76.06827, y: -2.26, z: 342}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1353244918}
@@ -586,7 +586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8fdfbb2a4c384a64e9ae24f815c8420c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.749835
+      value: -1.54
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8fdfbb2a4c384a64e9ae24f815c8420c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15966,6 +15966,8 @@ GameObject:
   - component: {fileID: 570543837}
   - component: {fileID: 570543840}
   - component: {fileID: 570543838}
+  - component: {fileID: 570543839}
+  - component: {fileID: 570543841}
   m_Layer: 0
   m_Name: GlobalSet
   m_TagString: Untagged
@@ -15987,7 +15989,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntryTime: 0
   ExitTime: 0
-  ServerIP: www.ylw.idv.tw:81
   NetworkMode: 0
   Score: 
   SetMode: 1
@@ -16115,6 +16116,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 699e8a006e86b0445a1a72581fe257c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &570543839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570543830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f845f72e19b78647aaccd6b3a409425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnableOnVRMode: []
+  EnableOnPCMode: []
 --- !u!114 &570543840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16127,6 +16142,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce57b9c98795c34684860c42ecf0de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &570543841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570543830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f845f72e19b78647aaccd6b3a409425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnableOnVRMode: []
+  EnableOnPCMode: []
 --- !u!1 &580201288
 GameObject:
   m_ObjectHideFlags: 0
@@ -18436,7 +18465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 919132149081466528}
-  spawnChance: 0.99
+  spawnChance: 0.6
   targetVector: {x: 0, y: -1, z: -113.32}
   time: 0.03
 --- !u!4 &1046612792 stripped

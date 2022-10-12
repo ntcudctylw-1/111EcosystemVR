@@ -12,13 +12,15 @@ public class CatFirstPersonController : MonoBehaviour
     public float currentSpeed = 0f;
 
     VR_Gesture gesture;
+    PcWalking pcWalking;
     private void Start()
     {
         gesture = GetComponent<VR_Gesture>();
+        pcWalking = GetComponent<PcWalking>();
     }
     private void Update()
     {
-        if (gesture.Is_Walking)
+        if (gesture.Is_Walking || pcWalking.isWalking)
         {
             currentSpeed = moveSpeed;
         }
@@ -36,7 +38,7 @@ public class CatFirstPersonController : MonoBehaviour
         rotate.x = 0;
         rotate.z = 0;
 
-        character.Move(rotate * new Vector3(0, 0, currentSpeed));
+        character.Move(rotate * new Vector3(0, 0, currentSpeed) *Time.deltaTime);
     }
 
 

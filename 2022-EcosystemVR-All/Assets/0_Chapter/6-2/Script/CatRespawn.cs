@@ -9,7 +9,7 @@ public class CatRespawn : MonoBehaviour
 
     [SerializeReference]
     private static CharacterController player;
-
+    
     private void Start()
     {
         player = FindObjectOfType<CharacterController>();

@@ -16,6 +16,7 @@ TagManager:
   - mouse
   - grid
   - flower
+  - Trap
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Water
   - UI
   - Border
-  - 
+  - WorldUI
   - 
   - 
   - 

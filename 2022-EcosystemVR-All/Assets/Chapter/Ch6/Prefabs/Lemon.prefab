@@ -78,6 +78,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   controller: {fileID: 0}
+  catHealth: {fileID: 0}
+  mDEvents: {fileID: 0}
 --- !u!114 &7797623439815968444
 MonoBehaviour:
   m_ObjectHideFlags: 0
