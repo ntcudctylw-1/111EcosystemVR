@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayMode))]
+//[RequireComponent(typeof(PlayMode))]
 public class GlobalSet : MonoBehaviour
 {
 

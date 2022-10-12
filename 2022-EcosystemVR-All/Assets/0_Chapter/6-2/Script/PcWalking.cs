@@ -2,16 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PcWalking : MonoBehaviour
 {
+
     public bool isWalking;
+#if UNITY_STANDALONE_WIN
     public static XRIDefaultInputActions inputActions;
 
 
     private void Start()
     {
-        inputActions = new XRIDefaultInputActions();
-        inputActions.Enable();
+        if (Application.platform != RuntimePlatform.Android)
+            this.enabled = false;
+        else
+        {
+            inputActions = new XRIDefaultInputActions();
+            inputActions.Enable();
+        }
+        
     }
     void Update()
     {
@@ -68,4 +77,5 @@ public class PcWalking : MonoBehaviour
         if (lfAngle > 360f) lfAngle -= 360f;
         return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
+#endif
 }
