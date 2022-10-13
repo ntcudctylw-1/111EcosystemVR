@@ -10,6 +10,8 @@ using PathCreation.Examples;
 public class GameController : MonoBehaviour
 {
     public static int PositionCount = 0;
+    public static int DeadNum = 0;
+    public static int LiveNum = 0;
     public static Vector3 DeadPosition = new Vector3(248.360001f, 0.86f, 99.4599991f);
     public static int Score1 = 0;
     public static int Score2 = 0;
@@ -19,6 +21,8 @@ public class GameController : MonoBehaviour
     public GameObject PenguinFa;
     public Animation PenguinAnimation;
     public GameObject RightHandController;
+
+    public Text TargetText;
 
     public float[][][] DeadPositionArr = {new float[][] 
     {new float[] {240.122f,0.779999971f,91.742f}
@@ -48,6 +52,7 @@ public class GameController : MonoBehaviour
 
     public void OnCollisionEnter(Collision animal)
     {
+        TargetText = GameObject.Find("Target_Text").GetComponent<Text>();
         if (LevelController.ChNum == 0 || LevelController.ChNum == 1)
         {
             CollAnimal = animal.gameObject;
@@ -98,6 +103,7 @@ public class GameController : MonoBehaviour
                     Score1++;
                     CollAnimalAn.Play("idle", 0, 0f);
                     Invoke("AnimalFalse", 2.5f);
+                    LiveNum++;
                 }
                 else
                 {
@@ -109,6 +115,7 @@ public class GameController : MonoBehaviour
                     }
                     Invoke("PlayDeadAn", 2);
                     Invoke("AnimalFalse", 2.5f);
+                    DeadNum++;
                 }
             }
             else if (LevelController.finalgame == 2)
@@ -126,6 +133,7 @@ public class GameController : MonoBehaviour
                 }
             }
             PositionCount++;
+            TargetText.text = "剩餘動物：" + (5 - PositionCount);
         }
         else
         {

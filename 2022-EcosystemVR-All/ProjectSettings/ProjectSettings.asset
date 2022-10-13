@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: ntcu
-  productName: EcoVR_Test
+  companyName: ntcuone
+  productName: EcoVR_Testone
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -218,6 +218,9 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
+  - {fileID: 7834123046792930299, guid: 53299b4209a571c4793b2eed082c318d, type: 2}
+  - {fileID: 11400000, guid: 08158eed641476c46ac31f052f081b88, type: 2}
+  - {fileID: 5154799336738521907, guid: 3fece0aefa3fd5047b99eb6d8a8923a1, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -235,8 +238,8 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.ntcu.EcoVR_Test
-    Standalone: com.ntcu.EcoVR
+    Android: com.ntcuone.EcoVR_Testone
+    Standalone: com.ntcu.EcoVR-Test
   buildNumber:
     Standalone: 0
     iPhone: 0

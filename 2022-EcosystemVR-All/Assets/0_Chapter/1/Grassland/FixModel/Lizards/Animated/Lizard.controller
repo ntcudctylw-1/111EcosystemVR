@@ -11,7 +11,11 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 3808372446722416749}
+<<<<<<< Updated upstream
     m_Position: {x: 439.02075, y: 216.88428, z: 0}
+=======
+    m_Position: {x: 440, y: 220, z: 0}
+>>>>>>> Stashed changes
   - serializedVersion: 1
     m_State: {fileID: 5624764815908923105}
     m_Position: {x: 265.65277, y: 300.04453, z: 0}
