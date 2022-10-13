@@ -8,10 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using PathCreation.Examples;
 using Random=UnityEngine.Random;
 using Wave.OpenXR.Toolkit.Raycast;
-<<<<<<< Updated upstream
-=======
 using UnityEngine.Video;
->>>>>>> Stashed changes
 
 public class LevelController : MonoBehaviour
 {
@@ -19,8 +16,6 @@ public class LevelController : MonoBehaviour
     public GameObject SelectMenu1;
     public GameObject SelectMenu2;
 
-<<<<<<< Updated upstream
-=======
     public VideoPlayer LionVideo;
     public AudioSource ButtonSound;
     public GameObject AllAns;
@@ -30,7 +25,6 @@ public class LevelController : MonoBehaviour
 
     public GameObject CanvasCH1;
     public GameObject Canvas2;
->>>>>>> Stashed changes
     public GameObject Canvas1;
     public GameObject Plane;
 
@@ -219,25 +213,6 @@ public class LevelController : MonoBehaviour
     void Start()
     {
         ChNum = 6;
-<<<<<<< Updated upstream
-        
-        if (ChNum == 0 || ChNum == 1)
-        {
-            SelectMenu1.SetActive(true);
-            Canvas1.SetActive(true);
-            Plane.SetActive(true);
-        }
-        else if (ChNum > 1 && ChNum < 6)
-        {
-            SelectMenu2.SetActive(true);
-            Canvas1.SetActive(true);
-            Plane.SetActive(true);
-        }
-        else if (ChNum == 6)
-        {
-            Canvas1.SetActive(false);
-            Plane.SetActive(false);
-=======
         LionVideo.Play();
         if (ChNum == 0 || ChNum == 1)
         {
@@ -250,7 +225,6 @@ public class LevelController : MonoBehaviour
         else if (ChNum == 6)
         {
             CanvasCH1.SetActive(false);
->>>>>>> Stashed changes
             RightHandController.GetComponent<RaycastPointer>().enabled = true;
             CH3.SetActive(true);
         }
@@ -381,11 +355,6 @@ public class LevelController : MonoBehaviour
         else if (ChNum == 3)
         {
             TargetText.text = "";
-<<<<<<< Updated upstream
-            TipText.text = "";
-            InfoText.text = "";
-            AnswerText.text = "恭喜完成第二章節！";
-=======
             InfoText.text = "觀察完淺山的生態了，\n接下來觀察其他的生態系吧！";            
         }
         else if (ChNum == 4)
@@ -421,7 +390,6 @@ public class LevelController : MonoBehaviour
         {
             CanvasCH1.SetActive(true);
             InfoText.text = "死亡數：" + GameController.DeadNum;
->>>>>>> Stashed changes
         }
     }
 
@@ -1123,13 +1091,6 @@ public class LevelController : MonoBehaviour
         else
         {
             ShowCongraText();
-<<<<<<< Updated upstream
-            //StartCoroutine(web.php(GlobalSet.SID, "2", "35", WebPhp.php_method.Action));
-            //TargetText.text = "請選出適合在此環境中生存的動物";
-            //TipText.text = "用右手將動物抓起吧！";
-            //ShowEnterButtonCh2();
-=======
->>>>>>> Stashed changes
         }
     }
 
