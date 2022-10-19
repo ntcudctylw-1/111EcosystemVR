@@ -14,7 +14,7 @@ public class HMDController : MonoBehaviour
     
     public void close()
     {
-        FindObjectOfType<CatFirstPersonController>().enabled = true;
+        //FindObjectOfType<CatFirstPersonController>().enabled = true;
         stringid = 0;
         rightController.SetActive(false);
         displayTexts = new List<string>();

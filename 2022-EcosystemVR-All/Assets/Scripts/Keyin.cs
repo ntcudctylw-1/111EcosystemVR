@@ -21,7 +21,11 @@ public class Keyin : MonoBehaviour
     public void EnterID()
     {
         Debug.Log("123");
+
         GlobalSet.SID =GameObject.Find("input").GetComponent<Text>().text;
+        WebPhp webPhp = FindObjectOfType<WebPhp>();
+        StartCoroutine(webPhp.php(GlobalSet.SID, "", "", WebPhp.php_method.UserData));
         SceneManager.LoadScene(1);
+        
     }
 }

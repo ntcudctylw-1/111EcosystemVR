@@ -17,6 +17,7 @@ TagManager:
   - grid
   - flower
   - Trap
+  - grass
   layers:
   - Default
   - TransparentFX

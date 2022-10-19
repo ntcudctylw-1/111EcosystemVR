@@ -11,8 +11,10 @@ public class TestEvent : MonoBehaviour
     }
 
     public Text debugText;
+    public Image image;
     private void Update()
     {
-        debugText.text = Application.platform.ToString();
+        //debugText.text = FindObjectOfType<ScreenRecord>().WebUploading.ToString();
+
     }
 }

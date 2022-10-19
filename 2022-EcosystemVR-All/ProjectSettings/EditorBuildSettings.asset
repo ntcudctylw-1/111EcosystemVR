@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/0_Chapter/Ch4.unity
     guid: 3f368786f7ad9444aa6f07e2f6f17c4e
   - enabled: 1
-    path: Assets/0_Chapter/Ch5.unity
+    path: Assets/0_Chapter/Ch5-1.unity
     guid: dec3cb42d19eb0546a1cdb57d5d8091e
   - enabled: 1
     path: Assets/0_Chapter/Ch6.unity

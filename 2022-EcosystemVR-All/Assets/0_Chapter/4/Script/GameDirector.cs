@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,13 +14,14 @@ public class GameDirector : MonoBehaviour
     public GameObject startBut;
 
     public GameObject LeftCon, RightCon;
-    public FlowerRandomSpawn flowerSpawner;
+    public FlowerRandomSpawn1 flowerSpawner;
     public float flowerPersent;
+    public static int score;
 
     private void Start()
     {
         startBut.SetActive(true);
-        flowerSpawner.enabled = false;
+        //flowerSpawner.enabled = false;
         LeftCon.GetComponent<XRRayInteractor>().enabled = true;
         LeftCon.GetComponent<XRInteractorLineVisual>().enabled = true;
         RightCon.GetComponent<XRRayInteractor>().enabled = true;
@@ -31,7 +32,7 @@ public class GameDirector : MonoBehaviour
     {
         //startBut.SetActive(true);
         flowerSpawner.enabled = false;
-        persentage.text = "";
+        persentage.text = "分數：000";
         LeftCon.GetComponent<XRRayInteractor>().enabled = true;
         LeftCon.GetComponent<XRInteractorLineVisual>().enabled = true;
         RightCon.GetComponent<XRRayInteractor>().enabled = true;
@@ -42,7 +43,7 @@ public class GameDirector : MonoBehaviour
     {
         
         startBut.SetActive(false);
-        flowerSpawner.enabled = true;
+        flowerSpawner.ResetFlower();
         LeftCon.GetComponent<XRRayInteractor>().enabled = false;
         LeftCon.GetComponent<XRInteractorLineVisual>().enabled = false;
         RightCon.GetComponent<XRRayInteractor>().enabled = false;
@@ -63,7 +64,7 @@ public class GameDirector : MonoBehaviour
                 count += item.spawned.Count;
             }
 
-            persentage.text = string.Format("{0} %", (count / 25f * 100));
+            persentage.text = string.Format("分數：{0}", score);
             if (count == 25)
             {
                 break;

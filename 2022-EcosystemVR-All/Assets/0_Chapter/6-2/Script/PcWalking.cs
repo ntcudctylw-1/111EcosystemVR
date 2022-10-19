@@ -7,19 +7,18 @@ public class PcWalking : MonoBehaviour
 {
 
     public bool isWalking;
+    [Header("Cinemachine")]
+    [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
+    public GameObject CinemachineCameraTarget;
 #if UNITY_STANDALONE_WIN
     public static XRIDefaultInputActions inputActions;
 
 
     private void Start()
     {
-        if (Application.platform != RuntimePlatform.Android)
-            this.enabled = false;
-        else
-        {
-            inputActions = new XRIDefaultInputActions();
-            inputActions.Enable();
-        }
+        
+        inputActions = new XRIDefaultInputActions();
+        inputActions.Enable();
         
     }
     void Update()
@@ -44,9 +43,7 @@ public class PcWalking : MonoBehaviour
 
     [Tooltip("How far in degrees can you move the camera down")]
     public float BottomClamp = -30.0f;
-    [Header("Cinemachine")]
-    [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
-    public GameObject CinemachineCameraTarget;
+    
     [Tooltip("Additional degress to override the camera. Useful for fine tuning camera position when locked")]
     public float CameraAngleOverride = 0.0f;
 

@@ -39,6 +39,7 @@ public class ScreenRecord : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.enabled = false;
         port = "2121";
         path = "/home/www";
         url = "ftp://" + GlobalSet.ScrRecIP + ":" + port + path + "/screen/";
@@ -59,6 +60,7 @@ public class ScreenRecord : MonoBehaviour
     }
     IEnumerator CaptureScreen()
     {
+        Debug.Log("CaptureScreen ");
         yield return new WaitForEndOfFrame();
         screenshot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, true);
         //screenshot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
@@ -73,27 +75,30 @@ public class ScreenRecord : MonoBehaviour
             if (WebUploading)
             //if (!WebUploading)
             {
+                Debug.Log("Encoding");
                 bytes = ImageConversion.EncodeArrayToPNG(rawbytes, gf, sw, sh);
                 fileStream = new MemoryStream(bytes);
                 request = (FtpWebRequest)WebRequest.Create(url + sid + "/0.png");
+                Debug.Log(url + sid + "/0.png");
                 request.Method = WebRequestMethods.Ftp.UploadFile;
                 request.UseBinary = true;
                 request.UsePassive = true;
                 request.KeepAlive = false;
                 request.Timeout = 3000;
                 request.Credentials = new NetworkCredential("vreco", "~Vrdct3028");
-
+                Debug.Log("SetRequest");
                 requestStream = request.GetRequestStream();
                 fileStream.CopyTo(requestStream);
                 requestStream.Flush();
                 requestStream.Close();
-
+                Debug.Log("Close");
                 ser++;
                 if (ser >= MaxSerial)
                 {
                     ser = 0;
                 }
                 WebUploading = false;
+                Debug.Log("Finish");
             }
         }
     }
@@ -107,7 +112,9 @@ public class ScreenRecord : MonoBehaviour
     {
         if ((DateTime.Now - pt).TotalSeconds > RefreshPeroid || tstep != -1)
         {
+
             tstep++;
+            Debug.Log("Uploading " + tstep.ToString());
             switch (tstep)
             {
                 case 0:
@@ -126,6 +133,7 @@ public class ScreenRecord : MonoBehaviour
                     break;
                 case 3:
                     WebUploading = true;
+                    Debug.Log("WebUploading = true");
                     tstep = -1;
                     break;
             }
