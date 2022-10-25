@@ -18,6 +18,12 @@ public class VRControl : MonoBehaviour
         if (Application.platform != RuntimePlatform.Android) gameObject.SetActive(false);
         else
         {
+            print(GlobalSet.LID);
+            if (GlobalSet.LID != null && GlobalSet.LID != "")
+            {
+                WebPhp webPhp = FindObjectOfType<WebPhp>();
+                StartCoroutine(webPhp.php(GlobalSet.SID, GlobalSet.LID, "", WebPhp.php_method.LevelInf));
+            }
             GlobalSet.LID = "";
             if (GlobalSet.SID == null) GlobalSet.SID = "dct" + UnityEngine.Random.Range(1, 10);
             mes.text = "";

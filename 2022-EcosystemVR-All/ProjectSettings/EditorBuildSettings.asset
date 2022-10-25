@@ -24,10 +24,10 @@ EditorBuildSettings:
     path: Assets/0_Chapter/Ch4.unity
     guid: 3f368786f7ad9444aa6f07e2f6f17c4e
   - enabled: 1
-    path: Assets/0_Chapter/Ch5-1.unity
-    guid: dec3cb42d19eb0546a1cdb57d5d8091e
+    path: Assets/0_Chapter/Ch5-2.unity
+    guid: 06429fb61f427a4438d0b8a59a44437c
   - enabled: 1
-    path: Assets/0_Chapter/Ch6.unity
+    path: Assets/0_Chapter/Ch6-2.unity
     guid: 50436eef44ddecf4f88e3dc700d5eef8
   m_configObjects:
     com.htc.upm.wave.xrsdk.xrsettings: {fileID: 11400000, guid: 08158eed641476c46ac31f052f081b88, type: 2}

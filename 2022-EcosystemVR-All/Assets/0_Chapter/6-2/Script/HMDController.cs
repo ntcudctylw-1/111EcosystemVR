@@ -33,15 +33,16 @@ public class HMDController : MonoBehaviour
 
     public void UpdateState()
     {
+        stringid = 0;
         rightController.SetActive(true);
-
+        
         if (displayTexts.Count == 0) this.gameObject.SetActive(false);
         text.text = displayTexts[stringid];
     }
 
     private void Update()
     {
-
+        //sprint(stringid);
         text.text = displayTexts[stringid];
         bool go = displayTexts.Count - 1 == stringid;
         closeBut.SetActive(go);

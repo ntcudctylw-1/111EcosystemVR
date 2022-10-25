@@ -17,7 +17,7 @@ public class FlappingCheck : MonoBehaviour
     private void Update()
     {
         
-        if((assetsInputs.jump || _Gesture.Is_Flapping) && !isFlaping)
+        if((assetsInputs.jump || _Gesture.Is_Flapping ) && !isFlaping)
         {
             //print(assetsInputs.jump);
             isFlaping = true;

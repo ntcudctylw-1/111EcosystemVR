@@ -17,6 +17,7 @@ public class HMDEvents : MonoBehaviour
     }
     public HMDController controller;
     public List<HMDEvent> hMDEvents;
+    [SerializeField]
     WebPhp web;
 
     [Serializable]
@@ -26,8 +27,7 @@ public class HMDEvents : MonoBehaviour
     ShowEvent m_EventStart = new ShowEvent();
     [SerializeField]
     ShowEvent m_EventEnd = new ShowEvent();
-    protected HMDEvents()
-    { }
+    protected HMDEvents() { }
 
     public ShowEvent onShowStart
     {
@@ -43,14 +43,18 @@ public class HMDEvents : MonoBehaviour
 
     public void EventTriggered(int id)
     {
-        print("Event: " + id.ToString());
-        //FindObjectOfType<CatFirstPersonController>().enabled = false;
-        m_EventStart.Invoke();
-        controller.displayTexts = hMDEvents[id].contents;
-        controller.gameObject.SetActive(true);
-        controller.GetComponent<HMDController>().UpdateState();
-        if (hMDEvents[id].MID != 0)
-            StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, hMDEvents[id].MID.ToString(), WebPhp.php_method.Action));
+        if(GlobalSet.guideMode == GlobalSet.GuideMode.Self)
+        {
+            print("Event: " + id.ToString());
+            //FindObjectOfType<CatFirstPersonController>().enabled = false;
+            m_EventStart.Invoke();
+            controller.displayTexts = hMDEvents[id].contents;
+            controller.gameObject.SetActive(true);
+            controller.GetComponent<HMDController>().UpdateState();
+            if (hMDEvents[id].MID != 0)
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, hMDEvents[id].MID.ToString(), WebPhp.php_method.Action));
+        }
+        
     }
 
     private void Start()

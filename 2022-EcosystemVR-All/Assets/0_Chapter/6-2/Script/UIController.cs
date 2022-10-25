@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using UnityEngine.Events;
 
 public class UIController : MonoBehaviour
 {
@@ -11,6 +13,11 @@ public class UIController : MonoBehaviour
     public List<Image> hp;
     public Color ActivateTaskColor, DeactivateTaskColor;
 
+    [Serializable]
+    public class TaskFInishEvent : UnityEvent { }
+    protected UIController()
+    { }
+
     [System.Serializable]
     public class Task
     {
@@ -18,6 +25,13 @@ public class UIController : MonoBehaviour
         public Text textObj;
         public int totleTimes;
         public int currentTimes;
+        [SerializeField]
+        public TaskFInishEvent m_TaskFInishEvent = new TaskFInishEvent();
+        public TaskFInishEvent onFlap
+        {
+            get { return m_TaskFInishEvent; }
+            set { m_TaskFInishEvent = value; }
+        }
     }
 
 
@@ -34,7 +48,11 @@ public class UIController : MonoBehaviour
             else
                 tasks[i].textObj.color = DeactivateTaskColor;
             tasks[i].textObj.text = string.Format("{0}({1}/{2})", tasks[i].name, tasks[i].currentTimes, tasks[i].totleTimes);
-            if (i== currentTaskID &&tasks[i].currentTimes == tasks[i].totleTimes) currentTaskID++;
+            if (i == currentTaskID && tasks[i].currentTimes == tasks[i].totleTimes)
+            {
+                tasks[i].m_TaskFInishEvent.Invoke();
+                currentTaskID++;
+            }
 
         }
             

@@ -18,6 +18,8 @@ TagManager:
   - flower
   - Trap
   - grass
+  - VRGazeInteractable
+  - fltTarget
   layers:
   - Default
   - TransparentFX

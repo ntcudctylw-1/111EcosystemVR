@@ -10,6 +10,9 @@ public class M_Collision : MonoBehaviour
     public class CollisionEvent : UnityEvent { }
 
     [SerializeField]
+    private bool ForceInvoke;
+
+    [SerializeField]
     public CollisionEvent m_Event = new CollisionEvent();
     protected M_Collision()
     { }
@@ -26,6 +29,7 @@ public class M_Collision : MonoBehaviour
 
         if (collision.transform.tag == "Player")
         {
+            //Debug.Log(transform.name);
             m_Event.Invoke();
         }
     }
@@ -34,7 +38,17 @@ public class M_Collision : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
+            //Debug.Log(transform.name);
             m_Event.Invoke();
+        }
+    }
+
+    private void Update()
+    {
+        if (ForceInvoke)
+        {
+            m_Event.Invoke();
+            ForceInvoke = false;
         }
     }
 

@@ -899,6 +899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWalking: 0
+  CinemachineCameraTarget: {fileID: 72967527}
 --- !u!114 &158841075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6012,7 +6013,7 @@ MonoBehaviour:
   m_Camera: {fileID: 72967532}
   m_OriginBaseGameObject: {fileID: 1484717368}
   m_CameraFloorOffsetObject: {fileID: 824474214}
-  m_RequestedTrackingOriginMode: 0
+  m_RequestedTrackingOriginMode: 2
   m_CameraYOffset: 0.38
 --- !u!4 &1484717370
 Transform:

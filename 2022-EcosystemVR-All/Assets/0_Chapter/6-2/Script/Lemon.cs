@@ -21,7 +21,7 @@ public class Lemon : MonoBehaviour
     private void Start()
     {
 
-        if (Random.Range(0, 1f) < 0.7f)
+        if (Random.Range(0, 1f) > 0.7f)
             type = Type.poison;
         else
             type = Type.normal;
@@ -39,13 +39,14 @@ public class Lemon : MonoBehaviour
 
     public void lessSpeed()
     {
-        //print("Less Speed");
+        print("Less Speed");
         if(type == Type.poison) 
         {
             //controller.moveSpeed *= 0.5f;
             mDEvents.EventTriggered(2);
             catHealth.posioned();
         }
+        FindObjectOfType<UIController>().TaskTimesPlus(1);
         this.gameObject.SetActive(false);
         
     }

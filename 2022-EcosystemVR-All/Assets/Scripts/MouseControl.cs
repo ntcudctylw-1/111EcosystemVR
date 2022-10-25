@@ -30,6 +30,7 @@ public class MouseControl : MonoBehaviour
             }
             GlobalSet.LID = "";
             if (GlobalSet.SID == null) GlobalSet.SID = "dct" + UnityEngine.Random.Range(1, 10);
+            
             mes.text = "";
             sid.text = GlobalSet.SID;
             presstime = Time.realtimeSinceStartup;
