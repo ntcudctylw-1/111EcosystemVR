@@ -1322,6 +1322,98 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PCControll"",
+            ""id"": ""0f3aeed0-5cb7-4d03-9f79-11c2b3a29685"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""0b5efbc7-9c4b-4230-aa56-8d2ea8350e0c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""a13a2178-d806-475e-9abb-1b32dd1d6ee5"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""04bea246-fd48-41d8-b600-7bc88aecead1"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""75cc6194-0372-4f5f-92d5-d6b8e88f846a"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""3160ad2e-0cb4-4938-abc7-5f29458f9aa5"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""7fe32ad3-f1c0-4748-ac0d-5d1f6a2be041"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""c61f27c3-8b4d-49cd-ba4d-a7bdb8bc1935"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ea87e354-2d7d-4f3d-b9bc-fd668d137fd0"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": ""InvertVector2(invertX=false),ScaleVector2(x=0.05,y=0.05)"",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1449,6 +1541,10 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         m_XRIRightHandGesture = asset.FindActionMap("XRI RightHand Gesture", throwIfNotFound: true);
         m_XRIRightHandGesture_Finger3 = m_XRIRightHandGesture.FindAction("Finger 3", throwIfNotFound: true);
         m_XRIRightHandGesture_Finger2 = m_XRIRightHandGesture.FindAction("Finger 2", throwIfNotFound: true);
+        // PCControll
+        m_PCControll = asset.FindActionMap("PCControll", throwIfNotFound: true);
+        m_PCControll_Movement = m_PCControll.FindAction("Movement", throwIfNotFound: true);
+        m_PCControll_Look = m_PCControll.FindAction("Look", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -2097,6 +2193,47 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
         }
     }
     public XRIRightHandGestureActions @XRIRightHandGesture => new XRIRightHandGestureActions(this);
+
+    // PCControll
+    private readonly InputActionMap m_PCControll;
+    private IPCControllActions m_PCControllActionsCallbackInterface;
+    private readonly InputAction m_PCControll_Movement;
+    private readonly InputAction m_PCControll_Look;
+    public struct PCControllActions
+    {
+        private @XRIDefaultInputActions m_Wrapper;
+        public PCControllActions(@XRIDefaultInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_PCControll_Movement;
+        public InputAction @Look => m_Wrapper.m_PCControll_Look;
+        public InputActionMap Get() { return m_Wrapper.m_PCControll; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PCControllActions set) { return set.Get(); }
+        public void SetCallbacks(IPCControllActions instance)
+        {
+            if (m_Wrapper.m_PCControllActionsCallbackInterface != null)
+            {
+                @Movement.started -= m_Wrapper.m_PCControllActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_PCControllActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_PCControllActionsCallbackInterface.OnMovement;
+                @Look.started -= m_Wrapper.m_PCControllActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_PCControllActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_PCControllActionsCallbackInterface.OnLook;
+            }
+            m_Wrapper.m_PCControllActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Movement.started += instance.OnMovement;
+                @Movement.performed += instance.OnMovement;
+                @Movement.canceled += instance.OnMovement;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
+            }
+        }
+    }
+    public PCControllActions @PCControll => new PCControllActions(this);
     private int m_GenericXRControllerSchemeIndex = -1;
     public InputControlScheme GenericXRControllerScheme
     {
@@ -2196,5 +2333,10 @@ public partial class @XRIDefaultInputActions : IInputActionCollection2, IDisposa
     {
         void OnFinger3(InputAction.CallbackContext context);
         void OnFinger2(InputAction.CallbackContext context);
+    }
+    public interface IPCControllActions
+    {
+        void OnMovement(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
 }

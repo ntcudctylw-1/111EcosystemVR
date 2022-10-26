@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class aaa : MonoBehaviour
+public class DisableWhenPC : MonoBehaviour
 {
-    public GameObject aa;
+    public static bool IsVR = false;
+    public static bool IsPC = false;
+#if UNITY_STANDALONE_WIN
     // Start is called before the first frame update
     void Start()
     {
-        //aa.transform.
-        aa.transform.transform.localEulerAngles = new Vector3(0, 0, 90);
+        IsPC = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        this.gameObject.SetActive(false);
     }
+#endif
 }

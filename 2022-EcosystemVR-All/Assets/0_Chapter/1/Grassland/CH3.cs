@@ -12,6 +12,8 @@ using Random=UnityEngine.Random;
 
 public class CH3 : MonoBehaviour
 {
+    public WebPhp web;
+
     public GameObject Canvas;
     public AudioSource ButtonSound;
     public Text TargetText;
@@ -27,8 +29,10 @@ public class CH3 : MonoBehaviour
     
     public GameObject LizardHp;
     public GameObject SnakeHp;
+    public GameObject FrogHp;
     public Text LizardTem;
     public Text SnakeTem;
+    public Text FrogTem;
 
     public bool ButtonState;
     public int ButtonLevel = 0;
@@ -37,15 +41,29 @@ public class CH3 : MonoBehaviour
     public int DeadNum = 0;
     public int LiveNum = 0;
 
+    public GameObject HitObject;
+    public GameObject[] PCHoldAnimal;
+    public int HoldBool = 0;
+    public float PCx = 0f;
+    public bool Stop = false;
+
+    public GameObject LionDrip;
+    public GameObject CatDrip;
+    public GameObject BirdDrip;
+
+    public AudioSource[] Audio;
+
     List<int> Order = new List<int>();
-    
+
     public float[][][] PosArr = {new float[][] {
         new float[] {245.880005f,0.89200002f,92.3499985f},
+        new float[] {244.729996f,0.75f,89.9000015f},
         new float[] {245.899994f,0.89200002f,95.151001f},
         new float[] {243.529999f,0.89200002f,92.3499985f},
         new float[] {244.169998f,0.89200002f,94.4899979f},
         new float[] {244.119995f,0.89200002f,96.7300034f}}, new float[][] {
         new float[] {235.755661f,0.89200002f,92.0551605f},
+        new float[] {236.703003f,0.734000027f,90.362999f},
         new float[] {235.160004f,0.89200002f,94.207901f},
         new float[] {233.926727f,0.89200002f,96.078476f},
         new float[] {237.746124f,0.89200002f,93.3045959f},
@@ -54,11 +72,14 @@ public class CH3 : MonoBehaviour
 
     void Start()
     {
+        web = GetComponent<WebPhp>();
         RandomLevel();
     }
 
     void Update()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        HitObject = MouseController.hitObject;
         for (int i = 0; i < CanvasArr.Length; i++)
         {
             CanvasArr[i].transform.rotation = Camera.main.transform.rotation;    
@@ -68,13 +89,28 @@ public class CH3 : MonoBehaviour
             Down();
         }
         ButtonState = GlobalSet.RightHand.Grip.OnPressing;
+        if (Input.GetMouseButtonDown(0) && HoldBool == 1)
+        {
+            PCx = PCHoldAnimal[Order[CH3Level]].transform.position.x;
+            PCDown();
+        }
+        else if (Input.GetMouseButtonDown(0))
+        {
+            if (HitObject.name == ShowAnimal[Order[CH3Level]].name && Stop == true && HoldBool == 0)
+            {
+                Stop = false;
+                PCHoldAnimal[Order[CH3Level]].SetActive(true);
+                HitObject.SetActive(false);
+                HoldBool = 1;
+            }
+        }
     }
 
     public void RandomLevel()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 6; i++)
         {
-            int random = Random.Range(0, 5);
+            int random = Random.Range(0, 6);
             if (Order.Contains(random))
             {
                 i--;
@@ -86,7 +122,7 @@ public class CH3 : MonoBehaviour
             }
         }
         Order.ToArray();
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 6; i++)
         {
             Debug.Log(Order[i]);
         }
@@ -94,14 +130,16 @@ public class CH3 : MonoBehaviour
 
     public void Ch3Go()
     {
-        TargetText.text = "剩餘動物：" + (5 - CH3Level);
+        TargetText.text = "剩餘動物：" + (6 - CH3Level);
         ShowAnimal[Order[CH3Level]].GetComponent<PathFollower>().enabled = true;
         AnArr[Order[CH3Level]].Play("move");
+        Audio[Order[CH3Level]].Play();
         Invoke("AnStop", 3f);
     }
 
     public void AnStop()
     {
+        Stop = true;
         AnArr[Order[CH3Level]].Play("idle");
         ShowAnimal[Order[CH3Level]].GetComponent<PathFollower>().enabled = false;
     }
@@ -110,6 +148,37 @@ public class CH3 : MonoBehaviour
     {
         ShowAnimal[Order[CH3Level]].SetActive(false);
         HoldAnimal[Order[CH3Level]].SetActive(true);
+    }
+
+    public void PCDown()
+    {
+        HoldBool = 2;
+        PCHoldAnimal[Order[CH3Level]].SetActive(false);
+        ShowAnimal[Order[CH3Level]].SetActive(true);
+        if (PCx > 238.8763f)
+        {
+            float PositionX = PosArr[0][CH3Level][0];
+            float PositionY = PosArr[0][CH3Level][1];
+            float PositionZ = PosArr[0][CH3Level][2];
+            ShowAnimal[Order[CH3Level]].transform.position = new Vector3(PositionX, PositionY, PositionZ);
+            LiveNum++;
+            if (ShowAnimal[Order[CH3Level]].name == "Lizard" || ShowAnimal[Order[CH3Level]].name == "Snake" || ShowAnimal[Order[CH3Level]].name == "Frog")
+            {
+                Invoke("Tem1",2);
+                Invoke("Tem2",4);
+                Invoke("Tem3",6);
+            }
+        }
+        else
+        {
+            float PositionX = PosArr[1][CH3Level][0];
+            float PositionY = PosArr[1][CH3Level][1];
+            float PositionZ = PosArr[1][CH3Level][2];
+            ShowAnimal[Order[CH3Level]].transform.position = new Vector3(PositionX, PositionY, PositionZ);
+            Dead();
+        }
+        ShowAnimal[Order[CH3Level]].GetComponent<XRSimpleInteractable>().enabled = false;
+        Invoke("NextRound", 6);
     }
 
     public void Down()
@@ -125,9 +194,9 @@ public class CH3 : MonoBehaviour
             LiveNum++;
             if (ShowAnimal[Order[CH3Level]].name == "Lizard" || ShowAnimal[Order[CH3Level]].name == "Snake")
             {
-                Invoke("Tem1",1);
-                Invoke("Tem2",2);
-                Invoke("Tem3",3);
+                Invoke("Tem1",2);
+                Invoke("Tem2",4);
+                Invoke("Tem3",6);
             }
         }
         else
@@ -139,26 +208,29 @@ public class CH3 : MonoBehaviour
             Dead();
         }
         ShowAnimal[Order[CH3Level]].GetComponent<XRSimpleInteractable>().enabled = false;
-        Invoke("NextRound", 3);
+        Invoke("NextRound", 6);
     }
 
     public void NextRound()
     {
         DeadLiveText.text = "存活：" + LiveNum + " " + "死亡：" + DeadNum;
-        if (CH3Level != 4)
+        if (CH3Level != 5)
         {
+            HoldBool = 0;
             CH3Level++;
             Ch3Go();
         }
         else
         {
             TargetText.text = "剩餘動物：0";
-            Invoke("EndCH3", 5);
+            Invoke("EndCH3", 6);
         }
     }
 
     public void EndCH3()
     {
+        StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "38", WebPhp.php_method.Action));
+        StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "40", WebPhp.php_method.Action));
         Canvas.SetActive(true);
         TargetText.text = "";
         ButtonText.text = "回到主畫面";
@@ -168,15 +240,16 @@ public class CH3 : MonoBehaviour
 
     public void Dead()
     {
-        if (ShowAnimal[Order[CH3Level]].name == "Lizard" || ShowAnimal[Order[CH3Level]].name == "Snake")
+        if (ShowAnimal[Order[CH3Level]].name == "Lizard" || ShowAnimal[Order[CH3Level]].name == "Snake" || ShowAnimal[Order[CH3Level]].name == "Frog")
         {
             DeadNum++;
-            Invoke("Hp1",1);
-            Invoke("Hp2",2);
-            Invoke("Hp3",3);
+            Invoke("Hp1",2);
+            Invoke("Hp2",4);
+            Invoke("Hp3",6);
         }
         else
         {
+            Invoke("Drip", 4);
             LiveNum++;
         }
     }
@@ -193,6 +266,11 @@ public class CH3 : MonoBehaviour
             SnakeHp.transform.localPosition = new Vector3(-0.25f, 0, 0);
             SnakeTem.text = "50℃";
         }
+        else if (ShowAnimal[Order[CH3Level]].name == "Frog")
+        {
+            FrogHp.transform.localPosition = new Vector3(-0.25f, 0, 0);
+            FrogTem.text = "48℃";
+        }
     }
     public void Hp2()
     {
@@ -205,6 +283,11 @@ public class CH3 : MonoBehaviour
         {
             SnakeHp.transform.localPosition = new Vector3(-0.45f, 0, 0);
             SnakeTem.text = "52℃";
+        }
+        else if (ShowAnimal[Order[CH3Level]].name == "Frog")
+        {
+            FrogHp.transform.localPosition = new Vector3(-0.45f, 0, 0);
+            FrogTem.text = "52℃";
         }
     }
     public void Hp3()
@@ -219,6 +302,11 @@ public class CH3 : MonoBehaviour
             SnakeHp.transform.localPosition = new Vector3(-0.72f, 0, 0);
             SnakeTem.text = "56℃";
         }
+        else if (ShowAnimal[Order[CH3Level]].name == "Frog")
+        {
+            FrogHp.transform.localPosition = new Vector3(-0.72f, 0, 0);
+            FrogTem.text = "54℃";
+        }
         AnArr[Order[CH3Level]].Play("dead");
     }
 
@@ -232,6 +320,10 @@ public class CH3 : MonoBehaviour
         {
             SnakeTem.text = "43℃";
         }
+        else if (ShowAnimal[Order[CH3Level]].name == "Frog")
+        {
+            FrogTem.text = "42℃";
+        }
     }
     public void Tem2()
     {
@@ -242,6 +334,10 @@ public class CH3 : MonoBehaviour
         else if (ShowAnimal[Order[CH3Level]].name == "Snake")
         {
             SnakeTem.text = "41℃";
+        }
+        else if (ShowAnimal[Order[CH3Level]].name == "Frog")
+        {
+            FrogTem.text = "40℃";
         }
     }
     public void Tem3()
@@ -254,6 +350,26 @@ public class CH3 : MonoBehaviour
         {
             SnakeTem.text = "39℃";
         }
+        else if (ShowAnimal[Order[CH3Level]].name == "Frog")
+        {
+            FrogTem.text = "38℃";
+        }
+    }
+
+    public void Drip()
+    {
+        if (ShowAnimal[Order[CH3Level]].name == "Lion3")
+        {
+            LionDrip.SetActive(true);            
+        }
+        else if (ShowAnimal[Order[CH3Level]].name == "Cat3")
+        {
+            CatDrip.SetActive(true);
+        }
+        else if (ShowAnimal[Order[CH3Level]].name == "Bird3")
+        {
+            BirdDrip.SetActive(true);
+        }
     }
 
     public void ButtonClick()
@@ -265,7 +381,15 @@ public class CH3 : MonoBehaviour
         }
         else if (ButtonLevel == 1)
         {
-            InfoText.text = "操作方式：\n用手把抓握和食指板機將動物抓起，\n將動物拖曳到區域後再次按下抓握將動物放下。";
+            if (DisableWhenPC.IsPC == true)
+            {
+                Debug.Log(DisableWhenPC.IsPC);
+                InfoText.text = "操作方式：\n用左鍵將動物抓起，\n將動物拖曳到區域後再次按下左鍵將動物放下。";
+            }
+            else
+            {
+                InfoText.text = "操作方式：\n用手把抓握和食指板機將動物抓起，\n將動物拖曳到區域後再次按下抓握將動物放下。";
+            }
             ButtonText.text = "開始";
         }
         else if (ButtonLevel == 2)

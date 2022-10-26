@@ -22,6 +22,11 @@ public class GameController : MonoBehaviour
     public Animation PenguinAnimation;
     public GameObject RightHandController;
 
+    public static bool DeadDone = true;
+    public bool IsGrab = false;
+    public GameObject[] GrabAnimal;
+    public GameObject HoldAnimal;
+    public bool[] Hold = {false, false, false, false, false};
     public Text TargetText;
 
     public float[][][] DeadPositionArr = {new float[][] 
@@ -52,6 +57,7 @@ public class GameController : MonoBehaviour
 
     public void OnCollisionEnter(Collision animal)
     {
+        Debug.Log(PositionCount);
         TargetText = GameObject.Find("Target_Text").GetComponent<Text>();
         if (LevelController.ChNum == 0 || LevelController.ChNum == 1)
         {
@@ -73,7 +79,7 @@ public class GameController : MonoBehaviour
             {
                 DeadPosition = new Vector3(248.360001f, 0.56f, 95.4599991f);
             }
-            if (animal.gameObject.name == "Penguin")
+            if (animal.gameObject.name == "Penguin2")
             {
                 PenguinFa = animal.transform.parent.gameObject;
                 //PenguinFa.GetComponent<BoxCollider>().enabled = false;
@@ -83,7 +89,7 @@ public class GameController : MonoBehaviour
                 PenguinFa.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
                 animal.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             }
-            else if (animal.gameObject.name == "Sealdog")
+            else if (animal.gameObject.name == "Sealdog2")
             {
                 animal.gameObject.transform.position = DeadPosition + new Vector3(0, 0.34f, 0);
                 animal.gameObject.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
@@ -98,7 +104,7 @@ public class GameController : MonoBehaviour
             CollAnimalAn.ResetTrigger("live");
             if (LevelController.finalgame == 1)
             {
-                if (animal.gameObject.name == "Lion" || animal.gameObject.name == "Zebra")
+                if (animal.gameObject.name == "Lion2" || animal.gameObject.name == "Zebra2")
                 {
                     Score1++;
                     CollAnimalAn.Play("idle", 0, 0f);
@@ -107,7 +113,7 @@ public class GameController : MonoBehaviour
                 }
                 else
                 {
-                    if (animal.gameObject.name == "Penguin")
+                    if (animal.gameObject.name == "Penguin2")
                     {
                         PenguinAnimation = CollAnimal.GetComponent<Animation>();
                         animal.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
@@ -120,7 +126,7 @@ public class GameController : MonoBehaviour
             }
             else if (LevelController.finalgame == 2)
             {
-                if (animal.gameObject.name == "Penguin" || animal.gameObject.name == "Bear" || animal.gameObject.name == "Sealdog")
+                if (animal.gameObject.name == "Penguin2" || animal.gameObject.name == "Bear2" || animal.gameObject.name == "Sealdog2")
                 {
                     Score2++;
                     CollAnimalAn.Play("idle", 0, 0f);
@@ -128,90 +134,13 @@ public class GameController : MonoBehaviour
                 }
                 else
                 {
+                    DeadNum++;
                     Invoke("PlayDeadAn", 2);
                     Invoke("AnimalFalse", 2.5f);
                 }
             }
             PositionCount++;
             TargetText.text = "剩餘動物：" + (5 - PositionCount);
-        }
-        else
-        {
-            CollAnimal = animal.gameObject;
-            CollAnimalAn = animal.gameObject.GetComponent<Animator>();
-            float PositionX = DeadPositionArr[LevelController.Ch2GameLevel][PositionCount][0];
-            float PositionY = DeadPositionArr[LevelController.Ch2GameLevel][PositionCount][1];
-            float PositionZ = DeadPositionArr[LevelController.Ch2GameLevel][PositionCount][2];
-            DeadPosition = new Vector3(PositionX, PositionY, PositionZ);
-            animal.gameObject.transform.position = DeadPosition;
-            if (LevelController.Ch2GameLevel == 3)
-            {
-                animal.gameObject.transform.LookAt(new Vector3(PositionX-1,PositionY,PositionZ));
-            }
-            else
-            {
-                animal.gameObject.transform.LookAt(new Vector3(PositionX,PositionY,PositionZ+1));
-            }
-            animal.gameObject.GetComponent<XRGrabInteractable>().enabled = false;
-            RightHandController.GetComponent<XRRayInteractor>().enabled = false;
-            if (LevelController.Ch2GameLevel == 0)
-            {
-                if (animal.gameObject.name == "Oncorhynchus")
-                {
-                    Ch2GameScore++;
-                    Debug.Log(Ch2GameScore);
-                    CollAnimalAn.Play("idle");
-                    Invoke("AnimalFalse", 2.5f);
-                }
-                else
-                {
-                    Invoke("PlayDeadAn", 2);
-                    Invoke("AnimalFalse", 2.5f);
-                }
-            }
-            else if (LevelController.Ch2GameLevel == 1)
-            {
-                if (animal.gameObject.name == "Cat")
-                {
-                    Ch2GameScore++;
-                    CollAnimalAn.Play("idle");
-                    Invoke("AnimalFalse", 2.5f);
-                }
-                else
-                {
-                    Invoke("PlayDeadAn", 2);
-                    Invoke("AnimalFalse", 2.5f);
-                }
-            }
-            else if (LevelController.Ch2GameLevel == 2)
-            {
-                if (animal.gameObject.name == "Bird" || animal.gameObject.name == "Crab" || animal.gameObject.name == "Mudskipper")
-                {
-                    Ch2GameScore++;
-                    CollAnimalAn.Play("idle");
-                    Invoke("AnimalFalse", 2.5f);
-                }
-                else
-                {
-                    Invoke("PlayDeadAn", 2);
-                    Invoke("AnimalFalse", 2.5f);
-                }
-            }
-            else if (LevelController.Ch2GameLevel == 3)
-            {
-                if (animal.gameObject.name == "Fish")
-                {
-                    Ch2GameScore++;
-                    CollAnimalAn.Play("idle");
-                    Invoke("AnimalFalse", 2.5f);
-                }
-                else
-                {
-                    Invoke("PlayDeadAn", 2);
-                    Invoke("AnimalFalse", 2.5f);
-                }
-            }
-            PositionCount++;
         }
     }
 
@@ -222,18 +151,165 @@ public class GameController : MonoBehaviour
 
     public void PlayDeadAn()
     {
+        DeadDone = true;
         CollAnimalAn.Play("dead", 0, 0f);
     }
 
     public void PlayPenguinDeadAn()
     {
+        DeadDone = true;
         PenguinAnimation.Play("Dead");
     }
 
-    public static void Reset()
+    public void Reset()
     {
+        Debug.Log("00000000000");
+        for (int i = 0; i < 5; i++)
+        {
+            Hold[i] = false;
+        }
+        IsGrab = false;
         PositionCount = 0;
+        Debug.Log(PositionCount);
         Ch2GameScore = 0;
         DeadPosition = new Vector3(248.360001f, 0.86f, 99.4599991f);
+    }
+
+    public void PCDown(GameObject animal)
+    {
+        if (IsGrab == false)
+        {
+            if (animal.transform.name == "Zebra2" && Hold[0] == false && DeadDone == true)
+            {
+                animal.SetActive(false);
+                HoldAnimal = animal;
+                GrabAnimal[0].SetActive(true);
+                IsGrab = true;
+                Hold[0] = true;
+            }
+            else if (animal.transform.name == "Lion2" && Hold[1] == false && DeadDone == true)
+            {
+                animal.SetActive(false);
+                HoldAnimal = animal;
+                GrabAnimal[1].SetActive(true);
+                IsGrab = true;
+                Hold[1] = true;
+            }
+            else if (animal.transform.name == "Bear2" && Hold[2] == false && DeadDone == true)
+            {
+                animal.SetActive(false);
+                HoldAnimal = animal;
+                GrabAnimal[2].SetActive(true);
+                IsGrab = true;
+                Hold[2] = true;
+            }
+            else if (animal.transform.name == "Sealdog2" && Hold[3] == false && DeadDone == true)
+            {
+                animal.SetActive(false);
+                HoldAnimal = animal;
+                GrabAnimal[3].SetActive(true);
+                IsGrab = true;
+                Hold[3] = true;
+            }
+            else if (animal.transform.name == "Penguin2" && Hold[4] == false && DeadDone == true)
+            {
+                animal.SetActive(false);
+                HoldAnimal = animal;
+                GrabAnimal[4].SetActive(true);
+                IsGrab = true;
+                Hold[4] = true;
+            }
+        }
+        else if (IsGrab == true)
+        {
+            Debug.Log(PositionCount);
+            for (int i = 0; i < 5; i++)
+            {
+                GrabAnimal[i].SetActive(false);
+            }
+            IsGrab = false;
+            HoldAnimal.SetActive(true);
+            TargetText = GameObject.Find("Target_Text").GetComponent<Text>();
+            if (LevelController.ChNum == 0 || LevelController.ChNum == 1)
+            {
+                CollAnimal = HoldAnimal;
+                CollAnimalAn = HoldAnimal.GetComponent<Animator>();
+                if (PositionCount == 1)
+                {
+                    DeadPosition = new Vector3(248.360001f, 0.56f, 101.4599991f);
+                }
+                else if (PositionCount == 2)
+                {
+                    DeadPosition = new Vector3(248.360001f, 0.56f, 97.4599991f);
+                }
+                else if (PositionCount == 3)
+                {
+                    DeadPosition = new Vector3(248.360001f, 0.56f, 103.4599991f);
+                }
+                else if (PositionCount == 4)
+                {
+                    DeadPosition = new Vector3(248.360001f, 0.56f, 95.4599991f);
+                }
+                if (CollAnimal.name == "Penguin2")
+                {
+                    PenguinAnimation = CollAnimal.GetComponent<Animation>();
+                    PenguinAnimation.Play("idle");
+                    PenguinFa = CollAnimal.transform.parent.gameObject;
+                    PenguinFa.transform.position = DeadPosition;
+                    CollAnimal.transform.localPosition = new Vector3(0, 0, 0);
+                    PenguinFa.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+                    CollAnimal.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                }
+                else if (CollAnimal.name == "Sealdog2")
+                {
+                    CollAnimal.transform.position = DeadPosition + new Vector3(0, 0.34f, 0);
+                    CollAnimal.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+                }
+                else
+                {   
+                    CollAnimal.transform.position = DeadPosition;
+                    CollAnimal.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+                }
+                CollAnimal.GetComponent<XRGrabInteractable>().enabled = false;
+                CollAnimalAn.ResetTrigger("live");
+                if (LevelController.finalgame == 1)
+                {
+                    if (CollAnimal.name == "Lion2" || CollAnimal.name == "Zebra2")
+                    {
+                        Score1++;
+                        CollAnimalAn.Play("idle", 0, 0f);
+                        LiveNum++;
+                    }
+                    else
+                    {
+                        if (CollAnimal.name == "Penguin2")
+                        {
+                            PenguinAnimation = CollAnimal.GetComponent<Animation>();
+                            CollAnimal.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                            Invoke("PlayPenguinDeadAn", 2);
+                        }
+                        DeadDone = false;
+                        Invoke("PlayDeadAn", 2);
+                        DeadNum++;
+                    }
+                }
+                else if (LevelController.finalgame == 2)
+                {
+                    if (CollAnimal.name == "Penguin2" || CollAnimal.name == "Bear2" || CollAnimal.name == "Sealdog2")
+                    {
+                        Score2++;
+                        CollAnimalAn.Play("idle", 0, 0f);
+                    }
+                    else
+                    {
+                        DeadDone = false;
+                        DeadNum++;
+                        Invoke("PlayDeadAn", 2);
+                    }
+                }
+                PositionCount++;
+                TargetText.text = "剩餘動物：" + (5 - PositionCount);
+            }
+        }
     }
 }
