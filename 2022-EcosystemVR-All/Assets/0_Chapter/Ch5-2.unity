@@ -565,6 +565,7 @@ MonoBehaviour:
   speed_H_Max: 10
   acc_H: 0
   height_Jump: 4
+  height_Jump_PC: 8.38
   jump: 0
   grounded: 0
   enableHMove: 1
@@ -50961,6 +50962,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWalking: 0
   CinemachineCameraTarget: {fileID: 1943773618}
+  LockCameraPosition: 0
+  TopClamp: 70
+  BottomClamp: -30
+  CameraAngleOverride: 0
 --- !u!114 &1943773621
 MonoBehaviour:
   m_ObjectHideFlags: 0

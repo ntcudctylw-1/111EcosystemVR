@@ -12,6 +12,7 @@ public class CharacerControllerSystem : MonoBehaviour
     [SerializeReference] private float speed_H_Max;
     [SerializeReference] private float acc_H;
     [SerializeReference] private float height_Jump;
+    [SerializeReference] private float height_Jump_PC;
 
     [SerializeReference] private bool jump;
     [SerializeReference] private bool grounded;
@@ -22,6 +23,9 @@ public class CharacerControllerSystem : MonoBehaviour
     private void Start()
     {
         if (character == null) character = GetComponent<CharacterController>();
+#if UNITY_STANDALONE_WIN
+        height_Jump = height_Jump_PC;
+#endif
     }
 
     private void Update()

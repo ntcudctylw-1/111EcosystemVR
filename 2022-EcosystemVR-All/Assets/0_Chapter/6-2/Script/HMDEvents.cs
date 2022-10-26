@@ -45,16 +45,21 @@ public class HMDEvents : MonoBehaviour
     {
         if(GlobalSet.guideMode == GlobalSet.GuideMode.Self)
         {
-            print("Event: " + id.ToString());
-            //FindObjectOfType<CatFirstPersonController>().enabled = false;
-            m_EventStart.Invoke();
-            controller.displayTexts = hMDEvents[id].contents;
-            controller.gameObject.SetActive(true);
-            controller.GetComponent<HMDController>().UpdateState();
-            if (hMDEvents[id].MID != 0)
-                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, hMDEvents[id].MID.ToString(), WebPhp.php_method.Action));
+            if(hMDEvents[id].contents.Count != 0)
+            {
+                print("Event: " + id.ToString());
+                //FindObjectOfType<CatFirstPersonController>().enabled = false;
+                m_EventStart.Invoke();
+                controller.displayTexts = hMDEvents[id].contents;
+                controller.gameObject.SetActive(true);
+                controller.GetComponent<HMDController>().UpdateState();
+            }
+            
+           
         }
-        
+        if (hMDEvents[id].MID != 0)
+            StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, hMDEvents[id].MID.ToString(), WebPhp.php_method.Action));
+
     }
 
     private void Start()

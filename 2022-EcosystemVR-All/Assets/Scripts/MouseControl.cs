@@ -27,6 +27,7 @@ public class MouseControl : MonoBehaviour
             {
                 WebPhp webPhp = FindObjectOfType<WebPhp>();
                 StartCoroutine(webPhp.php(GlobalSet.SID, GlobalSet.LID, "", WebPhp.php_method.LevelInf));
+                print("update php");
             }
             GlobalSet.LID = "";
             if (GlobalSet.SID == null) GlobalSet.SID = "dct" + UnityEngine.Random.Range(1, 10);
