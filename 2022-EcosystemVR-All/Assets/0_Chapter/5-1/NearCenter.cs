@@ -10,7 +10,7 @@ public class NearCenter : MonoBehaviour
 {
     public GameObject diableWhenTouchCollider1;
     public GameObject diableWhenTouchCollider2;
-    int collision = 0;
+    public int collision = 0;
     public bool inTheRing;
 
     [Serializable]

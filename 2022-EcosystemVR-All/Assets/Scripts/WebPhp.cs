@@ -40,6 +40,14 @@ public class WebPhp : MonoBehaviour
         }
 
         string html = request.downloadHandler.text;
-        Debug.Log(html);
+
+        if (method == php_method.LevelInf)
+        {
+            Debug.Log("LID=" + html);
+            GlobalSet.LID = html;
+        }
+        //  Debug.Log(html);
     }
+
+
 }

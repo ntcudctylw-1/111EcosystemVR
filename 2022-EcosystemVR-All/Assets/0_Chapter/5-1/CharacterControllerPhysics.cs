@@ -5,6 +5,7 @@ using System;
 
 public class CharacterControllerPhysics : MonoBehaviour
 {
+    public bool locking = true;
     public bool grounded;
     public bool floating;
     public float gravity;
@@ -83,11 +84,23 @@ public class CharacterControllerPhysics : MonoBehaviour
     void move()
     {
         //controller.Move(transform.rotation * new Vector3(0.0f, _verticalVelocity, _horzionVelocity) * Time.deltaTime);
-        Quaternion rotate = cAmera.transform.rotation;
+        Quaternion rotate;
+        rotate = cAmera.transform.rotation;
+        
         rotate.x = 0;
         rotate.z = 0;
         //rotate.w = 0;
         //rotate.y = 0;
         controller.Move(( rotate* new Vector3(0.0f, 0, _horzionVelocity)+ new Vector3(0.0f, _verticalVelocity, 0)) * Time.deltaTime);
+        if (locking)
+        {
+
+        }
+
+
     }
+
+    public void SetLock(bool run) => locking = run;
+
+    public void setHorzionSpeed(float a) => _horzionVelocity = a;
 }

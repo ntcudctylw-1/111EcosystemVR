@@ -14,9 +14,18 @@ public class Lemon : MonoBehaviour
     public Type type;
     [SerializeField]
     private CatFirstPersonController controller;
+    [SerializeField]
+    private CatHealth catHealth;
+    [SerializeField]
+    private HMDEvents mDEvents;
     private void Start()
     {
-        type = (Type)Random.Range(0,2);
+
+        if (Random.Range(0, 1f) > 0.7f)
+            type = Type.poison;
+        else
+            type = Type.normal;
+        //print(type);
         /*
         if(type == Type.poison)
         {
@@ -24,11 +33,22 @@ public class Lemon : MonoBehaviour
 
         }*/
         controller = FindObjectOfType<CatFirstPersonController>();
+        catHealth = FindObjectOfType<CatHealth>();
+        mDEvents = FindObjectOfType<HMDEvents>();
     }
 
     public void lessSpeed()
     {
-        controller.moveSpeed = 0.03f;
+        print("Less Speed");
+        if(type == Type.poison) 
+        {
+            //controller.moveSpeed *= 0.5f;
+            mDEvents.EventTriggered(2);
+            catHealth.posioned();
+        }
+        FindObjectOfType<UIController>().TaskTimesPlus(1);
+        this.gameObject.SetActive(false);
+        
     }
 
 

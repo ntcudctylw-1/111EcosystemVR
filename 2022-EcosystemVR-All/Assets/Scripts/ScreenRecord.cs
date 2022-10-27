@@ -1,76 +1,141 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using System;
 using System.IO;
 using System.Net;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
+using UnityEngine.Experimental.Rendering;
 
 public class ScreenRecord : MonoBehaviour
 {
-    public string url="www.ylw.idv.tw";
-    public string sid="dct";
-    public float RefreshPeroid=2.0f; //sec
-    public int MaxSerial = 1; //¦øªA¾¹³Ì¦hÀx¦sªºµe­±¼Æ¶q
-    //public Text mes; //°£¿ù¥Î
+    string url, port, path;
+    string sid;
+    public float RefreshPeroid; //sec
+    public int MaxSerial = 1; //Â¦Ã¸ÂªAÂ¾Â¹Â³ÃŒÂ¦hÃ€xÂ¦sÂªÂºÂµeÂ­Â±Â¼Ã†Â¶q
+    public int Quality; //ÂºIÂ¹ÃÂ«~Â½Ã¨ 4Â¬OÂ³ÃŒÂ¦n 8Â¬OÂ³ÃŒÂ®t Â¥iÂ¿Ã¯Â¾Ãœ4 6 8
+    //public Text mes; //Â°Â£Â¿Ã¹Â¥ÃŽ
     int ser = 0;
-    float pt;
-    
-    Texture2D newScreenshot;
-    byte[] bytes;
+    DateTime pt;
 
-    float testt;
+    int tstep = -1;
+    Texture2D screenshot;
+    GraphicsFormat gf;
+    uint sw, sh;
+    byte[] bytes, rawbytes;
+    WWWForm form;
+    UnityWebRequest req;
+    private Thread encoderThread;
+    bool WebUploading = false;
+    Stream requestStream;
+    Stream fileStream;
+    FtpWebRequest request;
 
     // Start is called before the first frame update
     void Start()
     {
-        sid = sid + Random.Range(1, 10);
-        testt = Time.time;             
+        this.enabled = false;
+        port = "2121";
+        path = "/home/www";
+        url = "ftp://" + GlobalSet.ScrRecIP + ":" + port + path + "/screen/";
+
+        if (GlobalSet.SID == null) sid = "dct" + UnityEngine.Random.Range(1, 10); else sid = GlobalSet.SID;
+        request = (FtpWebRequest)WebRequest.Create(url + sid);
+        request.Method = WebRequestMethods.Ftp.MakeDirectory;
+        request.UseBinary = true;
+        request.UsePassive = true;
+        request.KeepAlive = false;
+        request.Credentials = new NetworkCredential("vreco", "~Vrdct3028");
+        try { WebResponse response = request.GetResponse(); } catch (WebException e1) { }
+
+        pt = DateTime.Now;
+        WebUploading = false;
+        encoderThread = new Thread(WebUpload);
+        encoderThread.Start();
     }
-        
-    IEnumerator WebUpload(int nser)
+    IEnumerator CaptureScreen()
     {
+        Debug.Log("CaptureScreen ");
         yield return new WaitForEndOfFrame();
-        Texture2D screenshot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, true);
-        screenshot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        screenshot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, true);
+        //screenshot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        screenshot = ScreenCapture.CaptureScreenshotAsTexture();
         screenshot.Apply();
+    }
 
-        Texture2D newScreenshot = ScaleTexture(screenshot, Screen.width / 2, Screen.height / 2);
+    private void WebUpload()
+    {
+        while (true)
+        {
+            if (WebUploading)
+            //if (!WebUploading)
+            {
+                Debug.Log("Encoding");
+                bytes = ImageConversion.EncodeArrayToPNG(rawbytes, gf, sw, sh);
+                fileStream = new MemoryStream(bytes);
+                request = (FtpWebRequest)WebRequest.Create(url + sid + "/0.png");
+                Debug.Log(url + sid + "/0.png");
+                request.Method = WebRequestMethods.Ftp.UploadFile;
+                request.UseBinary = true;
+                request.UsePassive = true;
+                request.KeepAlive = false;
+                request.Timeout = 3000;
+                request.Credentials = new NetworkCredential("vreco", "~Vrdct3028");
+                Debug.Log("SetRequest");
+                requestStream = request.GetRequestStream();
+                fileStream.CopyTo(requestStream);
+                requestStream.Flush();
+                requestStream.Close();
+                Debug.Log("Close");
+                ser++;
+                if (ser >= MaxSerial)
+                {
+                    ser = 0;
+                }
+                WebUploading = false;
+                Debug.Log("Finish");
+            }
+        }
+    }
 
-        // byte[] bytes = newScreenshot.EncodeToJPG();     
-        byte[] bytes = ImageConversion.EncodeArrayToPNG(newScreenshot.GetRawTextureData(), newScreenshot.graphicsFormat, (uint)newScreenshot.width, (uint)newScreenshot.height);     
-        WWWForm form = new WWWForm();
-        form.AddField("SID",sid);
-        form.AddField("SNUM", nser);
-        form.AddBinaryData("files", bytes, nser+".png", "image/png");
-
-        UnityWebRequest req = UnityWebRequest.Post("https://"+url+"/vrmonitor/Uploader.php", form);
-        req.SetRequestHeader("Access-Control-Allow-Origin", "*");
-        yield return req.SendWebRequest();
-
-        Destroy(screenshot);
-        Destroy(newScreenshot);
-
-        if (req.result == UnityWebRequest.Result.ConnectionError)
-            Debug.Log(req.error);
-        else
-            Debug.Log(req.downloadHandler.text);
+    public bool AcceptAllCertificatePolicy(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+    {
+        return true;
     }
 
     void Update()
     {
-        if (Time.time - pt > RefreshPeroid)
+        if ((DateTime.Now - pt).TotalSeconds > RefreshPeroid || tstep != -1)
         {
-            pt = Time.time;
-            //StartCoroutine(Capture());
-            StartCoroutine(WebUpload(ser));
-            ser++;
-            if (ser >= MaxSerial) 
-            { 
-                ser = 0; 
-                //mes.text = sid.ToString()+"  "+(Time.time - testt).ToString();  //°£¿ù¥Î
-                testt = Time.time; 
+
+            tstep++;
+            Debug.Log("Uploading " + tstep.ToString());
+            switch (tstep)
+            {
+                case 0:
+                    pt = DateTime.Now;
+                    StartCoroutine(CaptureScreen());
+                    break;
+                case 1:
+                    screenshot = ScaleTexture(screenshot, Screen.width / Quality, Screen.height / Quality);
+                    break;
+                case 2:
+                    rawbytes = screenshot.GetRawTextureData();
+                    gf = screenshot.graphicsFormat;
+                    sw = (uint)screenshot.width;
+                    sh = (uint)screenshot.height;
+                    Destroy(screenshot);
+                    break;
+                case 3:
+                    WebUploading = true;
+                    Debug.Log("WebUploading = true");
+                    tstep = -1;
+                    break;
             }
         }
     }
@@ -96,7 +161,7 @@ public class ScreenRecord : MonoBehaviour
        string path = Application.temporaryCachePath + "/temp.png";
        bool isUploading = false;
 
-       UnityEngine.Debug.Log("¶}©l¡I¡I");
+       UnityEngine.Debug.Log("Â¶}Â©lÂ¡IÂ¡I");
 
        ThreadPool.QueueUserWorkItem((o) =>
        {
@@ -110,11 +175,11 @@ public class ScreenRecord : MonoBehaviour
 
        while (!isUploading)
        {
-           UnityEngine.Debug.Log("¤W¶Ç¤¤¡I¡I");
+           UnityEngine.Debug.Log("Â¤WÂ¶Ã‡Â¤Â¤Â¡IÂ¡I");
            yield return new WaitForSeconds(0.1f);
        }
 
-       UnityEngine.Debug.Log("µ²§ô¡I¡I");
+       UnityEngine.Debug.Log("ÂµÂ²Â§Ã´Â¡IÂ¡I");
    }
    IEnumerator UploadMultipleFiles()
    {

@@ -16,6 +16,10 @@ TagManager:
   - mouse
   - grid
   - flower
+  - Trap
+  - grass
+  - VRGazeInteractable
+  - fltTarget
   layers:
   - Default
   - TransparentFX
@@ -24,7 +28,7 @@ TagManager:
   - Water
   - UI
   - Border
-  - 
+  - WorldUI
   - 
   - 
   - 

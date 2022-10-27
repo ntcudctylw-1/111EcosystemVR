@@ -6,12 +6,13 @@ public class SickleCollision : MonoBehaviour
 {
     public GameObject hitObj;
     public string hitGridName;
-    public FlowerRandomSpawn randomSpawn;
+    public FlowerRandomSpawn1 randomSpawn;
     
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "grid")
         {
+            print(other.name);
             hitObj = other.gameObject;
             hitGridName = GridName(hitObj);
             randomSpawn.RemoveFlower(hitObj);

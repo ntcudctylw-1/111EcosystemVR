@@ -555,6 +555,9 @@ GameObject:
   - component: {fileID: 341597446}
   - component: {fileID: 341597445}
   - component: {fileID: 341597444}
+  - component: {fileID: 341597447}
+  - component: {fileID: 341597449}
+  - component: {fileID: 341597448}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -618,6 +621,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &341597447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341597443}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b989a0baa96374f82b14f36e614060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RefreshPeroid: 2
+  MaxSerial: 1
+  Quality: 4
+--- !u!114 &341597448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341597443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6af814deb5f894284a255b2441d07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EntryTime: 0
+  ExitTime: 0
+  NetworkMode: 0
+  Score: 
+  SetMode: 1
+--- !u!114 &341597449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341597443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 699e8a006e86b0445a1a72581fe257c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &420760170
 PrefabInstance:
   m_ObjectHideFlags: 0

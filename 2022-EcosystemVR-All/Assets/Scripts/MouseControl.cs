@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,21 +10,35 @@ public class MouseControl : MonoBehaviour
     public Camera uc;
     public Image Target;
     InputSet myInput;
-    float presstime,cooldown = 2.0f; //¤£­n³Q³sÂI³s¿ï¡A¶¡¹j2000ms
+    float presstime,cooldown = 2.0f; //Â¤Â£Â­nÂ³QÂ³sÃ‚IÂ³sÂ¿Ã¯Â¡AÂ¶Â¡Â¹j2000ms
     float MouseX, MouseY;
     int loadscene=-1;
-    public Text mes; //Åã¥Ü¤å¦r°T®§
-    public Text sid; //Åã¥Ü¾Ç¥Í¸ê°T
+    public Text mes; //Ã…Ã£Â¥ÃœÂ¤Ã¥Â¦rÂ°TÂ®Â§
+    public Text sid; //Ã…Ã£Â¥ÃœÂ¾Ã‡Â¥ÃÂ¸ÃªÂ°T
 
     // Start is called before the first frame update
     void Start()
     {
         if (Application.platform == RuntimePlatform.Android) gameObject.SetActive(false);
-        mes.text = "";
-        sid.text = GlobalSet.SID;
-        presstime = Time.realtimeSinceStartup;
-        myInput = new InputSet();
-        myInput.PCVR.Enable();        
+        else
+        {
+            print(GlobalSet.LID);
+            if (GlobalSet.LID != null && GlobalSet.LID != "")
+            {
+                WebPhp webPhp = FindObjectOfType<WebPhp>();
+                StartCoroutine(webPhp.php(GlobalSet.SID, GlobalSet.LID, "", WebPhp.php_method.LevelInf));
+                print("update php");
+            }
+            GlobalSet.LID = "";
+            if (GlobalSet.SID == null) GlobalSet.SID = "dct" + UnityEngine.Random.Range(1, 10);
+            
+            mes.text = "";
+            sid.text = GlobalSet.SID;
+            presstime = Time.realtimeSinceStartup;
+            myInput = new InputSet();
+            myInput.PCVR.Enable();
+        }
+        
     }
 
     // Update is called once per frame
@@ -59,28 +73,32 @@ public class MouseControl : MonoBehaviour
             string Feature = hit.collider.gameObject.name;
             if (Feature.Substring(0, 2) == "CH")
             {
-                if (Feature == "CH1") mes.text = "³æ¤¸1.¥Íª«¦h¼Ë©Ê";
-                else if (Feature == "CH2") mes.text = "³æ¤¸2.¥xÆWªº¦h¼Ë¤ÆÀô¹Ò";
-                else if (Feature == "CH3") mes.text = "³æ¤¸3.¥Íª«¥Í¦s¾AÀ³";
-                else if (Feature == "CH4") mes.text = "³æ¤¸4.¥~¨Ó¤J«IºØ¹ï¥xÆWªº¼vÅT";
-                else if (Feature == "CH5") mes.text = "³æ¤¸5.­Ô³¾¾E±p";
-                else if (Feature == "CH6") mes.text = "³æ¤¸6.²L¤s¥ÍºA»P¥Ûªê";
-                if (Mouse.current.leftButton.isPressed && Time.realtimeSinceStartup - presstime > cooldown) //¿ï¾Ü¥Ø¼Ğª«
+                if (Feature == "CH1") mes.text = "å–®å…ƒ1.ç”Ÿç‰©å¤šæ¨£æ€§";
+                else if (Feature == "CH2") mes.text = "å–®å…ƒ2.å°ç£çš„å¤šæ¨£åŒ–ç’°å¢ƒ";
+                else if (Feature == "CH3") mes.text = "å–®å…ƒ3.ç”Ÿç‰©ç”Ÿå­˜é©æ‡‰";
+                else if (Feature == "CH4") mes.text = "å–®å…ƒ4.å¤–ä¾†å…¥ä¾µç¨®å°å°ç£çš„å½±éŸ¿";
+                else if (Feature == "CH5") mes.text = "å–®å…ƒ5.å€™é³¥é·å¾™";
+                else if (Feature == "CH6") mes.text = "å–®å…ƒ6.æ·ºå±±ç”Ÿæ…‹èˆ‡çŸ³è™";
+                if (Mouse.current.leftButton.isPressed && Time.realtimeSinceStartup - presstime > cooldown) //Â¿Ã¯Â¾ÃœÂ¥Ã˜Â¼ÃÂªÂ«
                 {
                     presstime = Time.realtimeSinceStartup;                    
                     GameObject.Find("SelectEffect").GetComponent<AudioSource>().Play();
                     hit.collider.gameObject.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
-                    loadscene = int.Parse(Feature.Substring(2, 1))+1;                    
+                    loadscene = int.Parse(Feature.Substring(2, 1))+1;
+                    WebPhp webPhp = FindObjectOfType<WebPhp>();
+                    if (GlobalSet.LID == "")
+                        StartCoroutine(webPhp.php(GlobalSet.SID, "-1", (loadscene - 1).ToString(), WebPhp.php_method.LevelInf));
+
                 }
             }
-            else //¦³¥´¨ìª«Åé¡A¦ı¤£¬O¿ï¶µ
+            else //Â¦Â³Â¥Â´Â¨Ã¬ÂªÂ«Ã…Ã©Â¡AÂ¦Ã½Â¤Â£Â¬OÂ¿Ã¯Â¶Âµ
             {
                 Target.rectTransform.sizeDelta = new Vector2(80, 80);
                 mes.text = "";
             }
             
         }
-        else //¨S¥´¨ìª«Åé
+        else //Â¨SÂ¥Â´Â¨Ã¬ÂªÂ«Ã…Ã©
         {
             Target.rectTransform.sizeDelta = new Vector2(80, 80);
             mes.text = "";

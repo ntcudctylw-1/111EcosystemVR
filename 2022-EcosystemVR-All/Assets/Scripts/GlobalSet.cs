@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayMode))]
+//[RequireComponent(typeof(PlayMode))]
 public class GlobalSet : MonoBehaviour
 {
 
@@ -69,6 +69,14 @@ public class GlobalSet : MonoBehaviour
     public static PlayMode playMode;
     public PlayMode SetMode = PlayMode.VR;
 
+    public enum GuideMode
+    {
+        Self,
+        Guide
+    }
+
+    public static GuideMode guideMode;
+
     private void Update()
     {
         LeftHand.Position = inputActions.XRILeftHand.Position.ReadValue<Vector3>();
@@ -129,5 +137,5 @@ public class GlobalSet : MonoBehaviour
         inputActions.Dispose();
     }
 
-
+    public void SetGuideModeTo(int a) => guideMode = (GuideMode)a;
 }

@@ -14,7 +14,7 @@ public class HMDController : MonoBehaviour
     
     public void close()
     {
-        FindObjectOfType<CatFirstPersonController>().enabled = true;
+        //FindObjectOfType<CatFirstPersonController>().enabled = true;
         stringid = 0;
         rightController.SetActive(false);
         displayTexts = new List<string>();
@@ -33,15 +33,16 @@ public class HMDController : MonoBehaviour
 
     public void UpdateState()
     {
+        stringid = 0;
         rightController.SetActive(true);
-
+        
         if (displayTexts.Count == 0) this.gameObject.SetActive(false);
         text.text = displayTexts[stringid];
     }
 
     private void Update()
     {
-
+        //sprint(stringid);
         text.text = displayTexts[stringid];
         bool go = displayTexts.Count - 1 == stringid;
         closeBut.SetActive(go);

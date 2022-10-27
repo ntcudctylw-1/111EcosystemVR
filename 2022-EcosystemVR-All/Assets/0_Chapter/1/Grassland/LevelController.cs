@@ -7,12 +7,26 @@ using UnityEngine.EventSystems;
 using UnityEngine.XR.Interaction.Toolkit;
 using PathCreation.Examples;
 using Random=UnityEngine.Random;
+using Wave.OpenXR.Toolkit.Raycast;
+using UnityEngine.Video;
 
 public class LevelController : MonoBehaviour
 {
+    public int SetChNum;
     WebPhp web;
     public GameObject SelectMenu1;
     public GameObject SelectMenu2;
+
+    public AudioSource ButtonSound;
+    public GameObject AllAns;
+
+    public GameObject WSCH1Button;
+    public int WSBtnNum = 0;
+
+    public GameObject CanvasCH1;
+    public GameObject Canvas2;
+    public GameObject Canvas1;
+    public GameObject Plane;
 
     public GameObject Ch1_1;
     public GameObject Ch1_2;
@@ -35,80 +49,89 @@ public class LevelController : MonoBehaviour
     public GameObject TemRain;
     public Text TargetText;
     public Text AnswerText;
-    public Text TipText;
     public Text InfoText;
     public GameObject AnsButton1;
     public GameObject AnsButton2;
     public GameObject AnsButton3;
     public GameObject AnsButton4;
     public static int ChNum = 2;
+    
     public int QuestionCount = 0;
-
+    public string QuaternionRecord = "";
     public GameObject Note;
     bool ButtonAState = false;
     bool NoteOpen = false;
+
+    
+    public GameObject Lion1;
+    public GameObject Zebra1;
+    public GameObject Lion2;
+    public GameObject Zebra2;
+    public GameObject Bear1;
+    public GameObject Penguin1;
+    public GameObject PenguinFa1;
+    public GameObject Sealdog1;
+    public GameObject Bear2;
+    public GameObject Penguin2;
+    public GameObject PenguinFa2;
+    public GameObject Sealdog2;
+    public GameObject Oncorhynchus;
+    public GameObject Cat;
+    public GameObject Bird;
+    public GameObject Crab;
+    public GameObject Mudskipper;
+    public GameObject Fish;
+    public GameObject Siganus;
+    public GameObject Moorish;
+    public GameObject Angelfish;
+
+    public Animator LionAn1;
+    public Animator ZebraAn1;
+    public Animator LionAn2;
+    public Animator ZebraAn2;
+    public Animator BearAn1;
+    public Animator BearAn2;
+    public Animator SealdogAn1;
+    public Animator SealdogAn2;
+    public Animation PenguinAn1;
+    public Animation PenguinAn2;
+    public Animator OncorhynchusAn;
+    public Animator CatAn;
+    public Animator BirdAn;
+    public Animator CrabAn;
+    public Animator MudskipperAn;
+    public Animator FishAn;
+
+    public GameObject LionHairGameObject;
+    public GameObject LionTeethGameObject;
+    public GameObject ZebraLinesGameObject;
+    public GameObject ZebraFootGameObject;
+    public GameObject BearHairGameObject;
+    public GameObject SealdogSkinGameObject;
+    public GameObject PenguinFeatherGameObject;
+    public GameObject OncorhynchusLinesGameObject;
+    public GameObject CatFaceGameObject;
+    public GameObject CatLinesGameObject;
+    public GameObject BirdMouthGameObject;
+    public GameObject BirdFeatherGameObject;
+    public GameObject CrabTombGameObject;
+    public GameObject MudskipperSkinGameObject;
+    public GameObject FishColorGameObject;
 
     bool LionHair = false;
     bool LionTeeth = false;
     bool ZebraLines = false;
     bool ZebraFoot = false;
-    public GameObject Lion;
-    public GameObject Zebra;
-    public GameObject LionHairGameObject;
-    public GameObject LionTeethGameObject;
-    public GameObject ZebraLinesGameObject;
-    public GameObject ZebraFootGameObject;
-    public Animator LionAn;
-    public Animator ZebraAn;
-
-    public GameObject Bear;
-    public GameObject Penguin;
-    public GameObject PenguinFa;
-    public GameObject Sealdog;
-    public GameObject SealdogSkinGameObject;
-    public GameObject BearHairGameObject;
-    public GameObject PenguinFeatherGameObject;
-    public Animator BearAn;
-    public Animator SealdogAn;
-    public Animation PenguinAn;
-
-    public GameObject Oncorhynchus;
-    public GameObject OncorhynchusLinesGameObject;
-    public Animator OncorhynchusAn;
-    public GameObject Oncorhynchus1;
-    public Animator OncorhynchusAn1;
-
     bool CatFace = false;
     bool CatLines = false;
-    public GameObject Cat;
-    public GameObject CatFaceGameObject;
-    public GameObject CatLinesGameObject;
-    public Animator CatAn;
-    public GameObject Cat1;
-    public Animator CatAn1;
-
     bool BirdMouth = false;
     bool BirdFeather = false;
-    public GameObject Bird;
-    public GameObject BirdMouthGameObject;
-    public GameObject BirdFeatherGameObject;
-    public Animator BirdAn;
-    public GameObject Crab;
-    public GameObject CrabTombGameObject;
-    public Animator CrabAn;
-    public GameObject Mudskipper;
-    public GameObject MudskipperSkinGameObject;
-    public Animator MudskipperAn;
 
-    public GameObject Fish;
-    public GameObject FishColorGameObject;
-    public Animator FishAn;
-    public GameObject Siganus;
-    public GameObject Moorish;
-    public GameObject Angelfish;
-    public GameObject Fish1;
-    public Animator FishAn1;
-
+    public int ZebraNum = 0;
+    public int LionNum = 0;
+    public int CatNum = 0;
+    public int BirdNum = 0;
+    
     public static int finalgame = 1;
     public bool Ch1_1Complete = false;
     public bool Ch1_2Complete = false;
@@ -119,8 +142,6 @@ public class LevelController : MonoBehaviour
     public int Ch2Complete = 0;
     public GameObject EnterButton;
     public GameObject EnterButtonCh2;
-    public int[] Ch2GameScoreTarget = {1, 1, 3, 1};
-    public static int Ch2GameLevel = 0;
 
     public Text ThermometerText;
     public Text RainText;
@@ -130,49 +151,67 @@ public class LevelController : MonoBehaviour
 
     public bool Wait = false;
 
+    public GameObject CH3;
+
+    public GameObject[] NoteArr;
+    public int Page = 0;
+    public GameObject NextButton;
+    public GameObject LastButton;
+    public GameObject CompleteImage;
+
+    public VideoPlayer LionVideoPlayer;
+    public GameObject LionVideo;
+    public VideoPlayer ZebraVideoPlayer;
+    public GameObject ZebraVideo;
+
+    public AudioSource[] CH1Audio;
+    public AudioSource[] CH2Audio;
+
+    public bool SLearn = false;
+
     public string[][] TemAndRainArr = {new string [] {"24℃", "300mm"}
     , new string[] {"-20℃", "150mm"}
-    , new string[] {"℃", "mm"}
-    , new string[] {"℃", "mm"}
-    , new string[] {"℃", "mm"}
-    , new string[] {"℃", "mm"}};
+    , new string[] {"12℃", "2200mm"}
+    , new string[] {"25℃", "2010mm"}
+    , new string[] {"23℃", "1300mm"}
+    , new string[] {"25℃", "2736mm"}};
 
     public string[][] QuestionArr = {
-    new string[] {"現在的環境感覺如何？" //0 草原
-    , "觀察看看附近的植物有甚麼特徵？"
-    , "你覺得斑馬有哪些特徵呢？"
-    , "你覺得獅子有哪些特徵呢？"
-    }, new string[] {"現在的環境感覺如何？" //1 極地
-    , "四周環境有什麼特別的地方嗎？"
-    , "北極熊有甚麼特徵呢？"
-    , "海豹有甚麼特徵呢？"
-    , "企鵝有甚麼特徵呢？"
-    }, new string[] {"現在的環境感覺如何？" //2 高山
-    , "移動你的視線，觀察看看環境有什麼特徵？"
-    , "仔細看一下櫻花鉤吻鮭的外型有什麼特徵？"
-    }, new string[] {"現在的環境感覺如何？" //3 淺山
-    , "移動你的視線，觀察看看環境有什麼特徵？"
-    , "你覺得石虎有哪些特徵呢？"
-    }, new string[] {"現在的環境感覺如何？" //4 濕地
-    , "移動你的視線，觀察看看環境有什麼特徵？"
-    , "你覺得黑面琵鷺有哪些特徵呢？"
-    , "你覺得招潮蟹有哪些特徵呢？"
-    , "你覺得彈塗魚有哪些特徵呢？"
-    }, new string[] {"現在的環境感覺如何？" //5 珊瑚礁
-    , "移動你的視線，觀察看看環境有什麼特徵？"
-    , "你覺得熱帶魚有哪些特徵呢？"
+    new string[] {"我們現在來到了草原生態系。\n看一看旁邊顯示的溫度計，\n你覺得現在的環境感覺如何？" //0 草原
+    , "四處看看草原生態系的景象，\n並觀察一下附近的植物有什麼特徵呢？"
+    , "你覺得斑馬有哪些特徵呢？\n移動手把或準星點選，把這些特徵找出來吧。"
+    , "很好，斑馬的特徵有牠身上黑白相間的條紋和牠的蹄。\n再來讓我們觀察旁邊的獅子，\n你覺得獅子有哪些特徵呢？\n移動手把或準星點選，把這些特徵找出來吧。"
+    }, new string[] {"我們現在來到了極地生態系。\n看一看旁邊顯示的溫度計，\n你覺得現在的環境感覺如何？" //1 極地
+    , "四處看看極地生態系的景象，\n你覺得四周的環境有什麼特別的地方嗎？"
+    , "觀察北極熊，你覺得北極熊\n有哪個部位可以幫助牠保暖呢？\n移動手把或準星點選該部位。"
+    , "北極熊身上厚重的毛皮能幫助牠保暖，\n讓牠可以在這麼寒冷的環境底下生存。\n再觀察一旁的海豹，\n你覺得海豹有哪個部位可以幫助牠保暖呢？\n移動手把或準星點選該部位。"
+    , "觀察企鵝，你覺得企鵝\n有哪個部位可以幫助牠保暖呢？\n移動手把或準星點選該部位。？"
+    }, new string[] {"我們現在來到了高山溪流生態系。\n觀察一下畫面上的溫度計和降雨量，\n你覺得現在的環境溫溼度如何？" //2 高山
+    , "移動你的視線，\n四處看看周圍的環境，\n觀察一下環境有什麼特徵呢？"
+    , "仔細看一下，\n櫻花鉤吻鮭的外型有什麼特徵呢？\n移動手把或準星點選，把這些特徵找出來吧。"
+    }, new string[] {"我們現在來到了淺山生態系。\n觀察一下畫面上的溫度計和降雨量，\n你覺得現在的環境溫溼度如何？" //3 淺山
+    , "移動你的視線，\n四處看看周圍的環境，\n觀察一下環境有什麼特徵呢？"
+    , "仔細看一下，\n你覺得石虎的外型有什麼特徵呢？\n移動手把或準星點選，把這些特徵找出來吧。"
+    }, new string[] {"我們現在來到了溼地生態系。\n觀察一下畫面上的溫度計和降雨量，\n你覺得現在的環境溫溼度如何？" //4 濕地
+    , "移動你的視線，\n四處看看周圍的環境，\n觀察一下環境有什麼特徵呢？"
+    , "仔細看一下，\n你覺得黑面琵鷺的外型有什麼特徵呢？\n移動手把或準星點選，把這些特徵找出來吧。"
+    , "仔細看一下，\n你覺得招潮蟹的外型有什麼特徵呢？\n移動手把或準星點選，把這些特徵找出來吧。"
+    , "仔細看一下，\n你覺得彈塗魚的外型有什麼特徵呢？\n移動手把或準星點選，把這些特徵找出來吧。"
+    }, new string[] {"我們現在來到了珊瑚礁生態系。\n觀察一下畫面上的溫度計和降雨量，\n你覺得現在的環境溫溼度如何？" //5 珊瑚礁
+    , "移動你的視線，\n四處看看周圍的環境，\n觀察一下環境有什麼特徵呢？"
+    , "仔細看一下，\n熱帶魚的外型有什麼特徵呢？\n移動手把或準星點選，把這些特徵找出來吧。"
     }};
 
     public string[][] AnswerArr = {new string[] 
-    {"乾燥", "樹很少", "", ""}
+    {"乾燥", "植被稀疏", "", ""}
     , new string[] {"寒冷","冰雪覆蓋","","",""}
-    , new string[] {"1", "1", ""}
-    , new string[] {"1", "1", ""}
-    , new string[] {"1", "1", "", "", ""}
-    , new string[] {"1", "1", ""}};
+    , new string[] {"氣溫稍低", "地形陡峭", ""}
+    , new string[] {"涼爽宜人", "樹林茂密", ""}
+    , new string[] {"溫暖潮濕", "佈滿沼澤", "", "", ""}
+    , new string[] {"溫暖", "海水清澈", ""}};
 
-    public string[][][] OptionArr = {new string[][] {new string[] {"乾燥", "潮濕", "熱"}//0
-    , new string[] {"樹很多", "樹很少", "地形崎嶇"}
+    public string[][][] OptionArr = {new string[][] {new string[] {"乾燥", "潮濕", "炎熱"}//0
+    , new string[] {"樹林茂密", "植被稀疏", "地形崎嶇"}
     , new string[] {""}
     , new string[] {""}
     }, new string[][] {new string[] {"炎熱", "舒爽", "寒冷"}//1
@@ -180,63 +219,68 @@ public class LevelController : MonoBehaviour
     , new string[] {""}
     , new string[] {""}
     , new string[] {""}
-    }, new string[][] {new string[] {"1","2","3"}//2
-    , new string[] {"1", "2", "3"}
-    }, new string[][] {new string[] {"1", "2", "3"}//3
-    , new string[] {"1", "2", "3"}
-    }, new string[][] {new string[] {"1", "2", "3"}//4
-    , new string[] {"1", "2", "3"}
-    }, new string[][] {new string[] {"1", "2", "3"}//5
-    , new string[] {"1", "2", "3"}
+    }, new string[][] {new string[] {"濕黏悶熱","氣溫稍低","溫暖潮濕"}//2
+    , new string[] {"沙漠地形", "地勢平坦", "地形陡峭"}
+    }, new string[][] {new string[] {"涼爽宜人", "炎熱乾燥", "寒冷乾燥"}//3
+    , new string[] {"植被稀疏", "冰雪覆蓋", "樹林茂密"}
+    }, new string[][] {new string[] {"溫暖潮濕", "寒冷乾燥", "炎熱潮濕"}//4
+    , new string[] {"沙漠地形", "佈滿沼澤", "土壤乾燥"}
+    }, new string[][] {new string[] {"炎熱", "寒冷", "溫暖"}//5
+    , new string[] {"河流堆積", "海水清澈", "水流湍急"}
     }};
 
     void Start()
     {
-        ChNum = 2;
-        /*Ch2Complete = 4;
-        Ch2Level();
-        Ch2Game();*/
-        
+        ChNum = SetChNum;
+        SLearn = true;
+
+        if (GlobalSet.guideMode == GlobalSet.GuideMode.Self)
+        {
+            
+        }
+
         if (ChNum == 0 || ChNum == 1)
         {
-            SelectMenu1.SetActive(true);
+            InfoText.text = "歡迎來到第一單元，這個單元\n要帶大家來認識草原及極地生態系中的環境特性、\n這些生態系中特有動物的生物特徵、\n以及不同動物的特徵對應生活環境的習性。\n點擊進入不同的生態系看看吧。";
         }
-        else if (ChNum == 2)
+        else if (ChNum > 1 && ChNum < 6)
         {
-            SelectMenu2.SetActive(true);
+            InfoText.text = "歡迎來到第二單元，這個單元\n要帶大家來認識台灣的多樣化生態系和環境特性，\n以及這些生態系的特有動物和牠們的特徵哦。\n點擊進入不同的生態系看看吧。";
+        }
+        else if (ChNum == 6)
+        {
+            CanvasCH1.SetActive(false);
+            RightHandController.GetComponent<RaycastPointer>().enabled = true;
+            CH3.SetActive(true);
         }
         web = GetComponent<WebPhp>();
-        PenguinAn = Penguin.GetComponent<Animation>();
-        /*PenguinFa.transform.position = new Vector3(242, -0.5f, 100);
-        PenguinFa.transform.LookAt(new Vector3(239.53f, -0.5f, 98.3f));*/
+        PenguinAn1 = Penguin1.GetComponent<Animation>();
+        NoteCH();
     }
 
     void Update()
     {
+        if (NoteOpen == false)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
         if (ZebraFoot == true && ZebraLines == true)
         {
             ZebraFoot = false;
             ZebraLines = false;
-            ZebraFootGameObject.SetActive(false);
-            ZebraLinesGameObject.SetActive(false);
-            LionHairGameObject.SetActive(true);
-            LionTeethGameObject.SetActive(true);
-            QuestionCount++;
-            TargetText.text = QuestionArr[ChNum][QuestionCount];
+            Invoke("ZebraVideoPlay", 2);
+            Invoke("CheckLion", 13);
         }
         if (LionHair == true && LionTeeth == true)
         {
             LionHair = false;
             LionTeeth = false;
-            LionHairGameObject.SetActive(false);
-            LionTeethGameObject.SetActive(false);
-            Ch1_1Complete = true;
-            if (Ch1_2Complete != true)
-            {
-                TargetText.text = "觀察完草原的生態了";
-                TipText.text = "接下來觀察極地的生態吧！";
-                Invoke("SelectIce", 2);
-            }
+            Invoke("LionVideoPlay", 2);
+            Invoke("LionVideoEnd", 17);
         }
         if (CatFace == true && CatLines == true)
         {
@@ -245,136 +289,214 @@ public class LevelController : MonoBehaviour
             Ch2_2Complete = true;
             SM2Button2.interactable = false;
             Ch2Complete++;
-            Ch2Level();
+            if (Ch2Complete != 4)
+            {
+                Invoke("CH2Done", 2);
+                Invoke("CheckOther", 4);                
+            }
+            else
+            {
+                Invoke("CH2End", 2);
+            }
         }
         if (BirdFeather == true && BirdMouth == true)
         {
             BirdFeather = false;
             BirdMouth = false;
-            Bird.SetActive(false);
-            CrabAndMudGo();
+            Invoke("CrabAndMudGo", 2.5f);
         }
         if (Ch1_1Complete == true && Ch1_2Complete == true)
         {
             Ch1_1Complete = false;
             Ch1_2Complete = false;
-            TargetText.text = "接下來我們來玩個小遊戲吧！";
-            TipText.text = "";
             Invoke("ShowEnterButton", 2);
         }
         if (GameController.Score1 == 2)
         {
-            TargetText.text = "按下確認進入下一階段";
-            TipText.text = "";
             GameController.Score1 = 100;
             Invoke("ShowEnterButton", 2);
         }
         if (GameController.Score2 == 3)
         {
-            TargetText.text = "";
-            TipText.text = "";
+            GameController.Score2 = 100;
             Invoke("ShowCongraText", 2);
         }
-        if (GameController.Ch2GameScore == Ch2GameScoreTarget[Ch2GameLevel])
+        if (ChNum != 6)
         {
-            if (Ch2GameLevel < 3)
+            if (GlobalSet.RightHand.ButtonA != ButtonAState && GlobalSet.RightHand.ButtonA == true)
             {
-                Ch2GameLevel++;
-                Invoke("ShowEnterButtonCh2", 2);
+                if (NoteOpen == false)
+                {
+                    Note.SetActive(true);
+                    NoteOpen = true;
+                }
+                else
+                {
+                    Note.SetActive(false);
+                    NoteOpen = false;
+                }
             }
-            else
+            ButtonAState = GlobalSet.RightHand.ButtonA;
+            if (Input.GetKeyDown(KeyCode.Tab))
             {
-                Invoke("ShowCongraText", 2);
+                if (NoteOpen == false)
+                {
+                    Note.SetActive(true);
+                    NoteOpen = true;
+                }
+                else
+                {
+                    Note.SetActive(false);
+                    NoteOpen = false;
+                }
             }
         }
-        if (GlobalSet.RightHand.ButtonA != ButtonAState && GlobalSet.RightHand.ButtonA == true)
+    }
+
+    public void CheckLion()
+    {
+        CH1Audio[1].Play();
+        ZebraVideo.SetActive(false);
+        LionHairGameObject.SetActive(true);
+        LionTeethGameObject.SetActive(true);
+        QuestionCount++;
+        if (SLearn == true)
         {
-            if (NoteOpen == false)
-            {
-                Note.SetActive(true);
-                NoteOpen = true;
-            }
-            else
-            {
-                Note.SetActive(false);
-                NoteOpen = false;
-            }
+            InfoText.text = QuestionArr[ChNum][QuestionCount];
         }
-        ButtonAState = GlobalSet.RightHand.ButtonA;
+        else
+        {
+            InfoText.text = "再來讓我們觀察旁邊的獅子，\n你覺得獅子有哪些特徵呢？\n移動手把或準星點選，把這些特徵找出來吧。";
+        }
+        TargetText.text = "獅子特徵：" + LionNum + " / 2";
+    }
+
+    public void CheckMud()
+    {
+        CanvasCH1.SetActive(true);
+        MudskipperSkinGameObject.SetActive(true);
+        QuestionCount++;
+        InfoText.text = QuestionArr[ChNum][QuestionCount];
+    }
+
+    public void CheckIce()
+    {
+        CanvasCH1.SetActive(true);
+        TargetText.text = "";
+        InfoText.text = "觀察完草原的生態了，\n接下來觀察極地的生態吧！";
+    }
+
+    public void CheckGrassland()
+    {
+        CanvasCH1.SetActive(true);
+        TargetText.text = "";
+        InfoText.text = "觀察完極地的生態了，\n接下來觀察草原的生態吧！";
+    }
+
+    public void CH2Done()
+    {
+        CanvasCH1.SetActive(true);
+        if (ChNum == 2)
+        {
+            InfoText.text = "觀察完高山溪流的生態了，\n接下來觀察其他的生態系吧！";            
+        }
+        else if (ChNum == 3)
+        {
+            TargetText.text = "";
+            InfoText.text = "觀察完淺山的生態了，\n接下來觀察其他的生態系吧！";            
+        }
+        else if (ChNum == 4)
+        {
+            InfoText.text = "觀察完濕地的生態了，\n接下來觀察其他的生態系吧！";            
+        }  
+        else if (ChNum == 5)
+        {
+            InfoText.text = "觀察完珊瑚礁的生態了，\n接下來觀察其他的生態系吧！";            
+        }
+    }
+
+    public void CheckOther()
+    {
+        TargetText.text = "";
+        Ch2_1.SetActive(false);
+        Ch2_2.SetActive(false);
+        Ch2_3.SetActive(false);
+        Ch2_4.SetActive(false);
+        CanvasCH1.SetActive(false);
+        SelectMenu2.SetActive(true);
+    }
+
+    public void CH2End()
+    {
+        CanvasCH1.SetActive(true);
+        WSCH1Button.SetActive(true);
+        InfoText.text = "恭喜你完成本單元！\n在這個單元裡，有沒有更加認識\n台灣的各種特殊生態系以及特有動物呢？\n動物為了適應環境並生存，\n會對應不同的生態系演化出不同的特徵與能力。\n想一想，你還知道哪些動物\n為了生存在台灣的特殊生態系，\n而擁有獨特的外觀特徵呢？";
     }
 
     public void ShowCongraText()
     {
         if (ChNum == 0 || ChNum == 1)
         {
-            AnswerText.text = "恭喜完成第一章節！";
-        }
-        else
-        {
-            AnswerText.text = "恭喜完成第二章節！";
+            CanvasCH1.SetActive(true);
+            InfoText.text = "死亡數：" + GameController.DeadNum;
         }
     }
 
     public void ShowEnterButton()
     {
-        InfoText.text = "";
-        EnterButton.SetActive(true);
-        EnterButton.GetComponentInChildren<Text>().text = "確認";
-    }
-
-    public void ShowEnterButtonCh2()
-    {
-        InfoText.text = "";
-        EnterButtonCh2.SetActive(true);
+        CanvasCH1.SetActive(true);
+        if (GameController.Score1 == 100)
+        {
+            TargetText.text = "";
+            CanvasCH1.SetActive(true);
+            WSCH1Button.GetComponentInChildren<Text>().text = "確認";
+            InfoText.text = "死亡數：" + GameController.DeadNum + "\n按下確認進入下一階段。";
+            GameController.LiveNum = 0;
+            GameController.DeadNum = 0;
+            WSCH1Button.SetActive(true);
+        }
+        else
+        {
+            InfoText.text = "觀察完了草原生態系和極地生態系的動物們後，\n接下來讓我們來玩個小遊戲吧！";
+            WSCH1Button.SetActive(true);
+        }
     }
 
     public void ShowFirstQuestion()
     {
-        TemRain.SetActive(true);
+        InfoText.text = QuestionArr[ChNum][0];
         QuestionCount = 0;
-        AnsButton1.SetActive(true);
-        AnsButton2.SetActive(true);
-        AnsButton3.SetActive(true);
+        AllAns.SetActive(true);
+        TemRain.SetActive(true);
         ThermometerText.text = TemAndRainArr[ChNum][0];
         RainText.text = TemAndRainArr[ChNum][1];
         if (ChNum == 0)
         {
-            StartCoroutine(web.php(GlobalSet.SID, "1", "3", WebPhp.php_method.Action));
+            StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "3", WebPhp.php_method.Action));
         }
         else if (ChNum == 1)
         {
-            StartCoroutine(web.php(GlobalSet.SID, "1", "9", WebPhp.php_method.Action));
+            StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "9", WebPhp.php_method.Action));
         }
         else if (ChNum == 2)
         {
-            StartCoroutine(web.php(GlobalSet.SID, "2", "19", WebPhp.php_method.Action));
+            StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "19", WebPhp.php_method.Action));
         }
         else if (ChNum == 3)
         {
-            StartCoroutine(web.php(GlobalSet.SID, "2", "22", WebPhp.php_method.Action));
+            StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "22", WebPhp.php_method.Action));
         }
         else if (ChNum == 4)
         {
-            StartCoroutine(web.php(GlobalSet.SID, "2", "27", WebPhp.php_method.Action));
+            StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "26", WebPhp.php_method.Action));
         }
         else if (ChNum == 5)
         {
-            StartCoroutine(web.php(GlobalSet.SID, "2", "32", WebPhp.php_method.Action));
+            StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "32", WebPhp.php_method.Action));
         }
-        TargetText.text = QuestionArr[ChNum][QuestionCount];
-        TipText.text = "觀察看看畫面上的溫度計及降雨量！";
         AnsButton1.GetComponentInChildren<Text>().text = OptionArr[ChNum][QuestionCount][0];
         AnsButton2.GetComponentInChildren<Text>().text = OptionArr[ChNum][QuestionCount][1];
         AnsButton3.GetComponentInChildren<Text>().text = OptionArr[ChNum][QuestionCount][2];
-        if (OptionArr[ChNum][QuestionCount].Length == 4)
-        {
-            AnsButton4.SetActive(true);
-            AnsButton4.GetComponentInChildren<Text>().text = OptionArr[ChNum][QuestionCount][3];
-        }
-        else
-        {
-            AnsButton4.SetActive(false);
-        }
     }
 
     public void ShowNextQuestion()
@@ -383,83 +505,53 @@ public class LevelController : MonoBehaviour
         AnsButton1.GetComponentInChildren<Text>().text = OptionArr[ChNum][QuestionCount][0];
         AnsButton2.GetComponentInChildren<Text>().text = OptionArr[ChNum][QuestionCount][1];
         AnsButton3.GetComponentInChildren<Text>().text = OptionArr[ChNum][QuestionCount][2];
-        if (OptionArr[ChNum][QuestionCount].Length == 4)
-        {
-            AnsButton4.SetActive(true);
-            AnsButton4.GetComponentInChildren<Text>().text = OptionArr[ChNum][QuestionCount][3];
-        }
-        else
-        {
-            AnsButton4.SetActive(false);
-        }
-        TargetText.text = QuestionArr[ChNum][QuestionCount];
+        InfoText.text = QuestionArr[ChNum][QuestionCount];
     }
 
     public void CheckAnswer()
     {
-        TipText.text = "";
+        ButtonSound.Play();
         if (EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text == AnswerArr[ChNum][QuestionCount])
         {
-            AnswerText.text = "";
             if (QuestionCount + 1 < QuestionArr[ChNum].Length)
             {
                 QuestionCount++;
-                if (QuestionArr[ChNum][QuestionCount] == "你覺得斑馬有哪些特徵呢？")
+                if (QuestionArr[ChNum][QuestionCount] == "你覺得斑馬有哪些特徵呢？\n移動手把或準星點選，把這些特徵找出來吧。")
                 {
-                    StartCoroutine(web.php(GlobalSet.SID, "1", "4", WebPhp.php_method.Action));
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "4", WebPhp.php_method.Action));
                     CheckAnimal();
-                    ZebraFootGameObject.SetActive(true);
-                    ZebraLinesGameObject.SetActive(true);
-                    AnsButton1.SetActive(false);
-                    AnsButton2.SetActive(false);
-                    AnsButton3.SetActive(false);
-                    AnsButton4.SetActive(false);
+                    AllAns.SetActive(false);
                 }
-                else if (QuestionArr[ChNum][QuestionCount] == "北極熊有甚麼特徵呢？")
+                else if (ChNum == 1 && QuestionCount == 2)
                 {
-                    StartCoroutine(web.php(GlobalSet.SID, "1", "10", WebPhp.php_method.Action));
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "10", WebPhp.php_method.Action));
                     CheckAnimal();
-                    BearHairGameObject.SetActive(true);
-                    AnsButton1.SetActive(false);
-                    AnsButton2.SetActive(false);
-                    AnsButton3.SetActive(false);
-                    AnsButton4.SetActive(false);
+                    
+                    AllAns.SetActive(false);
                 }
-                else if (QuestionArr[ChNum][QuestionCount] == "仔細看一下櫻花鉤吻鮭的外型有什麼特徵？")
+                else if (ChNum == 2 && QuestionCount == 2)
                 {
-                    StartCoroutine(web.php(GlobalSet.SID, "2", "20", WebPhp.php_method.Action));
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "20", WebPhp.php_method.Action));
                     CheckAnimal();
-                    AnsButton1.SetActive(false);
-                    AnsButton2.SetActive(false);
-                    AnsButton3.SetActive(false);
-                    AnsButton4.SetActive(false);
+                    AllAns.SetActive(false);
                 }
-                else if (QuestionArr[ChNum][QuestionCount] == "你覺得石虎有哪些特徵呢？")
+                else if (ChNum == 3 && QuestionCount == 2)
                 {
-                    StartCoroutine(web.php(GlobalSet.SID, "2", "23", WebPhp.php_method.Action));
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "23", WebPhp.php_method.Action));
                     CheckAnimal();
-                    AnsButton1.SetActive(false);
-                    AnsButton2.SetActive(false);
-                    AnsButton3.SetActive(false);
-                    AnsButton4.SetActive(false);
+                    AllAns.SetActive(false);
                 }
-                else if (QuestionArr[ChNum][QuestionCount] == "你覺得黑面琵鷺有哪些特徵呢？")
+                else if (ChNum == 4 && QuestionCount == 2)
                 {
-                    StartCoroutine(web.php(GlobalSet.SID, "2", "27", WebPhp.php_method.Action));
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "27", WebPhp.php_method.Action));
                     CheckAnimal();
-                    AnsButton1.SetActive(false);
-                    AnsButton2.SetActive(false);
-                    AnsButton3.SetActive(false);
-                    AnsButton4.SetActive(false);
+                    AllAns.SetActive(false);
                 }
-                else if (QuestionArr[ChNum][QuestionCount] == "你覺得熱帶魚有哪些特徵呢？")
+                else if (ChNum == 5 && QuestionCount == 2)
                 {
-                    StartCoroutine(web.php(GlobalSet.SID, "2", "33", WebPhp.php_method.Action));
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "33", WebPhp.php_method.Action));
                     CheckAnimal();
-                    AnsButton1.SetActive(false);
-                    AnsButton2.SetActive(false);
-                    AnsButton3.SetActive(false);
-                    AnsButton4.SetActive(false);
+                    AllAns.SetActive(false);
                 }
                 else
                 {
@@ -473,56 +565,75 @@ public class LevelController : MonoBehaviour
         }
         else
         {
-            AnswerText.text = "回答錯誤";
+            if (InfoText.text != "回答錯誤")
+            {
+                QuaternionRecord = InfoText.text;
+            }
+            InfoText.text = "回答錯誤";
             Invoke("EraseFeatureError", 2f);
         }
         Debug.Log(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text);
     }
 
+    public void LionAudio()
+    {
+        CH1Audio[1].Play();
+    }
+
+    public void SealdogAudio()
+    {
+        CH1Audio[3].Play();
+    }
+
     public void CheckAnimal()
     {
+        CanvasCH1.SetActive(false);
         if (ChNum == 0)
         {
-            LionAn.Play("run");
-            ZebraAn.Play("run");
-            Lion.GetComponent<PathFollower>().enabled = true;
-            Zebra.GetComponent<PathFollower>().enabled = true;
-            TargetText.text = "是斑馬和獅子出現了！";
+            CH1Audio[0].Play();
+            Invoke("LionAudio", 2);
+            LionAn1.Play("move");
+            ZebraAn1.Play("run");
+            Lion1.GetComponent<PathFollower>().enabled = true;
+            Zebra1.GetComponent<PathFollower>().enabled = true;
+            TargetText.text = "生活在草原上的斑馬和獅子出現了！\n讓我們來仔細觀察一下牠們有哪些特徵吧。";
         }
         else if (ChNum == 1)
         {
-            BearAn.Play("run");
-            SealdogAn.Play("run");
-            Bear.GetComponent<PathFollower>().enabled = true;
-            Sealdog.GetComponent<PathFollower>().enabled = true;
-            TargetText.text = "是海豹和北極熊出現了！";
+            CH1Audio[2].Play();
+            Invoke("SealdogAudio", 1.5f);
+            BearAn1.Play("run");
+            SealdogAn1.Play("run");
+            Bear1.GetComponent<PathFollower>().enabled = true;
+            Sealdog1.GetComponent<PathFollower>().enabled = true;
+            TargetText.text = "生活在極地裡的北極熊和海豹出現了！\n讓我們來仔細觀察一下牠們有哪些特徵吧。";
         }
         else if (ChNum == 2)
         {
-            Oncorhynchus1.GetComponent<PathFollower>().enabled = true;
-            TargetText.text = "是櫻花鉤吻鮭出現了！";
+            Oncorhynchus.GetComponent<PathFollower>().enabled = true;
+            TargetText.text = "生活在高山溪流生態系的櫻花鉤吻鮭出現了！\n讓我們來仔細觀察一下牠身上有哪些特徵吧。";
         }
         else if (ChNum == 3)
         {
-            CatAn1.Play("run");
-            Cat1.GetComponent<PathFollower>().enabled = true;
-            TargetText.text = "是石虎出現了！";
+            CatAn.Play("move");
+            Cat.GetComponent<PathFollower>().enabled = true;
+            TargetText.text = "生活在淺山生態系的石虎出現了！\n讓我們來仔細觀察一下牠身上有哪些特徵吧。";
         }
         else if (ChNum == 4)
         {
-            BirdAn.Play("fly");
+            CH2Audio[2].Play();
+            BirdAn.Play("move");
             Bird.GetComponent<PathFollower>().enabled = true;
-            TargetText.text = "是黑面琵鷺出現了！";
+            TargetText.text = "會在溼地生態系活動的黑面琵鷺出現了！\n讓我們來仔細觀察一下牠身上有哪些特徵吧。";
         }
         else if (ChNum == 5)
         {
-            Fish1.GetComponent<PathFollower>().enabled = true;
+            Fish.GetComponent<PathFollower>().enabled = true;
             Siganus.GetComponent<PathFollower>().enabled = true;
             Moorish.GetComponent<PathFollower>().enabled = true;
             Angelfish.GetComponent<PathFollower>().enabled = true;
-            TargetText.text = "是熱帶魚出現了！";
+            TargetText.text = "生活在珊瑚礁生態系的熱帶魚出現了！\n讓我們來仔細觀察一下牠身上有哪些特徵吧。";
         }
-        TipText.text = "拿出你的放大鏡觀察看看。";
         Invoke("AnStop", 6.5f);
     }
 
@@ -530,55 +641,72 @@ public class LevelController : MonoBehaviour
     {
         if (ChNum == 0)
         {
-            LionAn.Play("idle");
-            ZebraAn.Play("idle");
-            Lion.GetComponent<PathFollower>().enabled = false;
-            Zebra.GetComponent<PathFollower>().enabled = false;
-            Zebra.transform.LookAt(new Vector3(239.5f, 0.26f, 102f));
-            Lion.transform.LookAt(new Vector3(239.6f, 0.26f, 94f));
+            CH1Audio[0].Play();
+            LionAn1.Play("idle");
+            ZebraAn1.Play("idle");
+            Lion1.GetComponent<PathFollower>().enabled = false;
+            Zebra1.GetComponent<PathFollower>().enabled = false;
+            Zebra1.transform.LookAt(new Vector3(239.5f, 0.26f, 102f));
+            Lion1.transform.LookAt(new Vector3(239.6f, 0.26f, 94f));
+            ZebraFootGameObject.SetActive(true);
+            ZebraLinesGameObject.SetActive(true);
+            TargetText.text = "斑馬特徵：" + ZebraNum + " / 2";
         }
         else if (ChNum == 1)
         {
-            BearAn.Play("idle");
-            SealdogAn.Play("idle");
-            PenguinAn.Play("idle");
-            Bear.GetComponent<PathFollower>().enabled = false;
-            Sealdog.GetComponent<PathFollower>().enabled = false;
-            PenguinFa.GetComponent<PathFollower>().enabled = false;
-            Sealdog.transform.LookAt(new Vector3(239.5f, 0.26f, 102f));
-            Bear.transform.LookAt(new Vector3(239.6f, 0.26f, 94f));
-            PenguinFa.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+            if (Bear1.activeSelf)
+            {
+                CH1Audio[2].Play();
+            }
+            else
+            {
+                CH1Audio[4].Play();
+            }
+            TargetText.text = "";
+            BearAn1.Play("idle");
+            SealdogAn1.Play("idle");
+            PenguinAn1.Play("idle");
+            Bear1.GetComponent<PathFollower>().enabled = false;
+            Sealdog1.GetComponent<PathFollower>().enabled = false;
+            PenguinFa1.GetComponent<PathFollower>().enabled = false;
+            Sealdog1.transform.LookAt(new Vector3(239.5f, 0.26f, 102f));
+            Bear1.transform.LookAt(new Vector3(239.6f, 0.26f, 94f));
+            PenguinFa1.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+            BearHairGameObject.SetActive(true);
         }
         else if (ChNum == 2)
         {
-            //Oncorhynchus.GetComponent<PathFollower>().enabled = false;
-            //Oncorhynchus.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+            OncorhynchusLinesGameObject.SetActive(true);
+            TargetText.text = "";
         }
         else if (ChNum == 3)
         {
-            CatAn1.Play("idle");
-            //Cat.GetComponent<PathFollower>().enabled = false;
-            //Cat.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+            CatAn.Play("idle");
+            CatFaceGameObject.SetActive(true);
+            CatLinesGameObject.SetActive(true);
+            TargetText.text = "石虎特徵：" + CatNum + " / 2";
         }
         else if (ChNum == 4)
         {
+            CH2Audio[2].Play();
             BirdAn.Play("idle");
-            //Bird.GetComponent<PathFollower>().enabled = false;
             Bird.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
-            CrabAn.Play("idle");
-            //Crab.GetComponent<PathFollower>().enabled = false;
-            Crab.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
-            MudskipperAn.Play("idle");
-            //Mudskipper.GetComponent<PathFollower>().enabled = false;
-            Mudskipper.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+            BirdFeatherGameObject.SetActive(true);
+            BirdMouthGameObject.SetActive(true);
+            TargetText.text = "黑面琵鷺特徵：" + BirdNum + " / 2";
         }
-        TargetText.text = QuestionArr[ChNum][QuestionCount];
-        TipText.text = "先按下右手的抓握再按下板機。";
+        else if (ChNum == 5)
+        {
+            FishColorGameObject.SetActive(true);
+            TargetText.text = "";
+        }
+        CanvasCH1.SetActive(true);
+        InfoText.text = QuestionArr[ChNum][QuestionCount];
     }
 
     public void EraseFeatureError()
     {
-        AnswerText.text = "";
+        InfoText.text = QuaternionRecord;
     }
 
     public void CheckAnimalFeature(string Feature)
@@ -587,58 +715,143 @@ public class LevelController : MonoBehaviour
         {
             if (Feature == "LionHair")
             {
-                StartCoroutine(web.php(GlobalSet.SID, "1", "7", WebPhp.php_method.Action));
-                InfoText.text = "通常只有雄性的獅子脖子上會有鬃毛，是為了可以在打鬥中保護自己的頭部和脖子。";
+                ButtonSound.Play();
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "7", WebPhp.php_method.Action));
                 LionHair = true;
+                LionHairGameObject.SetActive(false);
+                LionNum++;
+                TargetText.text = "獅子特徵：" + LionNum + " / 2";
+                if (SLearn == true)
+                {
+                    InfoText.text = "通常只有雄性的獅子脖子上會有鬃毛，\n是為了可以在打鬥中保護自己的頭部和脖子。";
+                }
+                else
+                {
+                    CanvasCH1.SetActive(false);
+                    InfoText.text = "";
+                }
             }
             if (Feature == "LionTeeth")
             {
-                StartCoroutine(web.php(GlobalSet.SID, "1", "8", WebPhp.php_method.Action));
-                InfoText.text = "雄性獅子會有銳利的牙齒以及爪子，方便牠們狩獵使用。";
+                ButtonSound.Play();
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "8", WebPhp.php_method.Action));
                 LionTeeth = true;
+                LionTeethGameObject.SetActive(false);
+                LionNum++;
+                TargetText.text = "獅子特徵：" + LionNum + " / 2";
+                if (SLearn == true)
+                {
+                    InfoText.text = "獅子銳利的牙齒，讓牠可以\n在草原上更容易捕捉獵物、溫飽自己的肚子。";
+                }
+                else
+                {
+                    CanvasCH1.SetActive(false);
+                    InfoText.text = "";
+                }
             }
             if (Feature == "ZebraLines")
             {
-                StartCoroutine(web.php(GlobalSet.SID, "1", "5", WebPhp.php_method.Action));
-                InfoText.text = "斑馬身上的黑白紋路可以混淆斑馬的天敵的視覺，讓他沒辦法鎖定獵物。同時黑白相間的紋路還可以調節身體的溫度呢！";
+                ButtonSound.Play();
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "5", WebPhp.php_method.Action));
                 ZebraLines = true;
+                ZebraLinesGameObject.SetActive(false);
+                ZebraNum++;
+                TargetText.text = "斑馬特徵：" + ZebraNum + " / 2";
+                if (SLearn == true)
+                {
+                    InfoText.text = "斑馬身上的黑白紋路可以混淆斑馬的天敵的視覺，\n讓他沒辦法鎖定獵物。\n同時黑白相間的紋路還可以調節身體的溫度呢！";
+                }
+                else
+                {
+                    CanvasCH1.SetActive(false);
+                    InfoText.text = "";
+                }
             }
             if (Feature == "ZebraFoot")
             {
-                StartCoroutine(web.php(GlobalSet.SID, "1", "6", WebPhp.php_method.Action));
-                InfoText.text = "斑馬的蹄可以讓牠在草原環境裡更快速的移動，避免被牠的天敵獵捕。";
+                ButtonSound.Play();
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "6", WebPhp.php_method.Action));
                 ZebraFoot = true;
+                ZebraFootGameObject.SetActive(false);
+                ZebraNum++;
+                TargetText.text = "斑馬特徵：" + ZebraNum + " / 2";
+                if (SLearn == true)
+                {
+                    InfoText.text = "斑馬的蹄可以讓牠在草原環境裡更快速的移動，\n避免被牠的天敵獵捕。";
+                }
+                else
+                {
+                    CanvasCH1.SetActive(false);
+                    InfoText.text = "";
+                }
             }
             if (Feature == "BearHair")
             {
-                StartCoroutine(web.php(GlobalSet.SID, "1", "11", WebPhp.php_method.Action));
-                InfoText.text = "北極熊的毛可以防止水分滲入，達到禦寒的效果，同時皮膚底下有一層極厚的皮下脂肪加強保暖。";
+                ButtonSound.Play();
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "11", WebPhp.php_method.Action));
                 BearHairGameObject.SetActive(false);
                 SealdogSkinGameObject.SetActive(true);
                 QuestionCount++;
-                TargetText.text = QuestionArr[ChNum][QuestionCount];
-                TipText.text = "先按下右手的抓握再按下板機。";
+                InfoText.text = QuestionArr[ChNum][QuestionCount];
+                CH1Audio[3].Play();
+                if (SLearn == true)
+                {
+                    if (DisableWhenPC.IsPC == true)
+                    {
+                        InfoText.text = "北極熊身上厚重的毛皮能幫助牠保暖，\n讓牠可以在這麼寒冷的環境底下生存。\n再觀察一旁的海豹，\n你覺得海豹有哪個部位可以幫助牠保暖呢？\n移動準星並點選該部位。";
+                    }
+                    else
+                    {
+                        InfoText.text = "北極熊身上厚重的毛皮能幫助牠保暖，\n讓牠可以在這麼寒冷的環境底下生存。\n再觀察一旁的海豹，\n你覺得海豹有哪個部位可以幫助牠保暖呢？\n移動手把並點選該部位。";
+                    }
+                }
+                else
+                {
+                    if (DisableWhenPC.IsPC == true)
+                    {
+                        InfoText.text = "再觀察一旁的海豹，\n你覺得海豹有哪個部位可以幫助牠保暖呢？\n移動準星並點選該部位。";
+                    }
+                    else
+                    {
+                        InfoText.text = "再觀察一旁的海豹，\n你覺得海豹有哪個部位可以幫助牠保暖呢？\n移動手把並點選該部位。";
+                    }
+                }
             }
             if (Feature == "SealdogSkin")
             {
-                StartCoroutine(web.php(GlobalSet.SID, "1", "12", WebPhp.php_method.Action));
-                InfoText.text = "海豹有一層用來保暖的厚厚的皮下脂肪，並提供食物儲備，並產生浮力，讓牠可以漂浮在水面上。";
+                ButtonSound.Play();
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "12", WebPhp.php_method.Action));
                 SealdogSkinGameObject.SetActive(false);
-                Bear.SetActive(false);
-                Sealdog.SetActive(false);
                 Invoke("PenguinGo", 2);
+                if (SLearn == true)
+                {
+                    InfoText.text = "海豹有一層用來保暖的厚厚的皮下脂肪，\n並提供食物儲備，並產生浮力，\n讓牠可以漂浮在水面上。";
+                }
+                else
+                {
+                    CanvasCH1.SetActive(false);
+                    InfoText.text = "";
+                }
             }
             if (Feature == "PenguinFeather")
             {
-                StartCoroutine(web.php(GlobalSet.SID, "1", "13", WebPhp.php_method.Action));
-                InfoText.text = "企鵝身上的羽毛，具備防水、防風的功能。而且牠也有厚達2到3公分的皮下脂肪，可以讓企鵝保持體溫。";
+                ButtonSound.Play();
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "13", WebPhp.php_method.Action));
                 PenguinFeatherGameObject.SetActive(false);
                 Ch1_2Complete = true;
                 if (Ch1_1Complete == false)
                 {
-                    TargetText.text = "觀察完極地的生態了";
-                    TipText.text = "接下來觀察草原的生態吧！";
-                    Invoke("SelectGrassland", 2);
+                    Invoke("CheckGrassland", 2);
+                    Invoke("SelectGrassland", 4);
+                }
+                if (SLearn == true)
+                {
+                    InfoText.text = "企鵝身上的羽毛，具備防水、防風的功能。\n而且牠也有厚達2到3公分的皮下脂肪，\n可以讓企鵝保持體溫。";
+                }
+                else
+                {
+                    CanvasCH1.SetActive(false);
+                    InfoText.text = "";
                 }
             }
         }
@@ -646,188 +859,341 @@ public class LevelController : MonoBehaviour
         {
             if (Feature == "OncorhynchusLines")
             {
-                StartCoroutine(web.php(GlobalSet.SID, "2", "21", WebPhp.php_method.Action));
-                InfoText.text = "身體側扁呈紡錘狀，背部青綠色，腹部為銀白色，體側中央有橢圓形雲紋斑點。";
+                ButtonSound.Play();
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "21", WebPhp.php_method.Action));
                 OncorhynchusLinesGameObject.SetActive(false);
                 SM2Button1.interactable = false;
                 Ch2_1Complete = true;
                 Ch2Complete++;
-                Ch2Level();
+                if (SLearn == true)
+                {
+                    InfoText.text = "櫻花鉤吻鮭的身體側扁呈紡錘狀，背部青綠色，\n腹部為銀白色，體側中央有橢圓形雲紋斑點，\n牠像流水一般的身體線條，\n讓牠能夠更輕鬆的在快速流動中的水流裡移動。";
+                }
+                else
+                {
+                    CanvasCH1.SetActive(false);
+                    InfoText.text = "";
+                }
+                if (Ch2Complete != 4)
+                {
+                    Invoke("CH2Done", 2);
+                    Invoke("CheckOther", 4);
+                }
+                else
+                {
+                    Invoke("CH2End", 2);
+                }
             }
         }
         else if (ChNum == 3)
         {
             if (Feature == "CatFace")
             {
-                StartCoroutine(web.php(GlobalSet.SID, "2", "24", WebPhp.php_method.Action));
-                InfoText.text = "額頭有2條灰白色縱帶，最大特徵是耳後有一塊淡黃色的圓斑。";
+                ButtonSound.Play();
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "24", WebPhp.php_method.Action));
                 CatFaceGameObject.SetActive(false);
                 CatFace = true;
+                CatNum++;
+                TargetText.text = "石虎特徵：" + CatNum + " / 2";
+                if (SLearn == true)
+                {
+                    InfoText.text = "額頭有兩條灰白色縱帶，\n最大特徵是耳後有一塊淡黃色的圓斑。";
+                }
+                else
+                {
+                    CanvasCH1.SetActive(false);
+                    InfoText.text = "";
+                }
             }
             else if (Feature == "CatLines")
             {
-                StartCoroutine(web.php(GlobalSet.SID, "2", "25", WebPhp.php_method.Action));
-                InfoText.text = "石虎的身體、四肢、尾巴都有斑點的花紋。";
+                ButtonSound.Play();
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "25", WebPhp.php_method.Action));
                 CatLinesGameObject.SetActive(false);
                 CatLines = true;
+                CatNum++;
+                TargetText.text = "石虎特徵：" + CatNum + " / 2";
+                if (SLearn == true)
+                {
+                    InfoText.text = "石虎的身體、四肢、尾巴都有斑點的花紋。";
+                }
+                else
+                {
+                    CanvasCH1.SetActive(false);
+                    InfoText.text = "";
+                }
             }
         }
         else if (ChNum == 4)
         {
             if (Feature == "BirdMouth")
             {
-                StartCoroutine(web.php(GlobalSet.SID, "2", "28", WebPhp.php_method.Action));
-                InfoText.text = "黑面琵鷺有著長長的黑色扁平嘴巴，覓食的時候會以扁平的嘴喙在淺水中左右撈動，來尋找食物。";
+                ButtonSound.Play();
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "28", WebPhp.php_method.Action));
                 BirdMouthGameObject.SetActive(false);
                 BirdMouth = true;
+                BirdNum++;
+                TargetText.text = "黑面琵鷺特徵：" + BirdNum + " / 2";
+                if (SLearn == true)
+                {
+                    InfoText.text = "黑面琵鷺有著長長的黑色扁平嘴巴，\n覓食的時候會以扁平的嘴喙\n在淺水中左右撈動，來尋找食物。";
+                }
+                else
+                {
+                    CanvasCH1.SetActive(false);
+                    InfoText.text = "";
+                }
             }
             else if (Feature == "BirdFeather")
             {
-                StartCoroutine(web.php(GlobalSet.SID, "2", "29", WebPhp.php_method.Action));
-                InfoText.text = "繁殖期時，黑面琵鷺的冠羽和胸前的羽毛會有明顯的黃色。";
+                ButtonSound.Play();
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "29", WebPhp.php_method.Action));
                 BirdFeatherGameObject.SetActive(false);
                 BirdFeather = true;
+                BirdNum++;
+                TargetText.text = "黑面琵鷺特徵：" + BirdNum + " / 2";
+                if (SLearn == true)
+                {
+                    InfoText.text = "當黑面琵鷺在繁殖期的時候，\n牠的冠羽和胸前的羽毛會有明顯的黃色哦。";
+                }
+                else
+                {
+                    CanvasCH1.SetActive(false);
+                    InfoText.text = "";
+                }
             }
             else if (Feature == "CrabTomb")
             {
-                StartCoroutine(web.php(GlobalSet.SID, "2", "30", WebPhp.php_method.Action));
-                InfoText.text = "雄性招潮蟹的大螯除了用來防禦、威嚇之外，繁殖季時還會在沙灘上不斷地揮舞大螯，直到漲潮之際，才會停止。";
+                ButtonSound.Play();
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "30", WebPhp.php_method.Action));
                 CrabTombGameObject.SetActive(false);
-                MudskipperSkinGameObject.SetActive(true);
-                QuestionCount++;
-                TargetText.text = QuestionArr[ChNum][QuestionCount];
+                Invoke("CheckMud", 2);
+                if (SLearn == true)
+                {
+                    InfoText.text = "雄性招潮蟹的大螯除了拿來防禦、威嚇之外，\n在繁殖期間還會在沙灘上不斷的揮舞大螯來求偶，\n直到漲潮的時候才會停止。";
+                }
+                else
+                {
+                    CanvasCH1.SetActive(false);
+                    InfoText.text = "";
+                }
             }
             else if (Feature == "MudskipperSkin")
             {
-                StartCoroutine(web.php(GlobalSet.SID, "2", "31", WebPhp.php_method.Action));
-                InfoText.text = "彈塗魚潮溼的皮膚可以幫助呼吸，胸鰭能推動身體前進。";
+                ButtonSound.Play();
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "31", WebPhp.php_method.Action));
+                InfoText.text = "彈塗魚潮溼的皮膚可以幫助呼吸，\n胸鰭能推動身體前進。";
                 MudskipperSkinGameObject.SetActive(false);
                 Ch2_3Complete = true;
                 SM2Button3.interactable = false;
                 Ch2Complete++;
-                Ch2Level();
+                if (SLearn == true)
+                {
+                    InfoText.text = "彈塗魚潮溼的皮膚可以幫助呼吸，\n胸鰭能推動身體前進。";
+                }
+                else
+                {
+                    CanvasCH1.SetActive(false);
+                    InfoText.text = "";
+                }
+                if (Ch2Complete != 4)
+                {
+                    Invoke("CH2Done", 2);
+                    Invoke("CheckOther", 4);
+                }
+                else
+                {
+                    Invoke("CH2End", 2);
+                }
             }
         }
         else if (ChNum == 5)
         {
             if (Feature == "FishColor")
             {
-                StartCoroutine(web.php(GlobalSet.SID, "2", "34", WebPhp.php_method.Action));
-                InfoText.text = "大多數的熱帶魚都有著光彩奪目的顏色，是為了配合珊瑚礁的色彩，並逃避天敵的捕食。";
+                ButtonSound.Play();
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "34", WebPhp.php_method.Action));
                 FishColorGameObject.SetActive(false);
                 Ch2_4Complete = true;
                 SM2Button4.interactable = false;
                 Ch2Complete++;
-                Ch2Level();
+                if (SLearn == true)
+                {
+                    InfoText.text = "大多數的熱帶魚都有著光彩奪目的顏色，\n是為了配合珊瑚礁的色彩，\n並逃避天敵的捕食。";
+                }
+                else
+                {
+                    CanvasCH1.SetActive(false);
+                    InfoText.text = "";
+                }
+                if (Ch2Complete != 4)
+                {
+                    Invoke("CH2Done", 2);
+                    Invoke("CheckOther", 4);
+                }
+                else
+                {
+                    Invoke("CH2End", 2);
+                }
             }
         }
     }
 
     public void PenguinGo()
     {
-        PenguinAn.Play("walk");
-        PenguinFa.GetComponent<PathFollower>().enabled = true;
+        CH1Audio[4].Play();
+        CanvasCH1.SetActive(false);
+        Bear1.SetActive(false);
+        Sealdog1.SetActive(false);
+        PenguinAn1.Play("walk");
+        PenguinFa1.GetComponent<PathFollower>().enabled = true;
         QuestionCount++;
-        TargetText.text = "是企鵝出現了！";
-        TipText.text = "拿出你的放大鏡觀察看看。";
-        InfoText.text = "";
+        TargetText.text = "快看！生活在極地裡的企鵝也出現了！\n讓我們來仔細觀察一下牠身上有哪些特徵吧。";
+        Invoke("PenguinOpen", 6.5f);
         Invoke("AnStop", 6.5f);
+    }
+
+    public void PenguinOpen()
+    {
+        PenguinFeatherGameObject.SetActive(true);
     }
 
     public void CrabAndMudGo()
     {
-        //CrabAn.Play("");
+        Canvas2.transform.position = new Vector3(240.27f, 2.6f, 91.7f);
+        Canvas2.transform.LookAt(new Vector3(240.53f, 2.6f, 87.5f));
+        Bird.SetActive(false);
+        CanvasCH1.SetActive(false);
+        TargetText.text = "";
         Crab.GetComponent<PathFollower>().enabled = true;
         MudskipperAn.Play("jump");
         Mudskipper.GetComponent<PathFollower>().enabled = true;
         QuestionCount++;
-        TargetText.text = "是招潮蟹和彈塗魚出現了！";
-        TipText.text = "拿出你的放大鏡觀察看看。";
-        InfoText.text = "";
-        Invoke("AnStop", 6.5f);
+        TargetText.text = "生活在溼地生態系的彈塗魚和招潮蟹也出現了！\n讓我們來仔細觀察一下牠們身上有哪些特徵吧。";
+        Invoke("CrabAndMudAnStop", 6.5f);
+    }
+
+    public void CrabAndMudAnStop()
+    {
+        TargetText.text = "";
+        CanvasCH1.transform.position = new Vector3(240.27f, 2.6f, 91.7f);
+        CanvasCH1.transform.LookAt(new Vector3(240.53f, 2.6f, 87.5f));
+        CrabAn.Play("idle");
+        Crab.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+        MudskipperAn.Play("idle");
+        Mudskipper.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+        CrabTombGameObject.SetActive(true);
+        CanvasCH1.SetActive(true);
+        InfoText.text = QuestionArr[ChNum][QuestionCount];
     }
 
     public void SelectGrassland()
     {
-        StartCoroutine(web.php(GlobalSet.SID, "1", "1", WebPhp.php_method.Action));
+        if (Ch1_2Complete != true)
+        {
+            ButtonSound.Play();
+        }
+        StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "1", WebPhp.php_method.Action));
         ChNum = 0;
-        InfoText.text = "";
         Ch1_1.SetActive(true);
         Ch1_2.SetActive(false);
         SelectMenu1.SetActive(false);
+        CanvasCH1.SetActive(true);
         ShowFirstQuestion();
     }
 
     public void SelectIce()
     {
-        StartCoroutine(web.php(GlobalSet.SID, "1", "2", WebPhp.php_method.Action));
+        if (Ch1_1Complete != true)
+        {
+            ButtonSound.Play();
+        }
+        StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "2", WebPhp.php_method.Action));
         ChNum = 1;
-        InfoText.text = "";
         Ch1_1.SetActive(false);
         Ch1_2.SetActive(true);
         SelectMenu1.SetActive(false);
+        CanvasCH1.SetActive(true);
         ShowFirstQuestion();
     }
 
     public void SelectHigh()
     {
-        StartCoroutine(web.php(GlobalSet.SID, "2", "15", WebPhp.php_method.Action));
+        ButtonSound.Play();
+        StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "15", WebPhp.php_method.Action));
         ChNum = 2;
-        InfoText.text = "";
         Ch2_1.SetActive(true);
         Ch2_2.SetActive(false);
         Ch2_3.SetActive(false);
         Ch2_4.SetActive(false);
         SelectMenu2.SetActive(false);
+        CanvasCH1.SetActive(true);
+        CanvasCH1.transform.position = new Vector3(238.58f, 2.6f, 106.91f);
+        CanvasCH1.transform.LookAt(new Vector3(238.53f, 2.6f, 107.41f));
+        Canvas2.transform.position = new Vector3(238.58f, 2.6f, 106.91f);
+        Canvas2.transform.LookAt(new Vector3(238.53f, 2.6f, 107.41f));
         ShowFirstQuestion();
     }
 
     public void SelectLow()
     {
-        StartCoroutine(web.php(GlobalSet.SID, "2", "16", WebPhp.php_method.Action));
+        ButtonSound.Play();
+        StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "16", WebPhp.php_method.Action));
         ChNum = 3;
-        InfoText.text = "";
         Ch2_1.SetActive(false);
         Ch2_2.SetActive(true);
         Ch2_3.SetActive(false);
         Ch2_4.SetActive(false);
         SelectMenu2.SetActive(false);
+        CanvasCH1.SetActive(true);
+        CanvasCH1.transform.position = new Vector3(240f, 2.6f, 91.77f);
+        CanvasCH1.transform.LookAt(new Vector3(240f, 2.6f, 88.71f));
+        Canvas2.transform.position = new Vector3(240f, 2.6f, 91.77f);
+        Canvas2.transform.LookAt(new Vector3(240f, 2.6f, 88.71f));
         ShowFirstQuestion();
     }
 
     public void SelectWet()
     {
-        StartCoroutine(web.php(GlobalSet.SID, "2", "17", WebPhp.php_method.Action));
+        ButtonSound.Play();
+        StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "17", WebPhp.php_method.Action));
         ChNum = 4;
-        InfoText.text = "";
         Ch2_1.SetActive(false);
         Ch2_2.SetActive(false);
         Ch2_3.SetActive(true);
         Ch2_4.SetActive(false);
         SelectMenu2.SetActive(false);
+        CanvasCH1.SetActive(true);
+        CanvasCH1.transform.position = new Vector3(246.23f, 2.6f, 99.07f);
+        CanvasCH1.transform.LookAt(new Vector3(253.67f, 2.6f, 99.71f));
+        Canvas2.transform.position = new Vector3(246.23f, 2.6f, 99.07f);
+        Canvas2.transform.LookAt(new Vector3(253.67f, 2.6f, 99.71f));
         ShowFirstQuestion();
     }
 
     public void SelectCoral()
     {
-        StartCoroutine(web.php(GlobalSet.SID, "2", "18", WebPhp.php_method.Action));
+        ButtonSound.Play();
+        StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "18", WebPhp.php_method.Action));
         ChNum = 5;
-        InfoText.text = "";
         Ch2_1.SetActive(false);
         Ch2_2.SetActive(false);
         Ch2_3.SetActive(false);
         Ch2_4.SetActive(true);
         SelectMenu2.SetActive(false);
+        CanvasCH1.SetActive(true);
+        CanvasCH1.transform.position = new Vector3(246.23f, 2.6f, 99.07f);
+        CanvasCH1.transform.LookAt(new Vector3(253.67f, 2.6f, 99.71f));
+        Canvas2.transform.position = new Vector3(246.23f, 2.6f, 99.07f);
+        Canvas2.transform.LookAt(new Vector3(253.67f, 2.6f, 99.71f));
         ShowFirstQuestion();
     }
 
     public void Game()
     {
-        StartCoroutine(web.php(GlobalSet.SID, "1", "14", WebPhp.php_method.Action));
-        GameController.Reset();
-        EnterButton.SetActive(false);
-        TargetText.text = "請選出適合在此環境中生存的動物";
-        TipText.text = "用右手將動物抓起吧！";
+        Plane.SetActive(true);
+        StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "14", WebPhp.php_method.Action));
+        GameObject.Find("LevelController").GetComponent<GameController>().Reset();
         if (GameController.Score1 == 0)
         {
             Ch1_1.SetActive(true);
@@ -843,48 +1209,40 @@ public class LevelController : MonoBehaviour
             Ch1_2.SetActive(true);
             Terrain.SetActive(false);
             IceTerrain.SetActive(true);
-            Lion.SetActive(false);
-            Zebra.SetActive(false);
-            Bear.SetActive(false);
-            Penguin.SetActive(false);
-            Sealdog.SetActive(false);
+            Lion2.SetActive(false);
+            Zebra2.SetActive(false);
+            Bear2.SetActive(false);
+            Penguin2.SetActive(false);
+            Sealdog2.SetActive(false);
         }
-        Lion.SetActive(true);
-        Zebra.SetActive(true);
-        Bear.SetActive(true);
-        Penguin.SetActive(true);
-        Sealdog.SetActive(true);
-        Lion.GetComponent<PathFollower>().enabled = false;
-        Zebra.GetComponent<PathFollower>().enabled = false;
-        Bear.GetComponent<PathFollower>().enabled = false;
-        Sealdog.GetComponent<PathFollower>().enabled = false;
-        PenguinFa.GetComponent<PathFollower>().enabled = false;
-        LionAn.Play("idle", 0, 0f);
-        ZebraAn.Play("idle", 0, 0f);
-        BearAn.Play("idle", 0, 0f);
-        SealdogAn.Play("idle", 0, 0f);
-        PenguinAn.Play("idle");
-        Penguin.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-        PenguinFa.transform.localEulerAngles = new Vector3(0, -124, 0);
-        //PenguinFa.transform.LookAt(new Vector3(239.53f, 2, 98.3f));
-        //Penguin.transform.Rotate(0, 0 , 90);
-        
-        Zebra.transform.position = new Vector3(242, -0.2f, 102);
-        Lion.transform.position = new Vector3(240, -0.2f, 102);
-        Sealdog.transform.position = new Vector3(241, 2f, 95);
-        Bear.transform.position = new Vector3(245, -0.2f, 95);
-        PenguinFa.transform.position = new Vector3(242, 0, 100);
-        Penguin.transform.localPosition = new Vector3(0, 0, 0);
-        Lion.GetComponent<XRGrabInteractable>().enabled = true;
-        Zebra.GetComponent<XRGrabInteractable>().enabled = true;
-        Bear.GetComponent<XRGrabInteractable>().enabled = true;
-        Sealdog.GetComponent<XRGrabInteractable>().enabled = true;
-        Penguin.GetComponent<XRGrabInteractable>().enabled = true;
-        Lion.GetComponent<BoxCollider>().enabled = true;
-        Zebra.GetComponent<BoxCollider>().enabled = true;
-        Bear.GetComponent<BoxCollider>().enabled = true;
-        Sealdog.GetComponent<BoxCollider>().enabled = true;
-        Penguin.GetComponent<BoxCollider>().enabled = true;
+        Lion2.SetActive(true);
+        Zebra2.SetActive(true);
+        Bear2.SetActive(true);
+        Penguin2.SetActive(true);
+        Sealdog2.SetActive(true);
+        LionAn2.Play("idle", 0, 0f);
+        ZebraAn2.Play("idle", 0, 0f);
+        BearAn2.Play("idle", 0, 0f);
+        SealdogAn2.Play("idle", 0, 0f);
+        PenguinAn2.Play("idle");
+        Penguin2.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        PenguinFa2.transform.localEulerAngles = new Vector3(0, -124, 0);
+        Zebra2.transform.position = new Vector3(242, -0.2f, 102);
+        Lion2.transform.position = new Vector3(240, -0.2f, 102);
+        Sealdog2.transform.position = new Vector3(241, 2f, 95);
+        Bear2.transform.position = new Vector3(245, -0.2f, 95);
+        PenguinFa2.transform.position = new Vector3(242, 1, 100);
+        Penguin2.transform.localPosition = new Vector3(0, 0, 0);
+        Lion2.GetComponent<XRGrabInteractable>().enabled = true;
+        Zebra2.GetComponent<XRGrabInteractable>().enabled = true;
+        Bear2.GetComponent<XRGrabInteractable>().enabled = true;
+        Sealdog2.GetComponent<XRGrabInteractable>().enabled = true;
+        Penguin2.GetComponent<XRGrabInteractable>().enabled = true;
+        Lion2.GetComponent<BoxCollider>().enabled = true;
+        Zebra2.GetComponent<BoxCollider>().enabled = true;
+        Bear2.GetComponent<BoxCollider>().enabled = true;
+        Sealdog2.GetComponent<BoxCollider>().enabled = true;
+        Penguin2.GetComponent<BoxCollider>().enabled = true;
         
         LookAtCamera();
     }
@@ -893,10 +1251,10 @@ public class LevelController : MonoBehaviour
     {
         if (ChNum == 0 || ChNum == 1)
         {
-            Zebra.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
-            Lion.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
-            Sealdog.transform.LookAt(new Vector3(239.53f, 2, 98.3f));
-            Bear.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+            Zebra2.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+            Lion2.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
+            Sealdog2.transform.LookAt(new Vector3(239.53f, 2, 98.3f));
+            Bear2.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
         }
         else
         {
@@ -907,114 +1265,187 @@ public class LevelController : MonoBehaviour
             Mudskipper.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
             Fish.transform.LookAt(new Vector3(239.53f, 0, 98.3f));
         }
-        //PenguinFa.transform.LookAt(new Vector3(239.53f, 2, 98.3f));//-0.5
-        //Penguin.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
     }
 
-    public void Ch2Level()
+    public void StartSelect()
     {
-        if (Ch2Complete != 4)
+        ButtonSound.Play();
+        Debug.Log(WSBtnNum);
+        if (ChNum == 0 || ChNum == 1)
         {
-            SelectMenu2.SetActive(true);
+            if (WSBtnNum == 0)
+            { 
+                SelectMenu1.SetActive(true);
+                WSCH1Button.SetActive(false);
+                CanvasCH1.SetActive(false);
+            }
+            else if (WSBtnNum == 1)
+            {
+                Ch1_1.SetActive(true);
+                Ch1_2.SetActive(true);
+                Terrain.SetActive(true);
+                IceTerrain.SetActive(false);
+                Zebra1.SetActive(false);
+                Lion1.SetActive(false);
+                Penguin1.SetActive(false);
+                InfoText.text = "認識了上面幾種生態系以及在裡面生活的動物後\n讓我們來玩個小遊戲吧！";
+            }
+            else if (WSBtnNum == 2)
+            {
+                WSCH1Button.GetComponentInChildren<Text>().text = "開始";
+                InfoText.text = "仔細觀察周圍的環境，判斷這是什麼生態系，\n並把適合在這個生態系生活的動物抓出來，\n讓牠可以居住在舒適的地方吧。\n要小心如果選錯動物的話，\n動物可能會因為環境適應不良而無法在這裡生存哦！";
+            }
+            else if (WSBtnNum == 3)
+            {
+                Game();
+                CanvasCH1.SetActive(false);
+                TargetText.text = "剩餘動物：5";
+            }
+            else if (WSBtnNum == 4)
+            {
+                Game();
+                CanvasCH1.SetActive(false);
+                TargetText.text = "剩餘動物：5";
+            }
+            else if (WSBtnNum == 5)
+            {
+                InfoText.text = "恭喜你完成本單元！在這個單元裡，\n有沒有更加瞭解動物特徵與生活環境的關聯呢？\n動物為了適應環境並生存，\n會對應不同的生態系演化出不同的特徵與能力。\n想一想，你還知道哪些動物為了生存在草原或極地，\n擁有獨特的外觀特徵呢？";
+            }
+            else if (WSBtnNum == 6)
+            {
+                WSCH1Button.GetComponentInChildren<Text>().text = "回主選單";
+                if (DisableWhenPC.IsPC == true)
+                {
+                    InfoText.text = "單元完成，內容已經記錄在探險筆記上面了，\n按TAB開啟/關閉探險筆記，回顧單元內容吧。";
+                }
+                else
+                {
+                    InfoText.text = "單元完成，內容已經記錄在探險筆記上面了，\n按A開啟/關閉探險筆記，回顧單元內容吧。";
+                }
+                CompleteImage.SetActive(true);
+            }
+            else if (WSBtnNum == 7)
+            {
+                
+            }
         }
-        else
+        else if (ChNum > 1 && ChNum < 6)
         {
-            //StartCoroutine(web.php(GlobalSet.SID, "2", "35", WebPhp.php_method.Action));
-            TargetText.text = "請選出適合在此環境中生存的動物";
-            TipText.text = "用右手將動物抓起吧！";
-            ShowEnterButtonCh2();
+            if (WSBtnNum == 0)
+            { 
+                SelectMenu2.SetActive(true);
+                WSCH1Button.SetActive(false);
+                CanvasCH1.SetActive(false);
+            }
+            else if (WSBtnNum == 1)
+            {
+                WSCH1Button.GetComponentInChildren<Text>().text = "回主選單";
+                if (DisableWhenPC.IsPC == true)
+                {
+                    InfoText.text = "單元完成，內容已經記錄在探險筆記上面了，\n按TAB開啟/關閉探險筆記，回顧單元內容吧。";
+                }
+                else
+                {
+                    InfoText.text = "單元完成，內容已經記錄在探險筆記上面了，\n按A開啟/關閉探險筆記，回顧單元內容吧。";
+                }
+                CompleteImage.SetActive(true);
+            }
+            else if (WSBtnNum == 2)
+            {
+
+            }
+        }
+        WSBtnNum++;
+    }
+
+    public void NoteCH()
+    {
+        if (ChNum == 0 || ChNum == 1)
+        {
+            Page = 0;
+            NoteArr[0].SetActive(true);
+        }
+        else if (ChNum > 1 && ChNum < 6)
+        {
+            Page = 5;
+            NoteArr[5].SetActive(true);
         }
     }
 
-    public void Ch2GameStart()
+    public void NextPage()
     {
-        Oncorhynchus1.SetActive(false);
-        Cat1.SetActive(false);
-        Fish1.SetActive(false);
-        Ch2GameReset();
-        Ch2Game();
+        ButtonSound.Play();
+        if (ChNum == 0 || ChNum == 1)
+        {
+            NoteArr[Page].SetActive(false);
+            NoteArr[Page + 1].SetActive(true);
+            if (Page + 2 == 5) //下一頁是最後一頁
+            {
+                NextButton.SetActive(false);
+            }
+        }
+        else if (ChNum > 1 && ChNum < 6)
+        {
+            NoteArr[Page].SetActive(false);
+            NoteArr[Page + 1].SetActive(true);
+            if (Page + 2 == 11) //下一頁是最後一頁
+            {
+                NextButton.SetActive(false);
+            }
+        }
+        Page++;
+        LastButton.SetActive(true);
     }
 
-    public void Ch2GameReset()
+    public void LastPage()
     {
-        GameController.Reset();
-        EnterButtonCh2.SetActive(false);
-        Ch2_1.SetActive(true);
-        Ch2_2.SetActive(true);
-        Ch2_3.SetActive(true);
-        Ch2_4.SetActive(true);
-        Terrain2_1.SetActive(false);
-        Terrain2_2.SetActive(false);
-        Terrain2_3.SetActive(false);
-        Terrain2_4.SetActive(false);
-        Oncorhynchus.SetActive(true);
-        Cat.SetActive(true);
-        Bird.SetActive(true);
-        Crab.SetActive(true);
-        Mudskipper.SetActive(true);
-        Fish.SetActive(true);
-        Siganus.SetActive(false);
-        Moorish.SetActive(false);
-        Angelfish.SetActive(false);
-        OncorhynchusAn.Play("idle");
-        CatAn.Play("idle");
-        BirdAn.Play("idle");
-        CrabAn.Play("idle");
-        MudskipperAn.Play("idle");
-        Bird.GetComponent<PathFollower>().enabled = false;
-        Crab.GetComponent<PathFollower>().enabled = false;
-        Mudskipper.GetComponent<PathFollower>().enabled = false;
-        Oncorhynchus.GetComponent<XRGrabInteractable>().enabled = true;
-        Cat.GetComponent<XRGrabInteractable>().enabled = true;
-        Bird.GetComponent<XRGrabInteractable>().enabled = true;
-        Crab.GetComponent<XRGrabInteractable>().enabled = true;
-        Mudskipper.GetComponent<XRGrabInteractable>().enabled = true;
-        Fish.GetComponent<XRGrabInteractable>().enabled = true;
-        LookAtCamera();
+        ButtonSound.Play();
+        if (ChNum == 0 || ChNum == 1)
+        {
+            NoteArr[Page].SetActive(false);
+            NoteArr[Page - 1].SetActive(true);
+            if (Page - 2 < 0) //上一頁是第一頁
+            {
+                LastButton.SetActive(false);
+            }
+        }
+        else if (ChNum > 1 && ChNum < 6)
+        {
+            NoteArr[Page].SetActive(false);
+            NoteArr[Page - 1].SetActive(true);
+            if (Page - 2 < 5) //上一頁是第一頁
+            {
+                LastButton.SetActive(false);
+            }
+        }
+        Page--;
+        NextButton.SetActive(true);
     }
 
-    public void Ch2Game()
+    public void LionVideoPlay()
     {
-        if (Ch2GameLevel == 0)
+        CanvasCH1.SetActive(true);
+        LionVideo.SetActive(true);
+        LionVideoPlayer.Play();
+        InfoText.text = "身為恆溫動物的獅子，\n需要透過伸出舌頭喘氣的方式，\n幫助自己散熱、\n適應周圍環境的溫度變化。";
+    }
+
+    public void LionVideoEnd()
+    {
+        LionVideo.SetActive(false);
+        Ch1_1Complete = true;
+        if (Ch1_2Complete != true)
         {
-            Terrain2_1.SetActive(true);
-            Oncorhynchus.transform.position = new Vector3(237.035995f,0.240999997f,97.9179993f);
-            Cat.transform.position = new Vector3(237.119995f,-0.0410000086f,96.3170013f);
-            Bird.transform.position = new Vector3(238.035995f,-0.0109999999f,95.5250015f);
-            Crab.transform.position = new Vector3(242.339996f,0.47299999f,94.8170013f);
-            Mudskipper.transform.position = new Vector3(243.117996f,1.549000025f,95.8199997f);
-            Fish.transform.position = new Vector3(242.589996f,0.419999987f,97.711998f);
+            Invoke("CheckIce", 2);
+            Invoke("SelectIce", 4);
         }
-        else if (Ch2GameLevel == 1)
-        {
-            Terrain2_2.SetActive(true);
-            Oncorhynchus.transform.position = new Vector3(237.035995f,0.66f,97.9179993f);
-            Cat.transform.position = new Vector3(237.119995f,0.277f,96.3170013f);
-            Bird.transform.position = new Vector3(238.035995f,0.294f,95.5250015f);
-            Crab.transform.position = new Vector3(242.339996f,0.47299999f,94.8170013f);
-            Mudskipper.transform.position = new Vector3(243.117996f,1.549000025f,95.8199997f);
-            Fish.transform.position = new Vector3(242.589996f,0.419999987f,97.711998f);
-        }
-        else if (Ch2GameLevel == 2)
-        {
-            Terrain2_3.SetActive(true);
-            Oncorhynchus.transform.position = new Vector3(237.035995f,0.66f,97.9179993f);
-            Cat.transform.position = new Vector3(237.119995f,0.277f,96.3170013f);
-            Bird.transform.position = new Vector3(238.035995f,0.294f,95.5250015f);
-            Crab.transform.position = new Vector3(242.339996f,0.47299999f,94.8170013f);
-            Mudskipper.transform.position = new Vector3(243.117996f,1.549000025f,95.8199997f);
-            Fish.transform.position = new Vector3(242.589996f,0.419999987f,97.711998f);
-        }
-        else if (Ch2GameLevel == 3)
-        {
-            Terrain2_4.SetActive(true);
-            Oncorhynchus.transform.position = new Vector3(238.940002f,0.660000026f,95.3399963f);
-            Cat.transform.position = new Vector3(240.955002f,0.27700001f,95.3690033f);
-            Bird.transform.position = new Vector3(242.561005f,0.294f,95.7440033f);
-            Crab.transform.position = new Vector3(240.841003f,0.549000025f,100.639f);
-            Mudskipper.transform.position = new Vector3(242.248993f,1.47299999f,100.686996f);
-            Fish.transform.position = new Vector3(239.302002f,0.51700002f,100.497002f);
-        }
-        LookAtCamera();
+    }
+    
+    public void ZebraVideoPlay()
+    {
+        CanvasCH1.SetActive(true);
+        ZebraVideo.SetActive(true);
+        ZebraVideoPlayer.Play();
+        InfoText.text = "斑馬藉由透過皮膚排汗，\n來幫助自己達到散熱的效果、\n適應周圍環境的溫度變化。";
     }
 }
