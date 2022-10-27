@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DisableWhenPC : MonoBehaviour
 {
-
+    public static bool IsVR = false;
+    public static bool IsPC = false;
 #if UNITY_STANDALONE_WIN
     // Start is called before the first frame update
     void Start()

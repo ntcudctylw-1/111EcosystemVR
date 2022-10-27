@@ -40,6 +40,7 @@ public class FlowerSpawner : MonoBehaviour
         {
             grids.Add(item.GetComponent<Ch4_Grid>());
         }
+        grids.Sort((x, y) => int.Parse(x.name).CompareTo(int.Parse(y.name)));
         web = FindObjectOfType<WebPhp>();
 
 

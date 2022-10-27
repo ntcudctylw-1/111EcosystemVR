@@ -6,15 +6,15 @@ public class test : MonoBehaviour
 {
     public GameObject[] objects;
 
-    private bool enabled;
+    private bool enableda;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) enabled = !enabled;
+        if (Input.GetKeyDown(KeyCode.Space)) enableda = !enableda;
 
         foreach(GameObject g in objects)
         {
-            g.SetActive(enabled);
+            g.SetActive(enableda);
         }
     }
 }
