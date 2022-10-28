@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 31bfac971978fde4a971b42a1952551b, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: b132a15b072fc0e4dba8e7fdfc3550aa, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: a33e5b46ed3567c48be4f3cf022403d6, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -3019,7 +3019,7 @@ MonoBehaviour:
       - 90
       globalNormalsAngle: 347
       flipNormals: 0
-    vertexPathUpToDate: 0
+    vertexPathUpToDate: 1
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -3720,10 +3720,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWalking: 0
   CinemachineCameraTarget: {fileID: 1837978199}
-  LockCameraPosition: 0
-  TopClamp: 70
-  BottomClamp: -30
-  CameraAngleOverride: 0
 --- !u!4 &233024997
 Transform:
   m_ObjectHideFlags: 0
@@ -5067,7 +5063,7 @@ RectTransform:
   m_GameObject: {fileID: 332858961}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 514516200}
   m_RootOrder: 7
@@ -5075,7 +5071,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 380}
+  m_SizeDelta: {x: 1600, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &335121191
 GameObject:
@@ -8696,7 +8692,7 @@ RectTransform:
   m_GameObject: {fileID: 573068302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 514516200}
   m_RootOrder: 8
@@ -8704,7 +8700,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 380}
+  m_SizeDelta: {x: 1600, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &582030174
 GameObject:
@@ -10897,7 +10893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82ab29cf0c246241b7ff846ee7a38f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SetChNum: 2
+  SetChNum: 0
   SelectMenu1: {fileID: 1637848473}
   SelectMenu2: {fileID: 375791432}
   ButtonSound: {fileID: 1164192880}
@@ -11749,7 +11745,7 @@ RectTransform:
   m_GameObject: {fileID: 757444234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 514516200}
   m_RootOrder: 2
@@ -11757,7 +11753,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 380}
+  m_SizeDelta: {x: 1600, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &771621121
 GameObject:
@@ -13529,7 +13525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &842342836
 Transform:
   m_ObjectHideFlags: 0
@@ -14728,7 +14724,7 @@ RectTransform:
   m_GameObject: {fileID: 901266163}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.0012230872}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 514516200}
   m_RootOrder: 3
@@ -14736,7 +14732,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0.000033969576}
-  m_SizeDelta: {x: 800, y: 380}
+  m_SizeDelta: {x: 1600, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &906875764 stripped
 Transform:
@@ -19965,7 +19961,7 @@ RectTransform:
   m_GameObject: {fileID: 1219970698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 514516200}
   m_RootOrder: 5
@@ -19973,7 +19969,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 380}
+  m_SizeDelta: {x: 1600, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1225511823
 GameObject:
@@ -22905,7 +22901,7 @@ RectTransform:
   m_GameObject: {fileID: 1398126098}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 514516200}
   m_RootOrder: 9
@@ -22913,7 +22909,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 380}
+  m_SizeDelta: {x: 1600, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1405190149
 GameObject:
@@ -22977,7 +22973,7 @@ RectTransform:
   m_GameObject: {fileID: 1405190149}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 514516200}
   m_RootOrder: 1
@@ -22985,7 +22981,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 380}
+  m_SizeDelta: {x: 1600, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1416090352
 GameObject:
@@ -28113,7 +28109,7 @@ RectTransform:
   m_GameObject: {fileID: 1711153383}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 514516200}
   m_RootOrder: 10
@@ -28121,7 +28117,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 380}
+  m_SizeDelta: {x: 1600, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1713382886
 GameObject:
@@ -28484,7 +28480,7 @@ RectTransform:
   m_GameObject: {fileID: 1733121769}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 514516200}
   m_RootOrder: 0
@@ -28492,7 +28488,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 380}
+  m_SizeDelta: {x: 1600, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1752263134
 GameObject:
@@ -28917,7 +28913,7 @@ RectTransform:
   m_GameObject: {fileID: 1761119825}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 514516200}
   m_RootOrder: 6
@@ -28925,7 +28921,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 380}
+  m_SizeDelta: {x: 1600, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1770895147 stripped
 Transform:
@@ -29157,7 +29153,7 @@ MonoBehaviour:
   m_Camera: {fileID: 1837978203}
   m_OriginBaseGameObject: {fileID: 1787003621}
   m_CameraFloorOffsetObject: {fileID: 1449583594}
-  m_RequestedTrackingOriginMode: 0
+  m_RequestedTrackingOriginMode: 2
   m_CameraYOffset: 1.1176
 --- !u!4 &1787003623
 Transform:
@@ -30010,7 +30006,7 @@ RectTransform:
   m_GameObject: {fileID: 1838398319}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 514516200}
   m_RootOrder: 4
@@ -30018,7 +30014,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 380}
+  m_SizeDelta: {x: 1600, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1845048918 stripped
 Transform:

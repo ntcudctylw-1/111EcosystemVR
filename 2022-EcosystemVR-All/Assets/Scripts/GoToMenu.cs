@@ -31,7 +31,7 @@ public class GoToMenu : MonoBehaviour
         Invoke("loadsceneout", sec);
     }
 
-    void loadscene(int id) => SceneManager.LoadScene(id);
+    public void loadscene(int id) => SceneManager.LoadScene(id);
 
     void loadsceneout() => SceneManager.LoadScene(outid);
 }

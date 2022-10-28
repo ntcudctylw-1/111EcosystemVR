@@ -27,7 +27,11 @@ public class HMDEvents : MonoBehaviour
     ShowEvent m_EventStart = new ShowEvent();
     [SerializeField]
     ShowEvent m_EventEnd = new ShowEvent();
+    [SerializeField]
+    ShowEvent m_EventEndScene = new ShowEvent();
     protected HMDEvents() { }
+    private int currentID;
+    public int endID;
 
     public ShowEvent onShowStart
     {
@@ -40,9 +44,15 @@ public class HMDEvents : MonoBehaviour
         get { return m_EventEnd; }
         set { m_EventEnd = value; }
     }
+    public ShowEvent onShowEndScene
+    {
+        get { return m_EventEndScene; }
+        set { m_EventEndScene = value; }
+    }
 
     public void EventTriggered(int id)
     {
+        currentID = id;
         if(GlobalSet.guideMode == GlobalSet.GuideMode.Self)
         {
             if(hMDEvents[id].contents.Count != 0)
@@ -71,5 +81,5 @@ public class HMDEvents : MonoBehaviour
     public void closeEvent()
     {
         m_EventEnd.Invoke();
-    }
+        if (currentID == endID) m_EventEndScene.Invoke();    }
 }

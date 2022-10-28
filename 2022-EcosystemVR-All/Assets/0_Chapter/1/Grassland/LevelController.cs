@@ -4,11 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using UnityEngine.EventSystems;
+
 using UnityEngine.XR.Interaction.Toolkit;
+
 using PathCreation.Examples;
 using Random=UnityEngine.Random;
+#if UNITY_ANDROID
 using Wave.OpenXR.Toolkit.Raycast;
+#endif
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
@@ -229,15 +234,31 @@ public class LevelController : MonoBehaviour
     , new string[] {"河流堆積", "海水清澈", "水流湍急"}
     }};
 
+
     void Start()
     {
-        ChNum = SetChNum;
-        SLearn = true;
-
-        if (GlobalSet.guideMode == GlobalSet.GuideMode.Self)
+        Scene scene = SceneManager.GetActiveScene();
+        print(scene.name[2]);
+        if (scene.name[2] != null)
         {
-            
+            switch (int.Parse(scene.name[2].ToString()))
+            {
+                case 1:
+                    SetChNum = 0;
+                    break;
+                case 2:
+                    SetChNum = 2;
+                    break;
+                case 3:
+                    SetChNum = 6;
+                    break;
+            }
         }
+        ChNum = SetChNum;
+        
+
+        SLearn = GlobalSet.guideMode == GlobalSet.GuideMode.Self;
+
 
         if (ChNum == 0 || ChNum == 1)
         {
@@ -250,7 +271,9 @@ public class LevelController : MonoBehaviour
         else if (ChNum == 6)
         {
             CanvasCH1.SetActive(false);
+            #if UNITY_ANDROID
             RightHandController.GetComponent<RaycastPointer>().enabled = true;
+#endif
             CH3.SetActive(true);
         }
         web = GetComponent<WebPhp>();
@@ -592,7 +615,7 @@ public class LevelController : MonoBehaviour
         {
             CH1Audio[0].Play();
             Invoke("LionAudio", 2);
-            LionAn1.Play("move");
+            LionAn1.Play("walk");
             ZebraAn1.Play("run");
             Lion1.GetComponent<PathFollower>().enabled = true;
             Zebra1.GetComponent<PathFollower>().enabled = true;
@@ -1233,11 +1256,13 @@ public class LevelController : MonoBehaviour
         Bear2.transform.position = new Vector3(245, -0.2f, 95);
         PenguinFa2.transform.position = new Vector3(242, 1, 100);
         Penguin2.transform.localPosition = new Vector3(0, 0, 0);
+
         Lion2.GetComponent<XRGrabInteractable>().enabled = true;
         Zebra2.GetComponent<XRGrabInteractable>().enabled = true;
         Bear2.GetComponent<XRGrabInteractable>().enabled = true;
         Sealdog2.GetComponent<XRGrabInteractable>().enabled = true;
         Penguin2.GetComponent<XRGrabInteractable>().enabled = true;
+
         Lion2.GetComponent<BoxCollider>().enabled = true;
         Zebra2.GetComponent<BoxCollider>().enabled = true;
         Bear2.GetComponent<BoxCollider>().enabled = true;
@@ -1326,7 +1351,7 @@ public class LevelController : MonoBehaviour
             }
             else if (WSBtnNum == 7)
             {
-                
+                SceneManager.LoadScene("Menu");
             }
         }
         else if (ChNum > 1 && ChNum < 6)
@@ -1352,7 +1377,7 @@ public class LevelController : MonoBehaviour
             }
             else if (WSBtnNum == 2)
             {
-
+                SceneManager.LoadScene("Menu");
             }
         }
         WSBtnNum++;

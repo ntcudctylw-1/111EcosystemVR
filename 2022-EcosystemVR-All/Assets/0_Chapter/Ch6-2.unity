@@ -854,7 +854,7 @@ MonoBehaviour:
   m_Camera: {fileID: 618814826}
   m_OriginBaseGameObject: {fileID: 155437990}
   m_CameraFloorOffsetObject: {fileID: 552192899}
-  m_RequestedTrackingOriginMode: 1
+  m_RequestedTrackingOriginMode: 2
   m_CameraYOffset: 1.1176
 --- !u!4 &155437992
 Transform:
@@ -864,7 +864,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155437990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -137.91905, y: 37.150223, z: 30.219234}
+  m_LocalPosition: {x: -137.91905, y: 20.8, z: 30.219234}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 552192901}
@@ -3106,7 +3106,7 @@ MonoBehaviour:
   - tip: "\u7D50\u675F"
     contents:
     - "\u606D\u559C\u4F60\u5B8C\u6210\u672C\u55AE\u5143!\u5728\u9019\u500B\u55AE\u5143\u88E1\uFF0C\u6709\u6C92\u6709\u9AD4\u6703\u5230\u77F3\u864E\u5E73\u5E38\u8993\u98DF\u7684\u4E0D\u5BB9\u6613\u5462?\u77F3\u864E\u5728\u65E5\u5E38\u751F\u6D3B\u88E1\u5E38\u5E38\u90FD\u8981\u9762\u5C0D\u8DEF\u6BBA\u3001\u6BD2\u6BBA\u3001\u6216\u751A\u81F3\u662F\u88AB\u4EBA\u985E\u9A45\u8D95\u6355\u6BBA\u7684\u5371\u96AA\uFF0C\u60F3\u4E00\u60F3\u6211\u5011\u80FD\u5920\u505A\u4E9B\u4EC0\u9EBC\u4F86\u6E1B\u5C11\u77F3\u864E\u53D7\u50B7\u3001\u6B7B\u4EA1\u7684\u53EF\u80FD\u6027?"
-    MID: 0
+    MID: 7
   web: {fileID: 0}
   m_EventStart:
     m_PersistentCalls:
@@ -3150,6 +3150,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  m_EventEndScene:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 371164500}
+        m_TargetAssemblyTypeName: GoToMenu, Assembly-CSharp
+        m_MethodName: loadscene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  endID: 0
 --- !u!114 &371164495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3923,7 +3939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552192899}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.6, y: -14.2, z: -96.78}
+  m_LocalPosition: {x: -32.6, y: 0, z: -96.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 618814823}
