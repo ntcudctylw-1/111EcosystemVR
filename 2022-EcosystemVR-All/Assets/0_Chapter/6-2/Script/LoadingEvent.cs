@@ -25,4 +25,10 @@ public class LoadingEvent : MonoBehaviour
     {
         m_Event.Invoke();
     }
+
+
+    private void Start()
+    {
+        Load();
+    }
 }

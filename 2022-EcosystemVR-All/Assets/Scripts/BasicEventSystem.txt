@@ -1,0 +1,16 @@
+using System;
+using UnityEngine.Events;
+
+[Serializable]
+public class Event : UnityEvent { }
+[SerializeField]
+Event m_Event = new Event();
+
+protected HMDEvents()
+{ }
+
+public Event onEvent
+{
+    get { return m_Event; }
+    set { m_Event = value; }
+}

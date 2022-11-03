@@ -4,14 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using UnityEngine.EventSystems;
+
 using UnityEngine.XR.Interaction.Toolkit;
+
 using PathCreation.Examples;
 using Random=UnityEngine.Random;
+#if UNITY_ANDROID
 using Wave.OpenXR.Toolkit.Raycast;
+#endif
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
+    public int SetChNum;
     WebPhp web;
     public GameObject SelectMenu1;
     public GameObject SelectMenu2;
@@ -54,6 +60,7 @@ public class LevelController : MonoBehaviour
     public GameObject AnsButton3;
     public GameObject AnsButton4;
     public static int ChNum = 2;
+    
     public int QuestionCount = 0;
     public string QuaternionRecord = "";
     public GameObject Note;
@@ -227,15 +234,31 @@ public class LevelController : MonoBehaviour
     , new string[] {"河流堆積", "海水清澈", "水流湍急"}
     }};
 
+
     void Start()
     {
-        ChNum = 2;
-        SLearn = true;
-
-        if (GlobalSet.guideMode == GlobalSet.GuideMode.Self)
+        Scene scene = SceneManager.GetActiveScene();
+        print(scene.name[2]);
+        if (scene.name[2] != null)
         {
-            
+            switch (int.Parse(scene.name[2].ToString()))
+            {
+                case 1:
+                    SetChNum = 0;
+                    break;
+                case 2:
+                    SetChNum = 2;
+                    break;
+                case 3:
+                    SetChNum = 6;
+                    break;
+            }
         }
+        ChNum = SetChNum;
+        
+
+        SLearn = GlobalSet.guideMode == GlobalSet.GuideMode.Self;
+
 
         if (ChNum == 0 || ChNum == 1)
         {
@@ -248,7 +271,9 @@ public class LevelController : MonoBehaviour
         else if (ChNum == 6)
         {
             CanvasCH1.SetActive(false);
+            #if UNITY_ANDROID
             RightHandController.GetComponent<RaycastPointer>().enabled = true;
+#endif
             CH3.SetActive(true);
         }
         web = GetComponent<WebPhp>();
@@ -517,37 +542,72 @@ public class LevelController : MonoBehaviour
                 if (QuestionArr[ChNum][QuestionCount] == "你覺得斑馬有哪些特徵呢？\n移動手把或準星點選，把這些特徵找出來吧。")
                 {
                     StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "4", WebPhp.php_method.Action));
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "62", WebPhp.php_method.Action));
                     CheckAnimal();
                     AllAns.SetActive(false);
+                }
+                else if (ChNum == 0 && QuestionCount == 1)
+                {
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "60", WebPhp.php_method.Action));
+                    ShowNextQuestion();
+                }
+                else if (ChNum == 1 && QuestionCount == 1)
+                {
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "64", WebPhp.php_method.Action));
+                    ShowNextQuestion();
                 }
                 else if (ChNum == 1 && QuestionCount == 2)
                 {
                     StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "10", WebPhp.php_method.Action));
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "66", WebPhp.php_method.Action));
                     CheckAnimal();
-                    
                     AllAns.SetActive(false);
+                }
+                else if (ChNum == 2 && QuestionCount == 1)
+                {
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "68", WebPhp.php_method.Action));
+                    ShowNextQuestion();
                 }
                 else if (ChNum == 2 && QuestionCount == 2)
                 {
                     StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "20", WebPhp.php_method.Action));
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "70", WebPhp.php_method.Action));
                     CheckAnimal();
                     AllAns.SetActive(false);
+                }
+                else if (ChNum == 3 && QuestionCount == 1)
+                {
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "72", WebPhp.php_method.Action));
+                    ShowNextQuestion();
                 }
                 else if (ChNum == 3 && QuestionCount == 2)
                 {
                     StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "23", WebPhp.php_method.Action));
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "74", WebPhp.php_method.Action));
                     CheckAnimal();
                     AllAns.SetActive(false);
+                }
+                else if (ChNum == 4 && QuestionCount == 1)
+                {
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "76", WebPhp.php_method.Action));
+                    ShowNextQuestion();
                 }
                 else if (ChNum == 4 && QuestionCount == 2)
                 {
                     StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "27", WebPhp.php_method.Action));
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "78", WebPhp.php_method.Action));
                     CheckAnimal();
                     AllAns.SetActive(false);
+                }
+                else if (ChNum == 5 && QuestionCount == 1)
+                {
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "80", WebPhp.php_method.Action));
+                    ShowNextQuestion();
                 }
                 else if (ChNum == 5 && QuestionCount == 2)
                 {
                     StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "33", WebPhp.php_method.Action));
+                    StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "82", WebPhp.php_method.Action));
                     CheckAnimal();
                     AllAns.SetActive(false);
                 }
@@ -563,6 +623,54 @@ public class LevelController : MonoBehaviour
         }
         else
         {
+            if (ChNum == 0 && QuestionCount == 0)
+            {
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "61", WebPhp.php_method.Action));
+            }
+            else if (ChNum == 0 && QuestionCount == 1)
+            {
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "63", WebPhp.php_method.Action));
+            }
+            else if (ChNum == 1 && QuestionCount == 0)
+            {
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "65", WebPhp.php_method.Action));
+            }
+            else if (ChNum == 1 && QuestionCount == 1)
+            {
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "67", WebPhp.php_method.Action));
+            }
+            else if (ChNum == 2 && QuestionCount == 0)
+            {
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "69", WebPhp.php_method.Action));
+            }
+            else if (ChNum == 2 && QuestionCount == 1)
+            {
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "71", WebPhp.php_method.Action));
+            }
+            else if (ChNum == 3 && QuestionCount == 0)
+            {
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "73", WebPhp.php_method.Action));
+            }
+            else if (ChNum == 3 && QuestionCount == 1)
+            {
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "75", WebPhp.php_method.Action));
+            }
+            else if (ChNum == 4 && QuestionCount == 0)
+            {
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "77", WebPhp.php_method.Action));
+            }
+            else if (ChNum == 4 && QuestionCount == 1)
+            {
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "79", WebPhp.php_method.Action));
+            }
+            else if (ChNum == 5 && QuestionCount == 0)
+            {
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "81", WebPhp.php_method.Action));
+            }
+            else if (ChNum == 5 && QuestionCount == 1)
+            {
+                StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "83", WebPhp.php_method.Action));
+            }
             if (InfoText.text != "回答錯誤")
             {
                 QuaternionRecord = InfoText.text;
@@ -590,7 +698,7 @@ public class LevelController : MonoBehaviour
         {
             CH1Audio[0].Play();
             Invoke("LionAudio", 2);
-            LionAn1.Play("move");
+            LionAn1.Play("run");
             ZebraAn1.Play("run");
             Lion1.GetComponent<PathFollower>().enabled = true;
             Zebra1.GetComponent<PathFollower>().enabled = true;
@@ -1231,11 +1339,13 @@ public class LevelController : MonoBehaviour
         Bear2.transform.position = new Vector3(245, -0.2f, 95);
         PenguinFa2.transform.position = new Vector3(242, 1, 100);
         Penguin2.transform.localPosition = new Vector3(0, 0, 0);
+
         Lion2.GetComponent<XRGrabInteractable>().enabled = true;
         Zebra2.GetComponent<XRGrabInteractable>().enabled = true;
         Bear2.GetComponent<XRGrabInteractable>().enabled = true;
         Sealdog2.GetComponent<XRGrabInteractable>().enabled = true;
         Penguin2.GetComponent<XRGrabInteractable>().enabled = true;
+
         Lion2.GetComponent<BoxCollider>().enabled = true;
         Zebra2.GetComponent<BoxCollider>().enabled = true;
         Bear2.GetComponent<BoxCollider>().enabled = true;
@@ -1324,7 +1434,7 @@ public class LevelController : MonoBehaviour
             }
             else if (WSBtnNum == 7)
             {
-                
+                SceneManager.LoadScene("Menu");
             }
         }
         else if (ChNum > 1 && ChNum < 6)
@@ -1350,7 +1460,7 @@ public class LevelController : MonoBehaviour
             }
             else if (WSBtnNum == 2)
             {
-
+                SceneManager.LoadScene("Menu");
             }
         }
         WSBtnNum++;

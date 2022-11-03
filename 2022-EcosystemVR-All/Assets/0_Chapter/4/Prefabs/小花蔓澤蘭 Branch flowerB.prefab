@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2067995702596761008}
+  - component: {fileID: 412393557954385865}
+  - component: {fileID: -7485488316041278532}
   m_Layer: 0
   m_Name: "\u5C0F\u82B1\u8513\u6FA4\u862D Branch flowerB"
   m_TagString: flower
@@ -35,6 +37,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &412393557954385865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6485604125092935116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75f46f5cfecd19148b20177cbfeccd3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growUp: 0
+  growStage: 0
+  growSpeed: 2
+  animator: {fileID: -7485488316041278532}
+  id: 1
+--- !u!95 &-7485488316041278532
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6485604125092935116}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7a4c142bf909d5040bed261d6d6795c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &258973923508210397
 PrefabInstance:
   m_ObjectHideFlags: 0

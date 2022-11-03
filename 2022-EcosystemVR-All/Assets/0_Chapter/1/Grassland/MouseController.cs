@@ -11,11 +11,14 @@ public class MouseController : MonoBehaviour
     string hitname = "";
     public static GameObject hitObject;
     public GameObject Aim;
-
+    public bool IsPC = false;
     // Start is called before the first frame update
     void Start()
     {
-        if (DisableWhenPC.IsPC == false)
+#if UNITY_STANDALONE_WIN
+        IsPC = true;
+#endif
+        if (IsPC == false)
         {
             Aim.SetActive(false);
         }
@@ -50,11 +53,11 @@ public class MouseController : MonoBehaviour
         }
         if (hitname.Contains("Terrain") || hitname.Contains("Ground") || hitname.Contains("floor") || hitname == "")
         {
-            Aim.GetComponent<RawImage>().color = new Color (255, 0, 0, 255);
+            Aim.GetComponent<Image>().color = new Color (255, 0, 0, 255);
         }
         else
         {
-            Aim.GetComponent<RawImage>().color = new Color (255, 255, 255, 255);
+            Aim.GetComponent<Image>().color = new Color (255, 255, 255, 255);
         }
     }
 }

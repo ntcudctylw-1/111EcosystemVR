@@ -16,7 +16,22 @@ public class GoToMenu : MonoBehaviour
     {
         if(inputActions.XRILeftHandInteraction.MenuButton.ReadValue<float>() != 0)
         {
-            SceneManager.LoadScene(1);
+            loadscene(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Home))
+        {
+            loadscene(1);
         }
     }
+
+    int outid = 0;
+    public void InvokeLoadScene(int sec,int outidd)
+    {
+        outid = outidd;
+        Invoke("loadsceneout", sec);
+    }
+
+    public void loadscene(int id) => SceneManager.LoadScene(id);
+
+    void loadsceneout() => SceneManager.LoadScene(outid);
 }

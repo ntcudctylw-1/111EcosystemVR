@@ -15,7 +15,7 @@ public class GlobalSet : MonoBehaviour
     public static string ScrRecIP = "www.ylw.idv.tw";
     public bool NetworkMode; //true: 記錄在遠端  false: 記錄在本地
     public int[] Score;//各關卡分數
-    public static bool tutor; //true 導學版, false 自學版
+
 
     public enum PlayMode
     {
@@ -71,8 +71,8 @@ public class GlobalSet : MonoBehaviour
 
     public enum GuideMode
     {
-        Self,
-        Guide
+        Self,//自學
+        Guide//島學
     }
 
     public static GuideMode guideMode;

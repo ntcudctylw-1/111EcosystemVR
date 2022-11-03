@@ -14,18 +14,32 @@ public class VRControl : MonoBehaviour
     public Text sid; //Åã¥Ü¾Ç¥Í¸ê°T
     void Start()
     {
+        
         if (Application.platform != RuntimePlatform.Android) gameObject.SetActive(false);
-        mes.text = "";
-        sid.text = GlobalSet.SID;
-        presstime = Time.realtimeSinceStartup;
+        else
+        {
+            print(GlobalSet.LID);
+            if (GlobalSet.LID != null && GlobalSet.LID != "")
+            {
+                WebPhp webPhp = FindObjectOfType<WebPhp>();
+                StartCoroutine(webPhp.php(GlobalSet.SID, GlobalSet.LID, "", WebPhp.php_method.LevelInf));
+            }
+            GlobalSet.LID = "";
+            if (GlobalSet.SID == null) GlobalSet.SID = "dct" + UnityEngine.Random.Range(1, 10);
+            mes.text = "";
+            sid.text = GlobalSet.SID;
+            presstime = Time.realtimeSinceStartup;
+        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.realtimeSinceStartup - presstime > cooldown && loadscene != -1)
+        if (Time.realtimeSinceStartup - presstime > cooldown && loadscene != -1 && GlobalSet.LID!= "")
         {
             print(loadscene);
+            
             SceneManager.LoadScene(loadscene);
         }
     }
@@ -53,6 +67,10 @@ public class VRControl : MonoBehaviour
             GameObject.Find("SelectEffect").GetComponent<AudioSource>().Play();
             GameObject.Find(Feature).transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
             loadscene = int.Parse(Feature.Substring(2, 1))+1;
+            WebPhp webPhp = FindObjectOfType<WebPhp>();
+            if (GlobalSet.LID == "")
+                StartCoroutine(webPhp.php(GlobalSet.SID, "-1", (loadscene - 1).ToString(), WebPhp.php_method.LevelInf));
+
         }
     }
 

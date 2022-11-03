@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class CatHealth : MonoBehaviour
 {
-    public int hp;
+    [SerializeField]
+    public static int hp = 3;
     [SerializeField]
     private float normalSpeed,posionSpeed;
     CatFirstPersonController CatFirstPerson;
     private void Start()
     {
-        CatFirstPerson = GetComponent<CatFirstPersonController>();
+        CatFirstPerson = FindObjectOfType< CatFirstPersonController>();
     }
 
     public void subHP()
@@ -20,7 +21,8 @@ public class CatHealth : MonoBehaviour
 
     public void posioned()
     {
-        CatFirstPerson.moveSpeed = posionSpeed;
+        print("GetPosioned");
+        CatFirstPerson.moveSpeed *= posionSpeed;
     }
 
     public void normalized()

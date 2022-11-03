@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.XR.Interaction.Toolkit;
 using PathCreation.Examples;
 using Random=UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 //using System.Collections.IEnumerable;
 
@@ -178,6 +179,7 @@ public class CH3 : MonoBehaviour
             Dead();
         }
         ShowAnimal[Order[CH3Level]].GetComponent<XRSimpleInteractable>().enabled = false;
+        AnArr[Order[CH3Level]].Play("idle");
         Invoke("NextRound", 6);
     }
 
@@ -208,6 +210,7 @@ public class CH3 : MonoBehaviour
             Dead();
         }
         ShowAnimal[Order[CH3Level]].GetComponent<XRSimpleInteractable>().enabled = false;
+        AnArr[Order[CH3Level]].Play("idle");
         Invoke("NextRound", 6);
     }
 
@@ -372,6 +375,7 @@ public class CH3 : MonoBehaviour
         }
     }
 
+    
     public void ButtonClick()
     {
         ButtonSound.Play();
@@ -399,7 +403,8 @@ public class CH3 : MonoBehaviour
         }
         else
         {
-
+            
+            SceneManager.LoadScene("Menu");
         }
         ButtonLevel++;
     }

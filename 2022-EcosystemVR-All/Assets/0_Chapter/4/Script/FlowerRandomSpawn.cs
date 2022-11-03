@@ -26,12 +26,16 @@ public class FlowerRandomSpawn : MonoBehaviour
 
     public Level level;
     private float nextActionTime = 0.0f;
-    public void Spawn()
+    public void Spawn(int iid = -1)
     {
-        int flowerNum = Random.Range(0, flowers.Length);
+        int flowerNum;
+        if (iid == -1)
+            flowerNum = Random.Range(0, flowers.Length);
+        else
+            flowerNum = iid;
         if (flowers[flowerNum].spawned.Count == 0)
         {
-            //print("new");
+            print("new " + iid.ToString());
             int gridNum = Random.Range(0, grids.Count);
             int id = int.Parse(grids[gridNum].name);
             Destroy(grids[id].transform.GetChild(0).gameObject);
@@ -128,12 +132,21 @@ public class FlowerRandomSpawn : MonoBehaviour
 
     void Update()
     {
-
+        if (flowers[0].spawned.Count == 0)
+        {
+            for (int i = 0; i < level.numberPerSpawnCycle; i++) Spawn(0);
+        }
+        if (flowers[1].spawned.Count == 0)
+        {
+            for (int i = 0; i < level.numberPerSpawnCycle; i++) Spawn(1);
+        }
+        /*
         if (Time.time > nextActionTime)
         {
             nextActionTime = Time.time + level.timePerRound;
             for (int i = 0; i < level.numberPerSpawnCycle; i++)Spawn();
         }
+        */
     }
 
     IEnumerator GameStart()
