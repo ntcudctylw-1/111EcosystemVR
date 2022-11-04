@@ -11,6 +11,7 @@ public class HMDEvents : MonoBehaviour
     [Serializable]
     public class HMDEvent
     {
+        public bool guide = false;
         public string tip;
         public List<string> contents;
         public int MID;
@@ -53,7 +54,7 @@ public class HMDEvents : MonoBehaviour
     public void EventTriggered(int id)
     {
         currentID = id;
-        if(GlobalSet.guideMode == GlobalSet.GuideMode.Self)
+        if(GlobalSet.guideMode == GlobalSet.GuideMode.Self || hMDEvents[id].guide)
         {
             if(hMDEvents[id].contents.Count != 0)
             {

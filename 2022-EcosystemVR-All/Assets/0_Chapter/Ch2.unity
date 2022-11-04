@@ -11036,6 +11036,7 @@ MonoBehaviour:
   - {fileID: 1071512166}
   - {fileID: 1680130192}
   SLearn: 0
+  IsPC: 0
 --- !u!4 &726432436
 Transform:
   m_ObjectHideFlags: 0
@@ -13525,7 +13526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &842342836
 Transform:
   m_ObjectHideFlags: 0
@@ -13902,6 +13903,7 @@ MonoBehaviour:
   - {fileID: 598406745}
   - {fileID: 945833447}
   - {fileID: 1728439464}
+  IsPC: 0
 --- !u!114 &868967970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29944,6 +29946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Aim: {fileID: 810792684}
+  IsPC: 0
 --- !u!1 &1838398319
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,9 @@ public class HMDController : MonoBehaviour
     public GameObject nextBut, closeBut;
     int stringid = 0;
     public GameObject rightController;
-    
+    public List<GameObject> questions;
+    public int ansID;
+
     public void close()
     {
         //FindObjectOfType<CatFirstPersonController>().enabled = true;
@@ -43,9 +45,39 @@ public class HMDController : MonoBehaviour
     private void Update()
     {
         //sprint(stringid);
-        text.text = displayTexts[stringid];
-        bool go = displayTexts.Count - 1 == stringid;
-        closeBut.SetActive(go);
-        nextBut.SetActive(!go);
+        if (displayTexts[stringid][0] == 'q')
+        {
+            string[] qanda = displayTexts[stringid].Substring(1).Split(':');
+            text.text = qanda[1];
+            int qid = 2;
+            foreach (var item in questions)
+            {
+                item.SetActive(true);
+                item.GetComponentInChildren<Text>().text = qanda[qid];
+                qid++;
+            }
+            ansID = int.Parse(qanda[qanda.Length - 1]);
+            bool go = false;
+            closeBut.SetActive(go);
+            nextBut.SetActive(go);
+        }
+        else 
+        {
+            foreach (var item in questions)
+            {
+                item.SetActive(false);
+            }
+            text.text = displayTexts[stringid];
+            bool go = displayTexts.Count - 1 == stringid;
+            closeBut.SetActive(go);
+            nextBut.SetActive(!go);
+        } 
+        
+    }
+
+    public void ans(int id)
+    {
+        Debug.Log("Answer Correct?" + (id == ansID).ToString());
+        stringid++;
     }
 }

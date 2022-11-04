@@ -71,6 +71,7 @@ public class MouseControl : MonoBehaviour
         {
             Target.rectTransform.sizeDelta = new Vector2(130, 130);
             string Feature = hit.collider.gameObject.name;
+            if (Feature == "List" && Mouse.current.leftButton.isPressed) SceneManager.LoadScene("List");
             if (Feature.Substring(0, 2) == "CH")
             {
                 if (Feature == "CH1") mes.text = "單元1.生物多樣性";

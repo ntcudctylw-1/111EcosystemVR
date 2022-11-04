@@ -173,19 +173,19 @@ public class LevelController : MonoBehaviour
     public AudioSource[] CH2Audio;
 
     public bool SLearn = false;
-
-    public string[][] TemAndRainArr = {new string [] {"24℃", "300mm"}
-    , new string[] {"-20℃", "150mm"}
-    , new string[] {"12℃", "2200mm"}
-    , new string[] {"25℃", "2010mm"}
-    , new string[] {"23℃", "1300mm"}
-    , new string[] {"25℃", "2736mm"}};
+    public bool IsPC = false;
+    public string[][] TemAndRainArr = {new string [] {"24℃", "年降雨量\n300mm"}
+    , new string[] {"-20℃", "年降雨量\n150mm"}
+    , new string[] {"12℃", "年降雨量\n2200mm"}
+    , new string[] {"25℃", "年降雨量\n2010mm"}
+    , new string[] {"23℃", "年降雨量\n1300mm"}
+    , new string[] {"25℃", "年降雨量\n2736mm"}};
 
     public string[][] QuestionArr = {
     new string[] {"我們現在來到了草原生態系。\n看一看旁邊顯示的溫度計，\n你覺得現在的環境感覺如何？" //0 草原
     , "四處看看草原生態系的景象，\n並觀察一下附近的植物有什麼特徵呢？"
     , "你覺得斑馬有哪些特徵呢？\n移動手把或準星點選，把這些特徵找出來吧。"
-    , "很好，斑馬的特徵有牠身上黑白相間的條紋和牠的蹄。\n再來讓我們觀察旁邊的獅子，\n你覺得獅子有哪些特徵呢？\n移動手把或準星點選，把這些特徵找出來吧。"
+    , "很好，斑馬的特徵有牠身上\n黑白相間的條紋和牠的蹄。\n再來讓我們觀察旁邊的獅子，\n你覺得獅子有哪些特徵呢？\n移動手把或準星點選，把這些特徵找出來吧。"
     }, new string[] {"我們現在來到了極地生態系。\n看一看旁邊顯示的溫度計，\n你覺得現在的環境感覺如何？" //1 極地
     , "四處看看極地生態系的景象，\n你覺得四周的環境有什麼特別的地方嗎？"
     , "觀察北極熊，你覺得北極熊\n有哪個部位可以幫助牠保暖呢？\n移動手把或準星點選該部位。"
@@ -255,10 +255,11 @@ public class LevelController : MonoBehaviour
             }
         }
         ChNum = SetChNum;
-        
-
         SLearn = GlobalSet.guideMode == GlobalSet.GuideMode.Self;
 
+#if UNITY_STANDALONE_WIN
+        IsPC = true;
+#endif
 
         if (ChNum == 0 || ChNum == 1)
         {
@@ -480,7 +481,7 @@ public class LevelController : MonoBehaviour
         }
         else
         {
-            InfoText.text = "觀察完了草原生態系和極地生態系的動物們後，\n接下來讓我們來玩個小遊戲吧！";
+            InfoText.text = "觀察完了草原生態系\n和極地生態系的動物們後，\n接下來讓我們來玩個小遊戲吧！";
             WSCH1Button.SetActive(true);
         }
     }
@@ -615,7 +616,7 @@ public class LevelController : MonoBehaviour
         {
             CH1Audio[0].Play();
             Invoke("LionAudio", 2);
-            LionAn1.Play("walk");
+            LionAn1.Play("run");
             ZebraAn1.Play("run");
             Lion1.GetComponent<PathFollower>().enabled = true;
             Zebra1.GetComponent<PathFollower>().enabled = true;
@@ -782,7 +783,7 @@ public class LevelController : MonoBehaviour
                 TargetText.text = "斑馬特徵：" + ZebraNum + " / 2";
                 if (SLearn == true)
                 {
-                    InfoText.text = "斑馬身上的黑白紋路可以混淆斑馬的天敵的視覺，\n讓他沒辦法鎖定獵物。\n同時黑白相間的紋路還可以調節身體的溫度呢！";
+                    InfoText.text = "斑馬身上的黑白紋路可以\n讓天敵沒辦法鎖定斑馬。\n同時黑白相間的紋路還可以\n調節身體的溫度呢！";
                 }
                 else
                 {
@@ -800,7 +801,7 @@ public class LevelController : MonoBehaviour
                 TargetText.text = "斑馬特徵：" + ZebraNum + " / 2";
                 if (SLearn == true)
                 {
-                    InfoText.text = "斑馬的蹄可以讓牠在草原環境裡更快速的移動，\n避免被牠的天敵獵捕。";
+                    InfoText.text = "斑馬的蹄可以讓牠在\n草原環境裡更快速的移動，\n避免被牠的天敵獵捕。";
                 }
                 else
                 {
@@ -819,7 +820,7 @@ public class LevelController : MonoBehaviour
                 CH1Audio[3].Play();
                 if (SLearn == true)
                 {
-                    if (DisableWhenPC.IsPC == true)
+                    if (IsPC == true)
                     {
                         InfoText.text = "北極熊身上厚重的毛皮能幫助牠保暖，\n讓牠可以在這麼寒冷的環境底下生存。\n再觀察一旁的海豹，\n你覺得海豹有哪個部位可以幫助牠保暖呢？\n移動準星並點選該部位。";
                     }
@@ -830,7 +831,7 @@ public class LevelController : MonoBehaviour
                 }
                 else
                 {
-                    if (DisableWhenPC.IsPC == true)
+                    if (IsPC == true)
                     {
                         InfoText.text = "再觀察一旁的海豹，\n你覺得海豹有哪個部位可以幫助牠保暖呢？\n移動準星並點選該部位。";
                     }
@@ -890,7 +891,7 @@ public class LevelController : MonoBehaviour
                 Ch2Complete++;
                 if (SLearn == true)
                 {
-                    InfoText.text = "櫻花鉤吻鮭的身體側扁呈紡錘狀，背部青綠色，\n腹部為銀白色，體側中央有橢圓形雲紋斑點，\n牠像流水一般的身體線條，\n讓牠能夠更輕鬆的在快速流動中的水流裡移動。";
+                    InfoText.text = "櫻花鉤吻鮭的身體\n側扁呈紡錘狀，背部青綠色，\n腹部為銀白色，體側中央有橢圓形雲紋斑點，\n牠像流水一般的身體線條，\n讓牠能夠更輕鬆的在\n快速流動中的水流裡移動。";
                 }
                 else
                 {
@@ -993,7 +994,7 @@ public class LevelController : MonoBehaviour
                 Invoke("CheckMud", 2);
                 if (SLearn == true)
                 {
-                    InfoText.text = "雄性招潮蟹的大螯除了拿來防禦、威嚇之外，\n在繁殖期間還會在沙灘上不斷的揮舞大螯來求偶，\n直到漲潮的時候才會停止。";
+                    InfoText.text = "雄性招潮蟹的大螯除了拿來防禦、威嚇之外，\n在繁殖期間還會在沙灘上\n不斷的揮舞大螯來求偶，\n直到漲潮的時候才會停止。";
                 }
                 else
                 {
@@ -1313,12 +1314,12 @@ public class LevelController : MonoBehaviour
                 Zebra1.SetActive(false);
                 Lion1.SetActive(false);
                 Penguin1.SetActive(false);
-                InfoText.text = "認識了上面幾種生態系以及在裡面生活的動物後\n讓我們來玩個小遊戲吧！";
+                InfoText.text = "認識了上面幾種生態系\n以及在裡面生活的動物後\n讓我們來玩個小遊戲吧！";
             }
             else if (WSBtnNum == 2)
             {
                 WSCH1Button.GetComponentInChildren<Text>().text = "開始";
-                InfoText.text = "仔細觀察周圍的環境，判斷這是什麼生態系，\n並把適合在這個生態系生活的動物抓出來，\n讓牠可以居住在舒適的地方吧。\n要小心如果選錯動物的話，\n動物可能會因為環境適應不良而無法在這裡生存哦！";
+                InfoText.text = "仔細觀察周圍的環境，判斷這是什麼生態系，\n並把適合在這個生態系生活的動物抓出來，\n讓牠可以居住在舒適的地方吧。\n要小心如果選錯動物的話，\n動物可能會因為環境適應不良\n而無法在這裡生存哦！";
             }
             else if (WSBtnNum == 3)
             {
@@ -1334,12 +1335,12 @@ public class LevelController : MonoBehaviour
             }
             else if (WSBtnNum == 5)
             {
-                InfoText.text = "恭喜你完成本單元！在這個單元裡，\n有沒有更加瞭解動物特徵與生活環境的關聯呢？\n動物為了適應環境並生存，\n會對應不同的生態系演化出不同的特徵與能力。\n想一想，你還知道哪些動物為了生存在草原或極地，\n擁有獨特的外觀特徵呢？";
+                InfoText.text = "恭喜你完成本單元！在這個單元裡，\n有沒有更加瞭解動物特徵與生活環境的關聯呢？\n動物為了適應環境並生存，\n會對應不同的生態系演化出不同的特徵與能力。\n想一想，你還知道哪些動物\n為了生存在草原或極地，\n擁有獨特的外觀特徵呢？";
             }
             else if (WSBtnNum == 6)
             {
                 WSCH1Button.GetComponentInChildren<Text>().text = "回主選單";
-                if (DisableWhenPC.IsPC == true)
+                if (IsPC == true)
                 {
                     InfoText.text = "單元完成，內容已經記錄在探險筆記上面了，\n按TAB開啟/關閉探險筆記，回顧單元內容吧。";
                 }
@@ -1365,7 +1366,7 @@ public class LevelController : MonoBehaviour
             else if (WSBtnNum == 1)
             {
                 WSCH1Button.GetComponentInChildren<Text>().text = "回主選單";
-                if (DisableWhenPC.IsPC == true)
+                if (IsPC == true)
                 {
                     InfoText.text = "單元完成，內容已經記錄在探險筆記上面了，\n按TAB開啟/關閉探險筆記，回顧單元內容吧。";
                 }

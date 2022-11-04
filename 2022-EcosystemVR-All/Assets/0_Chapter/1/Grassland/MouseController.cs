@@ -11,11 +11,14 @@ public class MouseController : MonoBehaviour
     string hitname = "";
     public static GameObject hitObject;
     public GameObject Aim;
-
+    public bool IsPC = false;
     // Start is called before the first frame update
     void Start()
     {
-        if (DisableWhenPC.IsPC == false)
+#if UNITY_STANDALONE_WIN
+        IsPC = true;
+#endif
+        if (IsPC == false)
         {
             Aim.SetActive(false);
         }
