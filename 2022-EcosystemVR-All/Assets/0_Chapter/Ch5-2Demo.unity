@@ -29768,10 +29768,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWalking: 0
   CinemachineCameraTarget: {fileID: 1943773618}
-  LockCameraPosition: 0
-  TopClamp: 70
-  BottomClamp: -30
-  CameraAngleOverride: 0
 --- !u!114 &1943773621
 MonoBehaviour:
   m_ObjectHideFlags: 0

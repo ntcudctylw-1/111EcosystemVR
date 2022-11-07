@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.InputSystem;
 
 public class VRControl : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class VRControl : MonoBehaviour
 
     public void HoverIn(string Feature)
     {
+        if (Feature == "List" ) SceneManager.LoadScene("List");
         if (Feature == "CH1") mes.text = "單元1.生物多樣性";
         else if (Feature == "CH2") mes.text = "單元2.台灣的多樣化環境";
         else if (Feature == "CH3") mes.text = "單元3.生物生存適應";
