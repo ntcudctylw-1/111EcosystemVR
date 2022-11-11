@@ -53,7 +53,6 @@ public class CH3 : MonoBehaviour
     public GameObject BirdDrip;
 
     public AudioSource[] Audio;
-    public bool IsPC = false;
 
     List<int> Order = new List<int>();
 
@@ -74,9 +73,6 @@ public class CH3 : MonoBehaviour
 
     void Start()
     {
-#if UNITY_STANDALONE_WIN
-        IsPC = true;
-#endif
         web = GetComponent<WebPhp>();
         RandomLevel();
     }
@@ -389,14 +385,14 @@ public class CH3 : MonoBehaviour
         }
         else if (ButtonLevel == 1)
         {
-            if (IsPC == true)
+            if (DisableWhenPC.IsPC == true)
             {
-                Debug.Log(IsPC);
+                Debug.Log(DisableWhenPC.IsPC);
                 InfoText.text = "操作方式：\n用左鍵將動物抓起，\n將動物拖曳到區域後再次按下左鍵將動物放下。";
             }
             else
             {
-                InfoText.text = "操作方式：\n用手把抓握和食指板機將動物抓起，\n將動物拖曳到區域後\n再次按下抓握將動物放下。";
+                InfoText.text = "操作方式：\n用手把抓握和食指板機將動物抓起，\n將動物拖曳到區域後再次按下抓握將動物放下。";
             }
             ButtonText.text = "開始";
         }

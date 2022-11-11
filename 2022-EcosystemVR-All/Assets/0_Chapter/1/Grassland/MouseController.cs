@@ -53,11 +53,11 @@ public class MouseController : MonoBehaviour
         }
         if (hitname.Contains("Terrain") || hitname.Contains("Ground") || hitname.Contains("floor") || hitname == "")
         {
-            Aim.GetComponent<RawImage>().color = new Color (255, 0, 0, 255);
+            Aim.GetComponent<Image>().color = new Color (255, 0, 0, 255);
         }
         else
         {
-            Aim.GetComponent<RawImage>().color = new Color (255, 255, 255, 255);
+            Aim.GetComponent<Image>().color = new Color (255, 255, 255, 255);
         }
     }
 }

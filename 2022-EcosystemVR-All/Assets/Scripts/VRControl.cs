@@ -47,13 +47,16 @@ public class VRControl : MonoBehaviour
 
     public void HoverIn(string Feature)
     {
-        if (Feature == "List" ) SceneManager.LoadScene("List");
-        if (Feature == "CH1") mes.text = "單元1.生物多樣性";
-        else if (Feature == "CH2") mes.text = "單元2.台灣的多樣化環境";
-        else if (Feature == "CH3") mes.text = "單元3.生物生存適應";
-        else if (Feature == "CH4") mes.text = "單元4.外來入侵種對台灣的影響";
-        else if (Feature == "CH5") mes.text = "單元5.候鳥遷徙";
-        else if (Feature == "CH6") mes.text = "單元6.淺山生態與石虎";
+        
+        
+            if (Feature == "CH1") mes.text = "單元1.生物多樣性";
+            else if (Feature == "CH2") mes.text = "單元2.台灣的多樣化環境";
+            else if (Feature == "CH3") mes.text = "單元3.生物生存適應";
+            else if (Feature == "CH4") mes.text = "單元4.外來入侵種對台灣的影響";
+            else if (Feature == "CH5") mes.text = "單元5.候鳥遷徙";
+            else if (Feature == "CH6") mes.text = "單元6.淺山生態與石虎";
+        
+        
     }
     public void HoverOut(string Feature)
     {
@@ -63,6 +66,10 @@ public class VRControl : MonoBehaviour
     {
         //RightHand.Trigger.OnPressing = inputActions.XRIRightHandInteraction.Activate.ReadValue<float>() == 1 ? true : false;
         mes.text = Feature;
+        if (Feature == "List")
+        {
+            SceneManager.LoadScene("List");
+        }
         if (Feature.Substring(0, 2) == "CH")
         {
             mes.text=Feature;

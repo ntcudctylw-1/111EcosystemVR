@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.10018294, g: 0.07593297, b: 0.15482411, a: 1}
+  m_IndirectSpecularColor: {r: 0.099410504, g: 0.076037824, b: 0.15427963, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1960,6 +1960,7 @@ GameObject:
   - component: {fileID: 371164505}
   - component: {fileID: 371164506}
   - component: {fileID: 371164507}
+  - component: {fileID: 371164504}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2044,11 +2045,17 @@ MonoBehaviour:
     - "\u73FE\u5728\u8A66\u8457\u5B78\u7FD2\u50CF\u77F3\u864E\u4E00\u6A23\u8D70\u8DEF\u5427"
     - "\u7528\u5169\u96BB\u624B\u4E0A\u4E0B\u64FA\u52D5\u505A\u51FA\u884C\u8D70\u7684\u52D5\u4F5C\uFF0C\u64CD\u63A7\u81EA\u5DF1\u5411\u524D\u9032\u3002"
     MID: 0
+    m_Event:
+      m_PersistentCalls:
+        m_Calls: []
   - guide: 1
     tip: "\u55AE\u51436\u904A\u6232\u5F15\u5C0E"
     contents:
     - "\u771F\u68D2\uFF0C\u90A3\u6211\u5011\u5C31\u958B\u59CB\u5427!"
     MID: 0
+    m_Event:
+      m_PersistentCalls:
+        m_Calls: []
   web: {fileID: 371164496}
   m_EventStart:
     m_PersistentCalls:
@@ -2212,6 +2219,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 371164504}
+        m_TargetAssemblyTypeName: SetQuailty, Assembly-CSharp
+        m_MethodName: SetQuality
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &371164499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2280,6 +2299,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugText: {fileID: 1146959414}
   image: {fileID: 22170006}
+--- !u!114 &371164504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371164490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f84f0b0f0fa1549bca81e6c53a12f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &371164505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7640,10 +7671,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWalking: 0
   CinemachineCameraTarget: {fileID: 618814822}
-  LockCameraPosition: 0
-  TopClamp: 70
-  BottomClamp: -30
-  CameraAngleOverride: 0
 --- !u!1 &578257369
 GameObject:
   m_ObjectHideFlags: 0

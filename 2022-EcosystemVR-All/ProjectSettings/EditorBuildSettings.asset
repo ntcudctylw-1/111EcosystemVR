@@ -16,10 +16,10 @@ EditorBuildSettings:
     guid: 4b541b454cc74e5418b4a5a56413d062
   - enabled: 1
     path: Assets/0_Chapter/Ch2.unity
-    guid: f0866168e07f1734fa9104d5a710ea18
+    guid: 5cb95a68d44f6ce40bfa76489af07546
   - enabled: 1
     path: Assets/0_Chapter/Ch3.unity
-    guid: fa5d957c512fdf2448c3598e543d8cd9
+    guid: 1f451afa51fef4f40958dbd0b9109e62
   - enabled: 1
     path: Assets/0_Chapter/Ch4.unity
     guid: 3f368786f7ad9444aa6f07e2f6f17c4e

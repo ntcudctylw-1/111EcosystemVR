@@ -15,6 +15,16 @@ public class HMDEvents : MonoBehaviour
         public string tip;
         public List<string> contents;
         public int MID;
+        [Serializable]
+        public class SubEvent : UnityEvent { }
+        [SerializeField]
+        public SubEvent m_Event= new SubEvent();
+        public SubEvent onTrigger
+        {
+            get { return m_Event; }
+            set { m_Event = value; }
+        }
+        protected HMDEvent() { }
     }
     public HMDController controller;
     public List<HMDEvent> hMDEvents;
@@ -58,15 +68,16 @@ public class HMDEvents : MonoBehaviour
         {
             if(hMDEvents[id].contents.Count != 0)
             {
-                print("Event: " + id.ToString());
+                print("Event: " + hMDEvents[id].tip.ToString());
                 //FindObjectOfType<CatFirstPersonController>().enabled = false;
                 m_EventStart.Invoke();
                 controller.displayTexts = hMDEvents[id].contents;
                 controller.gameObject.SetActive(true);
                 controller.GetComponent<HMDController>().UpdateState();
+                
             }
-            
-           
+            hMDEvents[id].m_Event.Invoke();
+
         }
         if (hMDEvents[id].MID != 0)
             StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, hMDEvents[id].MID.ToString(), WebPhp.php_method.Action));
