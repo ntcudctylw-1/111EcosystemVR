@@ -17,6 +17,7 @@ public class CharacerControllerSystem : MonoBehaviour
     [SerializeReference] private bool jump;
     [SerializeReference] private bool grounded;
     [SerializeReference] private bool enableHMove = true;
+    [SerializeReference] private EyeFilter eyeFilter;
 
 
 
@@ -72,6 +73,7 @@ public class CharacerControllerSystem : MonoBehaviour
         quaternion.x = 0;
         vector = quaternion* vector;
         Vector3 vector1 = new Vector3(0, speed_V, 0);
+        if (eyeFilter != null) eyeFilter.SetTime(speed_H / speed_H_Max);
         character.Move((vector + vector1) * Time.deltaTime);
     }
 

@@ -175,6 +175,7 @@
     <Compile Include="Assets\Scripts\Keyin.cs" />
     <Compile Include="Assets\Chapter\Ch6\script\Loading.cs" />
     <Compile Include="Assets\0_Chapter\5-1\Ch5_Flaping.cs" />
+    <Compile Include="Assets\Scripts\CameraHeight.cs" />
     <Compile Include="Assets\0_Chapter\6-2\Script\CatCollision.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\0_Chapter\Test\NewBehaviourScript.cs" />
@@ -286,6 +287,7 @@
     <Compile Include="Assets\0_Chapter\5-2\FlyStarter.cs" />
     <Compile Include="Assets\Chapter\Ch5\Script\FlyController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
+    <Compile Include="Assets\0_Chapter\6-2\Script\EyeFilter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\MouseControl.cs" />
     <Compile Include="Assets\Chapter\Ch6\Script_test\test2\CatAnimation.cs" />
@@ -614,12 +616,6 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.38f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.38f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.38f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.38f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>

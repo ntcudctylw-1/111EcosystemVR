@@ -18,7 +18,8 @@ public class Chicken_Ch6 : MonoBehaviour
         
     public void getChicken()
     {
-
+        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);/*
         if(camera.transform.childCount == 0)
         {
             transform.parent = camera.transform;
@@ -27,7 +28,7 @@ public class Chicken_Ch6 : MonoBehaviour
             transform.localRotation = new Quaternion(0, 0, 0, 0);
             GetComponent<Animator>().enabled = false;
             //GetComponent<Rigidbody>().useGravity = false;
-        }
+        }*/
         
     }
 

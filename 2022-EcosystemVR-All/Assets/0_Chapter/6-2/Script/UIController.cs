@@ -25,6 +25,7 @@ public class UIController : MonoBehaviour
         public Text textObj;
         public int totleTimes;
         public int currentTimes;
+        public bool finished;
         [SerializeField]
         public TaskFInishEvent m_TaskFInishEvent = new TaskFInishEvent();
         public TaskFInishEvent onFlap
@@ -43,17 +44,19 @@ public class UIController : MonoBehaviour
 
         for (int i = 0; i < tasks.Count; i++)
         {
-            if (i == currentTaskID)
+            
+            if (!tasks[i].finished)
                 tasks[i].textObj.color = ActivateTaskColor;
             else
                 tasks[i].textObj.color = DeactivateTaskColor;
             tasks[i].textObj.text = string.Format("{0}({1}/{2})", tasks[i].name, tasks[i].currentTimes, tasks[i].totleTimes);
-            if (i == currentTaskID && tasks[i].currentTimes == tasks[i].totleTimes)
+            if (!tasks[i].finished && tasks[i].currentTimes == tasks[i].totleTimes)
             {
+                tasks[i].finished = true; 
                 tasks[i].m_TaskFInishEvent.Invoke();
                 currentTaskID++;
             }
-
+            
         }
             
     }

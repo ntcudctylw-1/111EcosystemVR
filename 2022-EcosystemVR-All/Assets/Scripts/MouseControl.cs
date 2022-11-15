@@ -86,6 +86,7 @@ public class MouseControl : MonoBehaviour
                     GameObject.Find("SelectEffect").GetComponent<AudioSource>().Play();
                     hit.collider.gameObject.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
                     loadscene = int.Parse(Feature.Substring(2, 1))+1;
+                    //SceneManager.LoadScene(loadscene);
                     WebPhp webPhp = FindObjectOfType<WebPhp>();
                     if (GlobalSet.LID == "")
                         StartCoroutine(webPhp.php(GlobalSet.SID, "-1", (loadscene - 1).ToString(), WebPhp.php_method.LevelInf));

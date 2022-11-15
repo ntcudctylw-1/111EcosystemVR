@@ -20,7 +20,8 @@ public class VRControl : MonoBehaviour
         else
         {
             print(GlobalSet.LID);
-            if (GlobalSet.LID != null && GlobalSet.LID != "")
+            if (GlobalSet.LID != null) GlobalSet.LID = "";
+            if (GlobalSet.LID != "")
             {
                 WebPhp webPhp = FindObjectOfType<WebPhp>();
                 StartCoroutine(webPhp.php(GlobalSet.SID, GlobalSet.LID, "", WebPhp.php_method.LevelInf));
@@ -70,16 +71,17 @@ public class VRControl : MonoBehaviour
         {
             SceneManager.LoadScene("List");
         }
-        if (Feature.Substring(0, 2) == "CH")
+        else if (Feature.Substring(0, 2) == "CH")
         {
             mes.text=Feature;
             GameObject.Find("SelectEffect").GetComponent<AudioSource>().Play();
             GameObject.Find(Feature).transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
             loadscene = int.Parse(Feature.Substring(2, 1))+1;
+            //SceneManager.LoadScene(loadscene);
             WebPhp webPhp = FindObjectOfType<WebPhp>();
             if (GlobalSet.LID == "")
                 StartCoroutine(webPhp.php(GlobalSet.SID, "-1", (loadscene - 1).ToString(), WebPhp.php_method.LevelInf));
-
+            
         }
     }
 

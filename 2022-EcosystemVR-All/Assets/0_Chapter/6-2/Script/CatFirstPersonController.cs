@@ -7,9 +7,11 @@ public class CatFirstPersonController : MonoBehaviour
 {
     public CharacterController character;
     public Transform cameraDirection;
+    public EyeFilter eyeFilter;
     public float moveSpeed = 1f;
     public float maxMoveSpeed = 10f;
     public float currentSpeed = 0f;
+    public float reduse = 0.99f;
 
     VR_Gesture gesture;
     PcWalking pcWalking;
@@ -26,9 +28,9 @@ public class CatFirstPersonController : MonoBehaviour
         }
         else
         {
-            currentSpeed = 0;
+            currentSpeed *= reduse;
         }
-        if (currentSpeed < 0) currentSpeed = 0;
+        if (currentSpeed < 0.01f) currentSpeed = 0;
         Move();
     }
 
@@ -37,7 +39,7 @@ public class CatFirstPersonController : MonoBehaviour
         Quaternion rotate = cameraDirection.transform.rotation;
         rotate.x = 0;
         rotate.z = 0;
-
+        if(eyeFilter!= null) eyeFilter.SetTime(currentSpeed / moveSpeed);
         character.Move(rotate * new Vector3(0, 0, currentSpeed) *Time.deltaTime);
     }
 
