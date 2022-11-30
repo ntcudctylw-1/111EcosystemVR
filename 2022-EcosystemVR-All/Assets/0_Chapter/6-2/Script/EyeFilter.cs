@@ -12,4 +12,9 @@ public class EyeFilter : MonoBehaviour
         Time = a;
         animator.SetFloat("Time", Time);
     }
+
+    private void Start()
+    {
+        
+    }
 }

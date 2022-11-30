@@ -115,6 +115,7 @@
     <Compile Include="Assets\0_Chapter\6-2\Script\CatFirstPersonController.cs" />
     <Compile Include="Assets\0_Chapter\5-1\ch5_diractor.cs" />
     <Compile Include="Assets\0_Chapter\6-2\Script\Tasks.cs" />
+    <Compile Include="Assets\Scripts\NetWorkMode.cs" />
     <Compile Include="Assets\0_Chapter\6\Script\Levels.cs" />
     <Compile Include="Assets\0_Chapter\1\Grassland\CH3.cs" />
     <Compile Include="Assets\Oculus Hands Physics\Scripts\HandPresence.cs" />

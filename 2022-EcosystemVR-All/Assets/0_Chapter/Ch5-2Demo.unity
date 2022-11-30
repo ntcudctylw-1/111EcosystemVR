@@ -345,7 +345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 34185566}
   relectiveObject: {fileID: 774253977}
-  gravaity: 0.4
+  gravaity: 0.1
   speed_V: 0
   speed_H: 0
   speed_H_Max: 10
@@ -355,6 +355,7 @@ MonoBehaviour:
   jump: 0
   grounded: 0
   enableHMove: 0
+  eyeFilter: {fileID: 0}
 --- !u!114 &34185568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7464,6 +7465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 699e8a006e86b0445a1a72581fe257c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugText: {fileID: 0}
 --- !u!114 &356909666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7478,7 +7480,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntryTime: 0
   ExitTime: 0
-  NetworkMode: 0
   Score: 
   SetMode: 1
 --- !u!114 &356909667
@@ -7505,6 +7506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 699e8a006e86b0445a1a72581fe257c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugText: {fileID: 0}
 --- !u!114 &356909669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19191,6 +19193,63 @@ Transform:
   m_Father: {fileID: 197275295}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &646226429
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2489345853476896129, guid: e1729546ae311404e8728bb3f3ee7f56, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489345853476896129, guid: e1729546ae311404e8728bb3f3ee7f56, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -170.30905
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489345853476896129, guid: e1729546ae311404e8728bb3f3ee7f56, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 20.798544
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489345853476896129, guid: e1729546ae311404e8728bb3f3ee7f56, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -65.98076
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489345853476896129, guid: e1729546ae311404e8728bb3f3ee7f56, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489345853476896129, guid: e1729546ae311404e8728bb3f3ee7f56, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489345853476896129, guid: e1729546ae311404e8728bb3f3ee7f56, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489345853476896129, guid: e1729546ae311404e8728bb3f3ee7f56, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489345853476896129, guid: e1729546ae311404e8728bb3f3ee7f56, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489345853476896129, guid: e1729546ae311404e8728bb3f3ee7f56, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489345853476896129, guid: e1729546ae311404e8728bb3f3ee7f56, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489345853476896134, guid: e1729546ae311404e8728bb3f3ee7f56, type: 3}
+      propertyPath: m_Name
+      value: Quailty
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e1729546ae311404e8728bb3f3ee7f56, type: 3}
 --- !u!4 &647533764 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: abebce5ae9f8e8f47aad8efece366c46, type: 3}
@@ -20802,6 +20861,7 @@ MonoBehaviour:
     textObj: {fileID: 494297810}
     totleTimes: 1
     currentTimes: 0
+    finished: 0
     m_TaskFInishEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -20809,6 +20869,7 @@ MonoBehaviour:
     textObj: {fileID: 905555460}
     totleTimes: 3
     currentTimes: 0
+    finished: 0
     m_TaskFInishEvent:
       m_PersistentCalls:
         m_Calls:
@@ -20912,6 +20973,7 @@ MonoBehaviour:
     textObj: {fileID: 1058098218}
     totleTimes: 1
     currentTimes: 0
+    finished: 0
     m_TaskFInishEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -29965,6 +30027,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWalking: 0
   CinemachineCameraTarget: {fileID: 1943773618}
+  LockCameraPosition: 0
+  TopClamp: 70
+  BottomClamp: -30
+  CameraAngleOverride: 0
 --- !u!114 &1943773621
 MonoBehaviour:
   m_ObjectHideFlags: 0

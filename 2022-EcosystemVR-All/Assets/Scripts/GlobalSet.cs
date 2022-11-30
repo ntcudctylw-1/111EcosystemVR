@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 //[RequireComponent(typeof(PlayMode))]
@@ -13,9 +14,10 @@ public class GlobalSet : MonoBehaviour
     public long EntryTime, ExitTime; // 進入和離開學習單元的時間
     public static string ServerIP = "www.ylw.idv.tw:81"; //SQL ServerIP
     public static string ScrRecIP = "www.ylw.idv.tw";
-    public static bool NetworkMode; //true: 記錄在遠端  false: 記錄在本地
+    public static bool NetworkMode= false; //true: 記錄在遠端和本地  false: 記錄在本地
     public int[] Score;//各關卡分數
-    
+    public static string ContentRecord;
+    public static string RecordPath;
 
 
     public enum PlayMode
@@ -121,6 +123,11 @@ public class GlobalSet : MonoBehaviour
         playMode = SetMode;
         inputActions = new XRIDefaultInputActions();
         inputActions.Enable();
+        if(GlobalSet.RecordPath == null)
+        {
+            GlobalSet.RecordPath = Path.Combine(Application.persistentDataPath , System.DateTime.Now.Ticks + "record.txt") ;
+            Debug.LogError("New Record Path:" + GlobalSet.RecordPath);
+        }
     }
 
     private void OnEnable()

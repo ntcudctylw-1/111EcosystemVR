@@ -9,7 +9,7 @@ public class Keyin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("123");
+        //Debug.Log("123");
     }
 
     // Update is called once per frame
@@ -20,7 +20,7 @@ public class Keyin : MonoBehaviour
 
     public void EnterID()
     {
-        Debug.Log("123");
+        //Debug.Log("123");
 
         GlobalSet.SID =GameObject.Find("input").GetComponent<Text>().text;
         WebPhp webPhp = FindObjectOfType<WebPhp>();
