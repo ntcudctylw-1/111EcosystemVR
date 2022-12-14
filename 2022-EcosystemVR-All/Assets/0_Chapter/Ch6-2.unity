@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.09954721, g: 0.0761847, b: 0.15442598, a: 1}
+  m_IndirectSpecularColor: {r: 0.10572989, g: 0.08890479, b: 0.16157246, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3295,6 +3295,11 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls: []
+    audioClipList:
+    - {fileID: 8300000, guid: a5716074d160bda48b618f7a43ddc3fd, type: 3}
+    - {fileID: 8300000, guid: 360874030270757408affecd6e648a8c, type: 3}
+    - {fileID: 8300000, guid: df6cb2f1f8b211348af648805dd5ff42, type: 3}
+    - {fileID: 8300000, guid: 36f338ee98f250148baa66dff26d522f, type: 3}
   - guide: 1
     tip: "\u88AB\u8ECA\u649E"
     contents:
@@ -3304,6 +3309,9 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls: []
+    audioClipList:
+    - {fileID: 8300000, guid: 159a58b384f5f954d82f70f7707e47bc, type: 3}
+    - {fileID: 8300000, guid: 298fe2215a0f07a4292ba245b5dfbcb6, type: 3}
   - guide: 1
     tip: "\u5403\u5230\u6709\u6BD2\u7684\u6C34\u679C"
     contents:
@@ -3312,6 +3320,8 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls: []
+    audioClipList:
+    - {fileID: 8300000, guid: 9d8d57affeeda1941a0445ffde042d07, type: 3}
   - guide: 1
     tip: "\u901A\u904E\u8ECA\u9053"
     contents:
@@ -3320,6 +3330,8 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls: []
+    audioClipList:
+    - {fileID: 8300000, guid: ec7b61e8081938946bf14bbcf39f2d77, type: 3}
   - guide: 1
     tip: "\u88AB\u593E\u5230"
     contents:
@@ -3329,6 +3341,9 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls: []
+    audioClipList:
+    - {fileID: 8300000, guid: d957ef3ae3b5e044bbccf1b95ba6a901, type: 3}
+    - {fileID: 8300000, guid: 3c09c7e9c788aca4887e3c5b99f8f47d, type: 3}
   - guide: 1
     tip: "\u5403\u5B8C\u6C34\u679C"
     contents:
@@ -3337,6 +3352,8 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls: []
+    audioClipList:
+    - {fileID: 8300000, guid: 2e54cde6f533ea044a64493cef15e178, type: 3}
   - guide: 1
     tip: "\u6293\u5230\u6A5F"
     contents:
@@ -3345,6 +3362,8 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls: []
+    audioClipList:
+    - {fileID: 8300000, guid: a045a7de5a0dbf34082f9cc1f426911a, type: 3}
   - guide: 1
     tip: "\u7D50\u675F"
     contents:
@@ -3353,6 +3372,8 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls: []
+    audioClipList:
+    - {fileID: 8300000, guid: efe431afba10d9f458985294c9e785c6, type: 3}
   web: {fileID: 371164496}
   m_EventStart:
     m_PersistentCalls:
@@ -4363,6 +4384,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWalking: 0
   CinemachineCameraTarget: {fileID: 618814822}
+  LockCameraPosition: 0
+  TopClamp: 70
+  BottomClamp: -30
+  CameraAngleOverride: 0
 --- !u!1 &578257369
 GameObject:
   m_ObjectHideFlags: 0
@@ -9107,11 +9132,15 @@ MonoBehaviour:
   text: {fileID: 795949408}
   nextBut: {fileID: 850873827}
   closeBut: {fileID: 45788790}
+  stringid: 0
   rightController: {fileID: 1332371045}
   questions:
   - {fileID: 1922392350}
   - {fileID: 193117583}
   ansID: 0
+  voicePlayer: {fileID: 0}
+  audioClipList: []
+  voiceUpdate: 1
 --- !u!1 &990254388
 GameObject:
   m_ObjectHideFlags: 0

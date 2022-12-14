@@ -13163,6 +13163,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    audioClipList:
+    - {fileID: 8300000, guid: f51f8d837d7304440ad342fe39e964f6, type: 3}
+    - {fileID: 8300000, guid: c1302a34ac7693241ba8ef8fa0d1a505, type: 3}
   - guide: 1
     tip: "\u548C\u540C\u4F34\u6703\u5408"
     contents:
@@ -13183,6 +13186,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    audioClipList:
+    - {fileID: 8300000, guid: d634179949703a342aff2b047fa2178f, type: 3}
   - guide: 1
     tip: "\u6E96\u5099\u964D\u843D1"
     contents:
@@ -13215,6 +13220,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    audioClipList:
+    - {fileID: 8300000, guid: ebbbaeb06bc3b1a40af49df76f37da10, type: 3}
   - guide: 1
     tip: "\u964D\u843D1"
     contents:
@@ -13223,6 +13230,8 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls: []
+    audioClipList:
+    - {fileID: 8300000, guid: a1b27153ffe33764ba1edd5ac995483d, type: 3}
   - guide: 1
     tip: "\u5403\u5B8C\u9B5A"
     contents:
@@ -13243,6 +13252,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    audioClipList:
+    - {fileID: 8300000, guid: edb322bd5755cf54ba041ec7e0b4cbae, type: 3}
   - guide: 1
     tip: "\u504F\u96E2"
     contents:
@@ -13251,6 +13262,8 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls: []
+    audioClipList:
+    - {fileID: 8300000, guid: 3e00da9c04f5ad04b9d3653b1419cc06, type: 3}
   - guide: 1
     tip: "\u5B8C\u6210"
     contents:
@@ -13264,6 +13277,13 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls: []
+    audioClipList:
+    - {fileID: 8300000, guid: b237efa749703e342be00473ffc8bf49, type: 3}
+    - {fileID: 8300000, guid: 0a09ee2e35781b04d84c95ff61391c2e, type: 3}
+    - {fileID: 8300000, guid: a39f3b193874c40469c01ea76fbe0100, type: 3}
+    - {fileID: 8300000, guid: 7a55775e28b0a17468ba82d96fb8f44b, type: 3}
+    - {fileID: 8300000, guid: 6c41308e582ad3d499823d28515d5c92, type: 3}
+    - {fileID: 8300000, guid: ecf9a9cc8b1afc747aa4a681f269ff93, type: 3}
   - guide: 1
     tip: "\u6298\u8FD4\u98DB\u884C"
     contents: []
@@ -13283,6 +13303,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    audioClipList: []
   - guide: 1
     tip: "\u9032\u5165\u8D77\u9EDE\u5834\u666F"
     contents: []
@@ -13314,6 +13335,7 @@ MonoBehaviour:
             m_StringArgument: "\u97D3\u570B"
             m_BoolArgument: 0
           m_CallState: 2
+    audioClipList: []
   web: {fileID: 356909665}
   m_EventStart:
     m_PersistentCalls:
@@ -37668,11 +37690,15 @@ MonoBehaviour:
   text: {fileID: 1236609953}
   nextBut: {fileID: 2044183499}
   closeBut: {fileID: 710687951}
+  stringid: 0
   rightController: {fileID: 240186701}
   questions:
   - {fileID: 1441906923}
   - {fileID: 440090985}
   ansID: 0
+  voicePlayer: {fileID: 0}
+  audioClipList: []
+  voiceUpdate: 1
 --- !u!95 &1188700977
 Animator:
   serializedVersion: 3

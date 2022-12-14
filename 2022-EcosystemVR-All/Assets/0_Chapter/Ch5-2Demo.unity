@@ -7325,6 +7325,9 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls: []
+    audioClipList:
+    - {fileID: 8300000, guid: f51f8d837d7304440ad342fe39e964f6, type: 3}
+    - {fileID: 8300000, guid: c1302a34ac7693241ba8ef8fa0d1a505, type: 3}
   - guide: 1
     tip: "\u8857\u675F"
     contents:
@@ -7334,6 +7337,9 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls: []
+    audioClipList:
+    - {fileID: 8300000, guid: 75e83cb08d132cc4482418246c06934f, type: 3}
+    - {fileID: 8300000, guid: bdf038520f381d347a14505e660afc00, type: 3}
   web: {fileID: 356909665}
   m_EventStart:
     m_PersistentCalls:
@@ -20695,9 +20701,13 @@ MonoBehaviour:
   text: {fileID: 319283102}
   nextBut: {fileID: 484872608}
   closeBut: {fileID: 1279909782}
+  stringid: 0
   rightController: {fileID: 240186701}
   questions: []
   ansID: 0
+  voicePlayer: {fileID: 0}
+  audioClipList: []
+  voiceUpdate: 1
 --- !u!95 &1003088758
 Animator:
   serializedVersion: 3
@@ -21848,9 +21858,13 @@ MonoBehaviour:
   text: {fileID: 1236609953}
   nextBut: {fileID: 2044183499}
   closeBut: {fileID: 710687951}
+  stringid: 0
   rightController: {fileID: 240186701}
   questions: []
   ansID: 0
+  voicePlayer: {fileID: 0}
+  audioClipList: []
+  voiceUpdate: 1
 --- !u!95 &1188700977
 Animator:
   serializedVersion: 3

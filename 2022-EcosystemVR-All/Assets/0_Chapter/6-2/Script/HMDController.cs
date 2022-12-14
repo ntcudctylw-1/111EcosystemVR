@@ -9,10 +9,12 @@ public class HMDController : MonoBehaviour
     public List<string> displayTexts;
     public Text text;
     public GameObject nextBut, closeBut;
-    int stringid = 0;
+    public int stringid = 0;
     public GameObject rightController;
     public List<GameObject> questions;
     public int ansID;
+    public AudioSource voicePlayer;
+    public List<AudioClip> audioClipList;
 
     public void close()
     {
@@ -21,9 +23,14 @@ public class HMDController : MonoBehaviour
         rightController.SetActive(false);
         displayTexts = new List<string>();
         this.gameObject.SetActive(false);
+        voicePlayer.Stop();
     }
 
-    public void next() => stringid++;
+    public void next() 
+    { 
+        stringid++;
+        voiceUpdate = true;
+    }
 
     private void Awake()
     {
@@ -37,7 +44,7 @@ public class HMDController : MonoBehaviour
     {
         stringid = 0;
         rightController.SetActive(true);
-        
+        voiceUpdate= true;
         if (displayTexts.Count == 0) this.gameObject.SetActive(false);
         text.text = displayTexts[stringid];
     }
@@ -71,9 +78,17 @@ public class HMDController : MonoBehaviour
             bool go = displayTexts.Count - 1 == stringid;
             closeBut.SetActive(go);
             nextBut.SetActive(!go);
-        } 
-        
+        }
+        if (voiceUpdate)
+        {
+            voicePlayer.clip = audioClipList[stringid];
+            voiceUpdate = false;
+            voicePlayer.Play();
+        }
+
     }
+
+    public bool voiceUpdate = true;
 
     public void ans(int id)
     {

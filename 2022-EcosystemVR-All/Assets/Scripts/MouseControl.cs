@@ -15,7 +15,8 @@ public class MouseControl : MonoBehaviour
     int loadscene=-1;
     public Text mes; //Åã¥Ü¤å¦r°T®§
     public Text sid; //Åã¥Ü¾Ç¥Í¸ê°T
-
+    public List<AudioClip> cliplist = new List<AudioClip>();
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +45,7 @@ public class MouseControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.realtimeSinceStartup - presstime > cooldown && loadscene!=-1)
+        if(Time.realtimeSinceStartup - presstime > cooldown && loadscene!=-1 && !audioSource.isPlaying)
         {
             SceneManager.LoadScene(loadscene);
         }
@@ -72,8 +73,10 @@ public class MouseControl : MonoBehaviour
             Target.rectTransform.sizeDelta = new Vector2(130, 130);
             string Feature = hit.collider.gameObject.name;
             if (Feature == "List" && Mouse.current.leftButton.isPressed) SceneManager.LoadScene("List");
+            
             if (Feature.Substring(0, 2) == "CH")
             {
+                
                 if (Feature == "CH1") mes.text = "單元1.生物多樣性";
                 else if (Feature == "CH2") mes.text = "單元2.台灣的多樣化環境";
                 else if (Feature == "CH3") mes.text = "單元3.生物生存適應";
@@ -82,6 +85,9 @@ public class MouseControl : MonoBehaviour
                 else if (Feature == "CH6") mes.text = "單元6.淺山生態與石虎";
                 if (Mouse.current.leftButton.isPressed && Time.realtimeSinceStartup - presstime > cooldown) //¿ï¾Ü¥Ø¼Ðª«
                 {
+                    //Debug.Log(Feature.Substring(2, 1));
+                    audioSource.clip = cliplist[int.Parse(Feature.Substring(2, 1)) - 1];
+                    audioSource.Play();
                     presstime = Time.realtimeSinceStartup;                    
                     GameObject.Find("SelectEffect").GetComponent<AudioSource>().Play();
                     hit.collider.gameObject.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();

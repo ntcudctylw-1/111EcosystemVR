@@ -1527,6 +1527,7 @@ GameObject:
   - component: {fileID: 541456566}
   - component: {fileID: 541456568}
   - component: {fileID: 541456569}
+  - component: {fileID: 541456570}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1679,6 +1680,11 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls: []
+    audioClipList:
+    - {fileID: 8300000, guid: 4f3253bc18444fb4282b6f308984ddf4, type: 3}
+    - {fileID: 8300000, guid: 250dfc51dffa2af4c864f9a728a63e56, type: 3}
+    - {fileID: 8300000, guid: 176b651d6f219ee4bb60cc65813c56f6, type: 3}
+    - {fileID: 8300000, guid: 4104150791ec0aa4d8c29dccf59eb431, type: 3}
   - guide: 1
     tip: "\u6210\u529F"
     contents:
@@ -1688,6 +1694,9 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls: []
+    audioClipList:
+    - {fileID: 8300000, guid: 2e341a970d5570a4e8d9e489d6d1a1a1, type: 3}
+    - {fileID: 8300000, guid: 4bd43866c0e07ee4a965819807e255a3, type: 3}
   - guide: 1
     tip: "\u5931\u6557"
     contents:
@@ -1697,6 +1706,9 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls: []
+    audioClipList:
+    - {fileID: 8300000, guid: 60d7366e13a67194db8f1d09d33da455, type: 3}
+    - {fileID: 8300000, guid: 1c99c76f6f62caf488fce4980e23967d, type: 3}
   web: {fileID: 0}
   m_EventStart:
     m_PersistentCalls:
@@ -1894,6 +1906,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isWalking: 0
   CinemachineCameraTarget: {fileID: 1053046021}
+  LockCameraPosition: 0
+  TopClamp: 70
+  BottomClamp: -30
+  CameraAngleOverride: 0
 --- !u!114 &541456565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1966,6 +1982,102 @@ MonoBehaviour:
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
+--- !u!82 &541456570
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541456553}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &541468282 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1056310447088317217, guid: a5a14c11289f4ec4dbe2edf654c4abc9, type: 3}
@@ -5236,9 +5348,13 @@ MonoBehaviour:
   text: {fileID: 273732566}
   nextBut: {fileID: 216497711}
   closeBut: {fileID: 795650797}
+  stringid: 0
   rightController: {fileID: 847231981}
   questions: []
   ansID: 0
+  voicePlayer: {fileID: 541456570}
+  audioClipList: []
+  voiceUpdate: 1
 --- !u!82 &1147806972
 AudioSource:
   m_ObjectHideFlags: 0

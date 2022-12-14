@@ -25,6 +25,7 @@ public class HMDEvents : MonoBehaviour
             set { m_Event = value; }
         }
         protected HMDEvent() { }
+        public List<AudioClip> audioClipList;
     }
     public HMDController controller;
     public List<HMDEvent> hMDEvents;
@@ -43,6 +44,7 @@ public class HMDEvents : MonoBehaviour
     protected HMDEvents() { }
     private int currentID;
     public int endID;
+    
 
     public ShowEvent onShowStart
     {
@@ -74,6 +76,7 @@ public class HMDEvents : MonoBehaviour
                 controller.displayTexts = hMDEvents[id].contents;
                 controller.gameObject.SetActive(true);
                 controller.GetComponent<HMDController>().UpdateState();
+                controller.audioClipList = hMDEvents[id].audioClipList;
                 
             }
             hMDEvents[id].m_Event.Invoke();
