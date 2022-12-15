@@ -71,6 +71,11 @@ namespace StarterAssets
 			SetCursorState(cursorLocked);
 		}
 
+		public void swithCursorLock(bool a)
+		{
+            SetCursorState(a);
+        }
+
 		private void SetCursorState(bool newState)
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;

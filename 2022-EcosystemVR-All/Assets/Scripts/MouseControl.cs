@@ -49,8 +49,8 @@ public class MouseControl : MonoBehaviour
         {
             SceneManager.LoadScene(loadscene);
         }
-        float HorizontalSensitivity = 100.0f;
-        float VerticalSensitivity = 100.0f;
+        float HorizontalSensitivity = Screen.width/1920* 300.0f;
+        float VerticalSensitivity = Screen.height / 1080 * 300.0f;
 
         Vector2 mp = myInput.PCVR.MouseSys.ReadValue<Vector2>();
         MouseX = mp.x;
