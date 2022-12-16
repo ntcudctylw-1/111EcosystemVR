@@ -17,6 +17,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
+    public bool IsPC = false;
+
     public int SetChNum;
     WebPhp web;
     public GameObject SelectMenu1;
@@ -171,6 +173,8 @@ public class LevelController : MonoBehaviour
 
     public AudioSource[] CH1Audio;
     public AudioSource[] CH2Audio;
+    public AudioSource CH1InfoAudio;
+    public AudioSource CH2InfoAudio;
 
     public bool SLearn = false;
 
@@ -237,6 +241,9 @@ public class LevelController : MonoBehaviour
 
     void Start()
     {
+#if UNITY_STANDALONE_WIN
+        IsPC = true;
+#endif
         Scene scene = SceneManager.GetActiveScene();
         print(scene.name[2]);
         if (scene.name[2] != null)
@@ -262,10 +269,12 @@ public class LevelController : MonoBehaviour
 
         if (ChNum == 0 || ChNum == 1)
         {
+            CH1InfoAudio.Play();
             InfoText.text = "歡迎來到第一單元，這個單元\n要帶大家來認識草原及極地生態系中的環境特性、\n這些生態系中特有動物的生物特徵、\n以及不同動物的特徵對應生活環境的習性。\n點擊進入不同的生態系看看吧。";
         }
         else if (ChNum > 1 && ChNum < 6)
         {
+            CH2InfoAudio.Play();
             InfoText.text = "歡迎來到第二單元，這個單元\n要帶大家來認識台灣的多樣化生態系和環境特性，\n以及這些生態系的特有動物和牠們的特徵哦。\n點擊進入不同的生態系看看吧。";
         }
         else if (ChNum == 6)
@@ -902,7 +911,7 @@ public class LevelController : MonoBehaviour
                 CH1Audio[3].Play();
                 if (SLearn == true)
                 {
-                    if (DisableWhenPC.IsPC == true)
+                    if (IsPC == true)
                     {
                         InfoText.text = "北極熊身上厚重的毛皮能幫助牠保暖，\n讓牠可以在這麼寒冷的環境底下生存。\n再觀察一旁的海豹，\n你覺得海豹有哪個部位可以幫助牠保暖呢？\n移動準星並點選該部位。";
                     }
@@ -913,7 +922,7 @@ public class LevelController : MonoBehaviour
                 }
                 else
                 {
-                    if (DisableWhenPC.IsPC == true)
+                    if (IsPC == true)
                     {
                         InfoText.text = "再觀察一旁的海豹，\n你覺得海豹有哪個部位可以幫助牠保暖呢？\n移動準星並點選該部位。";
                     }
@@ -1422,7 +1431,7 @@ public class LevelController : MonoBehaviour
             else if (WSBtnNum == 6)
             {
                 WSCH1Button.GetComponentInChildren<Text>().text = "回主選單";
-                if (DisableWhenPC.IsPC == true)
+                if (IsPC == true)
                 {
                     InfoText.text = "單元完成，內容已經記錄在探險筆記上面了，\n按TAB開啟/關閉探險筆記，回顧單元內容吧。";
                 }
@@ -1448,7 +1457,7 @@ public class LevelController : MonoBehaviour
             else if (WSBtnNum == 1)
             {
                 WSCH1Button.GetComponentInChildren<Text>().text = "回主選單";
-                if (DisableWhenPC.IsPC == true)
+                if (IsPC == true)
                 {
                     InfoText.text = "單元完成，內容已經記錄在探險筆記上面了，\n按TAB開啟/關閉探險筆記，回顧單元內容吧。";
                 }

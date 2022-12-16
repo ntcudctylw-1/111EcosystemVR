@@ -15,6 +15,7 @@ public class CH3 : MonoBehaviour
 {
     public WebPhp web;
 
+    public AudioSource CH3InfoAudio;
     public GameObject Canvas;
     public AudioSource ButtonSound;
     public Text TargetText;
@@ -73,6 +74,7 @@ public class CH3 : MonoBehaviour
 
     void Start()
     {
+        CH3InfoAudio.Play();
         web = GetComponent<WebPhp>();
         RandomLevel();
     }
