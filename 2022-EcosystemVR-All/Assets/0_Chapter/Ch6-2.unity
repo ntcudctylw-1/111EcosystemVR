@@ -9138,7 +9138,7 @@ MonoBehaviour:
   - {fileID: 1922392350}
   - {fileID: 193117583}
   ansID: 0
-  voicePlayer: {fileID: 0}
+  voicePlayer: {fileID: 618814828}
   audioClipList: []
   voiceUpdate: 1
 --- !u!1 &990254388

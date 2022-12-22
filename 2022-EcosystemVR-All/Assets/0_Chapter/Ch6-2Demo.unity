@@ -11290,7 +11290,7 @@ MonoBehaviour:
   rightController: {fileID: 1332371045}
   questions: []
   ansID: 0
-  voicePlayer: {fileID: 0}
+  voicePlayer: {fileID: 618814828}
   audioClipList: []
   voiceUpdate: 1
 --- !u!1 &1012577524

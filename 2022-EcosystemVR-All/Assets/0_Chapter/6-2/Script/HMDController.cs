@@ -79,7 +79,7 @@ public class HMDController : MonoBehaviour
             closeBut.SetActive(go);
             nextBut.SetActive(!go);
         }
-        if (voiceUpdate)
+        if (voiceUpdate && audioClipList.Count!=0)
         {
             voicePlayer.clip = audioClipList[stringid];
             voiceUpdate = false;
