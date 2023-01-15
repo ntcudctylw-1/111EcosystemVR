@@ -1,16 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2379985846274097785
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ICE_WATER
-  m_Shader: {fileID: -6465566751694194690, guid: ef787001c7cc5b94881b64e36a632bd5,
-    type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: -6465566751694194690, guid: ef787001c7cc5b94881b64e36a632bd5, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -40,6 +53,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - Vector1_171b83b30c18493baba52c124f25bf16: 0.434
     - Vector1_1765aac4fb934daeade2d8404e81ba01: 1
@@ -47,7 +61,6 @@ Material:
     - Vector1_46742d62d3144041b5d8a663bc612103: 10.24
     - _Depth: 12.93
     m_Colors:
-    - Color_be17d72b906d49ccb48abf8903632572: {r: 0.04939474, g: 0.19592303, b: 0.6981132,
-        a: 1}
+    - Color_be17d72b906d49ccb48abf8903632572: {r: 0.04939474, g: 0.19592303, b: 0.6981132, a: 1}
     - _ShallowWater: {r: 0.11654494, g: 0.3665916, b: 0.9150943, a: 0.8509804}
   m_BuildTextureStacks: []

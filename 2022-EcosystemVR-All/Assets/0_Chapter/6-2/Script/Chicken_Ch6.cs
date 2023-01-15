@@ -5,6 +5,7 @@ using UnityEngine;
 public class Chicken_Ch6 : MonoBehaviour
 {
     public GameObject camera;
+    public bool isScared = false;
 
 
     void Start()
@@ -29,12 +30,41 @@ public class Chicken_Ch6 : MonoBehaviour
             GetComponent<Animator>().enabled = false;
             //GetComponent<Rigidbody>().useGravity = false;
         }*/
-        
+
+        foreach (var item in FindObjectsOfType<Chicken_Ch6>())
+        {
+            item.isScared = true;
+        }
+
     }
 
     private void Update()
     {
         //camera.transform.localPosition = camera.transform.parent.transform.rotation * new Vector3(0, 0, 0.629f);
+        if (isScared)
+        {
+            scared_voice();
+            scared_random();
+        }
+    }
+
+    
+
+    private void scared_voice()
+    {
+        if(TryGetComponent<AudioSource>(out AudioSource audioSource))
+        {
+            audioSource.pitch = 1.2f;
+            audioSource.volume =0.35f;
+        }
+    }
+
+    private void scared_random()
+    {
+        if (TryGetComponent<RandomPlayAudio>(out RandomPlayAudio audio))
+        {
+            audio.setchance(0.8f);
+        }
     }
 
 }

@@ -11,7 +11,7 @@ public class Ch4PcVrMode : MonoBehaviour
 
 #endif
 
-#if UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR_OSX
     [SerializeReference]
     private float UiOffset = -0.05f;
 #endif

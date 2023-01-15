@@ -35,7 +35,9 @@ public class WebPhp : MonoBehaviour
                 File.Create(GlobalSet.RecordPath);
             }
             GlobalSet.ContentRecord += string.Format("{0} {1} {2} {3},", sid, lid, mid, method);
+#if !UNITY_EDITOR_OSX
             File.WriteAllText(GlobalSet.RecordPath, GlobalSet.ContentRecord);
+#endif
             //Debug.Log(GlobalSet.ContentRecord);
             yield return null;
         }

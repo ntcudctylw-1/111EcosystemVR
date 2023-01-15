@@ -23,4 +23,9 @@ public class RandomPlayAudio : MonoBehaviour
             }
         }
     }
+
+    public void setchance(float a)
+    {
+        chance = a;
+    }
 }
