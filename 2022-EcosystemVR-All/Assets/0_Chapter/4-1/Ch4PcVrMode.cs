@@ -5,16 +5,17 @@ using UnityEngine;
 
 public class Ch4PcVrMode : MonoBehaviour
 {
-#if UNITY_ANDROID
+#if UNITY_ANDROID 
     [SerializeReference]
     private float UiOffset = -0.37f;
 
 #endif
 
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR_OSX
+#if UNITY_STANDALONE_WIN 
     [SerializeReference]
     private float UiOffset = -0.05f;
 #endif
+
 
 
     private void Start()

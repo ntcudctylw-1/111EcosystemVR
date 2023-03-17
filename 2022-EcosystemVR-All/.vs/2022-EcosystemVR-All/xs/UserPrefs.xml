@@ -1,0 +1,44 @@
+﻿<Properties StartupConfiguration="{0B1AB016-BB0D-A41E-8CDF-B103303596A3}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/0_Chapter/1/Grassland/LevelController.cs">
+    <Files>
+      <File FileName="Assets/0_Chapter/4-1/Ch4PcVrMode.cs" Line="14" Column="26" />
+      <File FileName="Assets/0_Chapter/6-2/Script/Chicken_Ch6.cs" />
+      <File FileName="Assets/0_Chapter/6-2/Script/RandomPlayAudio.cs" />
+      <File FileName="Assets/0_Chapter/6-2/Script/LoadingEvent.cs" />
+      <File FileName="Assets/Scripts/WebPhp.cs" />
+      <File FileName="Assets/Scripts/GlobalSet.cs" />
+      <File FileName="Assets/0_Chapter/5-2Demo/c5_Demo_.cs" />
+      <File FileName="Assets/0_Chapter/6-2/Script/HMDController.cs" />
+      <File FileName="Assets/mapController.cs" Line="31" Column="1" />
+      <File FileName="Assets/0_Chapter/1/Grassland/LevelController.cs" Line="1554" Column="9" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="2022-EcosystemVR-All" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="0_Chapter" expanded="True">
+                <Node name="1" expanded="True">
+                  <Node name="Grassland" expanded="True" />
+                </Node>
+                <Node name="4-1" expanded="True" />
+                <Node name="5-2Demo" expanded="True" />
+                <Node name="6-2" expanded="True">
+                  <Node name="Script" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="Scripts" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="6b898282-0cd0-42b1-b286-4c48974b130c" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>

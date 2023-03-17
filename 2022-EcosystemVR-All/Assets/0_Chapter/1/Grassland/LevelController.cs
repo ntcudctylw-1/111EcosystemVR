@@ -219,6 +219,14 @@ public class LevelController : MonoBehaviour
     , new string[] {"溫暖潮濕", "佈滿沼澤", "", "", ""}
     , new string[] {"溫暖", "海水清澈", ""}};
 
+    public string[][] TipArr = {new string[]
+    {"草原生態系通常都是\n比較乾燥的氣候狀態。", "由於草原生態系乾燥的氣候，\n植物生長通常較為稀疏。"}
+    , new string[] {"極地生態系通常都是\n極為寒冷的氣候狀態。", "由於極地生態系寒冷的氣候，\n環境通常都為冰雪覆蓋、\n或有冰山等地形。"}
+    , new string[] {"高山溪流生態系通常都是\n氣溫比較低的氣候狀態。", "由於高山溪流生態系位於高山上，\n因此地形通常都較為陡峭。"}
+    , new string[] {"淺山生態系通常都是\n較為涼爽宜人的氣候狀態。", "淺山生態系位於較低海拔的山裡，\n通常樹林都生長得很茂密。"}
+    , new string[] {"濕地生態系通常都是\n較為溫暖潮濕的氣候狀態。", "由於濕地生態系溫暖潮濕的氣候，\n因此環境通常都佈滿了沼澤。"}
+    , new string[] {"珊瑚礁生態系通常都是\n較為溫暖的氣候狀態，\n以利於珊瑚礁生存。", "珊瑚礁生態系需要有清澈的海水環境，\n才能讓珊瑚礁生存。"}};
+
     public string[][][] OptionArr = {new string[][] {new string[] {"乾燥", "潮濕", "炎熱"}//0
     , new string[] {"樹林茂密", "植被稀疏", "地形崎嶇"}
     , new string[] {""}
@@ -680,11 +688,11 @@ public class LevelController : MonoBehaviour
             {
                 StartCoroutine(web.php(GlobalSet.SID, GlobalSet.LID, "83", WebPhp.php_method.Action));
             }
-            if (InfoText.text != "回答錯誤")
+            if (InfoText.text != TipArr[ChNum][QuestionCount])
             {
                 QuaternionRecord = InfoText.text;
             }
-            InfoText.text = "回答錯誤";
+            InfoText.text = TipArr[ChNum][QuestionCount];
             Invoke("EraseFeatureError", 2f);
         }
         Debug.Log(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text);
