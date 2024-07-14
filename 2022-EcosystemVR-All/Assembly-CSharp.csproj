@@ -308,6 +308,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Chapter\Ch5\Script\PlayerFlip.cs" />
     <Compile Include="Assets\Scripts\SetQuailty.cs" />
+    <Compile Include="Assets\Scripts\DeepLinkHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Bark_Array_301.shader" />
