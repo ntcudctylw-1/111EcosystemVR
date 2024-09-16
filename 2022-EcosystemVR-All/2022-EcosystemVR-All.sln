@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit", "Unity.XR.Interaction.Toolkit.csproj", "{4A3CC364-1489-7A34-54F0-779D0AAEA60D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEngine.UI", "UnityEngine.UI.csproj", "{21C5A2E7-C4B7-E278-D257-390E372C63C7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.RenderPipelines.Core.Runtime", "Unity.RenderPipelines.Core.Runtime.csproj", "{D9A638DC-7E4A-1650-F871-939EC7759056}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wave.OpenXR.Toolkit", "Wave.OpenXR.Toolkit.csproj", "{5A662C6F-2A32-C18E-0C4A-B03CB9AA45D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEngine.TestRunner", "UnityEngine.TestRunner.csproj", "{9D57D701-7AB9-F4A6-5090-F40C6DB97509}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEngine.UI", "UnityEngine.UI.csproj", "{21C5A2E7-C4B7-E278-D257-390E372C63C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Mathematics", "Unity.Mathematics.csproj", "{DF8012EF-A63D-6D2D-DE32-AB48383FE9E0}"
 EndProject
@@ -171,10 +171,6 @@ Global
 		{4A3CC364-1489-7A34-54F0-779D0AAEA60D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A3CC364-1489-7A34-54F0-779D0AAEA60D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A3CC364-1489-7A34-54F0-779D0AAEA60D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{21C5A2E7-C4B7-E278-D257-390E372C63C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21C5A2E7-C4B7-E278-D257-390E372C63C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21C5A2E7-C4B7-E278-D257-390E372C63C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21C5A2E7-C4B7-E278-D257-390E372C63C7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D9A638DC-7E4A-1650-F871-939EC7759056}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D9A638DC-7E4A-1650-F871-939EC7759056}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9A638DC-7E4A-1650-F871-939EC7759056}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -187,6 +183,10 @@ Global
 		{9D57D701-7AB9-F4A6-5090-F40C6DB97509}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D57D701-7AB9-F4A6-5090-F40C6DB97509}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D57D701-7AB9-F4A6-5090-F40C6DB97509}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21C5A2E7-C4B7-E278-D257-390E372C63C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21C5A2E7-C4B7-E278-D257-390E372C63C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21C5A2E7-C4B7-E278-D257-390E372C63C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21C5A2E7-C4B7-E278-D257-390E372C63C7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DF8012EF-A63D-6D2D-DE32-AB48383FE9E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DF8012EF-A63D-6D2D-DE32-AB48383FE9E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF8012EF-A63D-6D2D-DE32-AB48383FE9E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
